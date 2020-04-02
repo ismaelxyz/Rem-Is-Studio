@@ -21,22 +21,22 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbAccelTable.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinAccelTable.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBACCELTABLE_H
 #define FXRBACCELTABLE_H
 
-class FXRbAccelTable : public FXAccelTable {
-  FXDECLARE(FXRbAccelTable)
-#include "FXRbObjectVirtuals.h"
+class HinAccelTable : public FXAccelTable {
+  FXDECLARE(HinAccelTable)
+#include "HinObjectVirtuals.h"
 public:
   // Constructor
-  FXRbAccelTable(){}
+  HinAccelTable(){}
 
   // Destructor
-  virtual ~FXRbAccelTable(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinAccelTable(){
+    HinUnregisterRubyObj(this);
     }
 
   // Mark dependencies for GC

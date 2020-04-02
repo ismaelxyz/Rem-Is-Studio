@@ -21,35 +21,35 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbDirDialog.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinDirDialog.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBDIRDIALOG_H
 #define FXRBDIRDIALOG_H
 
-class FXRbDirDialog : public FXDirDialog {
-  FXDECLARE(FXRbDirDialog)
+class HinDirDialog : public FXDirDialog {
+  FXDECLARE(HinDirDialog)
 protected:
-  FXRbDirDialog(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
-#include "FXRbTopWindowVirtuals.h"
-#include "FXRbDialogBoxVirtuals.h"
+  HinDirDialog(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
+#include "HinTopWindowVirtuals.h"
+#include "HinDialogBoxVirtuals.h"
 public:
   /// Construct Directory Dialog Box
-  FXRbDirDialog(FXWindow* owner,const FXString& name,FXuint opts=0,FXint x=0,FXint y=0,FXint w=500,FXint h=300) : FXDirDialog(owner,name,opts,x,y,w,h){}
+  HinDirDialog(FXWindow* owner,const FXString& name,FXuint opts=0,FXint x=0,FXint y=0,FXint w=500,FXint h=300) : FXDirDialog(owner,name,opts,x,y,w,h){}
 
   /// Construct Directory Dialog Box
-  FXRbDirDialog(FXApp* a,const FXString& name,FXuint opts=0,FXint x=0,FXint y=0,FXint w=500,FXint h=300) : FXDirDialog(a,name,opts,x,y,w,h){}
+  HinDirDialog(FXApp* a,const FXString& name,FXuint opts=0,FXint x=0,FXint y=0,FXint w=500,FXint h=300) : FXDirDialog(a,name,opts,x,y,w,h){}
 
   // Mark dependencies for the GC
   static void markfunc(FXDirDialog* self);
 
   // Destructor
-  virtual ~FXRbDirDialog(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinDirDialog(){
+    HinUnregisterRubyObj(this);
     }
   };
 

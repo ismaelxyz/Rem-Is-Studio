@@ -21,33 +21,33 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbPCXIcon.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinPCXIcon.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBPCXICON_H
 #define FXRBPCXICON_H
 
-class FXRbPCXIcon : public FXPCXIcon {
-  FXDECLARE(FXRbPCXIcon)
+class HinPCXIcon : public FXPCXIcon {
+  FXDECLARE(HinPCXIcon)
 protected:
-  FXRbPCXIcon(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbImageVirtuals.h"
+  HinPCXIcon(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinImageVirtuals.h"
 public:
   /// Construct an icon from memory stream formatted as PCX format
-  FXRbPCXIcon(FXApp* a,const void *pix=NULL,FXColor clr=FXRGB(192,192,192),FXuint opts=0,FXint w=1,FXint h=1) : FXPCXIcon(a,pix,clr,opts,w,h){
-    FXRbRegisterAppSensitiveObject(this);
+  HinPCXIcon(FXApp* a,const void *pix=NULL,FXColor clr=FXRGB(192,192,192),FXuint opts=0,FXint w=1,FXint h=1) : FXPCXIcon(a,pix,clr,opts,w,h){
+    HinRegisterAppSensitiveObject(this);
     }
 
   // Mark dependencies for the GC
   static void markfunc(FXPCXIcon* self);
 
   // Destructor
-  virtual ~FXRbPCXIcon(){
-    FXRbUnregisterRubyObj(this);
-    FXRbUnregisterAppSensitiveObject(this);
+  virtual ~HinPCXIcon(){
+    HinUnregisterRubyObj(this);
+    HinUnregisterAppSensitiveObject(this);
     }
   };
 

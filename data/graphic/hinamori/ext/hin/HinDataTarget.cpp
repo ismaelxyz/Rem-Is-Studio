@@ -21,10 +21,10 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbDataTarget.cpp 2713 2007-11-14 15:27:36Z lyle $
+ * $Id: HinDataTarget.cpp 2713 2007-11-14 15:27:36Z lyle $
  ***********************************************************************/
 
-#include "FXRbCommon.h"
+#include "HinCommon.h"
 
 /**
  * Data targets for FXRuby are implemented slightly different from
@@ -34,12 +34,12 @@
  */
 
 // Initialize a data target with this value
-FXRbDataTarget::FXRbDataTarget(VALUE value,FXObject* tgt,FXSelector sel) : FXDataTarget(tgt,sel), intValue(0), doubleValue(0.0), boolValue(FALSE) {
+HinDataTarget::HinDataTarget(VALUE value,FXObject* tgt,FXSelector sel) : FXDataTarget(tgt,sel), intValue(0), doubleValue(0.0), boolValue(FALSE) {
   setValue(value);
   }
 
 // Set new value for data target
-void FXRbDataTarget::setValue(VALUE value){
+void HinDataTarget::setValue(VALUE value){
   switch (TYPE(value)) {
     case T_NIL:
       connect();
@@ -76,7 +76,7 @@ void FXRbDataTarget::setValue(VALUE value){
   }
 
 // Return current value for this data target
-VALUE FXRbDataTarget::getValue() const {
+VALUE HinDataTarget::getValue() const {
   switch(type){
     case DT_VOID:
       return Qnil;
@@ -103,7 +103,7 @@ VALUE FXRbDataTarget::getValue() const {
     case DT_STRING:
       return to_ruby(*reinterpret_cast<FXString*>(data));
     default:
-      fxerror("unknown data type in FXRbDataTarget::getValue()");
+      fxerror("unknown data type in HinDataTarget::getValue()");
     }
   return Qnil;
   }

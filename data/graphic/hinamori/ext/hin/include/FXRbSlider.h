@@ -21,27 +21,27 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbSlider.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinSlider.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBSLIDER_H
 #define FXRBSLIDER_H
 
-class FXRbSlider : public FXSlider {
-  FXDECLARE(FXRbSlider)
+class HinSlider : public FXSlider {
+  FXDECLARE(HinSlider)
 protected:
-  FXRbSlider(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
+  HinSlider(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
 public:
   /// Construct a slider widget
-  FXRbSlider(FXComposite* p,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=SLIDER_NORMAL,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=0,FXint pr=0,FXint pt=0,FXint pb=0) : FXSlider(p,tgt,sel,opts,x,y,w,h,pl,pr,pt,pb){}
+  HinSlider(FXComposite* p,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=SLIDER_NORMAL,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=0,FXint pr=0,FXint pt=0,FXint pb=0) : FXSlider(p,tgt,sel,opts,x,y,w,h,pl,pr,pt,pb){}
 
   // Destructor
-  virtual ~FXRbSlider(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinSlider(){
+    HinUnregisterRubyObj(this);
     }
 
   // Mark dependencies for the GC

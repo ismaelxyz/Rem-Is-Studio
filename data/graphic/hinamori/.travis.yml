@@ -8,7 +8,7 @@ addons:
     - xserver-xorg-video-dummy
     - g++
     - libxrandr-dev
-    - libfox-1.6-dev
+    - libhin-1.6-dev
     - libfxscintilla-dev
     - swig
 

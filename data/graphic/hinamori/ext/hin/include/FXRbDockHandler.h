@@ -21,30 +21,30 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbDockHandler.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinDockHandler.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBDOCKHANDLER_H
 #define FXRBDOCKHANDLER_H
 
-class FXRbDockHandler : public FXDockHandler {
-  FXDECLARE(FXRbDockHandler)
+class HinDockHandler : public FXDockHandler {
+  FXDECLARE(HinDockHandler)
 protected:
-  FXRbDockHandler(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
+  HinDockHandler(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
 public:
   /// Construct frame window
-  FXRbDockHandler(FXComposite* p,FXObject* tgt,FXSelector sel,FXuint opts,FXint x,FXint y,FXint w,FXint h,FXint pl,FXint pr,FXint pt,FXint pb) : FXDockHandler(p,tgt,sel,opts,x,y,w,h,pl,pr,pt,pb){}
+  HinDockHandler(FXComposite* p,FXObject* tgt,FXSelector sel,FXuint opts,FXint x,FXint y,FXint w,FXint h,FXint pl,FXint pr,FXint pt,FXint pb) : FXDockHandler(p,tgt,sel,opts,x,y,w,h,pl,pr,pt,pb){}
 
   // Mark dependencies for the GC
   static void markfunc(FXDockHandler* frame);
 
   // Destructor
-  virtual ~FXRbDockHandler(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinDockHandler(){
+    HinUnregisterRubyObj(this);
     }
   };
 

@@ -21,33 +21,33 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbRuler.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinRuler.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBRULERVIEW_H
 #define FXRBRULERVIEW_H
 
-class FXRbRulerView : public FXRulerView {
-  FXDECLARE(FXRbRulerView)
+class HinRulerView : public FXRulerView {
+  FXDECLARE(HinRulerView)
 protected:
-  FXRbRulerView(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
-#include "FXRbScrollAreaVirtuals.h"
+  HinRulerView(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
+#include "HinScrollAreaVirtuals.h"
 public:
 
   /// Construct label with given text and icon
-  FXRbRulerView(FXComposite* p,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=0,FXint x=0,FXint y=0,FXint w=0,FXint h=0) :
+  HinRulerView(FXComposite* p,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=0,FXint x=0,FXint y=0,FXint w=0,FXint h=0) :
   	FXRulerView(p,tgt,sel,opts,x,y,w,h) {}
 
   // Mark dependencies for the GC
   static void markfunc(FXRulerView* self);
 
   // Destructor
-  virtual ~FXRbRulerView(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinRulerView(){
+    HinUnregisterRubyObj(this);
     }
   };
 

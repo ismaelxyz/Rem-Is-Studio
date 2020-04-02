@@ -21,7 +21,7 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbGLShape.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinGLShape.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBGLSHAPE_H
@@ -35,25 +35,25 @@ inline void klass ## _drawshape(klass* self,FXGLViewer* viewer){ \
 
 #define IMPLEMENT_FXGLSHAPE_STUBS(klass,superklass) \
   void klass::drawshape(FXGLViewer* viewer){ \
-    FXRbCallVoidMethod(this,"drawshape",viewer); \
+    HinCallVoidMethod(this,"drawshape",viewer); \
     } \
   void klass::_drawshape(FXGLViewer* viewer){ \
     superklass::drawshape(viewer); \
     }
 
-class FXRbGLShape : public FXGLShape {
-  FXDECLARE(FXRbGLShape)
+class HinGLShape : public FXGLShape {
+  FXDECLARE(HinGLShape)
 protected:
-  FXRbGLShape(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbGLObjectVirtuals.h"
-#include "FXRbGLShapeVirtuals.h"
+  HinGLShape(){}
+#include "HinObjectVirtuals.h"
+#include "HinGLObjectVirtuals.h"
+#include "HinGLShapeVirtuals.h"
 public:
   /// Construct with specified origin and options
-  FXRbGLShape(FXfloat x,FXfloat y,FXfloat z,FXuint opts) : FXGLShape(x,y,z,opts){}
+  HinGLShape(FXfloat x,FXfloat y,FXfloat z,FXuint opts) : FXGLShape(x,y,z,opts){}
 
   /// Construct with specified origin, options and front and back materials
-  FXRbGLShape(FXfloat x,FXfloat y,FXfloat z,FXuint opts,const FXMaterial& front,const FXMaterial& back) : FXGLShape(x,y,z,opts,front,back){}
+  HinGLShape(FXfloat x,FXfloat y,FXfloat z,FXuint opts,const FXMaterial& front,const FXMaterial& back) : FXGLShape(x,y,z,opts,front,back){}
 
   // Identify sub-object given path
   virtual FXGLObject* identify(FXuint* path,FXint n);
@@ -73,8 +73,8 @@ public:
   static void markfunc(FXGLShape* self);
 
   // Destructor
-  virtual ~FXRbGLShape(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinGLShape(){
+    HinUnregisterRubyObj(this);
     }
   };
 

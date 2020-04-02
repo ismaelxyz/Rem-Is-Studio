@@ -21,30 +21,30 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbFrame.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinFrame.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBFRAME_H
 #define FXRBFRAME_H
 
-class FXRbFrame : public FXFrame {
-  FXDECLARE(FXRbFrame)
+class HinFrame : public FXFrame {
+  FXDECLARE(HinFrame)
 protected:
-  FXRbFrame(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
+  HinFrame(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
 public:
   /// Construct frame window
-  FXRbFrame(FXComposite* p,FXuint opts=FRAME_NORMAL,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=DEFAULT_PAD,FXint pr=DEFAULT_PAD,FXint pt=DEFAULT_PAD,FXint pb=DEFAULT_PAD) : FXFrame(p,opts,x,y,w,h,pl,pr,pt,pb){}
+  HinFrame(FXComposite* p,FXuint opts=FRAME_NORMAL,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=DEFAULT_PAD,FXint pr=DEFAULT_PAD,FXint pt=DEFAULT_PAD,FXint pb=DEFAULT_PAD) : FXFrame(p,opts,x,y,w,h,pl,pr,pt,pb){}
 
   // Mark dependencies for the GC
   static void markfunc(FXFrame* frame);
 
   // Destructor
-  virtual ~FXRbFrame(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinFrame(){
+    HinUnregisterRubyObj(this);
     }
   };
 

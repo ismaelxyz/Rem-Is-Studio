@@ -21,15 +21,15 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbDataTarget.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinDataTarget.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBDATATARGET_H
 #define FXRBDATATARGET_H
 
-class FXRbDataTarget : public FXDataTarget {
-  FXDECLARE(FXRbDataTarget)
-#include "FXRbObjectVirtuals.h"
+class HinDataTarget : public FXDataTarget {
+  FXDECLARE(HinDataTarget)
+#include "HinObjectVirtuals.h"
 private:
   // Associated integer value (if it's an integer)
   FXint intValue;
@@ -45,7 +45,7 @@ private:
 
 public:
   /// Initialize with this value
-  FXRbDataTarget(VALUE value=Qnil,FXObject* tgt=NULL,FXSelector sel=0);
+  HinDataTarget(VALUE value=Qnil,FXObject* tgt=NULL,FXSelector sel=0);
 
   // Return its current value
   VALUE getValue() const;
@@ -57,8 +57,8 @@ public:
   static void markfunc(FXDataTarget* obj);
 
   // Destructor
-  virtual ~FXRbDataTarget(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinDataTarget(){
+    HinUnregisterRubyObj(this);
     }
   };
 

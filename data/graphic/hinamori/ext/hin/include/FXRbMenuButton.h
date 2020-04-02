@@ -21,27 +21,27 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbMenuButton.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinMenuButton.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBMENUBUTTON_H
 #define FXRBMENUBUTTON_H
 
-class FXRbMenuButton : public FXMenuButton {
-  FXDECLARE(FXRbMenuButton)
+class HinMenuButton : public FXMenuButton {
+  FXDECLARE(HinMenuButton)
 protected:
-  FXRbMenuButton(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
+  HinMenuButton(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
 public:
   /// Constructor
-  FXRbMenuButton(FXComposite* p,const FXString& text,FXIcon* ic=NULL,FXPopup* pup=NULL,FXuint opts=JUSTIFY_NORMAL|ICON_BEFORE_TEXT|MENUBUTTON_DOWN,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=DEFAULT_PAD,FXint pr=DEFAULT_PAD,FXint pt=DEFAULT_PAD,FXint pb=DEFAULT_PAD) : FXMenuButton(p,text,ic,pup,opts,x,y,w,h,pl,pr,pt,pb){}
+  HinMenuButton(FXComposite* p,const FXString& text,FXIcon* ic=NULL,FXPopup* pup=NULL,FXuint opts=JUSTIFY_NORMAL|ICON_BEFORE_TEXT|MENUBUTTON_DOWN,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=DEFAULT_PAD,FXint pr=DEFAULT_PAD,FXint pt=DEFAULT_PAD,FXint pb=DEFAULT_PAD) : FXMenuButton(p,text,ic,pup,opts,x,y,w,h,pl,pr,pt,pb){}
 
   // Destructor
-  virtual ~FXRbMenuButton(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinMenuButton(){
+    HinUnregisterRubyObj(this);
     }
 
   // Mark dependencies for the GC

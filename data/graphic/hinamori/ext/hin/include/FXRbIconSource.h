@@ -21,7 +21,7 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbIconSource.h 2259 2005-12-01 13:51:21Z lyle $
+ * $Id: HinIconSource.h 2259 2005-12-01 13:51:21Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBICONSOURCE_H
@@ -68,59 +68,59 @@ inline FXImage* cls ## _loadScaledImageStream(const cls* self,FXStream& store,FX
 
 #define IMPLEMENT_FXICONSOURCE_STUBS(cls) \
   FXIcon* cls::loadIconFile(const FXString& filename,const FXString& type) const { \
-    return FXRbCallIconMethod(this,"loadIconFile",filename,type); \
+    return HinCallIconMethod(this,"loadIconFile",filename,type); \
     } \
   FXIcon* cls::loadIconData(const void* pixels,const FXString& type) const { \
-    return FXRbCallIconMethod(this,"loadIconData",pixels,type); \
+    return HinCallIconMethod(this,"loadIconData",pixels,type); \
     } \
   FXIcon* cls::loadIconStream(FXStream& store,const FXString& type) const { \
-    return FXRbCallIconMethod(this,"loadIconStream",store,type); \
+    return HinCallIconMethod(this,"loadIconStream",store,type); \
     } \
   FXImage* cls::loadImageFile(const FXString& filename,const FXString& type) const { \
-    return FXRbCallImageMethod(this,"loadImageFile",filename,type); \
+    return HinCallImageMethod(this,"loadImageFile",filename,type); \
     } \
   FXImage* cls::loadImageData(const void* pixels,const FXString& type) const { \
-    return FXRbCallImageMethod(this,"loadImageData",pixels,type); \
+    return HinCallImageMethod(this,"loadImageData",pixels,type); \
     } \
   FXImage* cls::loadImageStream(FXStream& store,const FXString& type) const { \
-    return FXRbCallImageMethod(this,"loadImageStream",store,type); \
+    return HinCallImageMethod(this,"loadImageStream",store,type); \
     } \
   FXIcon* cls::loadScaledIconFile(const FXString& filename,FXint size,FXint qual,const FXString& type) const { \
-    return FXRbCallIconMethod(this,"loadScaledIconFile",filename,size,qual,type); \
+    return HinCallIconMethod(this,"loadScaledIconFile",filename,size,qual,type); \
     } \
   FXIcon* cls::loadScaledIconData(const void* pixels,FXint size,FXint qual,const FXString& type) const { \
-    return FXRbCallIconMethod(this,"loadScaledIconData",pixels,size,qual,type); \
+    return HinCallIconMethod(this,"loadScaledIconData",pixels,size,qual,type); \
     } \
   FXIcon* cls::loadScaledIconStream(FXStream& store,FXint size,FXint qual,const FXString& type) const { \
-    return FXRbCallIconMethod(this,"loadScaledIconStream",store,size,qual,type); \
+    return HinCallIconMethod(this,"loadScaledIconStream",store,size,qual,type); \
     } \
   FXImage* cls::loadScaledImageFile(const FXString& filename,FXint size,FXint qual,const FXString& type) const { \
-    return FXRbCallImageMethod(this,"loadScaledImageFile",filename,size,qual,type); \
+    return HinCallImageMethod(this,"loadScaledImageFile",filename,size,qual,type); \
     } \
   FXImage* cls::loadScaledImageData(const void* pixels,FXint size,FXint qual,const FXString& type) const { \
-    return FXRbCallImageMethod(this,"loadScaledImageData",pixels,size,qual,type); \
+    return HinCallImageMethod(this,"loadScaledImageData",pixels,size,qual,type); \
     } \
   FXImage* cls::loadScaledImageStream(FXStream& store,FXint size,FXint qual,const FXString& type) const { \
-    return FXRbCallImageMethod(this,"loadScaledImageStream",store,size,qual,type); \
+    return HinCallImageMethod(this,"loadScaledImageStream",store,size,qual,type); \
     }
 
 
-class FXRbIconSource : public FXIconSource {
-  FXDECLARE(FXRbIconSource)
+class HinIconSource : public FXIconSource {
+  FXDECLARE(HinIconSource)
 protected:
-  FXRbIconSource(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIconSourceVirtuals.h"
+  HinIconSource(){}
+#include "HinObjectVirtuals.h"
+#include "HinIconSourceVirtuals.h"
 public:
   // Constructor
-  FXRbIconSource(FXApp* app) : FXIconSource(app){}
+  HinIconSource(FXApp* app) : FXIconSource(app){}
 
   // Mark dependencies for the GC
   static void markfunc(FXIconSource* self);
 
   // Destructor
-  virtual ~FXRbIconSource(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinIconSource(){
+    HinUnregisterRubyObj(this);
     }
   };
 

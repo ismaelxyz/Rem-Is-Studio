@@ -21,25 +21,25 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbDelegator.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinDelegator.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBDELEGATOR_H
 #define FXRBDELEGATOR_H
 
-class FXRbDelegator : public FXDelegator {
-  FXDECLARE(FXRbDelegator)
-#include "FXRbObjectVirtuals.h"
+class HinDelegator : public FXDelegator {
+  FXDECLARE(HinDelegator)
+#include "HinObjectVirtuals.h"
 public:
   // Constructor
-  FXRbDelegator(FXObject* target=NULL) : FXDelegator(target){}
+  HinDelegator(FXObject* target=NULL) : FXDelegator(target){}
 
   // Mark dependencies for the GC
   static void markfunc(FXDelegator* self);
 
   // Destructor
-  virtual ~FXRbDelegator(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinDelegator(){
+    HinUnregisterRubyObj(this);
     }
   };
 

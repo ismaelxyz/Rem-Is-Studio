@@ -21,7 +21,7 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbWizard.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinWizard.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBWIZARD_H
@@ -31,29 +31,29 @@
 #include "FXWizard.h"
 #endif
 
-class FXRbWizard : public FXWizard {
-  FXDECLARE(FXRbWizard)
+class HinWizard : public FXWizard {
+  FXDECLARE(HinWizard)
 protected:
-  FXRbWizard(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
-#include "FXRbTopWindowVirtuals.h"
-#include "FXRbDialogBoxVirtuals.h"
+  HinWizard(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
+#include "HinTopWindowVirtuals.h"
+#include "HinDialogBoxVirtuals.h"
 public:
   /// Construct free-floating Wizard
-  FXRbWizard(FXApp* a,const FXString& name,FXImage *image,FXuint opts=DECOR_TITLE|DECOR_BORDER|DECOR_RESIZE,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=10,FXint pr=10,FXint pt=10,FXint pb=10,FXint hs=10,FXint vs=10) : FXWizard(a,name,image,opts,x,y,w,h,pl,pr,pt,pb,hs,vs) {}
+  HinWizard(FXApp* a,const FXString& name,FXImage *image,FXuint opts=DECOR_TITLE|DECOR_BORDER|DECOR_RESIZE,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=10,FXint pr=10,FXint pt=10,FXint pb=10,FXint hs=10,FXint vs=10) : FXWizard(a,name,image,opts,x,y,w,h,pl,pr,pt,pb,hs,vs) {}
 
   /// Construct Wizard which will always float over the owner window
-  FXRbWizard(FXWindow* owner,const FXString& name,FXImage *image,FXuint opts=DECOR_TITLE|DECOR_BORDER|DECOR_RESIZE,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=10,FXint pr=10,FXint pt=10,FXint pb=10,FXint hs=10,FXint vs=10) : FXWizard(owner,name,image,opts,x,y,w,h,pl,pr,pt,pb,hs,vs) {}
+  HinWizard(FXWindow* owner,const FXString& name,FXImage *image,FXuint opts=DECOR_TITLE|DECOR_BORDER|DECOR_RESIZE,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=10,FXint pr=10,FXint pt=10,FXint pb=10,FXint hs=10,FXint vs=10) : FXWizard(owner,name,image,opts,x,y,w,h,pl,pr,pt,pb,hs,vs) {}
 
   // Mark dependencies for the GC
   static void markfunc(FXWizard* self);
 
   // Destructor
-  virtual ~FXRbWizard(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinWizard(){
+    HinUnregisterRubyObj(this);
     }
   };
 

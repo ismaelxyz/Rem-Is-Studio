@@ -19,13 +19,13 @@ end
 
 if __FILE__ == $0
   if ARGV.length != 1
-    puts 'Usage: build-fox [fox-src-dir]'
+    puts 'Usage: build-hin [hin-src-dir]'
     exit
   end
 
   topdir = ARGV[0]
   puts "Building library in #{topdir}..."
 
-  build_project(topdir, 'fox')
-# build_project(topdir, 'foxdll')
+  build_project(topdir, 'hin')
+# build_project(topdir, 'hindll')
 end

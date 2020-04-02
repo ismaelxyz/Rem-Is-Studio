@@ -1,7 +1,7 @@
 require 'test/unit'
 
-require 'fox16'
-require 'fox16/glshapes'
+require 'hin16'
+require 'hin16/glshapes'
 
 class TC_FXMaterial < Test::Unit::TestCase
   include Fox

@@ -21,28 +21,28 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbMenuPane.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinMenuPane.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBMENUPANE_H
 #define FXRBMENUPANE_H
 
-class FXRbMenuPane : public FXMenuPane {
-  FXDECLARE(FXRbMenuPane)
+class HinMenuPane : public FXMenuPane {
+  FXDECLARE(HinMenuPane)
 protected:
-  FXRbMenuPane(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
-#include "FXRbPopupVirtuals.h"
+  HinMenuPane(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
+#include "HinPopupVirtuals.h"
 public:
   /// Construct menu pane
-  FXRbMenuPane(FXWindow* owner,FXuint opts=0) : FXMenuPane(owner,opts){}
+  HinMenuPane(FXWindow* owner,FXuint opts=0) : FXMenuPane(owner,opts){}
 
   // Destructor
-  virtual ~FXRbMenuPane(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinMenuPane(){
+    HinUnregisterRubyObj(this);
     }
 
   // Mark dependencies for the GC

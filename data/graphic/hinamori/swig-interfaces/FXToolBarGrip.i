@@ -50,7 +50,7 @@ public:
   %extend {
     /// Construct toolbar grip
     FXToolBarGrip(FXToolBar* p,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=TOOLBARGRIP_SINGLE,FXint x=0,FXint y=0,FXint w=0,FXint h=0){
-      return new FXRbToolBarGrip(p,tgt,sel,opts,x,y,w,h);
+      return new HinToolBarGrip(p,tgt,sel,opts,x,y,w,h);
       }
     }
 

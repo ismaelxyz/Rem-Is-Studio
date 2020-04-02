@@ -45,7 +45,7 @@ public:
   %extend {
     /// Construct menu pane
     FXScrollPane(FXWindow* owner,FXint nvis,FXuint opts=0){
-      return new FXRbScrollPane(owner,nvis,opts);
+      return new HinScrollPane(owner,nvis,opts);
       }
   }
 

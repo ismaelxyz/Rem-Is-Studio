@@ -36,7 +36,7 @@ public:
   %extend {
     /// Construct image from memory stream formatted in Microsoft ICO format
     FXICOImage(FXApp* a,const void *pix=NULL,FXuint opts=0,FXint w=1,FXint h=1){
-      return new FXRbICOImage(a,pix,opts,w,h);
+      return new HinICOImage(a,pix,opts,w,h);
       }
     }
 

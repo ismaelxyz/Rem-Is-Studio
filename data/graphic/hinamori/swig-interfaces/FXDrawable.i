@@ -32,7 +32,7 @@ public:
   %extend {
     // Construct with this width and height
     FXDrawable(FXApp* a,FXint w,FXint h){
-      return new FXRbDrawable(a,w,h);
+      return new HinDrawable(a,w,h);
       }
     }
 

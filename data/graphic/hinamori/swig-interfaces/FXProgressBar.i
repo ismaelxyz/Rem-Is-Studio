@@ -42,7 +42,7 @@ public:
   /// Construct progress bar
   %extend {
     FXProgressBar(FXComposite* p,FXObject* target=NULL,FXSelector sel=0,FXuint opts=PROGRESSBAR_NORMAL,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=DEFAULT_PAD,FXint pr=DEFAULT_PAD,FXint pt=DEFAULT_PAD,FXint pb=DEFAULT_PAD){
-      return new FXRbProgressBar(p,target,sel,opts,x,y,w,h,pl,pr,pt,pb);
+      return new HinProgressBar(p,target,sel,opts,x,y,w,h,pl,pr,pt,pb);
       }
     }
 

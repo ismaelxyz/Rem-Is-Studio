@@ -36,7 +36,7 @@ public:
   %extend {
     /// Construct icon from memory stream formatted in Microsoft ICO format
     FXICOIcon(FXApp* a,const void *pix=NULL,FXColor clr=0,FXuint opts=0,FXint w=1,FXint h=1){
-      return new FXRbICOIcon(a,pix,clr,opts,w,h);
+      return new HinICOIcon(a,pix,clr,opts,w,h);
       }
     }
 
@@ -65,7 +65,7 @@ VALUE fxloadICO(FXStream& store){
   FXint yspot;
   if(fxloadICO(store,data,width,height,xspot,yspot)){
     VALUE ary=rb_ary_new();
-    rb_ary_push(ary,FXRbMakeColorArray(data,width,height));
+    rb_ary_push(ary,HinMakeColorArray(data,width,height));
     FXFREE(&data);
     rb_ary_push(ary,to_ruby(width));
     rb_ary_push(ary,to_ruby(height));

@@ -1,5 +1,5 @@
 require 'test/unit'
-require 'fox16'
+require 'hin16'
 
 module Fox
   class TestCase < Test::Unit::TestCase

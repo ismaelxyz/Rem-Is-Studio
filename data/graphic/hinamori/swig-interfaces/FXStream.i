@@ -87,7 +87,7 @@ public:
    */
   %extend {
     FXStream(const FXObject* cont=NULL){
-      return new FXRbStream(cont);
+      return new HinStream(cont);
       }
   }
 

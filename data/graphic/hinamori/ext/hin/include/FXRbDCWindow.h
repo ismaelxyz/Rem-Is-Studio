@@ -21,25 +21,25 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbDCWindow.h 2372 2006-04-20 00:38:08Z lyle $
+ * $Id: HinDCWindow.h 2372 2006-04-20 00:38:08Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBDCWINDOW_H
 #define FXRBDCWINDOW_H
 
-class FXRbDCWindow : public FXDCWindow {
-#include "FXRbDCVirtuals.h"
+class HinDCWindow : public FXDCWindow {
+#include "HinDCVirtuals.h"
 public:
   /// Construct for painting in response to expose;
   /// This sets the clip rectangle to the exposed rectangle
-  FXRbDCWindow(FXDrawable* drawable,FXEvent* event) : FXDCWindow(drawable,event){
-    FXRbRegisterAppSensitiveObject(this);
+  HinDCWindow(FXDrawable* drawable,FXEvent* event) : FXDCWindow(drawable,event){
+    HinRegisterAppSensitiveObject(this);
     }
 
   /// Construct for normal drawing;
   /// This sets clip rectangle to the whole drawable
-  FXRbDCWindow(FXDrawable* drawable) : FXDCWindow(drawable){
-    FXRbRegisterAppSensitiveObject(this);
+  HinDCWindow(FXDrawable* drawable) : FXDCWindow(drawable){
+    HinRegisterAppSensitiveObject(this);
     }
 
   // Helper for FXDCWindow initialization block
@@ -54,10 +54,10 @@ public:
   static void markfunc(FXDCWindow* self);
 
   // Destructor
-  virtual ~FXRbDCWindow(){
-    FXTRACE((100,"FXRbDCWindow::~FXRbDCWindow() %p\n",this));
-    FXRbUnregisterRubyObj(this);
-    FXRbUnregisterAppSensitiveObject(this);
+  virtual ~HinDCWindow(){
+    FXTRACE((100,"HinDCWindow::~HinDCWindow() %p\n",this));
+    HinUnregisterRubyObj(this);
+    HinUnregisterAppSensitiveObject(this);
     }
   };
 

@@ -21,30 +21,30 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbToolTip.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinToolTip.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBTOOLTIP_H
 #define FXRBTOOLTIP_H
 
-class FXRbToolTip : public FXToolTip {
-  FXDECLARE(FXRbToolTip)
+class HinToolTip : public FXToolTip {
+  FXDECLARE(HinToolTip)
 protected:
-  FXRbToolTip(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
+  HinToolTip(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
 public:
   /// Construct a tool tip
-  FXRbToolTip(FXApp* a,FXuint opts=TOOLTIP_NORMAL,FXint x=0,FXint y=0,FXint w=0,FXint h=0) : FXToolTip(a,opts,x,y,w,h){}
+  HinToolTip(FXApp* a,FXuint opts=TOOLTIP_NORMAL,FXint x=0,FXint y=0,FXint w=0,FXint h=0) : FXToolTip(a,opts,x,y,w,h){}
 
   // Mark dependencies for the GC
   static void markfunc(FXToolTip* self);
 
   // Destructor
-  virtual ~FXRbToolTip(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinToolTip(){
+    HinUnregisterRubyObj(this);
     }
   };
 

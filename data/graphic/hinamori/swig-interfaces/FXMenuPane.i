@@ -27,7 +27,7 @@ public:
   %extend {
     /// Construct menu pane
     FXMenuPane(FXWindow* owner,FXuint opts=0){
-      return new FXRbMenuPane(owner,opts);
+      return new HinMenuPane(owner,opts);
       }
     }
 

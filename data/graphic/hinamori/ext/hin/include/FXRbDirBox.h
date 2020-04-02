@@ -21,31 +21,31 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbDirBox.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinDirBox.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBDIRBOX_H
 #define FXRBDIRBOX_H
 
-class FXRbDirBox : public FXDirBox {
-  FXDECLARE(FXRbDirBox)
+class HinDirBox : public FXDirBox {
+  FXDECLARE(HinDirBox)
 protected:
-  FXRbDirBox(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
-#include "FXRbTreeListBoxVirtuals.h"
+  HinDirBox(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
+#include "HinTreeListBoxVirtuals.h"
 public:
   /// Constructor
-  FXRbDirBox(FXComposite *p,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=FRAME_SUNKEN|FRAME_THICK|TREELISTBOX_NORMAL,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=DEFAULT_PAD,FXint pr=DEFAULT_PAD,FXint pt=DEFAULT_PAD,FXint pb=DEFAULT_PAD) : FXDirBox(p,tgt,sel,opts,x,y,w,h,pl,pr,pt,pb){}
+  HinDirBox(FXComposite *p,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=FRAME_SUNKEN|FRAME_THICK|TREELISTBOX_NORMAL,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=DEFAULT_PAD,FXint pr=DEFAULT_PAD,FXint pt=DEFAULT_PAD,FXint pb=DEFAULT_PAD) : FXDirBox(p,tgt,sel,opts,x,y,w,h,pl,pr,pt,pb){}
 
   // Mark dependencies for the GC
   static void markfunc(FXDirBox* self);
 
   // Destructor
-  virtual ~FXRbDirBox(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinDirBox(){
+    HinUnregisterRubyObj(this);
     }
   };
 

@@ -21,32 +21,32 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbFontDialog.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinFontDialog.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBFONTDIALOG_H
 #define FXRBFONTDIALOG_H
 
-class FXRbFontDialog : public FXFontDialog {
-  FXDECLARE(FXRbFontDialog)
+class HinFontDialog : public FXFontDialog {
+  FXDECLARE(HinFontDialog)
 protected:
-  FXRbFontDialog(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
-#include "FXRbTopWindowVirtuals.h"
-#include "FXRbDialogBoxVirtuals.h"
+  HinFontDialog(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
+#include "HinTopWindowVirtuals.h"
+#include "HinDialogBoxVirtuals.h"
 public:
   /// Constructor
-  FXRbFontDialog(FXWindow* owner,const FXString& name,FXuint opts=0,FXint x=0,FXint y=0,FXint w=600,FXint h=380) : FXFontDialog(owner,name,opts,x,y,w,h){}
+  HinFontDialog(FXWindow* owner,const FXString& name,FXuint opts=0,FXint x=0,FXint y=0,FXint w=600,FXint h=380) : FXFontDialog(owner,name,opts,x,y,w,h){}
 
   // Mark dependencies for the GC
   static void markfunc(FXFontDialog* self);
 
   // Destructor
-  virtual ~FXRbFontDialog(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinFontDialog(){
+    HinUnregisterRubyObj(this);
     }
   };
 

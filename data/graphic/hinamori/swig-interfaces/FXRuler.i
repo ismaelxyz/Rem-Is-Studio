@@ -80,7 +80,7 @@ public:
   %extend {
     /// Construct label with given text and icon
     FXRuler(FXComposite* p,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=RULER_NORMAL,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=DEFAULT_PAD,FXint pr=DEFAULT_PAD,FXint pt=DEFAULT_PAD,FXint pb=DEFAULT_PAD){
-      return new FXRbRuler(p,tgt,sel,opts,x,y,w,h,pl,pr,pt,pb);
+      return new HinRuler(p,tgt,sel,opts,x,y,w,h,pl,pr,pt,pb);
       }
     }
 

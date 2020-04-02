@@ -21,27 +21,27 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbScrollBar.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinScrollBar.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBSCROLLBAR_H
 #define FXRBSCROLLBAR_H
 
-class FXRbScrollBar : public FXScrollBar {
-  FXDECLARE(FXRbScrollBar)
+class HinScrollBar : public FXScrollBar {
+  FXDECLARE(HinScrollBar)
 protected:
-  FXRbScrollBar(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
+  HinScrollBar(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
 public:
   /// Construct scroll bar
-  FXRbScrollBar(FXComposite* p,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=SCROLLBAR_VERTICAL,FXint x=0,FXint y=0,FXint w=0,FXint h=0) : FXScrollBar(p,tgt,sel,opts,x,y,w,h){}
+  HinScrollBar(FXComposite* p,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=SCROLLBAR_VERTICAL,FXint x=0,FXint y=0,FXint w=0,FXint h=0) : FXScrollBar(p,tgt,sel,opts,x,y,w,h){}
 
   // Destructor
-  virtual ~FXRbScrollBar(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinScrollBar(){
+    HinUnregisterRubyObj(this);
     }
 
   // Mark dependencies for the GC
@@ -49,21 +49,21 @@ public:
   };
 
 
-class FXRbScrollCorner : public FXScrollCorner {
-  FXDECLARE(FXRbScrollCorner)
+class HinScrollCorner : public FXScrollCorner {
+  FXDECLARE(HinScrollCorner)
 protected:
-  FXRbScrollCorner(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
+  HinScrollCorner(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
 public:
   /// Constructor
-  FXRbScrollCorner(FXComposite* p) : FXScrollCorner(p){}
+  HinScrollCorner(FXComposite* p) : FXScrollCorner(p){}
 
   // Destructor
-  virtual ~FXRbScrollCorner(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinScrollCorner(){
+    HinUnregisterRubyObj(this);
     }
 
   // Mark dependencies for the GC

@@ -21,24 +21,24 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbImageView.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinImageView.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBIMAGEVIEW_H
 #define FXRBIMAGEVIEW_H
 
-class FXRbImageView : public FXImageView {
-  FXDECLARE(FXRbImageView)
+class HinImageView : public FXImageView {
+  FXDECLARE(HinImageView)
 protected:
-  FXRbImageView(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
-#include "FXRbScrollAreaVirtuals.h"
+  HinImageView(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
+#include "HinScrollAreaVirtuals.h"
 public:
   /// Construct a scroll window
-  FXRbImageView(FXComposite* p,FXImage* img=NULL,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=0,FXint x=0,FXint y=0,FXint w=0,FXint h=0) : FXImageView(p,img,tgt,sel,opts,x,y,w,h){}
+  HinImageView(FXComposite* p,FXImage* img=NULL,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=0,FXint x=0,FXint y=0,FXint w=0,FXint h=0) : FXImageView(p,img,tgt,sel,opts,x,y,w,h){}
 
   // Mark dependencies for the GC
   static void markfunc(FXImageView* self);
@@ -47,8 +47,8 @@ public:
   static void unregisterOwnedObjects(FXImageView *pImageView);
 
   // Destructor
-  virtual ~FXRbImageView(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinImageView(){
+    HinUnregisterRubyObj(this);
     }
   };
 

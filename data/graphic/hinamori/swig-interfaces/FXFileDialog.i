@@ -42,12 +42,12 @@ public:
   %extend {
     /// Construct file dialog box
     FXFileDialog(FXWindow* owner,const FXString& name,FXuint opts=0,FXint x=0,FXint y=0,FXint w=500,FXint h=300){
-      return new FXRbFileDialog(owner,name,opts,x,y,w,h);
+      return new HinFileDialog(owner,name,opts,x,y,w,h);
       }
 
     /// Construct free-floating file dialog box
     FXFileDialog(FXApp* a,const FXString& name,FXuint opts=0,FXint x=0,FXint y=0,FXint w=500,FXint h=300){
-      return new FXRbFileDialog(a,name,opts,x,y,w,h);
+      return new HinFileDialog(a,name,opts,x,y,w,h);
       }
     }
 

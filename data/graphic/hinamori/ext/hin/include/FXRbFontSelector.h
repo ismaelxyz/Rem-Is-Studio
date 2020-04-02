@@ -21,30 +21,30 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbFontSelector.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinFontSelector.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBFONTSELECTOR_H
 #define FXRBFONTSELECTOR_H
 
-class FXRbFontSelector : public FXFontSelector {
-  FXDECLARE(FXRbFontSelector)
+class HinFontSelector : public FXFontSelector {
+  FXDECLARE(HinFontSelector)
 protected:
-  FXRbFontSelector(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
+  HinFontSelector(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
 public:
   /// Constructor
-  FXRbFontSelector(FXComposite *p,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=0,FXint x=0,FXint y=0,FXint w=0,FXint h=0) : FXFontSelector(p,tgt,sel,opts,x,y,w,h){}
+  HinFontSelector(FXComposite *p,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=0,FXint x=0,FXint y=0,FXint w=0,FXint h=0) : FXFontSelector(p,tgt,sel,opts,x,y,w,h){}
 
   // Mark dependencies for the GC
   static void markfunc(FXFontSelector* self);
 
   // Destructor
-  virtual ~FXRbFontSelector(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinFontSelector(){
+    HinUnregisterRubyObj(this);
     }
   };
 

@@ -21,33 +21,33 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbGIFIcon.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinGIFIcon.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBGIFICON_H
 #define FXRBGIFICON_H
 
-class FXRbGIFIcon : public FXGIFIcon {
-  FXDECLARE(FXRbGIFIcon)
+class HinGIFIcon : public FXGIFIcon {
+  FXDECLARE(HinGIFIcon)
 protected:
-  FXRbGIFIcon(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbImageVirtuals.h"
+  HinGIFIcon(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinImageVirtuals.h"
 public:
   /// Construct an icon from memory stream formatted as CompuServe GIF format
-  FXRbGIFIcon(FXApp* a,const void *pix=NULL,FXColor clr=FXRGB(192,192,192),FXuint opts=0,FXint w=1,FXint h=1) : FXGIFIcon(a,pix,clr,opts,w,h){
-    FXRbRegisterAppSensitiveObject(this);
+  HinGIFIcon(FXApp* a,const void *pix=NULL,FXColor clr=FXRGB(192,192,192),FXuint opts=0,FXint w=1,FXint h=1) : FXGIFIcon(a,pix,clr,opts,w,h){
+    HinRegisterAppSensitiveObject(this);
     }
 
   // Mark dependencies for the GC
   static void markfunc(FXGIFIcon* self);
 
   // Destructor
-  virtual ~FXRbGIFIcon(){
-    FXRbUnregisterRubyObj(this);
-    FXRbUnregisterAppSensitiveObject(this);
+  virtual ~HinGIFIcon(){
+    HinUnregisterRubyObj(this);
+    HinUnregisterAppSensitiveObject(this);
     }
   };
 

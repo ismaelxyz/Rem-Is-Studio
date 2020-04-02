@@ -1,6 +1,6 @@
 require 'test/unit'
 require 'thread'
-require 'fox16'
+require 'hin16'
 
 include Fox
 

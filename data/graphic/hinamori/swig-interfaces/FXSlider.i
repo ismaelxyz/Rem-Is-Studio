@@ -76,7 +76,7 @@ public:
   /// Construct a slider widget
   %extend {
     FXSlider(FXComposite* p,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=SLIDER_NORMAL,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=0,FXint pr=0,FXint pt=0,FXint pb=0){
-      return new FXRbSlider(p,tgt,sel,opts,x,y,w,h,pl,pr,pt,pb);
+      return new HinSlider(p,tgt,sel,opts,x,y,w,h,pl,pr,pt,pb);
       }
     }
 
@@ -90,7 +90,7 @@ public:
     /// Change the slider's range
     void setRange(VALUE range,FXbool notify=FALSE){
       FXint lo,hi;
-      FXRbRange2LoHi(range,lo,hi);
+      HinRange2LoHi(range,lo,hi);
       self->setRange(lo,hi,notify);
       }
 

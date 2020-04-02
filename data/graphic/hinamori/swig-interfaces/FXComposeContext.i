@@ -33,7 +33,7 @@ public:
   %extend {
     /// Construct compose context for given window
     FXComposeContext(FXApp* a,FXWindow* win=NULL,FXSelector sel=0){
-      return new FXRbComposeContext(a,win,sel);
+      return new HinComposeContext(a,win,sel);
       }
   }
 

@@ -21,27 +21,27 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbMDIButton.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinMDIButton.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBMDIMENU_H
 #define FXRBMDIMENU_H
 
-class FXRbMDIDeleteButton : public FXMDIDeleteButton {
-  FXDECLARE(FXRbMDIDeleteButton)
+class HinMDIDeleteButton : public FXMDIDeleteButton {
+  FXDECLARE(HinMDIDeleteButton)
 protected:
-  FXRbMDIDeleteButton(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
+  HinMDIDeleteButton(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
 public:
   /// Constructor
-  FXRbMDIDeleteButton(FXComposite* p,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=FRAME_RAISED,FXint x=0,FXint y=0,FXint w=0,FXint h=0) : FXMDIDeleteButton(p,tgt,sel,opts,x,y,w,h){}
+  HinMDIDeleteButton(FXComposite* p,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=FRAME_RAISED,FXint x=0,FXint y=0,FXint w=0,FXint h=0) : FXMDIDeleteButton(p,tgt,sel,opts,x,y,w,h){}
 
   // Destructor
-  virtual ~FXRbMDIDeleteButton(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinMDIDeleteButton(){
+    HinUnregisterRubyObj(this);
     }
 
   // Mark dependencies for the GC
@@ -49,21 +49,21 @@ public:
   };
 
 
-class FXRbMDIRestoreButton : public FXMDIRestoreButton {
-  FXDECLARE(FXRbMDIRestoreButton)
+class HinMDIRestoreButton : public FXMDIRestoreButton {
+  FXDECLARE(HinMDIRestoreButton)
 protected:
-  FXRbMDIRestoreButton(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
+  HinMDIRestoreButton(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
 public:
   /// Constructor
-  FXRbMDIRestoreButton(FXComposite* p,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=FRAME_RAISED,FXint x=0,FXint y=0,FXint w=0,FXint h=0) : FXMDIRestoreButton(p,tgt,sel,opts,x,y,w,h){}
+  HinMDIRestoreButton(FXComposite* p,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=FRAME_RAISED,FXint x=0,FXint y=0,FXint w=0,FXint h=0) : FXMDIRestoreButton(p,tgt,sel,opts,x,y,w,h){}
 
   // Destructor
-  virtual ~FXRbMDIRestoreButton(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinMDIRestoreButton(){
+    HinUnregisterRubyObj(this);
     }
 
   // Mark dependencies for the GC
@@ -71,21 +71,21 @@ public:
   };
 
 
-class FXRbMDIMinimizeButton : public FXMDIMinimizeButton {
-  FXDECLARE(FXRbMDIMinimizeButton)
+class HinMDIMinimizeButton : public FXMDIMinimizeButton {
+  FXDECLARE(HinMDIMinimizeButton)
 protected:
-  FXRbMDIMinimizeButton(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
+  HinMDIMinimizeButton(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
 public:
   /// Constructor
-  FXRbMDIMinimizeButton(FXComposite* p,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=FRAME_RAISED,FXint x=0,FXint y=0,FXint w=0,FXint h=0) : FXMDIMinimizeButton(p,tgt,sel,opts,x,y,w,h){}
+  HinMDIMinimizeButton(FXComposite* p,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=FRAME_RAISED,FXint x=0,FXint y=0,FXint w=0,FXint h=0) : FXMDIMinimizeButton(p,tgt,sel,opts,x,y,w,h){}
 
   // Destructor
-  virtual ~FXRbMDIMinimizeButton(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinMDIMinimizeButton(){
+    HinUnregisterRubyObj(this);
     }
 
   // Mark dependencies for the GC
@@ -93,21 +93,21 @@ public:
   };
 
 
-class FXRbMDIMaximizeButton : public FXMDIMaximizeButton {
-  FXDECLARE(FXRbMDIMaximizeButton)
+class HinMDIMaximizeButton : public FXMDIMaximizeButton {
+  FXDECLARE(HinMDIMaximizeButton)
 protected:
-  FXRbMDIMaximizeButton(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
+  HinMDIMaximizeButton(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
 public:
   /// Constructor
-  FXRbMDIMaximizeButton(FXComposite* p,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=FRAME_RAISED,FXint x=0,FXint y=0,FXint w=0,FXint h=0) : FXMDIMaximizeButton(p,tgt,sel,opts,x,y,w,h){}
+  HinMDIMaximizeButton(FXComposite* p,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=FRAME_RAISED,FXint x=0,FXint y=0,FXint w=0,FXint h=0) : FXMDIMaximizeButton(p,tgt,sel,opts,x,y,w,h){}
 
   // Destructor
-  virtual ~FXRbMDIMaximizeButton(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinMDIMaximizeButton(){
+    HinUnregisterRubyObj(this);
     }
 
   // Mark dependencies for the GC
@@ -115,21 +115,21 @@ public:
   };
 
 
-class FXRbMDIWindowButton : public FXMDIWindowButton {
-  FXDECLARE(FXRbMDIWindowButton)
+class HinMDIWindowButton : public FXMDIWindowButton {
+  FXDECLARE(HinMDIWindowButton)
 protected:
-  FXRbMDIWindowButton(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
+  HinMDIWindowButton(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
 public:
   /// Constructor
-  FXRbMDIWindowButton(FXComposite* p,FXPopup* pup,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=FRAME_RAISED,FXint x=0,FXint y=0,FXint w=0,FXint h=0) : FXMDIWindowButton(p,pup,tgt,sel,opts,x,y,w,h){}
+  HinMDIWindowButton(FXComposite* p,FXPopup* pup,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=FRAME_RAISED,FXint x=0,FXint y=0,FXint w=0,FXint h=0) : FXMDIWindowButton(p,pup,tgt,sel,opts,x,y,w,h){}
 
   // Destructor
-  virtual ~FXRbMDIWindowButton(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinMDIWindowButton(){
+    HinUnregisterRubyObj(this);
     }
 
   // Mark dependencies for the GC
@@ -137,22 +137,22 @@ public:
   };
 
 
-class FXRbMDIMenu : public FXMDIMenu {
-  FXDECLARE(FXRbMDIMenu)
+class HinMDIMenu : public FXMDIMenu {
+  FXDECLARE(HinMDIMenu)
 protected:
-  FXRbMDIMenu(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
-#include "FXRbPopupVirtuals.h"
+  HinMDIMenu(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
+#include "HinPopupVirtuals.h"
 public:
   /// Construct MDI menu
-  FXRbMDIMenu(FXWindow *owner,FXObject* tgt=NULL) : FXMDIMenu(owner,tgt){}
+  HinMDIMenu(FXWindow *owner,FXObject* tgt=NULL) : FXMDIMenu(owner,tgt){}
 
   // Destructor
-  virtual ~FXRbMDIMenu(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinMDIMenu(){
+    HinUnregisterRubyObj(this);
     }
 
   // Mark dependencies for the GC

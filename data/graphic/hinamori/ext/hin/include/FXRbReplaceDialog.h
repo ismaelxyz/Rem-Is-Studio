@@ -21,29 +21,29 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbReplaceDialog.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinReplaceDialog.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBREPLACEDIALOG_H
 #define FXRBREPLACEDIALOG_H
 
-class FXRbReplaceDialog : public FXReplaceDialog {
-  FXDECLARE(FXRbReplaceDialog)
+class HinReplaceDialog : public FXReplaceDialog {
+  FXDECLARE(HinReplaceDialog)
 protected:
-  FXRbReplaceDialog(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
-#include "FXRbTopWindowVirtuals.h"
-#include "FXRbDialogBoxVirtuals.h"
+  HinReplaceDialog(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
+#include "HinTopWindowVirtuals.h"
+#include "HinDialogBoxVirtuals.h"
 public:
   /// Construct search and replace dialog box
-  FXRbReplaceDialog(FXWindow* owner,const FXString& caption,FXIcon* ic=NULL,FXuint opts=0,FXint x=0,FXint y=0,FXint w=0,FXint h=0) : FXReplaceDialog(owner,caption,ic,opts,x,y,w,h){}
+  HinReplaceDialog(FXWindow* owner,const FXString& caption,FXIcon* ic=NULL,FXuint opts=0,FXint x=0,FXint y=0,FXint w=0,FXint h=0) : FXReplaceDialog(owner,caption,ic,opts,x,y,w,h){}
 
   // Destructor
-  virtual ~FXRbReplaceDialog(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinReplaceDialog(){
+    HinUnregisterRubyObj(this);
     }
 
   // Mark dependencies for the GC

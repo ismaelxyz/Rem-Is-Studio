@@ -21,27 +21,27 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbToggleButton.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinToggleButton.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBTOGGLEBUTTON_H
 #define FXRBTOGGLEBUTTON_H
 
-class FXRbToggleButton : public FXToggleButton {
-  FXDECLARE(FXRbToggleButton)
+class HinToggleButton : public FXToggleButton {
+  FXDECLARE(HinToggleButton)
 protected:
-  FXRbToggleButton(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
+  HinToggleButton(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
 public:
   /// Construct toggle button with two text labels, and two icons, one for each state
-  FXRbToggleButton(FXComposite* p,const FXString& text1,const FXString& text2,FXIcon* icon1=NULL,FXIcon* icon2=NULL,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=TOGGLEBUTTON_NORMAL,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=DEFAULT_PAD,FXint pr=DEFAULT_PAD,FXint pt=DEFAULT_PAD,FXint pb=DEFAULT_PAD) : FXToggleButton(p,text1,text2,icon1,icon2,tgt,sel,opts,x,y,w,h,pl,pr,pt,pb){}
+  HinToggleButton(FXComposite* p,const FXString& text1,const FXString& text2,FXIcon* icon1=NULL,FXIcon* icon2=NULL,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=TOGGLEBUTTON_NORMAL,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=DEFAULT_PAD,FXint pr=DEFAULT_PAD,FXint pt=DEFAULT_PAD,FXint pb=DEFAULT_PAD) : FXToggleButton(p,text1,text2,icon1,icon2,tgt,sel,opts,x,y,w,h,pl,pr,pt,pb){}
 
   // Destructor
-  virtual ~FXRbToggleButton(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinToggleButton(){
+    HinUnregisterRubyObj(this);
     }
 
   // Mark dependencies for the GC

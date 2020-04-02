@@ -73,12 +73,12 @@ public:
   %extend {
     /// Construct new splitter widget
     FXSplitter(FXComposite* p,FXuint opts=SPLITTER_NORMAL,FXint x=0,FXint y=0,FXint w=0,FXint h=0){
-      return new FXRbSplitter(p,opts,x,y,w,h);
+      return new HinSplitter(p,opts,x,y,w,h);
       }
 
     /// Construct new splitter widget, which will notify target about size changes
     FXSplitter(FXComposite* p,FXObject* tgt,FXSelector sel,FXuint opts=SPLITTER_NORMAL,FXint x=0,FXint y=0,FXint w=0,FXint h=0){
-      return new FXRbSplitter(p,tgt,sel,opts,x,y,w,h);
+      return new HinSplitter(p,tgt,sel,opts,x,y,w,h);
       }
     }
 

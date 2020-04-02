@@ -21,25 +21,25 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbDict.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinDict.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBDICT_H
 #define FXRBDICT_H
 
-class FXRbDict : public FXDict {
-  FXDECLARE(FXRbDict)
-#include "FXRbObjectVirtuals.h"
+class HinDict : public FXDict {
+  FXDECLARE(HinDict)
+#include "HinObjectVirtuals.h"
 public:
   // Constructor
-  FXRbDict(){}
+  HinDict(){}
 
   // Mark dependencies for the GC
   static void markfunc(FXDict* self);
 
   // Destructor
-  virtual ~FXRbDict(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinDict(){
+    HinUnregisterRubyObj(this);
     }
   };
 

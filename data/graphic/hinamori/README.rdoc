@@ -33,7 +33,7 @@ FXRuby supportes everything of FOX, that is useful in Ruby:
 
 FXRuby runs on Linux, Windows and OS-X with Ruby-2.2 or newer. Installation on Unix requires
 FOX development headers and libraries installed:
-* on Debian/Ubuntu: <tt>sudo apt-get install g++ libxrandr-dev libfox-1.6-dev</tt>
+* on Debian/Ubuntu: <tt>sudo apt-get install g++ libxrandr-dev libhin-1.6-dev</tt>
 * see also detailed installation instructions in the {https://github.com/lylejohnson/fxruby/wiki Wiki}
 * on Windows: the binary fxruby gems already contain all required libararies
 
@@ -48,12 +48,12 @@ The directory structure is:
   Contains example programs demonstrating how to use FXRuby and
   its many wonderful features.
 
-* ext/fox16_c
+* ext/hin16_c
 
   Contains the C++ source code for the shared library part of FXRuby.
   These files are required to build FXRuby from the source code.
 
-* lib/fox16
+* lib/hin16
 
   Contains the Ruby source code for the rest of FXRuby. These files
   are not required to "build" FXRuby, but they are a part of the
@@ -67,7 +67,7 @@ The directory structure is:
 If you're looking at a checkout of the source code from its GIT repository,
 you might see some additional directories of interest:
 
-* fox-includes/
+* hin-includes/
 
   An archive of the FOX library header files corresponding to this
   release of FXRuby.
@@ -80,7 +80,7 @@ you might see some additional directories of interest:
 * swig-interfaces/
 
   The SWIG interface files used to generate the C++ wrapper code (i.e.
-  the code found in the ext/fox directory).
+  the code found in the ext/hin directory).
 
 
 == LICENSE

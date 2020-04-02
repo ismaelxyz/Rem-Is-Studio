@@ -1,5 +1,5 @@
 require 'test/unit'
-require 'fox16'
+require 'hin16'
 require 'testcase'
 
 class TC_FXStream < Fox::TestCase

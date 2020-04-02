@@ -21,30 +21,30 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbColorSelector.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinColorSelector.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBCOLORSELECTOR_H
 #define FXRBCOLORSELECTOR_H
 
-class FXRbColorSelector : public FXColorSelector {
-  FXDECLARE(FXRbColorSelector)
+class HinColorSelector : public FXColorSelector {
+  FXDECLARE(HinColorSelector)
 protected:
-  FXRbColorSelector(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
+  HinColorSelector(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
 public:
   /// Construct a new ColorSelector
-  FXRbColorSelector(FXComposite *p,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=0,FXint x=0,FXint y=0,FXint w=0,FXint h=0) : FXColorSelector(p,tgt,sel,opts,x,y,w,h){}
+  HinColorSelector(FXComposite *p,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=0,FXint x=0,FXint y=0,FXint w=0,FXint h=0) : FXColorSelector(p,tgt,sel,opts,x,y,w,h){}
 
   // Mark dependencies for the GC
   static void markfunc(FXColorSelector* cs);
 
   // Destructor
-  virtual ~FXRbColorSelector(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinColorSelector(){
+    HinUnregisterRubyObj(this);
     }
   };
 

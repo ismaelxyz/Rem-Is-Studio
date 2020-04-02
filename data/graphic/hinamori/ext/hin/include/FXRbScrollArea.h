@@ -21,7 +21,7 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbScrollArea.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinScrollArea.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBSCROLLAREA_H
@@ -44,31 +44,31 @@ inline FXint klass ## _getViewportHeight(klass* self){ \
 
 #define IMPLEMENT_FXSCROLLAREA_STUBS(cls) \
   FXint cls::getContentWidth(){ \
-    return FXRbCallIntMethod(this,"getContentWidth"); \
+    return HinCallIntMethod(this,"getContentWidth"); \
     } \
   FXint cls::getContentHeight(){ \
-    return FXRbCallIntMethod(this,"getContentHeight"); \
+    return HinCallIntMethod(this,"getContentHeight"); \
     } \
   FXint cls::getViewportWidth(){ \
-    return FXRbCallIntMethod(this,"getViewportWidth"); \
+    return HinCallIntMethod(this,"getViewportWidth"); \
     } \
   FXint cls::getViewportHeight(){ \
-    return FXRbCallIntMethod(this,"getViewportHeight"); \
+    return HinCallIntMethod(this,"getViewportHeight"); \
     }
 
 
-class FXRbScrollArea : public FXScrollArea {
-  FXDECLARE(FXRbScrollArea)
+class HinScrollArea : public FXScrollArea {
+  FXDECLARE(HinScrollArea)
 protected:
-  FXRbScrollArea(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
-#include "FXRbScrollAreaVirtuals.h"
+  HinScrollArea(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
+#include "HinScrollAreaVirtuals.h"
 public:
   /// Constructor
-  FXRbScrollArea(FXComposite* p,FXuint opts=0,FXint x=0,FXint y=0,FXint w=0,FXint h=0) : FXScrollArea(p,opts,x,y,w,h){}
+  HinScrollArea(FXComposite* p,FXuint opts=0,FXint x=0,FXint y=0,FXint w=0,FXint h=0) : FXScrollArea(p,opts,x,y,w,h){}
 
   // Mark dependencies for the GC
   static void markfunc(FXScrollArea* self);
@@ -77,10 +77,10 @@ public:
   static void unregisterOwnedObjects(FXScrollArea *pScrollArea);
 
   // Destructor
-  virtual ~FXRbScrollArea(){
-    FXRbScrollArea::unregisterOwnedObjects(this);
-    FXRbUnregisterRubyObj(corner); // must do this here; no public accessor method for it
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinScrollArea(){
+    HinScrollArea::unregisterOwnedObjects(this);
+    HinUnregisterRubyObj(corner); // must do this here; no public accessor method for it
+    HinUnregisterRubyObj(this);
     }
   };
 

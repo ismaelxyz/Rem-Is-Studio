@@ -21,7 +21,7 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbBitmap.h 2335 2006-01-28 02:33:03Z lyle $
+ * $Id: HinBitmap.h 2335 2006-01-28 02:33:03Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBBITMAP_H
@@ -68,65 +68,65 @@ inline void cls ## _setData(cls* self,FXuchar* pix,FXuint opts,FXint w,FXint h){
 
 #define IMPLEMENT_FXBITMAP_STUBS(cls) \
   void cls::restore(){ \
-    FXRbCallVoidMethod(this,"restore"); \
+    HinCallVoidMethod(this,"restore"); \
     } \
   void cls::render(){ \
-    FXRbCallVoidMethod(this,"render"); \
+    HinCallVoidMethod(this,"render"); \
     } \
   void cls::release(){ \
-    FXRbCallVoidMethod(this,"release"); \
+    HinCallVoidMethod(this,"release"); \
     } \
   bool cls::savePixels(FXStream& store) const { \
-    return FXRbCallBoolMethod(this,"savePixels",store); \
+    return HinCallBoolMethod(this,"savePixels",store); \
     } \
   bool cls::loadPixels(FXStream& store){ \
-    return FXRbCallBoolMethod(this,"loadPixels",store); \
+    return HinCallBoolMethod(this,"loadPixels",store); \
     } \
   void cls::scale(FXint w,FXint h){ \
-    FXRbCallVoidMethod(this,"scale",w,h); \
+    HinCallVoidMethod(this,"scale",w,h); \
     } \
   void cls::mirror(FXbool horizontal,FXbool vertical){ \
-    FXRbCallVoidMethod(this,"mirror",horizontal,vertical); \
+    HinCallVoidMethod(this,"mirror",horizontal,vertical); \
     } \
   void cls::rotate(FXint degrees){ \
-    FXRbCallVoidMethod(this,"rotate",degrees); \
+    HinCallVoidMethod(this,"rotate",degrees); \
     } \
   void cls::crop(FXint x,FXint y,FXint w,FXint h,FXbool color){ \
-    FXRbCallVoidMethod(this,"crop",x,y,w,h,color); \
+    HinCallVoidMethod(this,"crop",x,y,w,h,color); \
     } \
   void cls::fill(FXbool color){ \
-    FXRbCallVoidMethod(this,"fill",color); \
+    HinCallVoidMethod(this,"fill",color); \
     } \
   void cls::setData(FXuchar* pix,FXuint opts){ \
-    FXRbCallVoidMethod(this,"setData",pix,opts); \
+    HinCallVoidMethod(this,"setData",pix,opts); \
     } \
   void cls::setData(FXuchar* pix,FXuint opts,FXint w,FXint h){ \
-    FXRbCallVoidMethod(this,"setData",pix,opts,w,h); \
+    HinCallVoidMethod(this,"setData",pix,opts,w,h); \
     }
 
 
 
-class FXRbBitmap : public FXBitmap {
-  FXDECLARE(FXRbBitmap)
+class HinBitmap : public FXBitmap {
+  FXDECLARE(HinBitmap)
 protected:
-  FXRbBitmap(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbBitmapVirtuals.h"
+  HinBitmap(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinBitmapVirtuals.h"
 public:
   /// Create an image
-  FXRbBitmap(FXApp* a,const void *pix=NULL,FXuint opts=0,FXint w=1,FXint h=1) : FXBitmap(a,pix,opts,w,h){
-    FXRbRegisterAppSensitiveObject(this);
+  HinBitmap(FXApp* a,const void *pix=NULL,FXuint opts=0,FXint w=1,FXint h=1) : FXBitmap(a,pix,opts,w,h){
+    HinRegisterAppSensitiveObject(this);
     }
 
   // Mark dependencies for the GC
   static void markfunc(FXBitmap* bitmap);
 
   // Destructor
-  virtual ~FXRbBitmap(){
-    FXRbUnregisterRubyObj(this);
-    FXRbUnregisterAppSensitiveObject(this);
+  virtual ~HinBitmap(){
+    HinUnregisterRubyObj(this);
+    HinUnregisterAppSensitiveObject(this);
     }
   };
 

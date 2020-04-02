@@ -172,7 +172,7 @@ END
 end
 
 if __FILE__ == $0
-  Generator.new.go(Dir.glob('rdoc-sources/*.rb'), 'lib/fox16/kwargs.rb')
+  Generator.new.go(Dir.glob('rdoc-sources/*.rb'), 'lib/hin16/kwargs.rb')
 end
 
 __END__

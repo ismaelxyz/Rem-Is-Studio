@@ -5,7 +5,7 @@
 --no-private
 --charset utf-8
 rdoc-sources/*.rb
-lib/fox16/*.rb
+lib/hin16/*.rb
 -
 History.txt
 rdoc-sources/*.rdoc

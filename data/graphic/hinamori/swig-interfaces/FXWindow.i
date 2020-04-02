@@ -267,17 +267,17 @@ public:
   %extend {
     // Construct as a child of some other window
     FXWindow(FXComposite* p,FXuint opts=0,FXint x=0,FXint y=0,FXint w=0,FXint h=0){
-      return new FXRbWindow(p,opts,x,y,w,h);
+      return new HinWindow(p,opts,x,y,w,h);
       }
 
     // Shell window constructor
     FXWindow(FXApp* a,FXVisual *vis){
-      return new FXRbWindow(a,vis);
+      return new HinWindow(a,vis);
       }
 
     // Construct owned window
     FXWindow(FXApp* a,FXWindow* own,FXuint opts,FXint x,FXint y,FXint w,FXint h){
-      return new FXRbWindow(a,own,opts,x,y,w,h);
+      return new HinWindow(a,own,opts,x,y,w,h);
       }
     }
 

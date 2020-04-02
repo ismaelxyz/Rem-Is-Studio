@@ -21,7 +21,7 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbObject.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinObject.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBOBJECT_H
@@ -38,19 +38,19 @@ inline void cls ## _load(cls* self,FXStream& store){ \
 
 #define IMPLEMENT_FXOBJECT_STUBS(cls) \
   void cls::save(FXStream& store) const { \
-    FXRbCallVoidMethod(this,"save",store); \
+    HinCallVoidMethod(this,"save",store); \
     } \
   void cls::load(FXStream& store){ \
-    FXRbCallVoidMethod(this,"load",store); \
+    HinCallVoidMethod(this,"load",store); \
     }
 
 
-class FXRbObject : public FXObject {
-  FXDECLARE(FXRbObject)
-#include "FXRbObjectVirtuals.h"
+class HinObject : public FXObject {
+  FXDECLARE(HinObject)
+#include "HinObjectVirtuals.h"
 public:
   // Constructor
-  FXRbObject(){}
+  HinObject(){}
 
   // Mark dependencies for the GC
   static void markfunc(FXObject* self);
@@ -59,8 +59,8 @@ public:
   static void freefunc(FXObject* self);
 
   // Destructor
-  virtual ~FXRbObject(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinObject(){
+    HinUnregisterRubyObj(this);
     }
   };
 

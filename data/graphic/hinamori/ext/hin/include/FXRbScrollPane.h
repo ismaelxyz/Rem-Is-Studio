@@ -21,28 +21,28 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbScrollPane.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinScrollPane.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBSCROLLPANE_H
 #define FXRBSCROLLPANE_H
 
-class FXRbScrollPane : public FXScrollPane {
-  FXDECLARE(FXRbScrollPane)
+class HinScrollPane : public FXScrollPane {
+  FXDECLARE(HinScrollPane)
 protected:
-  FXRbScrollPane(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
-#include "FXRbPopupVirtuals.h"
+  HinScrollPane(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
+#include "HinPopupVirtuals.h"
 public:
   /// Construct scrolling menu pane
-  FXRbScrollPane(FXWindow* owner,FXint nvis,FXuint opts=0) : FXScrollPane(owner,nvis,opts){}
+  HinScrollPane(FXWindow* owner,FXint nvis,FXuint opts=0) : FXScrollPane(owner,nvis,opts){}
 
   // Destructor
-  virtual ~FXRbScrollPane(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinScrollPane(){
+    HinUnregisterRubyObj(this);
     }
 
   // Mark dependencies for the GC

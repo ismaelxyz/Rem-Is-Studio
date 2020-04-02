@@ -52,7 +52,7 @@ public:
   %extend {
     /// Construct a menu radio
     FXMenuRadio(FXComposite* p,const FXString& text,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=0){
-      return new FXRbMenuRadio(p,text,tgt,sel,opts);
+      return new HinMenuRadio(p,text,tgt,sel,opts);
       }
     }
 

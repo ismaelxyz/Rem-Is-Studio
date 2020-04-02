@@ -21,27 +21,27 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbToolBarTab.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinToolBarTab.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBTOOLBARTAB_H
 #define FXRBTOOLBARTAB_H
 
-class FXRbToolBarTab : public FXToolBarTab {
-  FXDECLARE(FXRbToolBarTab)
+class HinToolBarTab : public FXToolBarTab {
+  FXDECLARE(HinToolBarTab)
 protected:
-  FXRbToolBarTab(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
+  HinToolBarTab(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
 public:
   /// Construct toolbar tab
-  FXRbToolBarTab(FXComposite* p,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=FRAME_RAISED,FXint x=0,FXint y=0,FXint w=0,FXint h=0) : FXToolBarTab(p,tgt,sel,opts,x,y,w,h){}
+  HinToolBarTab(FXComposite* p,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=FRAME_RAISED,FXint x=0,FXint y=0,FXint w=0,FXint h=0) : FXToolBarTab(p,tgt,sel,opts,x,y,w,h){}
 
   // Destructor
-  virtual ~FXRbToolBarTab(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinToolBarTab(){
+    HinUnregisterRubyObj(this);
     }
 
   // Mark dependencies for the GC

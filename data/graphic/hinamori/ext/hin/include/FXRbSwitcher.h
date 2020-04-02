@@ -21,27 +21,27 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbSwitcher.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinSwitcher.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBSWITCHER_H
 #define FXRBSWITCHER_H
 
-class FXRbSwitcher : public FXSwitcher {
-  FXDECLARE(FXRbSwitcher)
+class HinSwitcher : public FXSwitcher {
+  FXDECLARE(HinSwitcher)
 protected:
-  FXRbSwitcher(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
+  HinSwitcher(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
 public:
   /// Construct a switcher layout manager
-  FXRbSwitcher(FXComposite *p,FXuint opts=0,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=DEFAULT_SPACING,FXint pr=DEFAULT_SPACING,FXint pt=DEFAULT_SPACING,FXint pb=DEFAULT_SPACING) : FXSwitcher(p,opts,x,y,w,h,pl,pr,pt,pb){}
+  HinSwitcher(FXComposite *p,FXuint opts=0,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=DEFAULT_SPACING,FXint pr=DEFAULT_SPACING,FXint pt=DEFAULT_SPACING,FXint pb=DEFAULT_SPACING) : FXSwitcher(p,opts,x,y,w,h,pl,pr,pt,pb){}
 
   // Destructor
-  virtual ~FXRbSwitcher(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinSwitcher(){
+    HinUnregisterRubyObj(this);
     }
 
   // Mark dependencies for the GC

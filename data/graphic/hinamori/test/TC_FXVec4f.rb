@@ -1,6 +1,6 @@
 require 'test/unit'
 
-require 'fox16'
+require 'hin16'
 
 class TC_FXVec4f < Test::Unit::TestCase
   include Fox

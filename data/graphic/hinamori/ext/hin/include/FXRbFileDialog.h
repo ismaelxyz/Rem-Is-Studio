@@ -21,35 +21,35 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbFileDialog.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinFileDialog.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBFILEDIALOG_H
 #define FXRBFILEDIALOG_H
 
-class FXRbFileDialog : public FXFileDialog {
-  FXDECLARE(FXRbFileDialog)
+class HinFileDialog : public FXFileDialog {
+  FXDECLARE(HinFileDialog)
 protected:
-  FXRbFileDialog(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
-#include "FXRbTopWindowVirtuals.h"
-#include "FXRbDialogBoxVirtuals.h"
+  HinFileDialog(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
+#include "HinTopWindowVirtuals.h"
+#include "HinDialogBoxVirtuals.h"
 public:
   /// Construct file dialog box
-  FXRbFileDialog(FXWindow* owner,const FXString& name,FXuint opts=0,FXint x=0,FXint y=0,FXint w=500,FXint h=300) : FXFileDialog(owner,name,opts,x,y,w,h){}
+  HinFileDialog(FXWindow* owner,const FXString& name,FXuint opts=0,FXint x=0,FXint y=0,FXint w=500,FXint h=300) : FXFileDialog(owner,name,opts,x,y,w,h){}
 
   /// Construct free-floating file dialog box
-  FXRbFileDialog(FXApp* a,const FXString& name,FXuint opts=0,FXint x=0,FXint y=0,FXint w=500,FXint h=300) : FXFileDialog(a,name,opts,x,y,w,h){}
+  HinFileDialog(FXApp* a,const FXString& name,FXuint opts=0,FXint x=0,FXint y=0,FXint w=500,FXint h=300) : FXFileDialog(a,name,opts,x,y,w,h){}
 
   // Mark dependencies for the GC
   static void markfunc(FXFileDialog* self);
 
   // Destructor
-  virtual ~FXRbFileDialog(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinFileDialog(){
+    HinUnregisterRubyObj(this);
     }
   };
 

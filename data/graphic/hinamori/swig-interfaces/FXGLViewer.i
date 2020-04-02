@@ -254,12 +254,12 @@ public:
   %extend {
     /// Construct GL viewer widget
     FXGLViewer(FXComposite* p,FXGLVisual *vis,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=0,FXint x=0,FXint y=0,FXint w=0,FXint h=0){
-      return new FXRbGLViewer(p,vis,tgt,sel,opts,x,y,w,h);
+      return new HinGLViewer(p,vis,tgt,sel,opts,x,y,w,h);
       }
 
     /// Construct GL viewer widget sharing display list with another GL viewer
     FXGLViewer(FXComposite* p,FXGLVisual *vis,FXGLViewer* sharegroup,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=0,FXint x=0,FXint y=0,FXint w=0,FXint h=0){
-      return new FXRbGLViewer(p,vis,sharegroup,tgt,sel,opts,x,y,w,h);
+      return new HinGLViewer(p,vis,sharegroup,tgt,sel,opts,x,y,w,h);
       }
     }
 
@@ -468,7 +468,7 @@ public:
       FXColor *buffer;
       VALUE pixels=Qnil;
       if(self->readPixels(buffer,x,y,w,h)){
-	pixels=FXRbMakeColorArray(buffer,w,h);
+	pixels=HinMakeColorArray(buffer,w,h);
 	FXFREE(&buffer);
 	}
       return pixels;

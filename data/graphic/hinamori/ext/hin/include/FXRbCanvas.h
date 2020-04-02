@@ -21,30 +21,30 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbCanvas.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinCanvas.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBCANVAS_H
 #define FXRBCANVAS_H
 
-class FXRbCanvas : public FXCanvas {
-  FXDECLARE(FXRbCanvas)
+class HinCanvas : public FXCanvas {
+  FXDECLARE(HinCanvas)
 protected:
-  FXRbCanvas(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
+  HinCanvas(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
 public:
   /// Construct new drawing canvas widget
-  FXRbCanvas(FXComposite* p,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=FRAME_NORMAL,FXint x=0,FXint y=0,FXint w=0,FXint h=0) : FXCanvas(p,tgt,sel,opts,x,y,w,h){}
+  HinCanvas(FXComposite* p,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=FRAME_NORMAL,FXint x=0,FXint y=0,FXint w=0,FXint h=0) : FXCanvas(p,tgt,sel,opts,x,y,w,h){}
 
   // Mark dependencies for the GC
   static void markfunc(FXCanvas* canvas);
 
   // Destructor
-  virtual ~FXRbCanvas(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinCanvas(){
+    HinUnregisterRubyObj(this);
     }
   };
 

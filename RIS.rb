@@ -15,14 +15,13 @@
 #
 # Exhibit B - "Incompatible With Secondary Licenses" Notice
 
-#require_relative 'data/centersystem'
+require_relative 'data/centersystem'
 
 class RIS
     def initialize
         
     end
 end
-asd = `whoami`.split('\\')[1]; print(asd)
 # gem 'mini_portile2', '~>2.1'
 # sh / rake
 #RUBY_PLATFORM

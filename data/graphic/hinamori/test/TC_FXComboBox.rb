@@ -1,7 +1,7 @@
 #encoding: utf-8
 require 'test/unit'
 require 'testcase'
-require 'fox16'
+require 'hin16'
 
 class TC_FXComboBox < Fox::TestCase
   include Fox

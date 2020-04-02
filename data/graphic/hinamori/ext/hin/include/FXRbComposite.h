@@ -21,30 +21,30 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbComposite.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinComposite.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBCOMPOSITE_H
 #define FXRBCOMPOSITE_H
 
-class FXRbComposite : public FXComposite {
-  FXDECLARE(FXRbComposite)
+class HinComposite : public FXComposite {
+  FXDECLARE(HinComposite)
 protected:
-  FXRbComposite(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
+  HinComposite(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
 public:
   /// Constructor
-  FXRbComposite(FXComposite* p,FXuint opts=0,FXint x=0,FXint y=0,FXint w=0,FXint h=0) : FXComposite(p,opts,x,y,w,h){}
+  HinComposite(FXComposite* p,FXuint opts=0,FXint x=0,FXint y=0,FXint w=0,FXint h=0) : FXComposite(p,opts,x,y,w,h){}
 
   // Mark dependencies for the GC
   static void markfunc(FXComposite* c);
 
   // Destructor
-  virtual ~FXRbComposite(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinComposite(){
+    HinUnregisterRubyObj(this);
     }
   };
 

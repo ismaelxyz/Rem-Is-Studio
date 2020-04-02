@@ -32,7 +32,7 @@ public:
   %extend {
     /// Construct a toolbar shell
     FXToolBarShell(FXWindow* owner,FXuint opts=FRAME_RAISED|FRAME_THICK,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint hs=4,FXint vs=4){
-      return new FXRbToolBarShell(owner,opts,x,y,w,h,hs,vs);
+      return new HinToolBarShell(owner,opts,x,y,w,h,hs,vs);
       }
     }
 

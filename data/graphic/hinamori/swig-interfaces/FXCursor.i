@@ -46,17 +46,17 @@ public:
   %extend {
     /// Make stock cursor
     FXCursor(FXApp* a,FXStockCursor curid=CURSOR_ARROW){
-      return new FXRbCursor(a,curid);
+      return new HinCursor(a,curid);
       }
 
     /// Make cursor from source and mask; cursor size should at most 32x32 for portability!
     FXCursor(FXApp* a,const FXuchar* src,const FXuchar* msk,FXint w=32,FXint h=32,FXint hx=0,FXint hy=0){
-      return new FXRbCursor(a,src,msk,w,h,hx,hy);
+      return new HinCursor(a,src,msk,w,h,hx,hy);
       }
 
     /// Make cursor from FXColor pixels; cursor size should at most 32x32 for portability!
     FXCursor(FXApp* a,const FXColor* pix,FXint w=32,FXint h=32,FXint hx=0,FXint hy=0){
-      return new FXRbCursor(a,pix,w,h,hx,hy);
+      return new HinCursor(a,pix,w,h,hx,hy);
       }
     }
 

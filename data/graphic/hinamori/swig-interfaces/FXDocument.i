@@ -39,7 +39,7 @@ public:
   %extend {
     /// Constructor
     FXDocument(){
-      return new FXRbDocument();
+      return new HinDocument();
       }
     }
 

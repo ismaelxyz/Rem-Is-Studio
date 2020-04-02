@@ -21,30 +21,30 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbPNGIcon.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinPNGIcon.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBPNGICON_H
 #define FXRBPNGICON_H
 
-class FXRbPNGIcon : public FXPNGIcon {
-  FXDECLARE(FXRbPNGIcon)
+class HinPNGIcon : public FXPNGIcon {
+  FXDECLARE(HinPNGIcon)
 protected:
-  FXRbPNGIcon(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbImageVirtuals.h"
+  HinPNGIcon(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinImageVirtuals.h"
 public:
   /// Construct an icon from memory stream formatted in PNG format
-  FXRbPNGIcon(FXApp *a,const void *pix=NULL,FXColor clr=FXRGB(192,192,192),FXuint opts=0,FXint w=1,FXint h=1) : FXPNGIcon(a,pix,clr,opts,w,h){
-    FXRbRegisterAppSensitiveObject(this);
+  HinPNGIcon(FXApp *a,const void *pix=NULL,FXColor clr=FXRGB(192,192,192),FXuint opts=0,FXint w=1,FXint h=1) : FXPNGIcon(a,pix,clr,opts,w,h){
+    HinRegisterAppSensitiveObject(this);
     }
 
   // Destructor
-  virtual ~FXRbPNGIcon(){
-    FXRbUnregisterRubyObj(this);
-    FXRbUnregisterAppSensitiveObject(this);
+  virtual ~HinPNGIcon(){
+    HinUnregisterRubyObj(this);
+    HinUnregisterAppSensitiveObject(this);
     }
 
   // Mark dependencies for the GC

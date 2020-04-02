@@ -21,30 +21,30 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbRootWindow.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinRootWindow.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBROOTWINDOW_H
 #define FXRBROOTWINDOW_H
 
-class FXRbRootWindow : public FXRootWindow {
-  FXDECLARE(FXRbRootWindow)
+class HinRootWindow : public FXRootWindow {
+  FXDECLARE(HinRootWindow)
 protected:
-  FXRbRootWindow(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
+  HinRootWindow(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
 public:
   /// Construct root window
-  FXRbRootWindow(FXApp* a,FXVisual *vis) : FXRootWindow(a,vis){}
+  HinRootWindow(FXApp* a,FXVisual *vis) : FXRootWindow(a,vis){}
 
   // Mark dependencies for the GC
   static void markfunc(FXRootWindow* self);
 
   // Destructor
-  virtual ~FXRbRootWindow(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinRootWindow(){
+    HinUnregisterRubyObj(this);
     }
   };
 

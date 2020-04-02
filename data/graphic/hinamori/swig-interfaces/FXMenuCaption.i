@@ -55,7 +55,7 @@ public:
   %extend {
     /// Construct a new menu caption
     FXMenuCaption(FXComposite* p,const FXString& text,FXIcon* ic=NULL,FXuint opts=0){
-      return new FXRbMenuCaption(p,text,ic,opts);
+      return new HinMenuCaption(p,text,ic,opts);
       }
     }
 

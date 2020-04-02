@@ -2,7 +2,7 @@
 # Splashscreen component, contributed by David Naseby.
 #
 
-require 'fox16/colors'
+require 'hin16/colors'
 
 module Fox
   #

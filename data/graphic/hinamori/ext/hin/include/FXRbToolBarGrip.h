@@ -21,27 +21,27 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbToolBarGrip.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinToolBarGrip.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBTOOLBARGRIP_H
 #define FXRBTOOLBARGRIP_H
 
-class FXRbToolBarGrip : public FXToolBarGrip {
-  FXDECLARE(FXRbToolBarGrip)
+class HinToolBarGrip : public FXToolBarGrip {
+  FXDECLARE(HinToolBarGrip)
 protected:
-  FXRbToolBarGrip(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
+  HinToolBarGrip(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
 public:
   /// Construct toolbar grip
-  FXRbToolBarGrip(FXToolBar* p,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=TOOLBARGRIP_SINGLE,FXint x=0,FXint y=0,FXint w=0,FXint h=0) : FXToolBarGrip(p,tgt,sel,opts,x,y,w,h){}
+  HinToolBarGrip(FXToolBar* p,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=TOOLBARGRIP_SINGLE,FXint x=0,FXint y=0,FXint w=0,FXint h=0) : FXToolBarGrip(p,tgt,sel,opts,x,y,w,h){}
 
   // Destructor
-  virtual ~FXRbToolBarGrip(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinToolBarGrip(){
+    HinUnregisterRubyObj(this);
     }
 
   // Mark dependencies for the GC

@@ -21,24 +21,24 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbComboBox.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinComboBox.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBCOMBOBOX_H
 #define FXRBCOMBOBOX_H
 
-class FXRbComboBox : public FXComboBox {
-  FXDECLARE(FXRbComboBox)
+class HinComboBox : public FXComboBox {
+  FXDECLARE(HinComboBox)
 protected:
-  FXRbComboBox(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
+  HinComboBox(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
 public:
   /// Constructor
-  FXRbComboBox(FXComposite *p,FXint cols,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=COMBOBOX_NORMAL,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=DEFAULT_PAD,FXint pr=DEFAULT_PAD,FXint pt=DEFAULT_PAD,FXint pb=DEFAULT_PAD) : FXComboBox(p,cols,tgt,sel,opts,x,y,w,h,pl,pr,pt,pb){
-    setSortFunc(FXRbComboBox::sortFunc);
+  HinComboBox(FXComposite *p,FXint cols,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=COMBOBOX_NORMAL,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=DEFAULT_PAD,FXint pr=DEFAULT_PAD,FXint pt=DEFAULT_PAD,FXint pb=DEFAULT_PAD) : FXComboBox(p,cols,tgt,sel,opts,x,y,w,h,pl,pr,pt,pb){
+    setSortFunc(HinComboBox::sortFunc);
     }
 
   // Sort function stand-in
@@ -48,8 +48,8 @@ public:
   static void markfunc(FXComboBox* cb);
 
   // Destructor
-  virtual ~FXRbComboBox(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinComboBox(){
+    HinUnregisterRubyObj(this);
     }
   };
 

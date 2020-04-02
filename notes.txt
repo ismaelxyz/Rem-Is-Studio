@@ -1,2 +1,3 @@
-foxRuby -> hinamori
-fox16_c -> hin
+hinRuby -> hinamori
+hin16_c -> hin
+Hin -> Hin

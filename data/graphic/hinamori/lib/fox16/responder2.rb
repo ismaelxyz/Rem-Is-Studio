@@ -1,4 +1,4 @@
-require 'fox16/responder'
+require 'hin16/responder'
 
 module Fox
 
@@ -125,8 +125,8 @@ module Fox
   end
 end
 
-require 'fox16/timeout'
-require 'fox16/chore'
-require 'fox16/signal'
-require 'fox16/input'
-require 'fox16/accel_table'
+require 'hin16/timeout'
+require 'hin16/chore'
+require 'hin16/signal'
+require 'hin16/input'
+require 'hin16/accel_table'

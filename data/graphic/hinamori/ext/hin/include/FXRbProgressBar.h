@@ -21,27 +21,27 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbProgressBar.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinProgressBar.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBPROGRESSBAR_H
 #define FXRBPROGRESSBAR_H
 
-class FXRbProgressBar : public FXProgressBar {
-  FXDECLARE(FXRbProgressBar)
+class HinProgressBar : public FXProgressBar {
+  FXDECLARE(HinProgressBar)
 protected:
-  FXRbProgressBar(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
+  HinProgressBar(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
 public:
   /// Construct progress bar
-  FXRbProgressBar(FXComposite* p,FXObject* target=NULL,FXSelector sel=0,FXuint opts=PROGRESSBAR_NORMAL,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=DEFAULT_PAD,FXint pr=DEFAULT_PAD,FXint pt=DEFAULT_PAD,FXint pb=DEFAULT_PAD) : FXProgressBar(p,target,sel,opts,x,y,w,h,pl,pr,pt,pb){}
+  HinProgressBar(FXComposite* p,FXObject* target=NULL,FXSelector sel=0,FXuint opts=PROGRESSBAR_NORMAL,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=DEFAULT_PAD,FXint pr=DEFAULT_PAD,FXint pt=DEFAULT_PAD,FXint pb=DEFAULT_PAD) : FXProgressBar(p,target,sel,opts,x,y,w,h,pl,pr,pt,pb){}
 
   // Destructor
-  virtual ~FXRbProgressBar(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinProgressBar(){
+    HinUnregisterRubyObj(this);
     }
 
   // Mark dependencies for the GC

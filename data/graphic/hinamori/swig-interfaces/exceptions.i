@@ -22,12 +22,12 @@
 
 %define DO_CLASS_SETUP(klass)
 %exception klass::klass {
-  $action FXRbRegisterRubyObj(self, result);
+  $action HinRegisterRubyObj(self, result);
   if(rb_block_given_p()){
     rb_yield(self);
   }
 }
-%freefunc klass "FXRbObject::freefunc"; // some classes override this in freefuncs.i
+%freefunc klass "HinObject::freefunc"; // some classes override this in freefuncs.i
 %enddef
 
 DO_CLASS_SETUP(FX4Splitter)

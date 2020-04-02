@@ -21,7 +21,7 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbCursor.h 2335 2006-01-28 02:33:03Z lyle $
+ * $Id: HinCursor.h 2335 2006-01-28 02:33:03Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBCURSOR_H
@@ -38,37 +38,37 @@ inline bool klass ## _loadPixels(klass* self,FXStream& store){ \
 
 #define IMPLEMENT_FXCURSOR_STUBS(cls) \
   bool cls::savePixels(FXStream& store) const { \
-    return FXRbCallBoolMethod(this,"savePixels",store); \
+    return HinCallBoolMethod(this,"savePixels",store); \
     } \
   bool cls::loadPixels(FXStream& store){ \
-    return FXRbCallBoolMethod(this,"loadPixels",store); \
+    return HinCallBoolMethod(this,"loadPixels",store); \
     }
 
-class FXRbCursor : public FXCursor {
-  FXDECLARE(FXRbCursor)
+class HinCursor : public FXCursor {
+  FXDECLARE(HinCursor)
 protected:
-  FXRbCursor(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbCursorVirtuals.h"
+  HinCursor(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinCursorVirtuals.h"
 public:
   // Is this cursor owned by the FXApp?
   FXbool ownedByApp;
 
 public:
   /// Make stock cursor
-  FXRbCursor(FXApp* a,FXStockCursor curid=CURSOR_ARROW) : FXCursor(a,curid),ownedByApp(FALSE){
-    FXRbRegisterAppSensitiveObject(this);
+  HinCursor(FXApp* a,FXStockCursor curid=CURSOR_ARROW) : FXCursor(a,curid),ownedByApp(FALSE){
+    HinRegisterAppSensitiveObject(this);
     }
 
   /// Make cursor from source and mask; cursor size should at most 32x32 for portability!
-  FXRbCursor(FXApp* a,const FXuchar* src,const FXuchar* msk,FXint w=32,FXint h=32,FXint hx=0,FXint hy=0) : FXCursor(a,src,msk,w,h,hx,hy),ownedByApp(FALSE){
-    FXRbRegisterAppSensitiveObject(this);
+  HinCursor(FXApp* a,const FXuchar* src,const FXuchar* msk,FXint w=32,FXint h=32,FXint hx=0,FXint hy=0) : FXCursor(a,src,msk,w,h,hx,hy),ownedByApp(FALSE){
+    HinRegisterAppSensitiveObject(this);
     }
 
   /// Make cursor from FXColor pixels; cursor size should at most 32x32 for portability!
-  FXRbCursor(FXApp* a,const FXColor* pix,FXint w=32,FXint h=32,FXint hx=0,FXint hy=0) : FXCursor(a,pix,w,h,hx,hy),ownedByApp(FALSE){
-    FXRbRegisterAppSensitiveObject(this);
+  HinCursor(FXApp* a,const FXColor* pix,FXint w=32,FXint h=32,FXint hx=0,FXint hy=0) : FXCursor(a,pix,w,h,hx,hy),ownedByApp(FALSE){
+    HinRegisterAppSensitiveObject(this);
     }
 
   // Mark dependencies for the GC
@@ -78,9 +78,9 @@ public:
   static void freefunc(FXCursor* self);
 
   // Destructor
-  virtual ~FXRbCursor(){
-    FXRbUnregisterRubyObj(this);
-    FXRbUnregisterAppSensitiveObject(this);
+  virtual ~HinCursor(){
+    HinUnregisterRubyObj(this);
+    HinUnregisterAppSensitiveObject(this);
     }
   };
 

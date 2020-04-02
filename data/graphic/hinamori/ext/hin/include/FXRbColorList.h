@@ -21,24 +21,24 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbColorList.h 2303 2005-12-09 03:17:28Z lyle $
+ * $Id: HinColorList.h 2303 2005-12-09 03:17:28Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBCOLORLIST_H
 #define FXRBCOLORLIST_H
 
-class FXRbColorItem : public FXColorItem {
-  FXDECLARE(FXRbColorItem)
+class HinColorItem : public FXColorItem {
+  FXDECLARE(HinColorItem)
 protected:
-  FXRbColorItem(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbListItemVirtuals.h"
+  HinColorItem(){}
+#include "HinObjectVirtuals.h"
+#include "HinListItemVirtuals.h"
 public:
   // Is this list item owned by an FXColorList yet?
   FXbool owned;
 public:
   // Constructor
-  FXRbColorItem(const FXString& text,FXColor clr,void* ptr=NULL) : FXColorItem(text,clr,ptr),owned(FALSE){}
+  HinColorItem(const FXString& text,FXColor clr,void* ptr=NULL) : FXColorItem(text,clr,ptr),owned(FALSE){}
 
   // Mark dependencies for the GC
   static void markfunc(FXColorItem* self);
@@ -47,25 +47,25 @@ public:
   static void freefunc(FXColorItem* self);
 
   // Destructor
-  virtual ~FXRbColorItem(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinColorItem(){
+    HinUnregisterRubyObj(this);
     }
   };
 
 
-class FXRbColorList : public FXColorList {
-  FXDECLARE(FXRbColorList)
+class HinColorList : public FXColorList {
+  FXDECLARE(HinColorList)
 protected:
-  FXRbColorList(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
-#include "FXRbScrollAreaVirtuals.h"
-#include "FXRbListVirtuals.h"
+  HinColorList(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
+#include "HinScrollAreaVirtuals.h"
+#include "HinListVirtuals.h"
 public:
   /// Construct a list with initially no items in it
-  FXRbColorList(FXComposite *p,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=LIST_BROWSESELECT,FXint x=0,FXint y=0,FXint w=0,FXint h=0) : FXColorList(p,tgt,sel,opts,x,y,w,h){
+  HinColorList(FXComposite *p,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=LIST_BROWSESELECT,FXint x=0,FXint y=0,FXint w=0,FXint h=0) : FXColorList(p,tgt,sel,opts,x,y,w,h){
     }
 
   // Mark dependencies for the GC
@@ -75,9 +75,9 @@ public:
   static void unregisterOwnedObjects(FXColorList *pColorList);
 
   // Destructor
-  virtual ~FXRbColorList(){
-    FXRbColorList::unregisterOwnedObjects(this);
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinColorList(){
+    HinColorList::unregisterOwnedObjects(this);
+    HinUnregisterRubyObj(this);
     }
   };
 

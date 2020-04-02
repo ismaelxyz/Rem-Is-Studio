@@ -21,29 +21,29 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbSearchDialog.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinSearchDialog.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBSEARCHDIALOG_H
 #define FXRBSEARCHDIALOG_H
 
-class FXRbSearchDialog : public FXSearchDialog {
-  FXDECLARE(FXRbSearchDialog)
+class HinSearchDialog : public FXSearchDialog {
+  FXDECLARE(HinSearchDialog)
 protected:
-  FXRbSearchDialog(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
-#include "FXRbTopWindowVirtuals.h"
-#include "FXRbDialogBoxVirtuals.h"
+  HinSearchDialog(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
+#include "HinTopWindowVirtuals.h"
+#include "HinDialogBoxVirtuals.h"
 public:
   /// Construct search dialog box
-  FXRbSearchDialog(FXWindow* owner,const FXString& caption,FXIcon* ic=NULL,FXuint opts=0,FXint x=0,FXint y=0,FXint w=0,FXint h=0) : FXSearchDialog(owner,caption,ic,opts,x,y,w,h){}
+  HinSearchDialog(FXWindow* owner,const FXString& caption,FXIcon* ic=NULL,FXuint opts=0,FXint x=0,FXint y=0,FXint w=0,FXint h=0) : FXSearchDialog(owner,caption,ic,opts,x,y,w,h){}
 
   // Destructor
-  virtual ~FXRbSearchDialog(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinSearchDialog(){
+    HinUnregisterRubyObj(this);
     }
 
   // Mark dependencies for the GC

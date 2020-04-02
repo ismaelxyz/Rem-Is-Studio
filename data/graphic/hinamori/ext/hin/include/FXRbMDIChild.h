@@ -21,7 +21,7 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbMDIChild.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinMDIChild.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBMDICHILD_H
@@ -44,35 +44,35 @@ inline FXbool klass ## _close(klass* self,FXbool notify){ \
 
 #define IMPLEMENT_FXMDICHILD_STUBS(cls) \
   FXbool cls::minimize(FXbool notify){ \
-    return FXRbCallBoolMethod(this,"minimize",notify); \
+    return HinCallBoolMethod(this,"minimize",notify); \
     } \
   FXbool cls::maximize(FXbool notify){ \
-    return FXRbCallBoolMethod(this,"maximize",notify); \
+    return HinCallBoolMethod(this,"maximize",notify); \
     } \
   FXbool cls::restore(FXbool notify){ \
-    return FXRbCallBoolMethod(this,"restore",notify); \
+    return HinCallBoolMethod(this,"restore",notify); \
     } \
   FXbool cls::close(FXbool notify){ \
-    return FXRbCallBoolMethod(this,"close",notify); \
+    return HinCallBoolMethod(this,"close",notify); \
     }
 
 
-class FXRbMDIChild : public FXMDIChild {
-  FXDECLARE(FXRbMDIChild)
+class HinMDIChild : public FXMDIChild {
+  FXDECLARE(HinMDIChild)
 protected:
-  FXRbMDIChild(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
-#include "FXRbMDIChildVirtuals.h"
+  HinMDIChild(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
+#include "HinMDIChildVirtuals.h"
 public:
   /// Construct MDI Child window with given name and icon
-  FXRbMDIChild(FXMDIClient* p,const FXString& name,FXIcon* ic=NULL,FXPopup* pup=NULL,FXuint opts=0,FXint x=0,FXint y=0,FXint w=0,FXint h=0) : FXMDIChild(p,name,ic,pup,opts,x,y,w,h){}
+  HinMDIChild(FXMDIClient* p,const FXString& name,FXIcon* ic=NULL,FXPopup* pup=NULL,FXuint opts=0,FXint x=0,FXint y=0,FXint w=0,FXint h=0) : FXMDIChild(p,name,ic,pup,opts,x,y,w,h){}
 
   // Destructor
-  virtual ~FXRbMDIChild(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinMDIChild(){
+    HinUnregisterRubyObj(this);
     }
 
   // Mark dependencies for the GC

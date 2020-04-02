@@ -21,7 +21,7 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbMDIClient.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinMDIClient.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBMDICLIENT_H
@@ -43,34 +43,34 @@
 
 #define IMPLEMENT_FXMDICLIENT_STUBS(cls) \
   FXbool cls::setActiveChild(FXMDIChild* child,FXbool notify){ \
-    return FXRbCallBoolMethod(this,"setActiveChild",child,notify); \
+    return HinCallBoolMethod(this,"setActiveChild",child,notify); \
     } \
   void cls::cascade(FXbool notify){ \
-    FXRbCallVoidMethod(this,"cascade",notify); \
+    HinCallVoidMethod(this,"cascade",notify); \
     } \
   void cls::horizontal(FXbool notify){ \
-    FXRbCallVoidMethod(this,"horizontal",notify); \
+    HinCallVoidMethod(this,"horizontal",notify); \
     } \
   void cls::vertical(FXbool notify){ \
-    FXRbCallVoidMethod(this,"vertical",notify); \
+    HinCallVoidMethod(this,"vertical",notify); \
     }
 
-class FXRbMDIClient : public FXMDIClient {
-  FXDECLARE(FXRbMDIClient)
+class HinMDIClient : public FXMDIClient {
+  FXDECLARE(HinMDIClient)
 protected:
-  FXRbMDIClient(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
-#include "FXRbMDIClientVirtuals.h"
+  HinMDIClient(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
+#include "HinMDIClientVirtuals.h"
 public:
   /// Construct MDI Client window
-  FXRbMDIClient(FXComposite* p,FXuint opts=0,FXint x=0,FXint y=0,FXint w=0,FXint h=0) : FXMDIClient(p,opts,x,y,w,h){}
+  HinMDIClient(FXComposite* p,FXuint opts=0,FXint x=0,FXint y=0,FXint w=0,FXint h=0) : FXMDIClient(p,opts,x,y,w,h){}
 
   // Destructor
-  virtual ~FXRbMDIClient(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinMDIClient(){
+    HinUnregisterRubyObj(this);
     }
 
   // Mark dependencies for the GC

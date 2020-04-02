@@ -21,7 +21,7 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbImageFrame.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinImageFrame.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBIMAGEFRAME_H
@@ -31,25 +31,25 @@
 #include "FXImageFrame.h"
 #endif
 
-class FXRbImageFrame : public FXImageFrame {
-  FXDECLARE(FXRbImageFrame)
+class HinImageFrame : public FXImageFrame {
+  FXDECLARE(HinImageFrame)
 protected:
-  FXRbImageFrame(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
+  HinImageFrame(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
 public:
 
   /// Construct image frame and pass it an image
-  FXRbImageFrame(FXComposite* p,FXImage *img,FXuint opts=FRAME_SUNKEN|FRAME_THICK,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=0,FXint pr=0,FXint pt=0,FXint pb=0) : FXImageFrame(p,img,opts,x,y,w,h,pl,pr,pt,pb) {}
+  HinImageFrame(FXComposite* p,FXImage *img,FXuint opts=FRAME_SUNKEN|FRAME_THICK,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=0,FXint pr=0,FXint pt=0,FXint pb=0) : FXImageFrame(p,img,opts,x,y,w,h,pl,pr,pt,pb) {}
 
   // Mark dependencies for the GC
   static void markfunc(FXImageFrame* self);
 
   /// Destroy the widget, but do not destroy the image
-  virtual ~FXRbImageFrame(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinImageFrame(){
+    HinUnregisterRubyObj(this);
     }
   };
 

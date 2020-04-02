@@ -42,7 +42,7 @@ public:
   %extend {
     /// Constructor
     FXFileItem(const FXString& text,FXIcon* bi=NULL,FXIcon* mi=NULL,void* ITEMDATA=NULL){
-      return new FXRbFileItem(text,bi,mi,ITEMDATA);
+      return new HinFileItem(text,bi,mi,ITEMDATA);
       }
     }
 
@@ -214,7 +214,7 @@ public:
   %extend {
     /// Construct a file list
     FXFileList(FXComposite *p,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=0,FXint x=0,FXint y=0,FXint w=0,FXint h=0){
-      return new FXRbFileList(p,tgt,sel,opts,x,y,w,h);
+      return new HinFileList(p,tgt,sel,opts,x,y,w,h);
       }
     }
 

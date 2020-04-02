@@ -95,7 +95,7 @@ public:
   %extend {
     /// Construct
     FXDCPrint(FXApp* a){
-      return new FXRbDCPrint(a);
+      return new HinDCPrint(a);
       }
     }
 

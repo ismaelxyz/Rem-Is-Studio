@@ -94,7 +94,7 @@ public:
   %extend {
     /// Construct MDI Client window
     FXMDIClient(FXComposite* p,FXuint opts=0,FXint x=0,FXint y=0,FXint w=0,FXint h=0){
-      return new FXRbMDIClient(p,opts,x,y,w,h);
+      return new HinMDIClient(p,opts,x,y,w,h);
       }
     }
 

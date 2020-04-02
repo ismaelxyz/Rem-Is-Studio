@@ -28,7 +28,7 @@ public:
   /// Construct search dialog box
   %extend {
     FXSearchDialog(FXWindow* owner,const FXString& caption,FXIcon* ic=NULL,FXuint opts=0,FXint x=0,FXint y=0,FXint w=0,FXint h=0){
-      return new FXRbSearchDialog(owner,caption,ic,opts,x,y,w,h);
+      return new HinSearchDialog(owner,caption,ic,opts,x,y,w,h);
       }
     }
 

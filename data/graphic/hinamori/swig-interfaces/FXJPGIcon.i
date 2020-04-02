@@ -41,7 +41,7 @@ public:
   %extend {
     /// Construct an icon from memory stream formatted in JPG format
     FXJPGIcon(FXApp *a,const void *pix=NULL,FXColor clr=0,FXuint opts=0,FXint w=1,FXint h=1,FXint q=75){
-      return new FXRbJPGIcon(a,pix,clr,opts,w,h,q);
+      return new HinJPGIcon(a,pix,clr,opts,w,h,q);
       }
     }
 
@@ -72,7 +72,7 @@ DECLARE_FXIMAGE_VIRTUALS(FXJPGIcon)
     FXint width,height,quality;
     if(fxloadJPG(store,data,width,height,quality)){
       VALUE ary=rb_ary_new();
-      rb_ary_push(ary,FXRbMakeColorArray(data,width,height));
+      rb_ary_push(ary,HinMakeColorArray(data,width,height));
       FXFREE(&data);
       rb_ary_push(ary,to_ruby(width));
       rb_ary_push(ary,to_ruby(height));

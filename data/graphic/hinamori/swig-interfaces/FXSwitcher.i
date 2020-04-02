@@ -77,7 +77,7 @@ public:
   /// Construct a switcher layout manager
   %extend {
     FXSwitcher(FXComposite* p,FXuint opts=0,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=DEFAULT_SPACING,FXint pr=DEFAULT_SPACING,FXint pt=DEFAULT_SPACING,FXint pb=DEFAULT_SPACING){
-      return new FXRbSwitcher(p,opts,x,y,w,h,pl,pr,pt,pb);
+      return new HinSwitcher(p,opts,x,y,w,h,pl,pr,pt,pb);
       }
     }
 

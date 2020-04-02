@@ -49,7 +49,7 @@ public:
   %extend {
     /// Construct a menu cascade responsible for the given popup menu
     FXMenuCascade(FXComposite* p,const FXString& text,FXIcon* ic=NULL,FXPopup* pup=NULL,FXuint opts=0){
-      return new FXRbMenuCascade(p,text,ic,pup,opts);
+      return new HinMenuCascade(p,text,ic,pup,opts);
       }
     }
 

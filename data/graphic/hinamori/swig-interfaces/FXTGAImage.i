@@ -38,7 +38,7 @@ public:
   /// Construct an image from memory stream formatted in TGA format
   %extend {
     FXTGAImage(FXApp *a,const void *pix=NULL,FXuint opts=0,FXint w=1,FXint h=1){
-      return new FXRbTGAImage(a,pix,opts,w,h);
+      return new HinTGAImage(a,pix,opts,w,h);
       }
     }
 

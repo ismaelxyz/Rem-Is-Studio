@@ -33,7 +33,7 @@ public:
   %extend {
     /// Constructor
     FXComposite(FXComposite* p,FXuint opts=0,FXint x=0,FXint y=0,FXint w=0,FXint h=0){
-      return new FXRbComposite(p,opts,x,y,w,h);
+      return new HinComposite(p,opts,x,y,w,h);
       }
     }
 

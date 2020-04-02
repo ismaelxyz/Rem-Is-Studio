@@ -21,21 +21,21 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbToolBar.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinToolBar.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBTOOLBAR_H
 #define FXRBTOOLBAR_H
 
-class FXRbToolBar : public FXToolBar {
-  FXDECLARE(FXRbToolBar)
+class HinToolBar : public FXToolBar {
+  FXDECLARE(HinToolBar)
 protected:
-  FXRbToolBar(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
-#include "FXRbDockBarVirtuals.h"
+  HinToolBar(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
+#include "HinDockBarVirtuals.h"
 public:
   /**
   * Construct a floatable toolbar
@@ -43,17 +43,17 @@ public:
   * When floated, the toolbar can be docked under window q, which is
   * typically an FXToolBarShell window.
   */
-  FXRbToolBar(FXComposite* p,FXComposite* q,FXuint opts=LAYOUT_TOP|LAYOUT_LEFT|LAYOUT_FILL_X,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=3,FXint pr=3,FXint pt=2,FXint pb=2,FXint hs=DEFAULT_SPACING,FXint vs=DEFAULT_SPACING) : FXToolBar(p,q,opts,x,y,w,h,pl,pr,pt,pb,hs,vs){}
+  HinToolBar(FXComposite* p,FXComposite* q,FXuint opts=LAYOUT_TOP|LAYOUT_LEFT|LAYOUT_FILL_X,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=3,FXint pr=3,FXint pt=2,FXint pb=2,FXint hs=DEFAULT_SPACING,FXint vs=DEFAULT_SPACING) : FXToolBar(p,q,opts,x,y,w,h,pl,pr,pt,pb,hs,vs){}
 
   /**
   * Construct a non-floatable toolbar.
   * The toolbar can not be undocked.
   */
-  FXRbToolBar(FXComposite* p,FXuint opts=LAYOUT_TOP|LAYOUT_LEFT|LAYOUT_FILL_X,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=2,FXint pr=3,FXint pt=3,FXint pb=2,FXint hs=DEFAULT_SPACING,FXint vs=DEFAULT_SPACING) : FXToolBar(p,opts,x,y,w,h,pl,pr,pt,pb,hs,vs){}
+  HinToolBar(FXComposite* p,FXuint opts=LAYOUT_TOP|LAYOUT_LEFT|LAYOUT_FILL_X,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=2,FXint pr=3,FXint pt=3,FXint pb=2,FXint hs=DEFAULT_SPACING,FXint vs=DEFAULT_SPACING) : FXToolBar(p,opts,x,y,w,h,pl,pr,pt,pb,hs,vs){}
 
   // Destructor
-  virtual ~FXRbToolBar(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinToolBar(){
+    HinUnregisterRubyObj(this);
     }
 
   // Mark dependencies for the GC

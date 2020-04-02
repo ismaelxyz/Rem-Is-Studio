@@ -30,7 +30,7 @@ public:
   %extend {
     /// Construct a string dictionary
     FXStringDict(){
-      return new FXRbStringDict();
+      return new HinStringDict();
       }
     }
 

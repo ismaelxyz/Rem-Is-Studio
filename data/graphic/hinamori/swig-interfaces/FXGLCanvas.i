@@ -30,7 +30,7 @@ public:
     * Construct an OpenGL-capable canvas, with its own private display list.
     */
     FXGLCanvas(FXComposite* p,FXGLVisual *vis,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=0,FXint x=0,FXint y=0,FXint w=0,FXint h=0){
-      return new FXRbGLCanvas(p,vis,tgt,sel,opts,x,y,w,h);
+      return new HinGLCanvas(p,vis,tgt,sel,opts,x,y,w,h);
       }
 
     /**
@@ -40,7 +40,7 @@ public:
     * list share group have to have the same visual.
     */
     FXGLCanvas(FXComposite* p,FXGLVisual *vis,FXGLCanvas* sharegroup,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=0,FXint x=0,FXint y=0,FXint w=0,FXint h=0){
-      return new FXRbGLCanvas(p,vis,sharegroup,tgt,sel,opts,x,y,w,h);
+      return new HinGLCanvas(p,vis,sharegroup,tgt,sel,opts,x,y,w,h);
       }
     }
 

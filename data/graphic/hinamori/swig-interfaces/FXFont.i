@@ -202,7 +202,7 @@ public:
     * Note: use of the raw X11 fonts is stronly discouraged.
     */
     FXFont(FXApp* a,const FXString& string){
-      return new FXRbFont(a,string);
+      return new HinFont(a,string);
       }
 
     /**
@@ -212,12 +212,12 @@ public:
     * square brackets, for example, "helvetica [bitstream]".
     */
     FXFont(FXApp* a,const FXString& face,FXuint sz,FXuint wt=FXFont::Normal,FXuint slant=FXFont::Straight,FXuint encoding=FONTENCODING_DEFAULT,FXuint setwidth=FXFont::NonExpanded,FXuint h=0){
-      return new FXRbFont(a,face,sz,wt,slant,encoding,setwidth,h);
+      return new HinFont(a,face,sz,wt,slant,encoding,setwidth,h);
       }
 
     /// Construct font from font description
     FXFont(FXApp* a,const FXFontDesc& fontdesc){
-      return new FXRbFont(a,fontdesc);
+      return new HinFont(a,fontdesc);
       }
     }
 

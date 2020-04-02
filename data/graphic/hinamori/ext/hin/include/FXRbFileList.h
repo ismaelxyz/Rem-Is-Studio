@@ -21,7 +21,7 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbFileList.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinFileList.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBFILELIST_H
@@ -29,18 +29,18 @@
 
 
 
-class FXRbFileItem : public FXFileItem {
-  FXDECLARE(FXRbFileItem)
+class HinFileItem : public FXFileItem {
+  FXDECLARE(HinFileItem)
 protected:
-  FXRbFileItem(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIconItemVirtuals.h"
+  HinFileItem(){}
+#include "HinObjectVirtuals.h"
+#include "HinIconItemVirtuals.h"
 public:
   // Is this file item owned by an FXFileList yet?
   FXbool owned;
 public:
   /// Constructor
-  FXRbFileItem(const FXString& text,FXIcon* bi=NULL,FXIcon* mi=NULL,void* ptr=NULL) : FXFileItem(text,bi,mi,ptr),owned(FALSE){}
+  HinFileItem(const FXString& text,FXIcon* bi=NULL,FXIcon* mi=NULL,void* ptr=NULL) : FXFileItem(text,bi,mi,ptr),owned(FALSE){}
 
   // Mark dependencies for the GC
   static void markfunc(FXFileItem* self);
@@ -49,32 +49,32 @@ public:
   static void freefunc(FXFileItem* self);
 
   // Destructor
-  virtual ~FXRbFileItem(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinFileItem(){
+    HinUnregisterRubyObj(this);
     }
   };
 
 
-class FXRbFileList : public FXFileList {
-  FXDECLARE(FXRbFileList)
+class HinFileList : public FXFileList {
+  FXDECLARE(HinFileList)
 protected:
-  FXRbFileList(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
-#include "FXRbScrollAreaVirtuals.h"
-#include "FXRbIconListVirtuals.h"
+  HinFileList(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
+#include "HinScrollAreaVirtuals.h"
+#include "HinIconListVirtuals.h"
 public:
   /// Construct a file list
-  FXRbFileList(FXComposite *p,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=0,FXint x=0,FXint y=0,FXint w=0,FXint h=0) : FXFileList(p,tgt,sel,opts,x,y,w,h){}
+  HinFileList(FXComposite *p,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=0,FXint x=0,FXint y=0,FXint w=0,FXint h=0) : FXFileList(p,tgt,sel,opts,x,y,w,h){}
 
   // Mark dependencies for the GC
   static void markfunc(FXFileList* self);
 
   // Destructor
-  virtual ~FXRbFileList(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinFileList(){
+    HinUnregisterRubyObj(this);
     }
   };
 

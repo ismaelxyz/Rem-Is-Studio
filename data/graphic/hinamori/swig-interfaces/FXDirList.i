@@ -49,7 +49,7 @@ public:
   %extend {
     /// Constructor
     FXDirItem(const FXString& text,FXIcon* oi=NULL,FXIcon* ci=NULL,void* ITEMDATA=NULL){
-      return new FXRbDirItem(text,oi,ci,ITEMDATA);
+      return new HinDirItem(text,oi,ci,ITEMDATA);
       }
     }
 
@@ -166,7 +166,7 @@ public:
   %extend {
     /// Construct a directory list
     FXDirList(FXComposite *p,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=0,FXint x=0,FXint y=0,FXint w=0,FXint h=0){
-      return new FXRbDirList(p,tgt,sel,opts,x,y,w,h);
+      return new HinDirList(p,tgt,sel,opts,x,y,w,h);
       }
     }
 

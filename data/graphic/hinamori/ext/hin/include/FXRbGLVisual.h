@@ -21,25 +21,25 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbGLVisual.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinGLVisual.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBGLVISUAL_H
 #define FXRBGLVISUAL_H
 
-class FXRbGLVisual : public FXGLVisual {
-  FXDECLARE(FXRbGLVisual)
+class HinGLVisual : public FXGLVisual {
+  FXDECLARE(HinGLVisual)
 protected:
-  FXRbGLVisual(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
+  HinGLVisual(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
 public:
   // Is this visual owned by the FXApp?
   FXbool ownedByApp;
 
 public:
   /// Construct default visual
-  FXRbGLVisual(FXApp* a,FXuint flags) : FXGLVisual(a,flags),ownedByApp(FALSE){}
+  HinGLVisual(FXApp* a,FXuint flags) : FXGLVisual(a,flags),ownedByApp(FALSE){}
 
   // Mark dependencies for the GC
   static void markfunc(FXGLVisual* self);
@@ -48,8 +48,8 @@ public:
   static void freefunc(FXGLVisual* self);
 
   // Destructor
-  virtual ~FXRbGLVisual(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinGLVisual(){
+    HinUnregisterRubyObj(this);
     }
   };
 

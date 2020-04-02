@@ -62,7 +62,7 @@ public:
     * LAYOUT_SIDE_RIGHT causes it to be oriented vertically.
     */
     FXDockSite(FXComposite *p,FXuint opts=0,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=0,FXint pr=0,FXint pt=0,FXint pb=0,FXint hs=0,FXint vs=0){
-      return new FXRbDockSite(p,opts,x,y,w,h,pl,pr,pt,pb,hs,vs);
+      return new HinDockSite(p,opts,x,y,w,h,pl,pr,pt,pb,hs,vs);
       }
   }
 

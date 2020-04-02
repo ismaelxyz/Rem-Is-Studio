@@ -21,27 +21,27 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbTextField.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinTextField.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBTEXTFIELD_H
 #define FXRBTEXTFIELD_H
 
-class FXRbTextField : public FXTextField {
-  FXDECLARE(FXRbTextField)
+class HinTextField : public FXTextField {
+  FXDECLARE(HinTextField)
 protected:
-  FXRbTextField(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
+  HinTextField(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
 public:
   /// Construct text field wide enough to display ncols columns
-  FXRbTextField(FXComposite* p,FXint ncols,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=TEXTFIELD_NORMAL,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=DEFAULT_PAD,FXint pr=DEFAULT_PAD,FXint pt=DEFAULT_PAD,FXint pb=DEFAULT_PAD) : FXTextField(p,ncols,tgt,sel,opts,x,y,w,h,pl,pr,pt,pb){}
+  HinTextField(FXComposite* p,FXint ncols,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=TEXTFIELD_NORMAL,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=DEFAULT_PAD,FXint pr=DEFAULT_PAD,FXint pt=DEFAULT_PAD,FXint pb=DEFAULT_PAD) : FXTextField(p,ncols,tgt,sel,opts,x,y,w,h,pl,pr,pt,pb){}
 
   // Destructor
-  virtual ~FXRbTextField(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinTextField(){
+    HinUnregisterRubyObj(this);
     }
 
   // Mark dependencies for the GC

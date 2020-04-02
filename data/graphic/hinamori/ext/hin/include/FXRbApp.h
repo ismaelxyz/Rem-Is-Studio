@@ -21,7 +21,7 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbApp.h 2927 2008-12-29 19:16:57Z lyle $
+ * $Id: HinApp.h 2927 2008-12-29 19:16:57Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBAPP_H
@@ -109,13 +109,13 @@ inline void cls ## _exit(cls *self,FXint code){ \
  */
 #define IMPLEMENT_FXAPP_STUBS(cls) \
   void cls::create(){ \
-    FXRbCallVoidMethod(this,"create"); \
+    HinCallVoidMethod(this,"create"); \
     } \
   void cls::detach(){ \
-    FXRbCallVoidMethod(this,"detach"); \
+    HinCallVoidMethod(this,"detach"); \
     } \
   void cls::destroy(){ \
-    FXRbCallVoidMethod(this,"destroy"); \
+    HinCallVoidMethod(this,"destroy"); \
     } \
   void cls::init(int& argc,char** argv,bool connect){ \
     int i; \
@@ -123,7 +123,7 @@ inline void cls ## _exit(cls *self,FXint code){ \
     for(i=1; i<argc; i++){ \
       rb_ary_push(ary,rb_str_new2(argv[i])); \
       } \
-    FXRbCallVoidMethod(this,"init",ary,connect); \
+    HinCallVoidMethod(this,"init",ary,connect); \
     argc=static_cast<int>(RARRAY_LEN(ary)+1); \
     for(i=1; i<argc; i++){ \
       VALUE e=rb_ary_entry(ary,i-1); \
@@ -131,12 +131,12 @@ inline void cls ## _exit(cls *self,FXint code){ \
       } \
     } \
   void cls::exit(FXint code){ \
-    FXRbCallVoidMethod(this,"exit",code); \
+    HinCallVoidMethod(this,"exit",code); \
     }
 
 
-class FXRbApp : public FXApp {
-  FXDECLARE(FXRbApp)
+class HinApp : public FXApp {
+  FXDECLARE(HinApp)
 protected:
   FXbool m_bThreadsEnabled;
   FXuint sleepTime;
@@ -147,10 +147,10 @@ public:
   static int interrupt_fds[2];
 #endif
 protected:
-  FXRbApp(){}
+  HinApp(){}
 public:
-#include "FXRbObjectVirtuals.h"
-#include "FXRbAppVirtuals.h"
+#include "HinObjectVirtuals.h"
+#include "HinAppVirtuals.h"
 public:
   enum {
     ID_CHORE_THREADS=FXApp::ID_LAST,
@@ -161,10 +161,10 @@ public:
   long onChoreThreads_gvlcb(FXObject*,FXSelector,void*);
 public:
   // Constructor
-  FXRbApp(const FXchar* name,const FXchar* vendor);
+  HinApp(const FXchar* name,const FXchar* vendor);
 
   // Construct and call init()
-  static FXRbApp* constructAndInit(const FXchar* name,const FXchar* vendor);
+  static HinApp* constructAndInit(const FXchar* name,const FXchar* vendor);
 
   // Enable (or disable) support for multithreaded applications
   void setThreadsEnabled(FXbool enabled);
@@ -182,9 +182,9 @@ public:
   static void markfunc(FXApp *app);
 
   // Destructor
-  virtual ~FXRbApp();
+  virtual ~HinApp();
   };
 
-long FXRbApp_onChoreThreads_gvlcb(FXRbApp*,FXObject*,FXSelector,void*);
+long HinApp_onChoreThreads_gvlcb(HinApp*,FXObject*,FXSelector,void*);
 
 #endif

@@ -21,29 +21,29 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbMenuRadio.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinMenuRadio.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBMENURADIO_H
 #define FXRBMENURADIO_H
 
-class FXRbMenuRadio : public FXMenuRadio {
-  FXDECLARE(FXRbMenuRadio)
+class HinMenuRadio : public FXMenuRadio {
+  FXDECLARE(HinMenuRadio)
 protected:
-  FXRbMenuRadio(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
+  HinMenuRadio(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
 public:
   /// Constructor
-  FXRbMenuRadio(FXComposite* p,const FXString& text,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=0) : FXMenuRadio(p,text,tgt,sel,opts){}
+  HinMenuRadio(FXComposite* p,const FXString& text,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=0) : FXMenuRadio(p,text,tgt,sel,opts){}
 
   // Mark dependencies for the GC
   static void markfunc(FXMenuRadio* self);
 
   // Destructor (implemented in FXRuby.cpp)
-  virtual ~FXRbMenuRadio();
+  virtual ~HinMenuRadio();
   };
 
 #endif

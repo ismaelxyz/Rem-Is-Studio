@@ -56,7 +56,7 @@ public:
     * creates a default icon source object.
     */
     FXIconDict(FXApp* app,const FXString& p=defaultIconPath){
-      return new FXRbIconDict(app,p);
+      return new HinIconDict(app,p);
       }
   }
 

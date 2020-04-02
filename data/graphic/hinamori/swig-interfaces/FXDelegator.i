@@ -35,7 +35,7 @@ public:
   %extend {
     /// Construct a delegator
     FXDelegator(FXObject* target=NULL){
-      return new FXRbDelegator(target);
+      return new HinDelegator(target);
       }
     }
 

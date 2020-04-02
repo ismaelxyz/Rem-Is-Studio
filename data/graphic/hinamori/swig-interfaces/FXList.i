@@ -50,7 +50,7 @@ public:
 public:
   %extend {
     FXListItem(const FXString& text,FXIcon* ic=NULL,void* ITEMDATA=NULL){
-      return new FXRbListItem(text,ic,ITEMDATA);
+      return new HinListItem(text,ic,ITEMDATA);
       }
     }
 
@@ -157,7 +157,7 @@ public:
   %extend {
     /// Construct a list with initially no items in it
     FXList(FXComposite *p,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=LIST_NORMAL,FXint x=0,FXint y=0,FXint w=0,FXint h=0){
-      return new FXRbList(p,tgt,sel,opts,x,y,w,h);
+      return new HinList(p,tgt,sel,opts,x,y,w,h);
       }
     }
 
@@ -180,12 +180,12 @@ public:
       FXListItem* oldItem=self->getItem(index);
 
       // Do the deed
-      if(item->isMemberOf(FXMETACLASS(FXRbListItem)))
-        dynamic_cast<FXRbListItem*>(item)->owned=TRUE;
+      if(item->isMemberOf(FXMETACLASS(HinListItem)))
+        dynamic_cast<HinListItem*>(item)->owned=TRUE;
       FXint result=self->setItem(index,item,notify);
 
       // Now zero-out pointers held by still-alive Ruby objects
-      FXRbUnregisterRubyObj(oldItem);
+      HinUnregisterRubyObj(oldItem);
 
       // Done
       return result;
@@ -200,7 +200,7 @@ public:
       FXint result=self->setItem(index,text,icon,ITEMDATA,notify);
 
       // Now zero-out pointers held by still-alive Ruby objects
-      FXRbUnregisterRubyObj(oldItem);
+      HinUnregisterRubyObj(oldItem);
 
       // Done
       return result;
@@ -213,8 +213,8 @@ public:
   %extend {
     /// Insert a new [possibly subclassed] item at the given index
     FXint insertItem(FXint index,FXListItem* item,FXbool notify=FALSE){
-      if(item->isMemberOf(FXMETACLASS(FXRbListItem)))
-        dynamic_cast<FXRbListItem*>(item)->owned=TRUE;
+      if(item->isMemberOf(FXMETACLASS(HinListItem)))
+        dynamic_cast<HinListItem*>(item)->owned=TRUE;
       return self->insertItem(index,item,notify);
       }
   }
@@ -225,8 +225,8 @@ public:
   %extend {
     /// Append a [possibly subclassed] item to the list
     FXint appendItem(FXListItem* item,FXbool notify=FALSE){
-      if(item->isMemberOf(FXMETACLASS(FXRbListItem)))
-        dynamic_cast<FXRbListItem*>(item)->owned=TRUE;
+      if(item->isMemberOf(FXMETACLASS(HinListItem)))
+        dynamic_cast<HinListItem*>(item)->owned=TRUE;
       return self->appendItem(item,notify);
       }
   }
@@ -237,8 +237,8 @@ public:
   %extend {
     /// Prepend a [possibly subclassed] item to the list
     FXint prependItem(FXListItem* item,FXbool notify=FALSE){
-      if(item->isMemberOf(FXMETACLASS(FXRbListItem)))
-        dynamic_cast<FXRbListItem*>(item)->owned=TRUE;
+      if(item->isMemberOf(FXMETACLASS(HinListItem)))
+        dynamic_cast<HinListItem*>(item)->owned=TRUE;
       return self->prependItem(item,notify);
       }
   }
@@ -262,7 +262,7 @@ public:
       self->removeItem(index,notify);
 
       // Now zero-out pointers held by still-alive Ruby objects
-      FXRbUnregisterRubyObj(item);
+      HinUnregisterRubyObj(item);
       }
 
     /// Remove all items from list
@@ -275,7 +275,7 @@ public:
       self->clearItems(notify);
 
       // Now zero-out pointers held by still-alive Ruby objects
-      for(FXint j=0; j<items.no(); j++) FXRbUnregisterRubyObj(items[j]);
+      for(FXint j=0; j<items.no(); j++) HinUnregisterRubyObj(items[j]);
       }
   }
 

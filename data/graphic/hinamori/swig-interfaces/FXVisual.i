@@ -57,7 +57,7 @@ public:
   /// Construct default visual
   %extend {
     FXVisual(FXApp* a,FXuint flgs,FXuint d=32){
-      return new FXRbVisual(a,flgs,d);
+      return new HinVisual(a,flgs,d);
       }
     }
 

@@ -21,7 +21,7 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbTopWindow.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinTopWindow.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBTOPWINDOW_H
@@ -47,44 +47,44 @@ inline FXbool klass ## _close(klass* self,FXbool notify){ \
 
 #define IMPLEMENT_FXTOPWINDOW_STUBS(cls) \
   void cls::show(FXuint placement){ \
-    FXRbCallVoidMethod(this,"show",placement); \
+    HinCallVoidMethod(this,"show",placement); \
     } \
   FXbool cls::maximize(FXbool notify){ \
-    return FXRbCallBoolMethod(this,"maximize",notify); \
+    return HinCallBoolMethod(this,"maximize",notify); \
     } \
   FXbool cls::minimize(FXbool notify){ \
-    return FXRbCallBoolMethod(this,"minimize",notify); \
+    return HinCallBoolMethod(this,"minimize",notify); \
     } \
   FXbool cls::restore(FXbool notify){ \
-    return FXRbCallBoolMethod(this,"restore",notify); \
+    return HinCallBoolMethod(this,"restore",notify); \
     } \
   FXbool cls::close(FXbool notify){ \
-    return FXRbCallBoolMethod(this,"close",notify); \
+    return HinCallBoolMethod(this,"close",notify); \
     }
 
 
-class FXRbTopWindow : public FXTopWindow {
-  FXDECLARE(FXRbTopWindow)
+class HinTopWindow : public FXTopWindow {
+  FXDECLARE(HinTopWindow)
 protected:
-  FXRbTopWindow(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
-#include "FXRbTopWindowVirtuals.h"
+  HinTopWindow(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
+#include "HinTopWindowVirtuals.h"
 public:
   // Construct unowned top-level window
-  FXRbTopWindow(FXApp* a,const FXString& name,FXIcon *ic,FXIcon *mi,FXuint opts,FXint x,FXint y,FXint w,FXint h,FXint pl,FXint pr,FXint pt,FXint pb,FXint hs,FXint vs) : FXTopWindow(a,name,ic,mi,opts,x,y,w,h,pl,pr,pt,pb,hs,vs){}
+  HinTopWindow(FXApp* a,const FXString& name,FXIcon *ic,FXIcon *mi,FXuint opts,FXint x,FXint y,FXint w,FXint h,FXint pl,FXint pr,FXint pt,FXint pb,FXint hs,FXint vs) : FXTopWindow(a,name,ic,mi,opts,x,y,w,h,pl,pr,pt,pb,hs,vs){}
 
   // Construct owned top-level window
-  FXRbTopWindow(FXWindow* owner,const FXString& name,FXIcon *ic,FXIcon *mi,FXuint opts,FXint x,FXint y,FXint w,FXint h,FXint pl,FXint pr,FXint pt,FXint pb,FXint hs,FXint vs) : FXTopWindow(owner,name,ic,mi,opts,x,y,w,h,pl,pr,pt,pb,hs,vs){}
+  HinTopWindow(FXWindow* owner,const FXString& name,FXIcon *ic,FXIcon *mi,FXuint opts,FXint x,FXint y,FXint w,FXint h,FXint pl,FXint pr,FXint pt,FXint pb,FXint hs,FXint vs) : FXTopWindow(owner,name,ic,mi,opts,x,y,w,h,pl,pr,pt,pb,hs,vs){}
 
   // Mark dependencies for the GC
   static void markfunc(FXTopWindow* top);
 
   // Destructor
-  virtual ~FXRbTopWindow(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinTopWindow(){
+    HinUnregisterRubyObj(this);
     }
   };
 

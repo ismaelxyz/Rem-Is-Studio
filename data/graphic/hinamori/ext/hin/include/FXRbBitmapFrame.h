@@ -21,7 +21,7 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbBitmapFrame.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinBitmapFrame.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBBITMAPFRAME_H
@@ -31,25 +31,25 @@
 #include "FXBitmapFrame.h"
 #endif
 
-class FXRbBitmapFrame : public FXBitmapFrame {
-  FXDECLARE(FXRbBitmapFrame)
+class HinBitmapFrame : public FXBitmapFrame {
+  FXDECLARE(HinBitmapFrame)
 protected:
-  FXRbBitmapFrame(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
+  HinBitmapFrame(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
 public:
 
   /// Construct bitmap frame and pass it an bitmap
-  FXRbBitmapFrame(FXComposite* p,FXBitmap *bmp,FXuint opts=FRAME_SUNKEN|FRAME_THICK,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=0,FXint pr=0,FXint pt=0,FXint pb=0) : FXBitmapFrame(p,bmp,opts,x,y,w,h,pl,pr,pt,pb) {}
+  HinBitmapFrame(FXComposite* p,FXBitmap *bmp,FXuint opts=FRAME_SUNKEN|FRAME_THICK,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=0,FXint pr=0,FXint pt=0,FXint pb=0) : FXBitmapFrame(p,bmp,opts,x,y,w,h,pl,pr,pt,pb) {}
 
   // Mark dependencies for the GC
   static void markfunc(FXBitmapFrame* self);
 
   /// Destroy the widget, but do not destroy the bitmap
-  virtual ~FXRbBitmapFrame(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinBitmapFrame(){
+    HinUnregisterRubyObj(this);
     }
   };
 

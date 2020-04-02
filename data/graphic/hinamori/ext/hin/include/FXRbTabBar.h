@@ -21,7 +21,7 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbTabBar.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinTabBar.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBTABBAR_H
@@ -35,26 +35,26 @@ inline void klass ## _setCurrent(klass* self,FXint panel,FXbool notify){ \
 
 #define IMPLEMENT_FXTABBAR_STUBS(cls) \
   void cls::setCurrent(FXint panel,FXbool notify){ \
-    FXRbCallVoidMethod(this,"setCurrent",panel,notify); \
+    HinCallVoidMethod(this,"setCurrent",panel,notify); \
     }
 
 
-class FXRbTabBar : public FXTabBar {
-  FXDECLARE(FXRbTabBar)
+class HinTabBar : public FXTabBar {
+  FXDECLARE(HinTabBar)
 protected:
-  FXRbTabBar(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
-#include "FXRbTabBarVirtuals.h"
+  HinTabBar(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
+#include "HinTabBarVirtuals.h"
 public:
   /// Construct a tab bar
-  FXRbTabBar(FXComposite* p,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=TABBOOK_NORMAL,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=DEFAULT_SPACING,FXint pr=DEFAULT_SPACING,FXint pt=DEFAULT_SPACING,FXint pb=DEFAULT_SPACING) : FXTabBar(p,tgt,sel,opts,x,y,w,h,pl,pr,pt,pb){}
+  HinTabBar(FXComposite* p,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=TABBOOK_NORMAL,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=DEFAULT_SPACING,FXint pr=DEFAULT_SPACING,FXint pt=DEFAULT_SPACING,FXint pb=DEFAULT_SPACING) : FXTabBar(p,tgt,sel,opts,x,y,w,h,pl,pr,pt,pb){}
 
   // Destructor
-  virtual ~FXRbTabBar(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinTabBar(){
+    HinUnregisterRubyObj(this);
     }
 
   // Mark dependencies for the GC

@@ -21,33 +21,33 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbRGBImage.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinRGBImage.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBRGBIMAGE_H
 #define FXRBRGBIMAGE_H
 
-class FXRbRGBImage : public FXRGBImage {
-  FXDECLARE(FXRbRGBImage)
+class HinRGBImage : public FXRGBImage {
+  FXDECLARE(HinRGBImage)
 protected:
-  FXRbRGBImage(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbImageVirtuals.h"
+  HinRGBImage(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinImageVirtuals.h"
 public:
   /// Construct image from memory stream formatted in IRIS-RGB format
-  FXRbRGBImage(FXApp* a,const void *pix=NULL,FXuint opts=0,FXint w=1,FXint h=1) : FXRGBImage(a,pix,opts,w,h){
-    FXRbRegisterAppSensitiveObject(this);
+  HinRGBImage(FXApp* a,const void *pix=NULL,FXuint opts=0,FXint w=1,FXint h=1) : FXRGBImage(a,pix,opts,w,h){
+    HinRegisterAppSensitiveObject(this);
     }
 
   // Mark dependencies for the GC
   static void markfunc(FXRGBImage* self);
 
   // Destructor
-  virtual ~FXRbRGBImage(){
-    FXRbUnregisterRubyObj(this);
-    FXRbUnregisterAppSensitiveObject(this);
+  virtual ~HinRGBImage(){
+    HinUnregisterRubyObj(this);
+    HinUnregisterAppSensitiveObject(this);
     }
   };
 

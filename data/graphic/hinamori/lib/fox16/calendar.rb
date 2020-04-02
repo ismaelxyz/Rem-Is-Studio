@@ -16,7 +16,7 @@
 # backward or forward a year at a time.
 #
 
-require 'fox16/colors'
+require 'hin16/colors'
 
 module Fox
 

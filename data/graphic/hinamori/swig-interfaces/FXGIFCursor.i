@@ -39,7 +39,7 @@ public:
     * 32x32 pixels.
     */
     FXGIFCursor(FXApp* a,const void* pix,FXint hx=-1,FXint hy=-1){
-      return new FXRbGIFCursor(a,pix,hx,hy);
+      return new HinGIFCursor(a,pix,hx,hy);
       }
     }
 
@@ -67,7 +67,7 @@ bool fxsaveGIF(FXStream& store,const FXColor *data,FXint width,FXint height,FXbo
     FXint height;
     if(fxloadGIF(store,data,width,height)){
       VALUE ary=rb_ary_new();
-      rb_ary_push(ary,FXRbMakeColorArray(data,width,height));
+      rb_ary_push(ary,HinMakeColorArray(data,width,height));
       FXFREE(&data);
       rb_ary_push(ary,to_ruby(width));
       rb_ary_push(ary,to_ruby(height));

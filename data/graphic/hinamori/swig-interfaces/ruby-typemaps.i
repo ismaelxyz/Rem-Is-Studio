@@ -293,7 +293,7 @@ inline void* to_FXEvent(VALUE obj){
 
 /* Convert a Ruby FXIcon reference to a pointer to an FXIcon */
 %typemap(in) void* PTR_ICON(void *tmp) {
-  tmp = FXRbConvertPtr($input, FXRbTypeQuery("FXIcon *"));
+  tmp = HinConvertPtr($input, HinTypeQuery("FXIcon *"));
   $1 = (void *) &tmp;
 }
 
@@ -323,7 +323,7 @@ inline void* to_FXEvent(VALUE obj){
 %typemap(in) void* PTR_IVAL "$1 = reinterpret_cast<void*>(static_cast<FXival>(NUM2LONG($input)));";
 
 /* Convert a Ruby instance (type varies) into the appropriate void pointer */
-%typemap(in) void* PTR_MAGIC "$1 = FXRbGetExpectedData(self, arg3, $input);";
+%typemap(in) void* PTR_MAGIC "$1 = HinGetExpectedData(self, arg3, $input);";
 
 /* Convert a Ruby instance into a void pointer to a C++ NULL */
 %typemap(in) void* PTR_NULL "$1 = 0;";
@@ -332,7 +332,7 @@ inline void* to_FXEvent(VALUE obj){
 %typemap(in) void* PTR_OBJECT "SWIG_ConvertPtr($input,&$1,SWIGTYPE_p_FXObject,1);";
 
 /* Convert a Ruby FXPoint instance into a pointer to a C++ FXPoint */
-%typemap(in) void* PTR_POINT "$1 = FXRbConvertPtr($input, FXRbTypeQuery(\"FXPoint *\"));";
+%typemap(in) void* PTR_POINT "$1 = HinConvertPtr($input, HinTypeQuery(\"FXPoint *\"));";
 
 /* Convert a Ruby number into a pointer to an FXdouble */
 %typemap(in) void* PTR_PDOUBLE(FXdouble value) {
@@ -416,7 +416,7 @@ inline void* to_FXEvent(VALUE obj){
 /* Output typemap for FXObject instances */
 %typemap(out) FXObject * {
     swig_type_info *ty = SWIG_TypeDynamicCast($1_descriptor, (void **) &$1);
-    $result = FXRbGetRubyObj($1, ty);
+    $result = HinGetRubyObj($1, ty);
 }
 
 /* Output typemap for FXAccelTable instances */
@@ -432,7 +432,7 @@ inline void* to_FXEvent(VALUE obj){
 %typemap(out) FXButton * = FXObject *;
 
 /* Output typemap for FXChore instances */
-%typemap(out) FXChore* "$result = FXRbGetRubyObj($1, \"$1_ltype\");";
+%typemap(out) FXChore* "$result = HinGetRubyObj($1, \"$1_ltype\");";
 %nodefaultctor FXChore;
 
 /* Output typemap for FXComposite instances */
@@ -445,13 +445,13 @@ inline void* to_FXEvent(VALUE obj){
 %typemap(out) FXDragCorner * = FXObject *;
 
 /* Output typemap for FXFileAssoc instances */
-%typemap(out) FXFileAssoc* "$result = FXRbGetRubyObj($1, \"$1_ltype\");";
+%typemap(out) FXFileAssoc* "$result = HinGetRubyObj($1, \"$1_ltype\");";
 
 /* Output typemap for FXFileDict instances */
 %typemap(out) FXFileDict * = FXObject *;
 
 /* Output typemap for FXFoldingItem instances */
-%typemap(out) FXFoldingItem* "$result = FXRbGetRubyObj($1, \"$1_ltype\");";
+%typemap(out) FXFoldingItem* "$result = HinGetRubyObj($1, \"$1_ltype\");";
 
 /* Output typemap for FXFont instances */
 %typemap(out) FXFont * = FXObject *;
@@ -459,9 +459,9 @@ inline void* to_FXEvent(VALUE obj){
 /* Output typemap for FXFontDesc instances */
 %typemap(out) FXFontDesc {
     FXFontDesc* resultptr = new FXFontDesc($1);
-    $result = FXRbGetRubyObj(resultptr, "FXFontDesc *");
+    $result = HinGetRubyObj(resultptr, "FXFontDesc *");
 }
-%typemap(out) FXFontDesc* "$result = FXRbGetRubyObj($1, \"$1_ltype\");";
+%typemap(out) FXFontDesc* "$result = HinGetRubyObj($1, \"$1_ltype\");";
 
 /* Output typemap for FXGLObject instances */
 %typemap(out) FXGLObject* = FXObject *;
@@ -481,38 +481,38 @@ inline void* to_FXEvent(VALUE obj){
 /* Output typemap for FXMat4f instances */
 %typemap(out) FXMat4f {
     FXMat4f* resultptr = new FXMat4f($1);
-    $result = FXRbGetRubyObj(resultptr, "FXMat4f *");
+    $result = HinGetRubyObj(resultptr, "FXMat4f *");
 }
-%typemap(out) FXMat4f& "$result = FXRbGetRubyObj($1, \"$1_ltype\");";
+%typemap(out) FXMat4f& "$result = HinGetRubyObj($1, \"$1_ltype\");";
 
 /* Output typemap for FXVec2d instances */
-%typemap(out) FXVec2d* "$result = FXRbGetRubyObj($1, \"$1_ltype\");";
-%typemap(out) FXVec2d& "$result = FXRbGetRubyObj($1, \"$1_ltype\");";
+%typemap(out) FXVec2d* "$result = HinGetRubyObj($1, \"$1_ltype\");";
+%typemap(out) FXVec2d& "$result = HinGetRubyObj($1, \"$1_ltype\");";
 
 /* Output typemap for FXVec2f instances */
-%typemap(out) FXVec2f* "$result = FXRbGetRubyObj($1, \"$1_ltype\");";
-%typemap(out) FXVec2f& "$result = FXRbGetRubyObj($1, \"$1_ltype\");";
+%typemap(out) FXVec2f* "$result = HinGetRubyObj($1, \"$1_ltype\");";
+%typemap(out) FXVec2f& "$result = HinGetRubyObj($1, \"$1_ltype\");";
 
 /* Output typemap for FXVec3f instances */
 %typemap(out) FXVec3f {
     FXVec3f* resultptr = new FXVec3f($1);
-    $result = FXRbGetRubyObj(resultptr, "FXVec3f *");
+    $result = HinGetRubyObj(resultptr, "FXVec3f *");
 }
-%typemap(out) FXVec3f*       "$result = FXRbGetRubyObj($1, \"$1_ltype\");";
+%typemap(out) FXVec3f*       "$result = HinGetRubyObj($1, \"$1_ltype\");";
 %typemap(out) const FXVec3f& {
     FXVec3f* resultptr = new FXVec3f(*$1);
-    $result = FXRbGetRubyObj(resultptr, "FXVec3f *");
+    $result = HinGetRubyObj(resultptr, "FXVec3f *");
 }
 
 /* Output typemap for FXVec4f instances */
 %typemap(out) FXVec4f {
     FXVec4f* resultptr = new FXVec4f($1);
-    $result = FXRbGetRubyObj(resultptr, "FXVec4f *");
+    $result = HinGetRubyObj(resultptr, "FXVec4f *");
 }
-%typemap(out) FXVec4f* "$result = FXRbGetRubyObj($1, \"$1_ltype\");";
+%typemap(out) FXVec4f* "$result = HinGetRubyObj($1, \"$1_ltype\");";
 %typemap(out) const FXVec4f& {
     FXVec4f* resultptr = new FXVec4f(*$1);
-    $result = FXRbGetRubyObj(resultptr, "FXVec4f *");
+    $result = HinGetRubyObj(resultptr, "FXVec4f *");
 }
 
 /* Output typemap for FXIcon instances */
@@ -527,9 +527,9 @@ inline void* to_FXEvent(VALUE obj){
 /* Output typemap for FXLight instances */
 %typemap(out) FXLight {
     FXLight *resultptr = new FXLight($1);
-    $result = FXRbGetRubyObj(resultptr, "FXLight *");
+    $result = HinGetRubyObj(resultptr, "FXLight *");
 }
-%typemap(out) FXLight* "$result = FXRbGetRubyObj($1, \"$1_ltype\");";
+%typemap(out) FXLight* "$result = HinGetRubyObj($1, \"$1_ltype\");";
 
 /* Output typemap for FXListItem instances */
 %typemap(out) FXListItem * = FXObject *;
@@ -537,7 +537,7 @@ inline void* to_FXEvent(VALUE obj){
 /* Output typemap for FXMaterial instances */
 %typemap(out) FXMaterial {
     FXMaterial *resultptr = new FXMaterial($1);
-    $result = FXRbGetRubyObj(resultptr, "FXMaterial *");
+    $result = HinGetRubyObj(resultptr, "FXMaterial *");
 }
 
 /* Output typemap for FXMDIChild instances */
@@ -547,7 +547,7 @@ inline void* to_FXEvent(VALUE obj){
 %typemap(out) FXOption * = FXObject *;
 
 /* Output typemap for FXPoint instances */
-%typemap(out) FXPoint* "$result = FXRbGetRubyObj($1, \"$1_ltype\");";
+%typemap(out) FXPoint* "$result = HinGetRubyObj($1, \"$1_ltype\");";
 
 /* Output typemap for FXPopup instances */
 %typemap(out) FXPopup * = FXObject *;
@@ -555,37 +555,37 @@ inline void* to_FXEvent(VALUE obj){
 /* Output typemap for FXPrinter instances */
 %typemap(out) FXPrinter {
     FXPrinter *resultptr = new FXPrinter($1);
-    $result = FXRbGetRubyObj(resultptr, "FXPrinter *");
+    $result = HinGetRubyObj(resultptr, "FXPrinter *");
 }
 
 /* Output typemap for FXQuatf instances */
 %typemap(out) FXQuatf {
     FXQuatf *resultptr = new FXQuatf($1);
-    $result = FXRbGetRubyObj(resultptr, "FXQuatf *");
+    $result = HinGetRubyObj(resultptr, "FXQuatf *");
 }
-%typemap(out) FXQuatf& "$result = FXRbGetRubyObj($1, \"$1_ltype\");";
+%typemap(out) FXQuatf& "$result = HinGetRubyObj($1, \"$1_ltype\");";
 
 /* Output typemap for FXRangef instances */
 %typemap(out) FXRangef {
     FXRangef* resultptr = new FXRangef($1);
-    $result = FXRbGetRubyObj(resultptr, "FXRangef *");
+    $result = HinGetRubyObj(resultptr, "FXRangef *");
 }
-%typemap(out) FXRangef& "$result = FXRbGetRubyObj($1, \"$1_ltype\");";
+%typemap(out) FXRangef& "$result = HinGetRubyObj($1, \"$1_ltype\");";
 
 /* Output typemap for FXRectangle instances */
-%typemap(out) FXRectangle*, FXRectangle&, const FXRectangle& "$result = FXRbGetRubyObj($1, \"$1_ltype\");";
+%typemap(out) FXRectangle*, FXRectangle&, const FXRectangle& "$result = HinGetRubyObj($1, \"$1_ltype\");";
 %typemap(out) FXRectangle {
     FXRectangle* resultptr = new FXRectangle($1);
-    $result = FXRbGetRubyObj(resultptr, "FXRectangle *");
+    $result = HinGetRubyObj(resultptr, "FXRectangle *");
 }
 
 /* Output typemap for FXRegion instances */
 %typemap(out) FXRegion {
     FXRegion* resultptr = new FXRegion($1);
-    $result = FXRbGetRubyObj(resultptr, "FXRegion *");
+    $result = HinGetRubyObj(resultptr, "FXRegion *");
 }
-%typemap(out) FXRegion&       "$result = FXRbGetRubyObj($1, \"$1_ltype\");";
-%typemap(out) const FXRegion& "$result = FXRbGetRubyObj($1, \"$1_ltype\");";
+%typemap(out) FXRegion&       "$result = HinGetRubyObj($1, \"$1_ltype\");";
+%typemap(out) const FXRegion& "$result = HinGetRubyObj($1, \"$1_ltype\");";
 
 /* Output typemap for FXRegistry instances */
 %typemap(out) FXRegistry& = FXObject *;
@@ -597,13 +597,13 @@ inline void* to_FXEvent(VALUE obj){
 %typemap(out) FXScrollBar * = FXObject *;
 
 /* Output typemap for FXSize instances */
-%typemap(out) FXSize* "$result = FXRbGetRubyObj($1, \"$1_ltype\");";
+%typemap(out) FXSize* "$result = HinGetRubyObj($1, \"$1_ltype\");";
 
 /* Output typemap for FXStatusLine instances */
 %typemap(out) FXStatusLine * = FXObject *;
 
 /* Output typemap for FXStream instances */
-%typemap(out) FXStream* "$result = FXRbGetRubyObj($1, \"$1_ltype\");";
+%typemap(out) FXStream* "$result = HinGetRubyObj($1, \"$1_ltype\");";
 
 /* Output typemap for FXStringDict instances */
 %typemap(out) FXStringDict * = FXObject *;
@@ -612,13 +612,13 @@ inline void* to_FXEvent(VALUE obj){
 %typemap(out) FXTableItem * = FXObject *;
 
 /* Output typemap for FXTablePos instances */
-// %typemap(out) FXTablePos* "$result = FXRbGetRubyObj($1, \"$1_ltype\");";
+// %typemap(out) FXTablePos* "$result = HinGetRubyObj($1, \"$1_ltype\");";
 
 /* Output typemap for FXTableRange instances */
-// %typemap(out) FXTableRange* "$result = FXRbGetRubyObj($1, \"$1_ltype\");";
+// %typemap(out) FXTableRange* "$result = HinGetRubyObj($1, \"$1_ltype\");";
 
 /* Output typemap for FXTimer instances */
-%typemap(out) FXTimer* "$result = FXRbGetRubyObj($1, \"$1_ltype\");";
+%typemap(out) FXTimer* "$result = HinGetRubyObj($1, \"$1_ltype\");";
 %nodefaultctor FXTimer;
 
 /* Output typemap for FXTreeItem instances */
@@ -630,7 +630,7 @@ inline void* to_FXEvent(VALUE obj){
 /* Output typemap for FXViewport instances */
 %typemap(out) FXViewport {
     FXViewport* resultptr = new FXViewport($1);
-    $result = FXRbGetRubyObj(resultptr, "FXViewport *");
+    $result = HinGetRubyObj(resultptr, "FXViewport *");
 }
 
 /* Output typemap for FXVisual instances */
@@ -640,7 +640,7 @@ inline void* to_FXEvent(VALUE obj){
 %typemap(out) FXWindow * = FXObject *;
 
 /* Output typemap for NotifyHeader instances */
-// %typemap(out) NotifyHeader* "$result = FXRbGetRubyObj($1, \"$1_ltype\");";
+// %typemap(out) NotifyHeader* "$result = HinGetRubyObj($1, \"$1_ltype\");";
 
 // Extract a C array (points) and its length (npoints) from a Ruby array of FXPoint instances
 %typecheck(SWIG_TYPECHECK_OBJECT_ARRAY) (const FXPoint* points, FXuint npoints) {

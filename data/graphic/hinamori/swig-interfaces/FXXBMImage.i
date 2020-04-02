@@ -38,7 +38,7 @@ public:
   /// Construct image from memory stream formatted in X Bitmap format
   %extend {
     FXXBMImage(FXApp* a,const FXuchar *pixels=NULL,const FXuchar *mask=NULL,FXuint opts=0,FXint w=1,FXint h=1){
-      return new FXRbXBMImage(a,pixels,mask,opts,w,h);
+      return new HinXBMImage(a,pixels,mask,opts,w,h);
       }
     }
 
@@ -62,7 +62,7 @@ DECLARE_FXIMAGE_VIRTUALS(FXXBMImage)
   VALUE fxloadXBM(const FXuchar *pix,const FXuchar *msk,FXint width,FXint height){
     FXColor* data;
     if(fxloadXBM(data,pix,msk,width,height)){
-      VALUE obj=FXRbMakeColorArray(data,width,height);
+      VALUE obj=HinMakeColorArray(data,width,height);
       FXFREE(&data);
       return obj;
       }
@@ -82,7 +82,7 @@ DECLARE_FXIMAGE_VIRTUALS(FXXBMImage)
     FXint width,height,hotx,hoty;
     if(fxloadXBM(store,data,width,height,hotx,hoty)){
       VALUE ary=rb_ary_new();
-      rb_ary_push(ary,FXRbMakeColorArray(data,width,height));
+      rb_ary_push(ary,HinMakeColorArray(data,width,height));
       FXFREE(&data);
       rb_ary_push(ary,to_ruby(width));
       rb_ary_push(ary,to_ruby(height));

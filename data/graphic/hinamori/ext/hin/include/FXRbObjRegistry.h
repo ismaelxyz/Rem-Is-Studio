@@ -28,7 +28,7 @@ extern "C" {
   struct swig_type_info;
 }
 
-class FXRbObjRegistry {
+class HinObjRegistry {
 
   /**
   * The FXRuby_Objects hash table basically maps C++ objects to Ruby instances.
@@ -61,7 +61,7 @@ class FXRbObjRegistry {
 
 public:
 
-  FXRbObjRegistry();
+  HinObjRegistry();
 
   /**
   * NewBorrowedObj() is a wrapper around SWIG_Ruby_NewPointerObj() that also
@@ -73,18 +73,18 @@ public:
   VALUE NewBorrowedObj(void *ptr,swig_type_info* ty);
 
   // Register this Ruby class instance
-  void RegisterRubyObj(VALUE rubyObj,const void* foxObj);
+  void RegisterRubyObj(VALUE rubyObj,const void* hinObj);
 
-  void UnregisterRubyObj(const void* foxObj, bool alsoOwned);
+  void UnregisterRubyObj(const void* hinObj, bool alsoOwned);
 
   /**
   * Return the registered Ruby class instance associated with this
   * FOX object, or Qnil if not found.
   */
-  VALUE GetRubyObj(const void *foxObj,bool alsoBorrowed, bool in_gc_mark=false);
+  VALUE GetRubyObj(const void *hinObj,bool alsoBorrowed, bool in_gc_mark=false);
 
   /**
-  * FXRbIsBorrowed() returns true if the specified C++ object is one that
+  * HinIsBorrowed() returns true if the specified C++ object is one that
   * FOX owns (i.e. it's borrowed).
   */
   bool IsBorrowed(void* ptr);
@@ -92,7 +92,7 @@ public:
   bool SetInGC(const void* ptr, bool enabled);
   bool IsInGC(const void* ptr);
 
-  static FXRbObjRegistry main;
+  static HinObjRegistry main;
 };
 
 #endif

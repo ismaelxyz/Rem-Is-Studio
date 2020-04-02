@@ -35,16 +35,16 @@ __END__
 #ifndef FXRBACCELTABLE_H
 #define FXRBACCELTABLE_H
 
-class FXRbAccelTable : public FXAccelTable {
-    FXDECLARE(FXRbAccelTable)
-  #include "FXRbObjectVirtuals.h"
+class HinAccelTable : public FXAccelTable {
+    FXDECLARE(HinAccelTable)
+  #include "HinObjectVirtuals.h"
   public:
     // Constructor
-    FXRbAccelTable(){}
+    HinAccelTable(){}
   
     // Destructor
-    virtual ~FXRbAccelTable(){
-      FXRbUnregisterRubyObj(this);
+    virtual ~HinAccelTable(){
+      HinUnregisterRubyObj(this);
       }
   
     // Mark dependencies for GC
@@ -53,5 +53,5 @@ class FXRbAccelTable : public FXAccelTable {
   
   #endif
   inline VALUE to_ruby(FXFontDesc* fontdesc){
-    return FXRbNewPointerObj(reinterpret_cast<void*>(fontdesc),FXRbTypeQuery("FXFontDesc *"));
+    return HinNewPointerObj(reinterpret_cast<void*>(fontdesc),HinTypeQuery("FXFontDesc *"));
     }

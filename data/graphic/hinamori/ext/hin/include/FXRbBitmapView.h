@@ -21,24 +21,24 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbBitmapView.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinBitmapView.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBBITMAPVIEW_H
 #define FXRBBITMAPVIEW_H
 
-class FXRbBitmapView : public FXBitmapView {
-  FXDECLARE(FXRbBitmapView)
+class HinBitmapView : public FXBitmapView {
+  FXDECLARE(HinBitmapView)
 protected:
-  FXRbBitmapView(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
-#include "FXRbScrollAreaVirtuals.h"
+  HinBitmapView(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
+#include "HinScrollAreaVirtuals.h"
 public:
   /// Construct a scroll window
-  FXRbBitmapView(FXComposite* p,FXBitmap* bmp=NULL,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=0,FXint x=0,FXint y=0,FXint w=0,FXint h=0) : FXBitmapView(p,bmp,tgt,sel,opts,x,y,w,h){}
+  HinBitmapView(FXComposite* p,FXBitmap* bmp=NULL,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=0,FXint x=0,FXint y=0,FXint w=0,FXint h=0) : FXBitmapView(p,bmp,tgt,sel,opts,x,y,w,h){}
 
   // Mark dependencies for the GC
   static void markfunc(FXBitmapView* self);
@@ -47,9 +47,9 @@ public:
   static void unregisterOwnedObjects(FXBitmapView *pBitmapView);
 
   // Destructor
-  virtual ~FXRbBitmapView(){
-    FXRbBitmapView::unregisterOwnedObjects(this);
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinBitmapView(){
+    HinBitmapView::unregisterOwnedObjects(this);
+    HinUnregisterRubyObj(this);
     }
   };
 

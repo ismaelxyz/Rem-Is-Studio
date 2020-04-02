@@ -65,7 +65,7 @@ public:
   %extend {
     // Initialize with this value
     FXDataTarget(VALUE value=Qnil,FXObject* tgt=NULL,FXSelector sel=0){
-      return new FXRbDataTarget(value,tgt,sel);
+      return new HinDataTarget(value,tgt,sel);
       }
     }
 
@@ -90,14 +90,14 @@ public:
   %extend {
     // Return its current value
     VALUE getValue() const {
-      FXASSERT(self->isMemberOf(FXMETACLASS(FXRbDataTarget)));
-      return dynamic_cast<const FXRbDataTarget*>(self)->getValue();
+      FXASSERT(self->isMemberOf(FXMETACLASS(HinDataTarget)));
+      return dynamic_cast<const HinDataTarget*>(self)->getValue();
       }
 
     // Set new value
     void setValue(VALUE value){
-      FXASSERT(self->isMemberOf(FXMETACLASS(FXRbDataTarget)));
-      dynamic_cast<FXRbDataTarget*>(self)->setValue(value);
+      FXASSERT(self->isMemberOf(FXMETACLASS(HinDataTarget)));
+      dynamic_cast<HinDataTarget*>(self)->setValue(value);
       }
     }
 

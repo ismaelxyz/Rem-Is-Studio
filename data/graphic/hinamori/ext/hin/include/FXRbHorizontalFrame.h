@@ -21,30 +21,30 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbHorizontalFrame.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinHorizontalFrame.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBHORIZONTALFRAME_H
 #define FXRBHORIZONTALFRAME_H
 
-class FXRbHorizontalFrame : public FXHorizontalFrame {
-  FXDECLARE(FXRbHorizontalFrame)
+class HinHorizontalFrame : public FXHorizontalFrame {
+  FXDECLARE(HinHorizontalFrame)
 protected:
-  FXRbHorizontalFrame(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
+  HinHorizontalFrame(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
 public:
   /// Construct a horizontal frame layout manager
-  FXRbHorizontalFrame(FXComposite *p,FXuint opts=0,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=DEFAULT_SPACING,FXint pr=DEFAULT_SPACING,FXint pt=DEFAULT_SPACING,FXint pb=DEFAULT_SPACING,FXint hs=DEFAULT_SPACING,FXint vs=DEFAULT_SPACING) : FXHorizontalFrame(p,opts,x,y,w,h,pl,pr,pt,pb,hs,vs){}
+  HinHorizontalFrame(FXComposite *p,FXuint opts=0,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=DEFAULT_SPACING,FXint pr=DEFAULT_SPACING,FXint pt=DEFAULT_SPACING,FXint pb=DEFAULT_SPACING,FXint hs=DEFAULT_SPACING,FXint vs=DEFAULT_SPACING) : FXHorizontalFrame(p,opts,x,y,w,h,pl,pr,pt,pb,hs,vs){}
 
   // Mark dependencies for the GC
   static void markfunc(FXHorizontalFrame* self);
 
   // Destructor
-  virtual ~FXRbHorizontalFrame(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinHorizontalFrame(){
+    HinUnregisterRubyObj(this);
     }
   };
 

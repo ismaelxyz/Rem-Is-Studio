@@ -37,7 +37,7 @@ LIBTIFF_VERSION = ENV['LIBTIFF_VERSION'] || '4.1.0'
 LIBTIFF_SOURCE_URI = "http://download.osgeo.org/libtiff/tiff-#{LIBTIFF_VERSION}.tar.gz"
 
 LIBFOX_VERSION            = ENV['LIBFOX_VERSION'] || '1.6.57'
-LIBFOX_SOURCE_URI         = "http://fox-toolkit.org/ftp/fox-#{LIBFOX_VERSION}.tar.gz"
+LIBFOX_SOURCE_URI         = "http://hin-toolkit.org/ftp/hin-#{LIBFOX_VERSION}.tar.gz"
 
 LIBFXSCINTILLA_VERSION            = ENV['LIBFXSCINTILLA_VERSION'] || '2.28.0'
 LIBFXSCINTILLA_SOURCE_URI         = "http://download.savannah.gnu.org/releases/fxscintilla/fxscintilla-#{LIBFXSCINTILLA_VERSION}.tar.gz"
@@ -172,7 +172,7 @@ def do_rake_compiler_setup
       recipe.cook_and_activate
     end
 
-    libfox_recipe = BuildRecipe.new("libfox", LIBFOX_VERSION, [LIBFOX_SOURCE_URI]).tap do |recipe|
+    libhin_recipe = BuildRecipe.new("libhin", LIBFOX_VERSION, [LIBFOX_SOURCE_URI]).tap do |recipe|
       debug = enable_config("debug")
       recipe.configure_options += [
         "--without-xft",
@@ -186,7 +186,7 @@ def do_rake_compiler_setup
 
     libfxscintills_recipe = BuildRecipe.new("libfxscintilla", LIBFXSCINTILLA_VERSION, [LIBFXSCINTILLA_SOURCE_URI]).tap do |recipe|
       class << recipe
-        attr_accessor :libfox_path
+        attr_accessor :libhin_path
         def mk
           "#{ENV['MAKE'] || "make"}"
         end
@@ -201,22 +201,22 @@ def do_rake_compiler_setup
           execute "compile_lexers", "cd lexers && #{mk}"
           execute "compile_lexlib", "cd lexlib && #{mk}"
           execute "compile_src", "cd src && #{mk}"
-          execute "compile_fox", "cd fox && #{mk} libfxscintilla_la_LDFLAGS='-version-info 23:0:3 -export-dynamic -no-undefined -L#{libfox_path}/lib -lFOX-1.6'"
+          execute "compile_hin", "cd hin && #{mk} libfxscintilla_la_LDFLAGS='-version-info 23:0:3 -export-dynamic -no-undefined -L#{libhin_path}/lib -lFOX-1.6'"
         end
 
         def install
-          execute "install", "cd fox && #{mk} install && cd ../include && #{mk} install"
+          execute "install", "cd hin && #{mk} install && cd ../include && #{mk} install"
         end
       end
-      recipe.libfox_path = libfox_recipe.path
+      recipe.libhin_path = libhin_recipe.path
 
       recipe.configure_options += [
-        "PKG_CONFIG_PATH=#{libfox_recipe.path}/lib/pkgconfig",
+        "PKG_CONFIG_PATH=#{libhin_recipe.path}/lib/pkgconfig",
       ]
       recipe.cook_and_activate
     end
 
-    dir_config('libfox', "#{libfox_recipe.path}/include/fox-1.6", "#{libfox_recipe.path}/lib")
+    dir_config('libhin', "#{libhin_recipe.path}/include/hin-1.6", "#{libhin_recipe.path}/lib")
     dir_config('libfxscintilla', "#{libfxscintills_recipe.path}/include/fxscintilla", "#{libfxscintills_recipe.path}/lib")
 
     gcc_shared_dlls = %w[libwinpthread-1.dll libgcc_s_dw2-1.dll libgcc_s_sjlj-1.dll libgcc_s_seh-1.dll libstdc++-6.dll]
@@ -225,10 +225,10 @@ def do_rake_compiler_setup
       res = `#{cmd}`.chomp
       next if dll == res
       puts "#{cmd} => #{res}"
-      FileUtils.cp `#{cmd}`.chomp, "#{libfox_recipe.path}/bin/", verbose: true
+      FileUtils.cp `#{cmd}`.chomp, "#{libhin_recipe.path}/bin/", verbose: true
     end
 
-    CONFIG['CXX'] = "#{libfox_recipe.host}-g++" # CXX setting must be prefixed for cross build
+    CONFIG['CXX'] = "#{libhin_recipe.host}-g++" # CXX setting must be prefixed for cross build
     CONFIG['CC'] += "\nCXX=#{CONFIG['CXX']}" # Hack CXX into Makefile for cross compilation
     CONFIG['LDSHARED'].gsub!('gcc', 'g++') # ensure C++ linker is used, so that libstdc++ is linked static
     $LDFLAGS += " -s" # remove symbol table informations from shared lib
@@ -282,10 +282,10 @@ def do_rake_compiler_setup
   have_func('rb_during_gc')
 end
 
-# This directive processes the "--with-fox-include" and "--with-fox-lib"
+# This directive processes the "--with-hin-include" and "--with-hin-lib"
 # command line switches and modifies the CFLAGS and LDFLAGS accordingly.
 
-dir_config('fox', '/usr/local/include/fox-1.6', '/usr/local/lib')
+dir_config('hin', '/usr/local/include/hin-1.6', '/usr/local/lib')
 
 # This directive processes the "--with-fxscintilla-include" and
 # "--with-fxscintilla-lib" command line switches and modifies the CFLAGS
@@ -294,8 +294,8 @@ dir_config('fox', '/usr/local/include/fox-1.6', '/usr/local/lib')
 dir_config('fxscintilla', '/usr/local/include/fxscintilla', '/usr/local/lib')
 
 unless enable_config("win32-cross")
-  checking_for "fox per pkg-config" do
-    pkg_config("fox")
+  checking_for "hin per pkg-config" do
+    pkg_config("hin")
   end
 
   #
@@ -339,4 +339,4 @@ end
 
 # Last step: build the makefile
 create_header
-create_makefile("fox16_c")
+create_makefile("hin16_c")

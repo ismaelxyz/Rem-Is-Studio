@@ -21,33 +21,33 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbBMPIcon.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinBMPIcon.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBBMPICON_H
 #define FXRBBMPICON_H
 
-class FXRbBMPIcon : public FXBMPIcon {
-  FXDECLARE(FXRbBMPIcon)
+class HinBMPIcon : public FXBMPIcon {
+  FXDECLARE(HinBMPIcon)
 protected:
-  FXRbBMPIcon(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbImageVirtuals.h"
+  HinBMPIcon(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinImageVirtuals.h"
 public:
   /// Construct icon from memory stream formatted in Microsoft bitmap format
-  FXRbBMPIcon(FXApp* a,const void *pix=NULL,FXColor clr=FXRGB(192,192,192),FXuint opts=0,FXint w=1,FXint h=1) : FXBMPIcon(a,pix,clr,opts,w,h){
-    FXRbRegisterAppSensitiveObject(this);
+  HinBMPIcon(FXApp* a,const void *pix=NULL,FXColor clr=FXRGB(192,192,192),FXuint opts=0,FXint w=1,FXint h=1) : FXBMPIcon(a,pix,clr,opts,w,h){
+    HinRegisterAppSensitiveObject(this);
     }
 
   // Mark dependencies for the GC
   static void markfunc(FXBMPIcon *icon);
 
   // Destructor
-  virtual ~FXRbBMPIcon(){
-    FXRbUnregisterRubyObj(this);
-    FXRbUnregisterAppSensitiveObject(this);
+  virtual ~HinBMPIcon(){
+    HinUnregisterRubyObj(this);
+    HinUnregisterAppSensitiveObject(this);
     }
   };
 

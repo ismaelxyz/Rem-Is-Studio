@@ -21,36 +21,36 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbIcon.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinIcon.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBICON_H
 #define FXRBICON_H
 
-class FXRbIcon : public FXIcon {
-  FXDECLARE(FXRbIcon)
+class HinIcon : public FXIcon {
+  FXDECLARE(HinIcon)
 protected:
-  FXRbIcon(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbImageVirtuals.h"
+  HinIcon(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinImageVirtuals.h"
 public:
   /**
   * Create an icon with an initial pixel buffer pix, a transparent color clr,
   * and options as in FXImage.
   */
-  FXRbIcon(FXApp* a,const FXColor *pix=NULL,FXColor clr=0,FXuint opts=0,FXint w=1,FXint h=1) : FXIcon(a,pix,clr,opts,w,h){
-    FXRbRegisterAppSensitiveObject(this);
+  HinIcon(FXApp* a,const FXColor *pix=NULL,FXColor clr=0,FXuint opts=0,FXint w=1,FXint h=1) : FXIcon(a,pix,clr,opts,w,h){
+    HinRegisterAppSensitiveObject(this);
     }
 
   // Mark dependencies for the GC
   static void markfunc(FXIcon* icon);
 
   // Destructor
-  virtual ~FXRbIcon(){
-    FXRbUnregisterRubyObj(this);
-    FXRbUnregisterAppSensitiveObject(this);
+  virtual ~HinIcon(){
+    HinUnregisterRubyObj(this);
+    HinUnregisterAppSensitiveObject(this);
     }
   };
 

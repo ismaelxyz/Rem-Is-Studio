@@ -36,12 +36,12 @@ public:
   %extend {
     /// Construct Directory Dialog Box
     FXDirDialog(FXWindow* owner,const FXString& name,FXuint opts=0,FXint x=0,FXint y=0,FXint w=400,FXint h=300){
-      return new FXRbDirDialog(owner,name,opts,x,y,w,h);
+      return new HinDirDialog(owner,name,opts,x,y,w,h);
       }
 
     /// Construct free-floating Directory Dialog box
     FXDirDialog(FXApp* a,const FXString& name,FXuint opts=0,FXint x=0,FXint y=0,FXint w=400,FXint h=300){
-      return new FXRbDirDialog(a,name,opts,x,y,w,h);
+      return new HinDirDialog(a,name,opts,x,y,w,h);
       }
     }
 

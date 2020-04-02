@@ -21,7 +21,7 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbFoldingList.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinFoldingList.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBFOLDINGLIST_H
@@ -74,61 +74,61 @@ inline void klass ## _destroy(klass* self){ \
 
 #define IMPLEMENT_FXFOLDINGITEM_STUBS(cls) \
   void cls::setText(const FXString& txt){ \
-    FXRbCallVoidMethod(this,"setText",txt); \
+    HinCallVoidMethod(this,"setText",txt); \
     } \
   void cls::setOpenIcon(FXIcon* icn,FXbool owned){ \
-    FXRbCallVoidMethod(this,"setOpenIcon",icn,owned); \
+    HinCallVoidMethod(this,"setOpenIcon",icn,owned); \
     } \
   void cls::setClosedIcon(FXIcon* icn,FXbool owned){ \
-    FXRbCallVoidMethod(this,"setClosedIcon",icn,owned); \
+    HinCallVoidMethod(this,"setClosedIcon",icn,owned); \
     } \
   void cls::setFocus(FXbool focus){ \
-    FXRbCallVoidMethod(this,"setFocus",focus); \
+    HinCallVoidMethod(this,"setFocus",focus); \
     } \
   void cls::setSelected(FXbool selected){ \
-    FXRbCallVoidMethod(this,"setSelected",selected); \
+    HinCallVoidMethod(this,"setSelected",selected); \
     } \
   void cls::setOpened(FXbool opened){ \
-    FXRbCallVoidMethod(this,"setOpened",opened); \
+    HinCallVoidMethod(this,"setOpened",opened); \
     } \
   void cls::setExpanded(FXbool expanded){ \
-    FXRbCallVoidMethod(this,"setExpanded",expanded); \
+    HinCallVoidMethod(this,"setExpanded",expanded); \
     } \
   void cls::setEnabled(FXbool enabled){ \
-    FXRbCallVoidMethod(this,"setEnabled",enabled); \
+    HinCallVoidMethod(this,"setEnabled",enabled); \
     } \
   void cls::setDraggable(FXbool draggable){ \
-    FXRbCallVoidMethod(this,"setDraggable",draggable); \
+    HinCallVoidMethod(this,"setDraggable",draggable); \
     } \
   FXint cls::getWidth(const FXFoldingList* list) const { \
-    return FXRbCallIntMethod(this,"getWidth",list); \
+    return HinCallIntMethod(this,"getWidth",list); \
     } \
   FXint cls::getHeight(const FXFoldingList* list) const { \
-    return FXRbCallIntMethod(this,"getHeight",list); \
+    return HinCallIntMethod(this,"getHeight",list); \
     } \
   void cls::create(){ \
-    FXRbCallVoidMethod(this,"create"); \
+    HinCallVoidMethod(this,"create"); \
     } \
   void cls::detach(){ \
-    FXRbCallVoidMethod(this,"detach"); \
+    HinCallVoidMethod(this,"detach"); \
     } \
   void cls::destroy(){ \
-    FXRbCallVoidMethod(this,"destroy"); \
+    HinCallVoidMethod(this,"destroy"); \
     }
 
 
-class FXRbFoldingItem : public FXFoldingItem {
-  FXDECLARE(FXRbFoldingItem)
+class HinFoldingItem : public FXFoldingItem {
+  FXDECLARE(HinFoldingItem)
 protected:
-  FXRbFoldingItem(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbFoldingItemVirtuals.h"
+  HinFoldingItem(){}
+#include "HinObjectVirtuals.h"
+#include "HinFoldingItemVirtuals.h"
 public:
   // Is this tree item owned by an FXFoldingList yet?
   FXbool owned;
 public:
   // Constructor
-  FXRbFoldingItem(const FXString& text,FXIcon* oi=NULL,FXIcon* ci=NULL,void* ptr=NULL) : FXFoldingItem(text,oi,ci,ptr),owned(FALSE){}
+  HinFoldingItem(const FXString& text,FXIcon* oi=NULL,FXIcon* ci=NULL,void* ptr=NULL) : FXFoldingItem(text,oi,ci,ptr),owned(FALSE){}
 
   // Mark dependencies for the GC
   static void markfunc(FXFoldingItem* self);
@@ -137,8 +137,8 @@ public:
   static void freefunc(FXFoldingItem* self);
 
   // Destructor
-  virtual ~FXRbFoldingItem(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinFoldingItem(){
+    HinUnregisterRubyObj(this);
     }
   };
 
@@ -189,62 +189,62 @@ inline void klass ## _setCurrentItem(klass *self,FXFoldingItem *item,FXbool noti
 
 #define IMPLEMENT_FXFOLDINGLIST_STUBS(cls) \
   FXFoldingItem * cls::getItemAt(FXint x,FXint y) const { \
-    return FXRbCallFoldingItemMethod(this,"getItemAt",x,y); \
+    return HinCallFoldingItemMethod(this,"getItemAt",x,y); \
     } \
   void cls::makeItemVisible(FXFoldingItem *item) { \
-    FXRbCallVoidMethod(this,"makeItemVisible",item); \
+    HinCallVoidMethod(this,"makeItemVisible",item); \
     } \
   FXbool cls::enableItem(FXFoldingItem *item) { \
-    return FXRbCallBoolMethod(this,"enableItem",item); \
+    return HinCallBoolMethod(this,"enableItem",item); \
     } \
   FXbool cls::disableItem(FXFoldingItem *item) { \
-    return FXRbCallBoolMethod(this,"disableItem",item); \
+    return HinCallBoolMethod(this,"disableItem",item); \
     } \
   FXbool cls::selectItem(FXFoldingItem *item,FXbool notify) { \
-    return FXRbCallBoolMethod(this,"selectItem",item,notify); \
+    return HinCallBoolMethod(this,"selectItem",item,notify); \
     } \
   FXbool cls::deselectItem(FXFoldingItem *item,FXbool notify) { \
-    return FXRbCallBoolMethod(this,"deselectItem",item,notify); \
+    return HinCallBoolMethod(this,"deselectItem",item,notify); \
     } \
   FXbool cls::toggleItem(FXFoldingItem *item,FXbool notify) { \
-    return FXRbCallBoolMethod(this,"toggleItem",item,notify); \
+    return HinCallBoolMethod(this,"toggleItem",item,notify); \
     } \
   FXbool cls::extendSelection(FXFoldingItem *item,FXbool notify) { \
-    return FXRbCallBoolMethod(this,"extendSelection",item,notify); \
+    return HinCallBoolMethod(this,"extendSelection",item,notify); \
     } \
   FXbool cls::killSelection(FXbool notify) { \
-    return FXRbCallBoolMethod(this,"killSelection",notify); \
+    return HinCallBoolMethod(this,"killSelection",notify); \
     } \
   FXbool cls::openItem(FXFoldingItem *item,FXbool notify) { \
-    return FXRbCallBoolMethod(this,"openItem",item,notify); \
+    return HinCallBoolMethod(this,"openItem",item,notify); \
     } \
   FXbool cls::closeItem(FXFoldingItem *item,FXbool notify) { \
-    return FXRbCallBoolMethod(this,"closeItem",item,notify); \
+    return HinCallBoolMethod(this,"closeItem",item,notify); \
     } \
   FXbool cls::collapseTree(FXFoldingItem *item,FXbool notify) { \
-    return FXRbCallBoolMethod(this,"collapseTree",item,notify); \
+    return HinCallBoolMethod(this,"collapseTree",item,notify); \
     } \
   FXbool cls::expandTree(FXFoldingItem *item,FXbool notify) { \
-    return FXRbCallBoolMethod(this,"expandTree",item,notify); \
+    return HinCallBoolMethod(this,"expandTree",item,notify); \
     } \
   void cls::setCurrentItem(FXFoldingItem *item,FXbool notify) { \
-    FXRbCallVoidMethod(this,"setCurrentItem",item,notify); \
+    HinCallVoidMethod(this,"setCurrentItem",item,notify); \
     }
 
-class FXRbFoldingList : public FXFoldingList {
-  FXDECLARE(FXRbFoldingList)
+class HinFoldingList : public FXFoldingList {
+  FXDECLARE(HinFoldingList)
 protected:
-  FXRbFoldingList(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
-#include "FXRbScrollAreaVirtuals.h"
-#include "FXRbFoldingListVirtuals.h"
+  HinFoldingList(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
+#include "HinScrollAreaVirtuals.h"
+#include "HinFoldingListVirtuals.h"
 public:
   /// Construct a folding tree list with nvis visible items; the list is initially empty
-  FXRbFoldingList(FXComposite *p,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=FOLDINGLIST_NORMAL,FXint x=0,FXint y=0,FXint w=0,FXint h=0) : FXFoldingList(p,tgt,sel,opts,x,y,w,h){
-    setSortFunc(FXRbFoldingList::sortFunc);
+  HinFoldingList(FXComposite *p,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=FOLDINGLIST_NORMAL,FXint x=0,FXint y=0,FXint w=0,FXint h=0) : FXFoldingList(p,tgt,sel,opts,x,y,w,h){
+    setSortFunc(HinFoldingList::sortFunc);
     }
 
   // Sort function stand-in
@@ -261,9 +261,9 @@ public:
   static void enumerateItems(FXFoldingItem* fm,FXFoldingItem* to,FXObjectListOf<FXFoldingItem>& items);
 
   // Destructor
-  virtual ~FXRbFoldingList(){
-    FXRbFoldingList::unregisterOwnedObjects(this);
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinFoldingList(){
+    HinFoldingList::unregisterOwnedObjects(this);
+    HinUnregisterRubyObj(this);
     }
   };
 

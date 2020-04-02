@@ -21,25 +21,25 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbRegistry.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinRegistry.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBREGISTRY_H
 #define FXRBREGISTRY_H
 
-class FXRbRegistry : public FXRegistry {
-  FXDECLARE(FXRbRegistry)
-#include "FXRbObjectVirtuals.h"
+class HinRegistry : public FXRegistry {
+  FXDECLARE(HinRegistry)
+#include "HinObjectVirtuals.h"
 public:
   // Constructor
-  FXRbRegistry(const FXString& akey=FXString::null,const FXString& vkey=FXString::null) : FXRegistry(akey,vkey){}
+  HinRegistry(const FXString& akey=FXString::null,const FXString& vkey=FXString::null) : FXRegistry(akey,vkey){}
 
   // Mark dependencies for the GC
   static void markfunc(FXRegistry* self);
 
   // Destructor
-  virtual ~FXRbRegistry(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinRegistry(){
+    HinUnregisterRubyObj(this);
     }
   };
 

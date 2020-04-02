@@ -21,25 +21,25 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbDebugTarget.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinDebugTarget.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBDEBUGTARGET_H
 #define FXRBDEBUGTARGET_H
 
-class FXRbDebugTarget : public FXDebugTarget {
-  FXDECLARE(FXRbDebugTarget)
-#include "FXRbObjectVirtuals.h"
+class HinDebugTarget : public FXDebugTarget {
+  FXDECLARE(HinDebugTarget)
+#include "HinObjectVirtuals.h"
 public:
   // Construct a debug target
-  FXRbDebugTarget(){}
+  HinDebugTarget(){}
 
   // Mark dependencies for the GC
   static void markfunc(FXDebugTarget* self);
 
   // Destructor
-  virtual ~FXRbDebugTarget(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinDebugTarget(){
+    HinUnregisterRubyObj(this);
     }
   };
 

@@ -47,7 +47,7 @@ public:
   %extend {
     /// Construct packer layout manager
     FXPacker(FXComposite *p,FXuint opts=0,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=DEFAULT_SPACING,FXint pr=DEFAULT_SPACING,FXint pt=DEFAULT_SPACING,FXint pb=DEFAULT_SPACING,FXint hs=DEFAULT_SPACING,FXint vs=DEFAULT_SPACING){
-      return new FXRbPacker(p,opts,x,y,w,h,pl,pr,pt,pb,hs,vs);
+      return new HinPacker(p,opts,x,y,w,h,pl,pr,pt,pb,hs,vs);
       }
     }
 

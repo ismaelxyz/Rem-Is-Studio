@@ -35,7 +35,7 @@ public:
   %extend {
     /// Construct status bar with or without a drag corner
     FXStatusBar(FXComposite* p,FXuint opts=0,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=3,FXint pr=3,FXint pt=2,FXint pb=2,FXint hs=4,FXint vs=0){
-      return new FXRbStatusBar(p,opts,x,y,w,h,pl,pr,pt,pb,hs,vs);
+      return new HinStatusBar(p,opts,x,y,w,h,pl,pr,pt,pb,hs,vs);
       }
     }
 

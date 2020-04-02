@@ -21,27 +21,27 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbSeparator.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinSeparator.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBSEPARATOR_H
 #define FXRBSEPARATOR_H
 
-class FXRbSeparator : public FXSeparator {
-  FXDECLARE(FXRbSeparator)
+class HinSeparator : public FXSeparator {
+  FXDECLARE(HinSeparator)
 protected:
-  FXRbSeparator(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
+  HinSeparator(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
 public:
   /// Constructor
-  FXRbSeparator(FXComposite* p,FXuint opts=SEPARATOR_GROOVE|LAYOUT_FILL_X,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=1,FXint pr=1,FXint pt=0,FXint pb=0) : FXSeparator(p,opts,x,y,w,h,pl,pr,pt,pb){}
+  HinSeparator(FXComposite* p,FXuint opts=SEPARATOR_GROOVE|LAYOUT_FILL_X,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=1,FXint pr=1,FXint pt=0,FXint pb=0) : FXSeparator(p,opts,x,y,w,h,pl,pr,pt,pb){}
 
   // Destructor
-  virtual ~FXRbSeparator(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinSeparator(){
+    HinUnregisterRubyObj(this);
     }
 
   // Mark dependencies for the GC
@@ -49,21 +49,21 @@ public:
   };
 
 
-class FXRbHorizontalSeparator : public FXHorizontalSeparator {
-  FXDECLARE(FXRbHorizontalSeparator)
+class HinHorizontalSeparator : public FXHorizontalSeparator {
+  FXDECLARE(HinHorizontalSeparator)
 protected:
-  FXRbHorizontalSeparator(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
+  HinHorizontalSeparator(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
 public:
   /// Constructor
-  FXRbHorizontalSeparator(FXComposite* p,FXuint opts=SEPARATOR_GROOVE|LAYOUT_FILL_X,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=1,FXint pr=1,FXint pt=0,FXint pb=0) : FXHorizontalSeparator(p,opts,x,y,w,h,pl,pr,pt,pb){}
+  HinHorizontalSeparator(FXComposite* p,FXuint opts=SEPARATOR_GROOVE|LAYOUT_FILL_X,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=1,FXint pr=1,FXint pt=0,FXint pb=0) : FXHorizontalSeparator(p,opts,x,y,w,h,pl,pr,pt,pb){}
 
   // Destructor
-  virtual ~FXRbHorizontalSeparator(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinHorizontalSeparator(){
+    HinUnregisterRubyObj(this);
     }
 
   // Mark dependencies for the GC
@@ -71,21 +71,21 @@ public:
   };
 
 
-class FXRbVerticalSeparator : public FXVerticalSeparator {
-  FXDECLARE(FXRbVerticalSeparator)
+class HinVerticalSeparator : public FXVerticalSeparator {
+  FXDECLARE(HinVerticalSeparator)
 protected:
-  FXRbVerticalSeparator(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
+  HinVerticalSeparator(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
 public:
   /// Constructor
-  FXRbVerticalSeparator(FXComposite* p,FXuint opts=SEPARATOR_GROOVE|LAYOUT_FILL_Y,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=0,FXint pr=0,FXint pt=1,FXint pb=1) : FXVerticalSeparator(p,opts,x,y,w,h,pl,pr,pt,pb){}
+  HinVerticalSeparator(FXComposite* p,FXuint opts=SEPARATOR_GROOVE|LAYOUT_FILL_Y,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=0,FXint pr=0,FXint pt=1,FXint pb=1) : FXVerticalSeparator(p,opts,x,y,w,h,pl,pr,pt,pb){}
 
   // Destructor
-  virtual ~FXRbVerticalSeparator(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinVerticalSeparator(){
+    HinUnregisterRubyObj(this);
     }
 
   // Mark dependencies for the GC

@@ -21,37 +21,37 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbGLContext.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinGLContext.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBGLCONTEXT_H
 #define FXRBGLCONTEXT_H
 
-class FXRbGLContext : public FXGLContext {
-  FXDECLARE(FXRbGLContext)
+class HinGLContext : public FXGLContext {
+  FXDECLARE(HinGLContext)
 protected:
-  FXRbGLContext(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
+  HinGLContext(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
 public:
   /**
    * Construct an OpenGL context with its own private display list.
    */
-  FXRbGLContext(FXApp* a,FXGLVisual *vis) : FXGLContext(a,vis){}
+  HinGLContext(FXApp* a,FXGLVisual *vis) : FXGLContext(a,vis){}
 
   /**
    * Construct an OpenGL context sharing display lists with an
    * existing GL context.
    */
-  FXRbGLContext(FXApp* a,FXGLVisual *vis,FXGLContext *shared) :
+  HinGLContext(FXApp* a,FXGLVisual *vis,FXGLContext *shared) :
     FXGLContext(a,vis,shared){}
 
   // Mark dependencies for the GC
   static void markfunc(FXGLContext* self);
 
   // Destructor
-  virtual ~FXRbGLContext(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinGLContext(){
+    HinUnregisterRubyObj(this);
     }
   };
 

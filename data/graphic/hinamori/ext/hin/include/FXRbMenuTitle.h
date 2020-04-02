@@ -21,27 +21,27 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbMenuTitle.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinMenuTitle.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBMENUTITLE_H
 #define FXRBMENUTITLE_H
 
-class FXRbMenuTitle : public FXMenuTitle {
-  FXDECLARE(FXRbMenuTitle)
+class HinMenuTitle : public FXMenuTitle {
+  FXDECLARE(HinMenuTitle)
 protected:
-  FXRbMenuTitle(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
+  HinMenuTitle(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
 public:
   /// Constructor
-  FXRbMenuTitle(FXComposite* p,const FXString& text,FXIcon* ic=NULL,FXPopup* pup=NULL,FXuint opts=0) : FXMenuTitle(p,text,ic,pup,opts){}
+  HinMenuTitle(FXComposite* p,const FXString& text,FXIcon* ic=NULL,FXPopup* pup=NULL,FXuint opts=0) : FXMenuTitle(p,text,ic,pup,opts){}
 
   // Destructor
-  virtual ~FXRbMenuTitle(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinMenuTitle(){
+    HinUnregisterRubyObj(this);
     }
 
   // Mark dependencies for the GC

@@ -64,7 +64,7 @@ public:
   %extend {
     /// Construct button with text and icon
     FXButton(FXComposite* p,const FXString& text,FXIcon* ic=NULL,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=BUTTON_NORMAL,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=DEFAULT_PAD,FXint pr=DEFAULT_PAD,FXint pt=DEFAULT_PAD,FXint pb=DEFAULT_PAD){
-      return new FXRbButton(p,text,ic,tgt,sel,opts,x,y,w,h,pl,pr,pt,pb);
+      return new HinButton(p,text,ic,tgt,sel,opts,x,y,w,h,pl,pr,pt,pb);
       }
     }
 

@@ -54,7 +54,7 @@ public:
   %extend {
     /// Construct a matrix layout manager with n rows or columns
     FXMatrix(FXComposite *p,FXint n=1,FXuint opts=MATRIX_BY_ROWS,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=DEFAULT_SPACING,FXint pr=DEFAULT_SPACING,FXint pt=DEFAULT_SPACING,FXint pb=DEFAULT_SPACING,FXint hs=DEFAULT_SPACING,FXint vs=DEFAULT_SPACING){
-      return new FXRbMatrix(p,n,opts,x,y,w,h,pl,pr,pt,pb,hs,vs);
+      return new HinMatrix(p,n,opts,x,y,w,h,pl,pr,pt,pb,hs,vs);
       }
     }
 

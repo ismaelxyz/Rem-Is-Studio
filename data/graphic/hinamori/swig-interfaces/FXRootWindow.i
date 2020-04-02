@@ -28,7 +28,7 @@ public:
   /// Construct root window
   %extend {
     FXRootWindow(FXApp* a,FXVisual* vis){
-      return new FXRbRootWindow(a,vis);
+      return new HinRootWindow(a,vis);
       }
     }
 

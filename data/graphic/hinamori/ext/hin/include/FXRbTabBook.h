@@ -21,28 +21,28 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbTabBook.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinTabBook.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBTABBOOK_H
 #define FXRBTABBOOK_H
 
-class FXRbTabBook : public FXTabBook {
-  FXDECLARE(FXRbTabBook)
+class HinTabBook : public FXTabBook {
+  FXDECLARE(HinTabBook)
 protected:
-  FXRbTabBook(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
-#include "FXRbTabBarVirtuals.h"
+  HinTabBook(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
+#include "HinTabBarVirtuals.h"
 public:
   /// Construct tab book
-  FXRbTabBook(FXComposite* p,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=TABBOOK_NORMAL,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=DEFAULT_SPACING,FXint pr=DEFAULT_SPACING,FXint pt=DEFAULT_SPACING,FXint pb=DEFAULT_SPACING) : FXTabBook(p,tgt,sel,opts,x,y,w,h,pl,pr,pt,pb){}
+  HinTabBook(FXComposite* p,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=TABBOOK_NORMAL,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=DEFAULT_SPACING,FXint pr=DEFAULT_SPACING,FXint pt=DEFAULT_SPACING,FXint pb=DEFAULT_SPACING) : FXTabBook(p,tgt,sel,opts,x,y,w,h,pl,pr,pt,pb){}
 
   // Destructor
-  virtual ~FXRbTabBook(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinTabBook(){
+    HinUnregisterRubyObj(this);
     }
 
   // Mark dependencies for the GC

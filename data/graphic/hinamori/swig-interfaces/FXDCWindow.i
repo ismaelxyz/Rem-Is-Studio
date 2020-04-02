@@ -29,9 +29,9 @@ class FXFont;
 class FXVisual;
 
 %exception FXDCWindow::FXDCWindow {
-  $action FXRbRegisterRubyObj(self, result);
+  $action HinRegisterRubyObj(self, result);
   if(rb_block_given_p()){
-    rb_ensure(VALUEFUNC(rb_yield), self, VALUEFUNC(FXRbDCWindow::endit), self);
+    rb_ensure(VALUEFUNC(rb_yield), self, VALUEFUNC(HinDCWindow::endit), self);
     }
 }
 
@@ -50,13 +50,13 @@ public:
     /// Construct for painting in response to expose;
     /// This sets the clip rectangle to the exposed rectangle
     FXDCWindow(FXDrawable* drawable,FXEvent* event){
-      return new FXRbDCWindow(drawable,event);
+      return new HinDCWindow(drawable,event);
       }
 
     /// Construct for normal drawing;
     /// This sets clip rectangle to the whole drawable
     FXDCWindow(FXDrawable* drawable){
-      return new FXRbDCWindow(drawable);
+      return new HinDCWindow(drawable);
       }
     }
 

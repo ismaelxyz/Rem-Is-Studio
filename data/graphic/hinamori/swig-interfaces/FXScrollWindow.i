@@ -45,7 +45,7 @@ public:
   /// Construct a scroll window
   %extend {
     FXScrollWindow(FXComposite* p,FXuint opts=0,FXint x=0,FXint y=0,FXint w=0,FXint h=0){
-      return new FXRbScrollWindow(p,opts,x,y,w,h);
+      return new HinScrollWindow(p,opts,x,y,w,h);
       }
     }
 

@@ -14,9 +14,9 @@ class Config
         @data_config_user = {}
         
         # @info_user: Internal Use Only, not doc.
-        @info_user = {'Name' => `whoami`.split('\\')[1], 'Language' => 'en',
-                      'ActivateLog' =>nil, 'Update' => nil, 'ReportError' => nil,
-                      'Mode' => nil}
+        @info_user = {'Name' => `whoami`.split('\\')[1].gsub("\n", ''), # apply in Sh and wind
+                      'Language' => 'en', 'ActivateLog' =>nil, 'Update' => nil,
+                      'ReportError' => nil, 'Mode' => nil}
     end
 
     def load_all()

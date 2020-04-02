@@ -85,7 +85,7 @@ public:
   %extend {
     // Construct new table item
     FXTableItem(const FXString& text,FXIcon* ic=NULL,void* ITEMDATA=NULL){
-      return new FXRbTableItem(text,ic,ITEMDATA);
+      return new HinTableItem(text,ic,ITEMDATA);
       }
     }
 
@@ -340,7 +340,7 @@ public:
   */
   %extend {
     FXTable(FXComposite* p,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=0,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=DEFAULT_MARGIN,FXint pr=DEFAULT_MARGIN,FXint pt=DEFAULT_MARGIN,FXint pb=DEFAULT_MARGIN){
-      return new FXRbTable(p,tgt,sel,opts,x,y,w,h,pl,pr,pt,pb);
+      return new HinTable(p,tgt,sel,opts,x,y,w,h,pl,pr,pt,pb);
       }
     }
 
@@ -433,8 +433,8 @@ public:
   %extend {
     /// Replace the item with a [possibly subclassed] item
     void setItem(FXint row,FXint col,FXTableItem* item,FXbool notify=FALSE){
-      if(item!=0 && item->isMemberOf(FXMETACLASS(FXRbTableItem))){
-        dynamic_cast<FXRbTableItem*>(item)->owned=TRUE;
+      if(item!=0 && item->isMemberOf(FXMETACLASS(HinTableItem))){
+        dynamic_cast<HinTableItem*>(item)->owned=TRUE;
         }
       self->setItem(row,col,item,notify);
       }
@@ -587,9 +587,9 @@ public:
   %extend {
     /// Modify cell text
     void setItemText(FXint r,FXint c,const FXString& text,FXbool notify=FALSE){
-      FXRbTableItem* item;
+      HinTableItem* item;
       self->setItemText(r,c,text,notify);
-      item=dynamic_cast<FXRbTableItem*>(self->getItem(r,c));
+      item=dynamic_cast<HinTableItem*>(self->getItem(r,c));
       if(item!=0){
         item->owned=TRUE;
         }
@@ -602,9 +602,9 @@ public:
   %extend {
     /// Modify cell icon, deleting the old icon if it was owned
     void setItemIcon(FXint r,FXint c,FXIcon* icon,FXbool notify=FALSE){
-      FXRbTableItem* item;
+      HinTableItem* item;
       self->setItemIcon(r,c,icon,notify);
-      item=dynamic_cast<FXRbTableItem*>(self->getItem(r,c));
+      item=dynamic_cast<HinTableItem*>(self->getItem(r,c));
       if(item!=0){
         item->owned=TRUE;
         }
@@ -617,9 +617,9 @@ public:
   %extend {
     /// Modify cell user-data
     void setItemData(FXint r,FXint c,VALUE ptr){
-      FXRbTableItem* item;
+      HinTableItem* item;
       self->setItemData(r,c,reinterpret_cast<void*>(ptr));
-      item=dynamic_cast<FXRbTableItem*>(self->getItem(r,c));
+      item=dynamic_cast<HinTableItem*>(self->getItem(r,c));
       if(item!=0){
         item->owned=TRUE;
         }

@@ -53,7 +53,7 @@ public:
       * with the server.
       */
     FXBitmap(FXApp* a,const void *pix=NULL,FXuint opts=0,FXint w=1,FXint h=1){
-      return new FXRbBitmap(a,pix,opts,w,h);
+      return new HinBitmap(a,pix,opts,w,h);
       }
     }
 

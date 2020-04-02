@@ -21,30 +21,30 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbDial.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinDial.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBDIAL_H
 #define FXRBDIAL_H
 
-class FXRbDial : public FXDial {
-  FXDECLARE(FXRbDial)
+class HinDial : public FXDial {
+  FXDECLARE(HinDial)
 protected:
-  FXRbDial(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
+  HinDial(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
 public:
   /// Construct a dial widget
-  FXRbDial(FXComposite *p,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=DIAL_NORMAL,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=DEFAULT_PAD,FXint pr=DEFAULT_PAD,FXint pt=DEFAULT_PAD,FXint pb=DEFAULT_PAD) : FXDial(p,tgt,sel,opts,x,y,w,h,pl,pr,pt,pb){}
+  HinDial(FXComposite *p,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=DIAL_NORMAL,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=DEFAULT_PAD,FXint pr=DEFAULT_PAD,FXint pt=DEFAULT_PAD,FXint pb=DEFAULT_PAD) : FXDial(p,tgt,sel,opts,x,y,w,h,pl,pr,pt,pb){}
 
   // Mark dependencies for the GC
   static void markfunc(FXDial* self);
 
   // Destructor
-  virtual ~FXRbDial(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinDial(){
+    HinUnregisterRubyObj(this);
     }
   };
 

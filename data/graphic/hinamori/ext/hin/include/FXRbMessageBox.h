@@ -21,32 +21,32 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbMessageBox.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinMessageBox.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBMESSAGEBOX_H
 #define FXRBMESSAGEBOX_H
 
-class FXRbMessageBox : public FXMessageBox {
-  FXDECLARE(FXRbMessageBox)
+class HinMessageBox : public FXMessageBox {
+  FXDECLARE(HinMessageBox)
 protected:
-  FXRbMessageBox(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
-#include "FXRbTopWindowVirtuals.h"
-#include "FXRbDialogBoxVirtuals.h"
+  HinMessageBox(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
+#include "HinTopWindowVirtuals.h"
+#include "HinDialogBoxVirtuals.h"
 public:
   /// Construct message box with given caption, icon, and message text
-  FXRbMessageBox(FXWindow* owner,const FXString& caption,const FXString& text,FXIcon* ic=NULL,FXuint opts=0,FXint x=0,FXint y=0) : FXMessageBox(owner,caption,text,ic,opts,x,y){}
+  HinMessageBox(FXWindow* owner,const FXString& caption,const FXString& text,FXIcon* ic=NULL,FXuint opts=0,FXint x=0,FXint y=0) : FXMessageBox(owner,caption,text,ic,opts,x,y){}
 
   /// Construct free-floating message box with given caption, icon, and message text
-  FXRbMessageBox(FXApp* a,const FXString& caption,const FXString& text,FXIcon* ic=NULL,FXuint opts=0,FXint x=0,FXint y=0) : FXMessageBox(a,caption,text,ic,opts,x,y){}
+  HinMessageBox(FXApp* a,const FXString& caption,const FXString& text,FXIcon* ic=NULL,FXuint opts=0,FXint x=0,FXint y=0) : FXMessageBox(a,caption,text,ic,opts,x,y){}
 
   // Destructor
-  virtual ~FXRbMessageBox(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinMessageBox(){
+    HinUnregisterRubyObj(this);
     }
 
   // Mark dependencies for the GC

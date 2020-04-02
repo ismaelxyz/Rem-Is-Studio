@@ -21,30 +21,30 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbGroupBox.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinGroupBox.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBGROUPBOX_H
 #define FXRBGROUPBOX_H
 
-class FXRbGroupBox : public FXGroupBox {
-  FXDECLARE(FXRbGroupBox)
+class HinGroupBox : public FXGroupBox {
+  FXDECLARE(HinGroupBox)
 protected:
-  FXRbGroupBox(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
+  HinGroupBox(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
 public:
   /// Construct group box layout manager
-  FXRbGroupBox(FXComposite* p,const FXString& text,FXuint opts=GROUPBOX_NORMAL,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=DEFAULT_SPACING,FXint pr=DEFAULT_SPACING,FXint pt=DEFAULT_SPACING,FXint pb=DEFAULT_SPACING,FXint hs=DEFAULT_SPACING,FXint vs=DEFAULT_SPACING) : FXGroupBox(p,text,opts,x,y,w,h,pl,pr,pt,pb,hs,vs){}
+  HinGroupBox(FXComposite* p,const FXString& text,FXuint opts=GROUPBOX_NORMAL,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=DEFAULT_SPACING,FXint pr=DEFAULT_SPACING,FXint pt=DEFAULT_SPACING,FXint pb=DEFAULT_SPACING,FXint hs=DEFAULT_SPACING,FXint vs=DEFAULT_SPACING) : FXGroupBox(p,text,opts,x,y,w,h,pl,pr,pt,pb,hs,vs){}
 
   // Mark dependencies for the GC
   static void markfunc(FXGroupBox* self);
 
   // Destructor
-  virtual ~FXRbGroupBox(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinGroupBox(){
+    HinUnregisterRubyObj(this);
     }
   };
 

@@ -21,31 +21,31 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbRecentFiles.h 2272 2005-12-02 02:11:23Z lyle $
+ * $Id: HinRecentFiles.h 2272 2005-12-02 02:11:23Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBRECENTFILES_H
 #define FXRBRECENTFILES_H
 
-class FXRbRecentFiles : public FXRecentFiles {
-  FXDECLARE(FXRbRecentFiles)
-#include "FXRbObjectVirtuals.h"
+class HinRecentFiles : public FXRecentFiles {
+  FXDECLARE(HinRecentFiles)
+#include "HinObjectVirtuals.h"
 public:
   /// Make new Recent Files Group using global application instance
-  FXRbRecentFiles(){}
+  HinRecentFiles(){}
 
   /// Make new recent files group with default groupname
-  FXRbRecentFiles(FXApp* a) : FXRecentFiles(a){}
+  HinRecentFiles(FXApp* a) : FXRecentFiles(a){}
 
   /// Make new Recent Files Group with groupname gp
-  FXRbRecentFiles(FXApp* a,const FXString& gp,FXObject *tgt=NULL,FXSelector sel=0) : FXRecentFiles(a,gp,tgt,sel){}
+  HinRecentFiles(FXApp* a,const FXString& gp,FXObject *tgt=NULL,FXSelector sel=0) : FXRecentFiles(a,gp,tgt,sel){}
 
   // Mark dependencies for the GC
   static void markfunc(FXRecentFiles* self);
 
   // Destructor
-  virtual ~FXRbRecentFiles(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinRecentFiles(){
+    HinUnregisterRubyObj(this);
     }
   };
 

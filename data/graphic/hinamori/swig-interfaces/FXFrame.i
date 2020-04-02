@@ -46,7 +46,7 @@ public:
   %extend {
     /// Construct frame window
     FXFrame(FXComposite* p,FXuint opts=FRAME_NORMAL,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=DEFAULT_PAD,FXint pr=DEFAULT_PAD,FXint pt=DEFAULT_PAD,FXint pb=DEFAULT_PAD){
-      return new FXRbFrame(p,opts,x,y,w,h,pl,pr,pt,pb);
+      return new HinFrame(p,opts,x,y,w,h,pl,pr,pt,pb);
       }
     }
 

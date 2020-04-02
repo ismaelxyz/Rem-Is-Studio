@@ -1,6 +1,6 @@
 require 'test/unit'
 require 'testcase'
-require 'fox16'
+require 'hin16'
 require 'fiddle'
 
 class TC_FXImage < Fox::TestCase

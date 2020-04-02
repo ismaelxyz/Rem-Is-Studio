@@ -31,7 +31,7 @@ public:
   %extend {
     /// Constructor
     FXMDIDeleteButton(FXComposite* p,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=FRAME_RAISED,FXint x=0,FXint y=0,FXint w=0,FXint h=0){
-      return new FXRbMDIDeleteButton(p,tgt,sel,opts,x,y,w,h);
+      return new HinMDIDeleteButton(p,tgt,sel,opts,x,y,w,h);
       }
     }
 
@@ -54,7 +54,7 @@ public:
   %extend {
     /// Constructor
     FXMDIRestoreButton(FXComposite* p,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=FRAME_RAISED,FXint x=0,FXint y=0,FXint w=0,FXint h=0){
-      return new FXRbMDIRestoreButton(p,tgt,sel,opts,x,y,w,h);
+      return new HinMDIRestoreButton(p,tgt,sel,opts,x,y,w,h);
       }
     }
 
@@ -77,7 +77,7 @@ public:
   %extend {
     /// Constructor
     FXMDIMaximizeButton(FXComposite* p,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=FRAME_RAISED,FXint x=0,FXint y=0,FXint w=0,FXint h=0){
-      return new FXRbMDIMaximizeButton(p,tgt,sel,opts,x,y,w,h);
+      return new HinMDIMaximizeButton(p,tgt,sel,opts,x,y,w,h);
       }
     }
 
@@ -100,7 +100,7 @@ public:
   %extend {
     /// Constructor
     FXMDIMinimizeButton(FXComposite* p,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=FRAME_RAISED,FXint x=0,FXint y=0,FXint w=0,FXint h=0){
-      return new FXRbMDIMinimizeButton(p,tgt,sel,opts,x,y,w,h);
+      return new HinMDIMinimizeButton(p,tgt,sel,opts,x,y,w,h);
       }
     }
 
@@ -123,7 +123,7 @@ public:
   %extend {
     /// Constructor
     FXMDIWindowButton(FXComposite* p,FXPopup* pup,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=0,FXint x=0,FXint y=0,FXint w=0,FXint h=0){
-      return new FXRbMDIWindowButton(p,pup,tgt,sel,opts,x,y,w,h);
+      return new HinMDIWindowButton(p,pup,tgt,sel,opts,x,y,w,h);
       }
     }
 
@@ -144,7 +144,7 @@ public:
   %extend {
     /// Construct MDI menu
     FXMDIMenu(FXWindow *owner,FXObject* tgt=NULL){
-      return new FXRbMDIMenu(owner,tgt);
+      return new HinMDIMenu(owner,tgt);
       }
     }
 

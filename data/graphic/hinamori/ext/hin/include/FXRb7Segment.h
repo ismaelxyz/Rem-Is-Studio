@@ -21,30 +21,30 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRb7Segment.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: Hin7Segment.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRB7SEGMENT_H
 #define FXRB7SEGMENT_H
 
-class FXRb7Segment : public FX7Segment {
-  FXDECLARE(FXRb7Segment)
+class Hin7Segment : public FX7Segment {
+  FXDECLARE(Hin7Segment)
 protected:
-  FXRb7Segment(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
+  Hin7Segment(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
 public:
   /// Construct label with given text and icon
-  FXRb7Segment(FXComposite* p,const FXString& text,FXuint opts=SEVENSEGMENT_NORMAL,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=DEFAULT_PAD,FXint pr=DEFAULT_PAD,FXint pt=DEFAULT_PAD,FXint pb=DEFAULT_PAD) : FX7Segment(p,text,opts,x,y,w,h,pl,pr,pt,pb){}
+  Hin7Segment(FXComposite* p,const FXString& text,FXuint opts=SEVENSEGMENT_NORMAL,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=DEFAULT_PAD,FXint pr=DEFAULT_PAD,FXint pt=DEFAULT_PAD,FXint pb=DEFAULT_PAD) : FX7Segment(p,text,opts,x,y,w,h,pl,pr,pt,pb){}
 
   // Mark dependencies for the GC
   static void markfunc(FX7Segment* label);
 
   // Destructor
-  virtual ~FXRb7Segment(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~Hin7Segment(){
+    HinUnregisterRubyObj(this);
     }
   };
 

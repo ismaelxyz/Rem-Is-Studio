@@ -38,7 +38,7 @@ public:
   %extend {
     /// Construct tri-state toggle button with three text labels, and three icons, one for each state
     FXTriStateButton(FXComposite* p,const FXString& text1,const FXString& text2,const FXString& text3,FXIcon* icon1=NULL,FXIcon* icon2=NULL,FXIcon* icon3=NULL,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=TOGGLEBUTTON_NORMAL,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=DEFAULT_PAD,FXint pr=DEFAULT_PAD,FXint pt=DEFAULT_PAD,FXint pb=DEFAULT_PAD){
-      return new FXRbTriStateButton(p,text1,text2,text3,icon1,icon2,icon3,tgt,sel,opts,x,y,w,h,pl,pr,pt,pb);
+      return new HinTriStateButton(p,text1,text2,text3,icon1,icon2,icon3,tgt,sel,opts,x,y,w,h,pl,pr,pt,pb);
     }
   }
 

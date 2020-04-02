@@ -42,12 +42,12 @@ public:
   %extend {
     /// Construct free-floating dialog
     FXDialogBox(FXApp* APP,const FXString& name,FXuint opts=DECOR_TITLE|DECOR_BORDER,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=10,FXint pr=10,FXint pt=10,FXint pb=10,FXint hs=4,FXint vs=4){
-      return new FXRbDialogBox(APP,name,opts,x,y,w,h,pl,pr,pt,pb,hs,vs);
+      return new HinDialogBox(APP,name,opts,x,y,w,h,pl,pr,pt,pb,hs,vs);
       }
 
     /// Construct dialog which will always float over the owner window
     FXDialogBox(FXWindow* OWNER,const FXString& name,FXuint opts=DECOR_TITLE|DECOR_BORDER,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=10,FXint pr=10,FXint pt=10,FXint pb=10,FXint hs=4,FXint vs=4){
-      return new FXRbDialogBox(OWNER,name,opts,x,y,w,h,pl,pr,pt,pb,hs,vs);
+      return new HinDialogBox(OWNER,name,opts,x,y,w,h,pl,pr,pt,pb,hs,vs);
       }
     }
 

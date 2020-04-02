@@ -27,7 +27,7 @@ public:
   /// Create memory store
   %extend {
     FXMemoryStream(const FXObject* cont=NULL){
-      return new FXRbMemoryStream(cont);
+      return new HinMemoryStream(cont);
       }
 
     /// Open memory store

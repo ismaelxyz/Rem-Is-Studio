@@ -36,7 +36,7 @@ public:
   %extend {
     /// Construct an image from memory stream formatted as GIF format
     FXGIFImage(FXApp* a,const void *pix=NULL,FXuint opts=0,FXint w=1,FXint h=1){
-      return new FXRbGIFImage(a,pix,opts,w,h);
+      return new HinGIFImage(a,pix,opts,w,h);
       }
     }
 

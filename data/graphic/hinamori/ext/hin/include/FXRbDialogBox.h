@@ -21,7 +21,7 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbDialogBox.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinDialogBox.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBDIALOGBOX_H
@@ -35,33 +35,33 @@ inline FXuint klass ## _execute_gvl(klass* self,FXuint placement){ \
 
 #define IMPLEMENT_FXDIALOGBOX_STUBS(cls) \
   FXuint cls::execute(FXuint placement){ \
-    return FXRbCallUIntMethod(this,"execute",placement); \
+    return HinCallUIntMethod(this,"execute",placement); \
     }
 
 
-class FXRbDialogBox : public FXDialogBox {
-  FXDECLARE(FXRbDialogBox)
+class HinDialogBox : public FXDialogBox {
+  FXDECLARE(HinDialogBox)
 protected:
-  FXRbDialogBox(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
-#include "FXRbTopWindowVirtuals.h"
-#include "FXRbDialogBoxVirtuals.h"
+  HinDialogBox(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
+#include "HinTopWindowVirtuals.h"
+#include "HinDialogBoxVirtuals.h"
 public:
   /// Construct free-floating dialog
-  FXRbDialogBox(FXApp* a,const FXString& name,FXuint opts=DECOR_TITLE|DECOR_BORDER,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=10,FXint pr=10,FXint pt=10,FXint pb=10,FXint hs=4,FXint vs=4) : FXDialogBox(a,name,opts,x,y,w,h,pl,pr,pt,pb,hs,vs){}
+  HinDialogBox(FXApp* a,const FXString& name,FXuint opts=DECOR_TITLE|DECOR_BORDER,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=10,FXint pr=10,FXint pt=10,FXint pb=10,FXint hs=4,FXint vs=4) : FXDialogBox(a,name,opts,x,y,w,h,pl,pr,pt,pb,hs,vs){}
 
   /// Construct dialog which will always float over the owner window
-  FXRbDialogBox(FXWindow* owner,const FXString& name,FXuint opts=DECOR_TITLE|DECOR_BORDER,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=10,FXint pr=10,FXint pt=10,FXint pb=10,FXint hs=4,FXint vs=4) : FXDialogBox(owner,name,opts,x,y,w,h,pl,pr,pt,pb,hs,vs){}
+  HinDialogBox(FXWindow* owner,const FXString& name,FXuint opts=DECOR_TITLE|DECOR_BORDER,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=10,FXint pr=10,FXint pt=10,FXint pb=10,FXint hs=4,FXint vs=4) : FXDialogBox(owner,name,opts,x,y,w,h,pl,pr,pt,pb,hs,vs){}
 
   // Mark dependencies for the GC
   static void markfunc(FXDialogBox* dlg);
 
   // Destructor
-  virtual ~FXRbDialogBox(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinDialogBox(){
+    HinUnregisterRubyObj(this);
     }
   };
 

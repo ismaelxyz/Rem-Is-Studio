@@ -1,6 +1,6 @@
 require 'test/unit'
-require 'fox16'
-require 'fox16/undolist'
+require 'hin16'
+require 'hin16/undolist'
 
 class DummyCommand < Fox::FXCommand
   def undo ; end

@@ -21,7 +21,7 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbImage.h 2336 2006-02-04 15:20:33Z lyle $
+ * $Id: HinImage.h 2336 2006-02-04 15:20:33Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBIMAGE_H
@@ -83,79 +83,79 @@ inline bool klass ## _loadPixels_gvl(klass* self,FXStream& store){ \
 
 #define IMPLEMENT_FXIMAGE_STUBS(cls) \
   void cls::restore(){ \
-    FXRbCallVoidMethod(this,"restore"); \
+    HinCallVoidMethod(this,"restore"); \
     } \
   void cls::render(){ \
-    FXRbCallVoidMethod(this,"render"); \
+    HinCallVoidMethod(this,"render"); \
     } \
   void cls::release(){ \
-    FXRbCallVoidMethod(this,"release"); \
+    HinCallVoidMethod(this,"release"); \
     } \
   void cls::scale(FXint w,FXint h,FXint quality){ \
-    FXRbCallVoidMethod(this,"scale",w,h,quality); \
+    HinCallVoidMethod(this,"scale",w,h,quality); \
     } \
   void cls::mirror(bool horizontal,bool vertical){ \
-    FXRbCallVoidMethod(this,"mirror",horizontal,vertical); \
+    HinCallVoidMethod(this,"mirror",horizontal,vertical); \
     } \
   void cls::rotate(FXint degrees){ \
-    FXRbCallVoidMethod(this,"rotate",degrees); \
+    HinCallVoidMethod(this,"rotate",degrees); \
     } \
   void cls::crop(FXint x,FXint y,FXint w,FXint h,FXColor color){ \
-    FXRbCallVoidMethod(this,"crop",x,y,w,h,color); \
+    HinCallVoidMethod(this,"crop",x,y,w,h,color); \
     } \
   void cls::fill(FXColor color){ \
-    FXRbCallVoidMethod(this,"fill",color); \
+    HinCallVoidMethod(this,"fill",color); \
     } \
   void cls::fade(FXColor color,FXint factor){ \
-    FXRbCallVoidMethod(this,"fade",color,factor); \
+    HinCallVoidMethod(this,"fade",color,factor); \
     } \
   void cls::xshear(FXint shear,FXColor clr){ \
-    FXRbCallVoidMethod(this,"xshear",shear,clr); \
+    HinCallVoidMethod(this,"xshear",shear,clr); \
     } \
   void cls::yshear(FXint shear,FXColor clr){ \
-    FXRbCallVoidMethod(this,"yshear",shear,clr); \
+    HinCallVoidMethod(this,"yshear",shear,clr); \
     } \
   void cls::hgradient(FXColor left,FXColor right){ \
-    FXRbCallVoidMethod(this,"hgradient",left,right); \
+    HinCallVoidMethod(this,"hgradient",left,right); \
     } \
   void cls::vgradient(FXColor top,FXColor bottom){ \
-    FXRbCallVoidMethod(this,"vgradient",top,bottom); \
+    HinCallVoidMethod(this,"vgradient",top,bottom); \
     } \
   void cls::gradient(FXColor topleft,FXColor topright,FXColor bottomleft,FXColor bottomright){ \
-    FXRbCallVoidMethod(this,"gradient",topleft,topright,bottomleft,bottomright); \
+    HinCallVoidMethod(this,"gradient",topleft,topright,bottomleft,bottomright); \
     } \
   void cls::blend(FXColor color){ \
-    FXRbCallVoidMethod(this,"blend",color); \
+    HinCallVoidMethod(this,"blend",color); \
     } \
   bool cls::savePixels(FXStream& store) const { \
-    return FXRbCallBoolMethod(this,"savePixels",store); \
+    return HinCallBoolMethod(this,"savePixels",store); \
     } \
   bool cls::loadPixels(FXStream& store){ \
-    return FXRbCallBoolMethod(this,"loadPixels",store); \
+    return HinCallBoolMethod(this,"loadPixels",store); \
     }
 
 
-class FXRbImage : public FXImage {
-  FXDECLARE(FXRbImage)
+class HinImage : public FXImage {
+  FXDECLARE(HinImage)
 protected:
-  FXRbImage(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbImageVirtuals.h"
+  HinImage(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinImageVirtuals.h"
 public:
   /// Create an image
-  FXRbImage(FXApp* a,const FXColor* pix=NULL,FXuint opts=0,FXint w=1,FXint h=1):FXImage(a,pix,opts,w,h){
-    FXRbRegisterAppSensitiveObject(this);
+  HinImage(FXApp* a,const FXColor* pix=NULL,FXuint opts=0,FXint w=1,FXint h=1):FXImage(a,pix,opts,w,h){
+    HinRegisterAppSensitiveObject(this);
     }
 
   // Mark dependencies for the GC
   static void markfunc(FXImage* image);
 
   // Destructor
-  virtual ~FXRbImage(){
-    FXRbUnregisterRubyObj(this);
-    FXRbUnregisterAppSensitiveObject(this);
+  virtual ~HinImage(){
+    HinUnregisterRubyObj(this);
+    HinUnregisterAppSensitiveObject(this);
     }
   };
 

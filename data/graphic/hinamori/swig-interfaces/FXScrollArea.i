@@ -67,7 +67,7 @@ public:
   %extend {
     /// Constructor
     FXScrollArea(FXComposite* p,FXuint opts=0,FXint x=0,FXint y=0,FXint w=0,FXint h=0){
-      return new FXRbScrollArea(p,opts,x,y,w,h);
+      return new HinScrollArea(p,opts,x,y,w,h);
       }
     }
 

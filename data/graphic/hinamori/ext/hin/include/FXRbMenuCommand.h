@@ -21,29 +21,29 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbMenuCommand.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinMenuCommand.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBMENUCOMMAND_H
 #define FXRBMENUCOMMAND_H
 
-class FXRbMenuCommand : public FXMenuCommand {
-  FXDECLARE(FXRbMenuCommand)
+class HinMenuCommand : public FXMenuCommand {
+  FXDECLARE(HinMenuCommand)
 protected:
-  FXRbMenuCommand(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
+  HinMenuCommand(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
 public:
   /// Constructor
-  FXRbMenuCommand(FXComposite* p,const FXString& text,FXIcon* ic=NULL,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=0) : FXMenuCommand(p,text,ic,tgt,sel,opts){}
+  HinMenuCommand(FXComposite* p,const FXString& text,FXIcon* ic=NULL,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=0) : FXMenuCommand(p,text,ic,tgt,sel,opts){}
 
   // Mark dependencies for the GC
   static void markfunc(FXMenuCommand* self);
 
   // Destructor (implemented in FXRuby.cpp)
-  virtual ~FXRbMenuCommand();
+  virtual ~HinMenuCommand();
   };
 
 #endif

@@ -27,7 +27,7 @@ public:
   /// Create file store
   %extend {
     FXFileStream(const FXObject* cont=NULL){
-      return new FXRbFileStream(cont);
+      return new HinFileStream(cont);
       }
     }
 

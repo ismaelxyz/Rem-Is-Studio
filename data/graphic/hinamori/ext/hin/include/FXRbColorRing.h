@@ -21,30 +21,30 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbColorRing.h 2298 2005-12-07 12:03:24Z lyle $
+ * $Id: HinColorRing.h 2298 2005-12-07 12:03:24Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBCOLORRING_H
 #define FXRBCOLORRING_H
 
-class FXRbColorRing : public FXColorRing {
-  FXDECLARE(FXRbColorRing)
+class HinColorRing : public FXColorRing {
+  FXDECLARE(HinColorRing)
 protected:
-  FXRbColorRing(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
+  HinColorRing(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
 public:
   /// Constructor
-  FXRbColorRing(FXComposite* p,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=FRAME_NORMAL,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=DEFAULT_PAD,FXint pr=DEFAULT_PAD,FXint pt=DEFAULT_PAD,FXint pb=DEFAULT_PAD) : FXColorRing(p,tgt,sel,opts,x,y,w,h,pl,pr,pt,pb){}
+  HinColorRing(FXComposite* p,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=FRAME_NORMAL,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=DEFAULT_PAD,FXint pr=DEFAULT_PAD,FXint pt=DEFAULT_PAD,FXint pb=DEFAULT_PAD) : FXColorRing(p,tgt,sel,opts,x,y,w,h,pl,pr,pt,pb){}
 
   // Mark dependencies for the GC
   static void markfunc(FXColorRing* colorBar);
 
   // Destructor
-  virtual ~FXRbColorRing(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinColorRing(){
+    HinUnregisterRubyObj(this);
     }
   };
 

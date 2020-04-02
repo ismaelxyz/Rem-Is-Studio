@@ -25,7 +25,7 @@
  ***********************************************************************/
 
 %{
-#include "FXRbCommon.h"
+#include "HinCommon.h"
 %}
 
 // Redefine the FXAPI macro to a no-op for SWIG

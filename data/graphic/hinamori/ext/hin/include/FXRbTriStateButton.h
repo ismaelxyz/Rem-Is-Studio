@@ -21,27 +21,27 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbTriStateButton.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinTriStateButton.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBTRISTATEBUTTON_H
 #define FXRBTRISTATEBUTTON_H
 
-class FXRbTriStateButton : public FXTriStateButton {
-  FXDECLARE(FXRbTriStateButton)
+class HinTriStateButton : public FXTriStateButton {
+  FXDECLARE(HinTriStateButton)
 protected:
-  FXRbTriStateButton(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
+  HinTriStateButton(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
 public:
   /// Construct toggle button with two text labels, and two icons, one for each state
-  FXRbTriStateButton(FXComposite* p,const FXString& text1,const FXString& text2,const FXString& text3,FXIcon* icon1=NULL,FXIcon* icon2=NULL,FXIcon* icon3=NULL,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=TOGGLEBUTTON_NORMAL,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=DEFAULT_PAD,FXint pr=DEFAULT_PAD,FXint pt=DEFAULT_PAD,FXint pb=DEFAULT_PAD) : FXTriStateButton(p,text1,text2,text3,icon1,icon2,icon3,tgt,sel,opts,x,y,w,h,pl,pr,pt,pb){}
+  HinTriStateButton(FXComposite* p,const FXString& text1,const FXString& text2,const FXString& text3,FXIcon* icon1=NULL,FXIcon* icon2=NULL,FXIcon* icon3=NULL,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=TOGGLEBUTTON_NORMAL,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=DEFAULT_PAD,FXint pr=DEFAULT_PAD,FXint pt=DEFAULT_PAD,FXint pb=DEFAULT_PAD) : FXTriStateButton(p,text1,text2,text3,icon1,icon2,icon3,tgt,sel,opts,x,y,w,h,pl,pr,pt,pb){}
 
   // Destructor
-  virtual ~FXRbTriStateButton(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinTriStateButton(){
+    HinUnregisterRubyObj(this);
     }
 
   // Mark dependencies for the GC

@@ -59,7 +59,7 @@ public:
   /// Construct popup pane
   %extend {
     FXPopup(FXWindow* owner,FXuint opts=POPUP_VERTICAL|FRAME_RAISED|FRAME_THICK,FXint x=0,FXint y=0,FXint w=0,FXint h=0){
-      return new FXRbPopup(owner,opts,x,y,w,h);
+      return new HinPopup(owner,opts,x,y,w,h);
       }
     }
 

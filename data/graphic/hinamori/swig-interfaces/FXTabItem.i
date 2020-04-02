@@ -58,7 +58,7 @@ public:
   /// Construct a tab item
   %extend {
     FXTabItem(FXTabBar* p,const FXString& text,FXIcon* ic=0,FXuint opts=TAB_TOP_NORMAL,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=DEFAULT_PAD,FXint pr=DEFAULT_PAD,FXint pt=DEFAULT_PAD,FXint pb=DEFAULT_PAD){
-      return new FXRbTabItem(p,text,ic,opts,x,y,w,h,pl,pr,pt,pb);
+      return new HinTabItem(p,text,ic,opts,x,y,w,h,pl,pr,pt,pb);
       }
     }
 

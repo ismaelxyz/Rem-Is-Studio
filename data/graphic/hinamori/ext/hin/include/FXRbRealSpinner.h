@@ -21,7 +21,7 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbRealSpinner.h 2234 2005-11-09 13:29:21Z lyle $
+ * $Id: HinRealSpinner.h 2234 2005-11-09 13:29:21Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBREALSPINNER_H
@@ -35,26 +35,26 @@ inline void klass ## _setValue(klass* self,FXdouble value,FXbool notify){ \
 
 #define IMPLEMENT_FXREALSPINNER_STUBS(cls) \
   void cls::setValue(FXdouble value,FXbool notify){ \
-    FXRbCallVoidMethod(this,"setValue",value,notify); \
+    HinCallVoidMethod(this,"setValue",value,notify); \
     }
 
 
-class FXRbRealSpinner : public FXRealSpinner {
-  FXDECLARE(FXRbRealSpinner)
+class HinRealSpinner : public FXRealSpinner {
+  FXDECLARE(HinRealSpinner)
 protected:
-  FXRbRealSpinner(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
-#include "FXRbRealSpinnerVirtuals.h"
+  HinRealSpinner(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
+#include "HinRealSpinnerVirtuals.h"
 public:
   /// Construct a spinner
-  FXRbRealSpinner(FXComposite *p,FXint cols,FXObject *tgt=NULL,FXSelector sel=0,FXuint opts=REALSPIN_NORMAL,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=DEFAULT_PAD,FXint pr=DEFAULT_PAD,FXint pt=DEFAULT_PAD,FXint pb=DEFAULT_PAD) : FXRealSpinner(p,cols,tgt,sel,opts,x,y,w,h,pl,pr,pt,pb){}
+  HinRealSpinner(FXComposite *p,FXint cols,FXObject *tgt=NULL,FXSelector sel=0,FXuint opts=REALSPIN_NORMAL,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=DEFAULT_PAD,FXint pr=DEFAULT_PAD,FXint pt=DEFAULT_PAD,FXint pb=DEFAULT_PAD) : FXRealSpinner(p,cols,tgt,sel,opts,x,y,w,h,pl,pr,pt,pb){}
 
   // Destructor
-  virtual ~FXRbRealSpinner(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinRealSpinner(){
+    HinUnregisterRubyObj(this);
     }
 
   // Mark dependencies for the GC

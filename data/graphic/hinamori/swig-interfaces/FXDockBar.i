@@ -90,7 +90,7 @@ public:
     * usually an kind of FXToolBarShell window.
     */
     FXDockBar(FXComposite* p,FXComposite* q,FXuint opts=LAYOUT_TOP|LAYOUT_LEFT|LAYOUT_FILL_X,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=3,FXint pr=3,FXint pt=2,FXint pb=2,FXint hs=DEFAULT_SPACING,FXint vs=DEFAULT_SPACING){
-      return new FXRbDockBar(p,q,opts,x,y,w,h,pl,pr,pt,pb,hs,vs);
+      return new HinDockBar(p,q,opts,x,y,w,h,pl,pr,pt,pb,hs,vs);
       }
 
     /**
@@ -98,7 +98,7 @@ public:
     * The dock bar can not be undocked.
     */
     FXDockBar(FXComposite* p,FXuint opts,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=2,FXint pr=3,FXint pt=3,FXint pb=2,FXint hs=DEFAULT_SPACING,FXint vs=DEFAULT_SPACING){
-      return new FXRbDockBar(p,opts,x,y,w,h,pl,pr,pt,pb,hs,vs);
+      return new HinDockBar(p,opts,x,y,w,h,pl,pr,pt,pb,hs,vs);
       }
   }
 

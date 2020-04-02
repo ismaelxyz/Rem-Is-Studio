@@ -21,27 +21,27 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbMenuCaption.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinMenuCaption.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBMENUCAPTION_H
 #define FXRBMENUCAPTION_H
 
-class FXRbMenuCaption : public FXMenuCaption {
-  FXDECLARE(FXRbMenuCaption)
+class HinMenuCaption : public FXMenuCaption {
+  FXDECLARE(HinMenuCaption)
 protected:
-  FXRbMenuCaption(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
+  HinMenuCaption(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
 public:
   /// Construct menu caption
-  FXRbMenuCaption(FXComposite* p,const FXString& text,FXIcon* ic=NULL,FXuint opts=0) : FXMenuCaption(p,text,ic,opts){}
+  HinMenuCaption(FXComposite* p,const FXString& text,FXIcon* ic=NULL,FXuint opts=0) : FXMenuCaption(p,text,ic,opts){}
 
   // Destructor
-  virtual ~FXRbMenuCaption(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinMenuCaption(){
+    HinUnregisterRubyObj(this);
     }
 
   // Mark dependencies for the GC

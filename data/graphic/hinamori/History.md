@@ -1,6 +1,6 @@
 ## 1.6.42 / 2020-02-01
 
-* Fix a packing issue in 1.6.41: `lib/fox16/input.rb` had owner permission only.
+* Fix a packing issue in 1.6.41: `lib/hin16/input.rb` had owner permission only.
 
 ## 1.6.41 / 2020-01-26
 
@@ -19,7 +19,7 @@
 * Add new accessor FXImage#dataPtr to access raw image data from FFI, Fiddle or OpenGL.
 * Ensure zero terminated strings in values of C-argv.
 * Remove various Ruby and C++ warnings.
-* Update libfox to 1.6.57.
+* Update libhin to 1.6.57.
 * Add support for RubyInstaller-2.6
 * Set minimum required ruby version to 2.2.
 
@@ -36,7 +36,7 @@
 
 ## 1.6.37 / 2017-06-24
 
-* Add a 3rd type of FXRbObjects which is used for callbacks. Fixes #39
+* Add a 3rd type of HinObjects which is used for callbacks. Fixes #39
 
 ## 1.6.36 / 2017-06-04
 
@@ -113,7 +113,7 @@
 ## 1.6.28 / 2013-07-05
 
 * Fix build for Ruby-2.0.0-p127+
-* Update libraries for win32 build: libfox-1.6.49
+* Update libraries for win32 build: libhin-1.6.49
 
 ## 1.6.27 / 2013-04-05
 
@@ -122,19 +122,19 @@
 
 ## 1.6.26 / 2013-02-16
 
-* Mark all text strings retrieved from fox as UTF-8 when running on Ruby 1.9
-* Fix loading error on Ruby 1.8.7 by renaming the C++ extension to fox16_c
+* Mark all text strings retrieved from hin as UTF-8 when running on Ruby 1.9
+* Fix loading error on Ruby 1.8.7 by renaming the C++ extension to hin16_c
 * Update libraries for windows cross compilation
 
 ## 1.6.25 / 2012-06-17
 
-* Windows: Fix slow loading of fox16.so by using a more recent mingw-w64 compiler
+* Windows: Fix slow loading of hin16.so by using a more recent mingw-w64 compiler
   (reported by Allen Doug and Igor Jorobus)
 * Fix two possible segfaults in conjunction with FXSplashWindow (reported by Igor Jorobus)
 
 ## 1.6.24 / 2012-06-06
 
-* Update libraries for win32 build: libz-1.2.7 libpng-1.5.10 libjpeg-8d libtiff-4.0.1 libfox-1.6.45
+* Update libraries for win32 build: libz-1.2.7 libpng-1.5.10 libjpeg-8d libtiff-4.0.1 libhin-1.6.45
 * Avoid Segfauls in lots of methods when called with nil instead of FXApp, FXComposite or FXWindow objects
 
 ## 1.6.23 / 2012-03-08
@@ -151,7 +151,7 @@
 * Add alias FXApp#modalWindow, as described in rdoc
 * Add quality parameter to FXJPGImage and FXJPGIcon
 * Fix invalid memory access in final GC call when using FXMenuCommand with acckey
-* Fix double referenced foxObj when borrowed object registration is triggered from C++
+* Fix double referenced hinObj when borrowed object registration is triggered from C++
 * Fix Segfault while GC'ing FXWindows
 * Fix 'object allocation not allowed while garbage collection' bug
 * Fix clipboard handling on windows
@@ -732,7 +732,7 @@
   removed from the FXRuby gem specification. This change will break any
   code that was using a statement like:´require_gem 'fxruby'´as
   the sole means for loading FXRuby. Such programs should instead
-  use:´require 'fox16'´which will work
+  use:´require 'hin16'´which will work
   for either gem based or non-gem based installations.
 
 * The binary gem for Windows was built with FOX version 1.6.8 and
@@ -747,7 +747,7 @@
   processing routines are now Unicode aware. For a comprehensive
   overview of the changes made to FOX since version 1.4 (including those
   made in the FOX 1.5 development series), please refer to the
-  [News archives](http://www.fox-toolkit.com/news.html) at
+  [News archives](http://www.hin-toolkit.com/news.html) at
   the FOX web site.
 
 * Added the `allowSide`,
@@ -1033,12 +1033,12 @@
 * This is the second release of FXRuby which is compatible with
   FOX 1.4, and as such should be considered an "unstable" release. For a
   history of the changes made during the FOX 1.3 and 1.4 development,
-  see the [News](http://www.fox-toolkit.com/news.html)
+  see the [News](http://www.hin-toolkit.com/news.html)
   page at the FOX Web site.
 
 * The unit tests (in the `tests` subdirectory)
-  had not been updated to require the ´fox14´
-  feature, and were still looking at ´fox12´. This
+  had not been updated to require the ´hin14´
+  feature, and were still looking at ´hin12´. This
   has been corrected.
 
 * A number of minor problems were corrected for the Windows build
@@ -1053,7 +1053,7 @@
 * This is the first release of FXRuby which is compatible with FOX
   1.4, and as such should be considered an "unstable" release. For a
   history of the changes made during the FOX 1.3 and 1.4 development,
-  see the [News](http://www.fox-toolkit.com/news.html)
+  see the [News](http://www.hin-toolkit.com/news.html)
   page at the FOX Web site.
 
 
@@ -1346,10 +1346,10 @@
 
 * In order to avoid versioning problems when dealing with a mix of
   applications based on either FXRuby 1.0 or 1.2, the feature name for
-  FXRuby has been changed from "fox" to "fox12". For most application
+  FXRuby has been changed from "hin" to "hin12". For most application
   developers, this means that you will need to modify the source code
   for applications targeted at FXRuby 1.2 to begin with the line
-  ´require 'fox12'´Note that no
+  ´require 'hin12'´Note that no
   changes should be required for legacy applications targeted at FXRuby
   1.0.
 

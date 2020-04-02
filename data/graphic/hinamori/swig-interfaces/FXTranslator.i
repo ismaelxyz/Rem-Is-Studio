@@ -32,7 +32,7 @@ public:
 
   %extend {
     /// Construct translator
-    FXTranslator(FXApp* a) { return new FXRbTranslator(a); }
+    FXTranslator(FXApp* a) { return new HinTranslator(a); }
   }
 
   /// Get application

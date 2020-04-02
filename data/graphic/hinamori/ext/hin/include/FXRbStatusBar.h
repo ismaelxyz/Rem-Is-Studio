@@ -21,27 +21,27 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbStatusBar.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinStatusBar.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBSTATUSBAR_H
 #define FXRBSTATUSBAR_H
 
-class FXRbStatusBar : public FXStatusBar {
-  FXDECLARE(FXRbStatusBar)
+class HinStatusBar : public FXStatusBar {
+  FXDECLARE(HinStatusBar)
 protected:
-  FXRbStatusBar(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
+  HinStatusBar(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
 public:
   /// Construct status bar with or without a drag corner
-  FXRbStatusBar(FXComposite* p,FXuint opts=0,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=3,FXint pr=3,FXint pt=2,FXint pb=2,FXint hs=4,FXint vs=0) : FXStatusBar(p,opts,x,y,w,h,pl,pr,pt,pb,hs,vs){}
+  HinStatusBar(FXComposite* p,FXuint opts=0,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=3,FXint pr=3,FXint pt=2,FXint pb=2,FXint hs=4,FXint vs=0) : FXStatusBar(p,opts,x,y,w,h,pl,pr,pt,pb,hs,vs){}
 
   // Destructor
-  virtual ~FXRbStatusBar(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinStatusBar(){
+    HinUnregisterRubyObj(this);
     }
 
   // Mark dependencies for the GC

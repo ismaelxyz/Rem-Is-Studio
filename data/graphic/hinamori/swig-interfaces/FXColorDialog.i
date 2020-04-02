@@ -45,7 +45,7 @@ public:
   %extend {
     /// Construct color dialog
     FXColorDialog(FXWindow* owner,const FXString& name,FXuint opts=0,FXint x=0,FXint y=0,FXint w=0,FXint h=0){
-      return new FXRbColorDialog(owner,name,opts,x,y,w,h);
+      return new HinColorDialog(owner,name,opts,x,y,w,h);
       }
     }
 

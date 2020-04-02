@@ -21,7 +21,7 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbPopup.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinPopup.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBPOPUP_H
@@ -38,29 +38,29 @@ inline void klass ## _popdown(klass* self){ \
 
 #define IMPLEMENT_FXPOPUP_STUBS(cls) \
   void cls::popup(FXWindow* grabto,FXint x,FXint y,FXint w,FXint h){ \
-    FXRbCallVoidMethod(this,"popup",grabto,x,y,w,h); \
+    HinCallVoidMethod(this,"popup",grabto,x,y,w,h); \
     } \
   void cls::popdown(){ \
-    FXRbCallVoidMethod(this,"popdown"); \
+    HinCallVoidMethod(this,"popdown"); \
     }
 
 
-class FXRbPopup : public FXPopup {
-  FXDECLARE(FXRbPopup)
+class HinPopup : public FXPopup {
+  FXDECLARE(HinPopup)
 protected:
-  FXRbPopup(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
-#include "FXRbPopupVirtuals.h"
+  HinPopup(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
+#include "HinPopupVirtuals.h"
 public:
   /// Construct popup pane
-  FXRbPopup(FXWindow* owner,FXuint opts=POPUP_VERTICAL|FRAME_RAISED|FRAME_THICK,FXint x=0,FXint y=0,FXint w=0,FXint h=0) : FXPopup(owner,opts,x,y,w,h){}
+  HinPopup(FXWindow* owner,FXuint opts=POPUP_VERTICAL|FRAME_RAISED|FRAME_THICK,FXint x=0,FXint y=0,FXint w=0,FXint h=0) : FXPopup(owner,opts,x,y,w,h){}
 
   // Destructor
-  virtual ~FXRbPopup(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinPopup(){
+    HinUnregisterRubyObj(this);
     }
 
   // Mark dependencies for the GC

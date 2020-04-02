@@ -21,7 +21,7 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbGLViewer.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinGLViewer.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBGLVIEWER_H
@@ -29,8 +29,8 @@
 
 #define DECLARE_FXGLVIEWER_STUBS(klass) \
 inline FXGLObject** klass ## _select(klass* self,FXint x,FXint y,FXint w,FXint h){ \
-  FXASSERT(self->isMemberOf(FXMETACLASS(FXRbGLViewer))); \
-  return dynamic_cast<FXRbGLViewer*>(self)->_select(x,y,w,h); \
+  FXASSERT(self->isMemberOf(FXMETACLASS(HinGLViewer))); \
+  return dynamic_cast<HinGLViewer*>(self)->_select(x,y,w,h); \
   } \
 inline FXGLObject* klass ## _pick(klass *self,FXint x,FXint y){ \
   return self->klass::pick(x,y); \
@@ -42,34 +42,34 @@ inline FXbool klass ## _setBounds(klass *self,const FXRangef& box){ \
 
 #define IMPLEMENT_FXGLVIEWER_STUBS(cls) \
   FXGLObject** cls::select(FXint x,FXint y,FXint w,FXint h){ \
-    return FXRbCallGLObjectArrayMethod(this,"select",x,y,w,h); \
+    return HinCallGLObjectArrayMethod(this,"select",x,y,w,h); \
     } \
   FXGLObject* cls::pick(FXint x,FXint y){ \
-    return FXRbCallGLObjectMethod(this,"pick",x,y); \
+    return HinCallGLObjectMethod(this,"pick",x,y); \
     } \
   FXbool cls::setBounds(const FXRangef& box){ \
-    return FXRbCallBoolMethod(this,"setBounds",box); \
+    return HinCallBoolMethod(this,"setBounds",box); \
     }
 
 
-class FXRbGLViewer : public FXGLViewer {
-  FXDECLARE(FXRbGLViewer)
+class HinGLViewer : public FXGLViewer {
+  FXDECLARE(HinGLViewer)
 protected:
-  FXRbGLViewer(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
-#include "FXRbGLCanvasVirtuals.h"
-#include "FXRbGLViewerVirtuals.h"
+  HinGLViewer(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
+#include "HinGLCanvasVirtuals.h"
+#include "HinGLViewerVirtuals.h"
 protected:
   virtual FXGLObject* processHits(FXuint *pickbuffer,FXint nhits);
 public:
   /// Construct GL viewer widget
-  FXRbGLViewer(FXComposite* p,FXGLVisual *vis,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=0,FXint x=0,FXint y=0,FXint w=0,FXint h=0) : FXGLViewer(p,vis,tgt,sel,opts,x,y,w,h){}
+  HinGLViewer(FXComposite* p,FXGLVisual *vis,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=0,FXint x=0,FXint y=0,FXint w=0,FXint h=0) : FXGLViewer(p,vis,tgt,sel,opts,x,y,w,h){}
 
   /// Construct GL viewer widget sharing display list with another GL viewer
-  FXRbGLViewer(FXComposite* p,FXGLVisual *vis,FXGLViewer* sharegroup,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=0,FXint x=0,FXint y=0,FXint w=0,FXint h=0) : FXGLViewer(p,vis,sharegroup,tgt,sel,opts,x,y,w,h){}
+  HinGLViewer(FXComposite* p,FXGLVisual *vis,FXGLViewer* sharegroup,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=0,FXint x=0,FXint y=0,FXint w=0,FXint h=0) : FXGLViewer(p,vis,sharegroup,tgt,sel,opts,x,y,w,h){}
 
   // Overrides the base class version of select()
   FXGLObject** _select(FXint x,FXint y,FXint w,FXint h);
@@ -81,8 +81,8 @@ public:
   static void markfunc(FXGLViewer* self);
 
   // Destructor
-  virtual ~FXRbGLViewer(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinGLViewer(){
+    HinUnregisterRubyObj(this);
     }
   };
 

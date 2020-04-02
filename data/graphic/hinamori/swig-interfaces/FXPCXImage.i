@@ -37,7 +37,7 @@ public:
   %extend {
     /// Construct image from memory stream formatted in PCX file
     FXPCXImage(FXApp* a,const void *pix=NULL,FXuint opts=0,FXint w=1,FXint h=1){
-      return new FXRbPCXImage(a,pix,opts,w,h);
+      return new HinPCXImage(a,pix,opts,w,h);
       }
     }
 

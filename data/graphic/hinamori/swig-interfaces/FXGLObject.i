@@ -35,7 +35,7 @@ public:
   %extend {
     /// Constructor
     FXGLObject(){
-      return new FXRbGLObject();
+      return new HinGLObject();
       }
     }
 

@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-require 'fox16'
+require 'hin16'
 require 'test/unit'
 
 include Fox

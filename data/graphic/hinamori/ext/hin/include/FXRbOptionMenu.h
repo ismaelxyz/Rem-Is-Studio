@@ -21,27 +21,27 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbOptionMenu.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinOptionMenu.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBOPTIONMENU_H
 #define FXRBOPTIONMENU_H
 
-class FXRbOption : public FXOption {
-  FXDECLARE(FXRbOption)
+class HinOption : public FXOption {
+  FXDECLARE(HinOption)
 protected:
-  FXRbOption(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
+  HinOption(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
 public:
   /// Constructor
-  FXRbOption(FXComposite* p,const FXString& text,FXIcon* ic=NULL,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=JUSTIFY_NORMAL|ICON_BEFORE_TEXT|MENUBUTTON_DOWN,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=DEFAULT_PAD,FXint pr=DEFAULT_PAD,FXint pt=DEFAULT_PAD,FXint pb=DEFAULT_PAD) : FXOption(p,text,ic,tgt,sel,opts,x,y,w,h,pl,pr,pt,pb){}
+  HinOption(FXComposite* p,const FXString& text,FXIcon* ic=NULL,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=JUSTIFY_NORMAL|ICON_BEFORE_TEXT|MENUBUTTON_DOWN,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=DEFAULT_PAD,FXint pr=DEFAULT_PAD,FXint pt=DEFAULT_PAD,FXint pb=DEFAULT_PAD) : FXOption(p,text,ic,tgt,sel,opts,x,y,w,h,pl,pr,pt,pb){}
 
   // Destructor
-  virtual ~FXRbOption(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinOption(){
+    HinUnregisterRubyObj(this);
     }
 
   // Mark dependencies for the GC
@@ -49,21 +49,21 @@ public:
   };
 
 
-class FXRbOptionMenu : public FXOptionMenu {
-  FXDECLARE(FXRbOptionMenu)
+class HinOptionMenu : public FXOptionMenu {
+  FXDECLARE(HinOptionMenu)
 protected:
-  FXRbOptionMenu(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
+  HinOptionMenu(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
 public:
   /// Constructor
-  FXRbOptionMenu(FXComposite* p,FXPopup* pup=NULL,FXuint opts=JUSTIFY_NORMAL|ICON_BEFORE_TEXT,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=DEFAULT_PAD,FXint pr=DEFAULT_PAD,FXint pt=DEFAULT_PAD,FXint pb=DEFAULT_PAD) : FXOptionMenu(p,pup,opts,x,y,w,h,pl,pr,pt,pb){}
+  HinOptionMenu(FXComposite* p,FXPopup* pup=NULL,FXuint opts=JUSTIFY_NORMAL|ICON_BEFORE_TEXT,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=DEFAULT_PAD,FXint pr=DEFAULT_PAD,FXint pt=DEFAULT_PAD,FXint pb=DEFAULT_PAD) : FXOptionMenu(p,pup,opts,x,y,w,h,pl,pr,pt,pb){}
 
   // Destructor
-  virtual ~FXRbOptionMenu(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinOptionMenu(){
+    HinUnregisterRubyObj(this);
     }
 
   // Mark dependencies for the GC

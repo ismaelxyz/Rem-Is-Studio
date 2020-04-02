@@ -95,7 +95,7 @@ public:
   %extend {
     /// Construct MDI Child window with given name and icon
     FXMDIChild(FXMDIClient* p,const FXString& name,FXIcon* ic=NULL,FXPopup* pup=NULL,FXuint opts=0,FXint x=0,FXint y=0,FXint w=0,FXint h=0){
-      return new FXRbMDIChild(p,name,ic,pup,opts,x,y,w,h);
+      return new HinMDIChild(p,name,ic,pup,opts,x,y,w,h);
       }
     }
 

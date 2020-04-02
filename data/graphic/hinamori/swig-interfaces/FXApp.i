@@ -170,7 +170,7 @@ public:
         return 0;
         }
       else{
-        return FXRbApp::constructAndInit(name,vendor);
+        return HinApp::constructAndInit(name,vendor);
         }
       }
   }
@@ -213,11 +213,11 @@ public:
     /// Change default visual
     void setDefaultVisual(FXVisual* vis){
       FXASSERT(vis);
-      if(vis->isMemberOf(FXMETACLASS(FXRbVisual))){
-        dynamic_cast<FXRbVisual*>(vis)->ownedByApp=TRUE;
+      if(vis->isMemberOf(FXMETACLASS(HinVisual))){
+        dynamic_cast<HinVisual*>(vis)->ownedByApp=TRUE;
         }
-      else if(vis->isMemberOf(FXMETACLASS(FXRbGLVisual))){
-        dynamic_cast<FXRbGLVisual*>(vis)->ownedByApp=TRUE;
+      else if(vis->isMemberOf(FXMETACLASS(HinGLVisual))){
+        dynamic_cast<HinGLVisual*>(vis)->ownedByApp=TRUE;
         }
       self->setDefaultVisual(vis);
       }
@@ -314,7 +314,7 @@ public:
       switch(TYPE(sigObj)){
         case T_STRING:
           s=StringValuePtr(sigObj);
-          sig=FXRbSignalNameToNumber(s);
+          sig=HinSignalNameToNumber(s);
           if(sig==0) rb_raise(rb_eArgError,"unrecognized signal name `%s'",s);
           break;
         case T_FIXNUM:
@@ -334,7 +334,7 @@ public:
       switch(TYPE(sigObj)){
         case T_STRING:
           s=StringValuePtr(sigObj);
-          sig=FXRbSignalNameToNumber(s);
+          sig=HinSignalNameToNumber(s);
           if(sig==0) rb_raise(rb_eArgError,"unrecognized signal name `%s'",s);
           break;
         case T_FIXNUM:
@@ -358,11 +358,11 @@ public:
     bool addInput(VALUE obj,FXuint mode,FXObject *tgt,FXSelector sel){
       FXInputHandle fd;
       if(mode&(INPUT_READ|INPUT_EXCEPT)){
-        fd=FXRbGetReadFileHandle(obj, mode);
+        fd=HinGetReadFileHandle(obj, mode);
         self->addInput(fd,mode,tgt,sel);
         }
       if(mode&(INPUT_WRITE|INPUT_EXCEPT)){
-        fd=FXRbGetWriteFileHandle(obj, mode);
+        fd=HinGetWriteFileHandle(obj, mode);
         self->addInput(fd,mode,tgt,sel);
         }
       return true;
@@ -375,14 +375,14 @@ public:
     bool removeInput(VALUE obj,FXuint mode){
       FXInputHandle fd;
       if(mode&(INPUT_READ|INPUT_EXCEPT)){
-        fd=FXRbGetReadFileHandle(obj, mode);
+        fd=HinGetReadFileHandle(obj, mode);
         self->removeInput(fd,mode);
-        FXRbRemoveReadFileHandle(obj, mode);
+        HinRemoveReadFileHandle(obj, mode);
         }
       if(mode&(INPUT_WRITE|INPUT_EXCEPT)){
-        fd=FXRbGetWriteFileHandle(obj, mode);
+        fd=HinGetWriteFileHandle(obj, mode);
         self->removeInput(fd,mode);
-        FXRbRemoveWriteFileHandle(obj, mode);
+        HinRemoveWriteFileHandle(obj, mode);
         }
       return true;
       }
@@ -463,8 +463,8 @@ public:
     /// Change default font
     void setNormalFont(FXFont* font){
       FXASSERT(font);
-      if(font->isMemberOf(FXMETACLASS(FXRbFont))){
-        dynamic_cast<FXRbFont*>(font)->ownedByApp=TRUE;
+      if(font->isMemberOf(FXMETACLASS(HinFont))){
+        dynamic_cast<HinFont*>(font)->ownedByApp=TRUE;
 	}
       self->setNormalFont(font);
       }
@@ -483,14 +483,14 @@ public:
     /// Change to a new wait cursor
     void setWaitCursor(FXCursor *cur){
       FXASSERT(cur);
-      if(cur->isMemberOf(FXMETACLASS(FXRbCursor))){
-        dynamic_cast<FXRbCursor*>(cur)->ownedByApp=TRUE;
+      if(cur->isMemberOf(FXMETACLASS(HinCursor))){
+        dynamic_cast<HinCursor*>(cur)->ownedByApp=TRUE;
         }
-      else if(cur->isMemberOf(FXMETACLASS(FXRbCURCursor))){
-        dynamic_cast<FXRbCURCursor*>(cur)->ownedByApp=TRUE;
+      else if(cur->isMemberOf(FXMETACLASS(HinCURCursor))){
+        dynamic_cast<HinCURCursor*>(cur)->ownedByApp=TRUE;
         }
-      else if(cur->isMemberOf(FXMETACLASS(FXRbGIFCursor))){
-        dynamic_cast<FXRbGIFCursor*>(cur)->ownedByApp=TRUE;
+      else if(cur->isMemberOf(FXMETACLASS(HinGIFCursor))){
+        dynamic_cast<HinGIFCursor*>(cur)->ownedByApp=TRUE;
         }
       self->setWaitCursor(cur);
       }
@@ -506,14 +506,14 @@ public:
     /// Change default cursor
     void setDefaultCursor(FXDefaultCursor which,FXCursor* cur){
       FXASSERT(cur);
-      if(cur->isMemberOf(FXMETACLASS(FXRbCursor))){
-        dynamic_cast<FXRbCursor*>(cur)->ownedByApp=TRUE;
+      if(cur->isMemberOf(FXMETACLASS(HinCursor))){
+        dynamic_cast<HinCursor*>(cur)->ownedByApp=TRUE;
         }
-      else if(cur->isMemberOf(FXMETACLASS(FXRbCURCursor))){
-        dynamic_cast<FXRbCURCursor*>(cur)->ownedByApp=TRUE;
+      else if(cur->isMemberOf(FXMETACLASS(HinCURCursor))){
+        dynamic_cast<HinCURCursor*>(cur)->ownedByApp=TRUE;
         }
-      else if(cur->isMemberOf(FXMETACLASS(FXRbGIFCursor))){
-        dynamic_cast<FXRbGIFCursor*>(cur)->ownedByApp=TRUE;
+      else if(cur->isMemberOf(FXMETACLASS(HinGIFCursor))){
+        dynamic_cast<HinGIFCursor*>(cur)->ownedByApp=TRUE;
         }
       self->setDefaultCursor(which,cur);
       }
@@ -637,26 +637,26 @@ DECLARE_FXAPP_VIRTUALS(FXApp)
 %extend FXApp {
   // Enable (or disable) support for multithreaded applications
   void setThreadsEnabled(FXbool enabled){
-    FXASSERT(self->isMemberOf(FXMETACLASS(FXRbApp)));
-    dynamic_cast<FXRbApp*>(self)->setThreadsEnabled(enabled);
+    FXASSERT(self->isMemberOf(FXMETACLASS(HinApp)));
+    dynamic_cast<HinApp*>(self)->setThreadsEnabled(enabled);
     }
 
   // Are threads enabled?
   FXbool threadsEnabled() const {
-    FXASSERT(self->isMemberOf(FXMETACLASS(FXRbApp)));
-    return dynamic_cast<const FXRbApp*>(self)->threadsEnabled();
+    FXASSERT(self->isMemberOf(FXMETACLASS(HinApp)));
+    return dynamic_cast<const HinApp*>(self)->threadsEnabled();
     }
 
   // Set the amount of time to sleep
   void setSleepTime(FXuint sleepTime){
-    FXASSERT(self->isMemberOf(FXMETACLASS(FXRbApp)));
-    dynamic_cast<FXRbApp*>(self)->setSleepTime(sleepTime);
+    FXASSERT(self->isMemberOf(FXMETACLASS(HinApp)));
+    dynamic_cast<HinApp*>(self)->setSleepTime(sleepTime);
     }
 
   // Get the amount of time to sleep
   FXuint getSleepTime() const {
-    FXASSERT(self->isMemberOf(FXMETACLASS(FXRbApp)));
-    return dynamic_cast<const FXRbApp*>(self)->getSleepTime();
+    FXASSERT(self->isMemberOf(FXMETACLASS(HinApp)));
+    return dynamic_cast<const HinApp*>(self)->getSleepTime();
     }
   }
 

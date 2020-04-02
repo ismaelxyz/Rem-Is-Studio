@@ -21,7 +21,7 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbGLCanvas.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinGLCanvas.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBGLCANVAS_H
@@ -44,33 +44,33 @@ inline void klass ## _swapBuffers(klass* self){ \
 
 #define IMPLEMENT_FXGLCANVAS_STUBS(cls) \
   FXbool cls::makeCurrent(){ \
-    return FXRbCallBoolMethod(this,"makeCurrent"); \
+    return HinCallBoolMethod(this,"makeCurrent"); \
     } \
   FXbool cls::makeNonCurrent(){ \
-    return FXRbCallBoolMethod(this,"makeNonCurrent"); \
+    return HinCallBoolMethod(this,"makeNonCurrent"); \
     } \
   FXbool cls::isCurrent() const { \
-    return FXRbCallBoolMethod(this,"isCurrent"); \
+    return HinCallBoolMethod(this,"isCurrent"); \
     } \
   void cls::swapBuffers(){ \
-    FXRbCallVoidMethod(this,"swapBuffers"); \
+    HinCallVoidMethod(this,"swapBuffers"); \
     }
 
 
-class FXRbGLCanvas : public FXGLCanvas {
-  FXDECLARE(FXRbGLCanvas)
+class HinGLCanvas : public FXGLCanvas {
+  FXDECLARE(HinGLCanvas)
 protected:
-  FXRbGLCanvas(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
-#include "FXRbGLCanvasVirtuals.h"
+  HinGLCanvas(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
+#include "HinGLCanvasVirtuals.h"
 public:
   /**
   * Construct an OpenGL-capable canvas, with its own private display list.
   */
-  FXRbGLCanvas(FXComposite* p,FXGLVisual *vis,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=0,FXint x=0,FXint y=0,FXint w=0,FXint h=0) : FXGLCanvas(p,vis,tgt,sel,opts,x,y,w,h){}
+  HinGLCanvas(FXComposite* p,FXGLVisual *vis,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=0,FXint x=0,FXint y=0,FXint w=0,FXint h=0) : FXGLCanvas(p,vis,tgt,sel,opts,x,y,w,h){}
 
   /**
   * Construct an OpenGL-capable canvas, sharing display
@@ -78,14 +78,14 @@ public:
   * of a display list share group.  All members of the display
   * list share group have to have the same visual.
   */
-  FXRbGLCanvas(FXComposite* p,FXGLVisual *vis,FXGLCanvas* sharegroup,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=0,FXint x=0,FXint y=0,FXint w=0,FXint h=0) : FXGLCanvas(p,vis,sharegroup,tgt,sel,opts,x,y,w,h){}
+  HinGLCanvas(FXComposite* p,FXGLVisual *vis,FXGLCanvas* sharegroup,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=0,FXint x=0,FXint y=0,FXint w=0,FXint h=0) : FXGLCanvas(p,vis,sharegroup,tgt,sel,opts,x,y,w,h){}
 
   // Mark dependencies for the GC
   static void markfunc(FXGLCanvas* self);
 
   // Destructor
-  virtual ~FXRbGLCanvas(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinGLCanvas(){
+    HinUnregisterRubyObj(this);
     }
   };
 

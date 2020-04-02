@@ -38,7 +38,7 @@ public:
   /// Construct icon from memory stream formatted in X Bitmap format
   %extend {
     FXXBMIcon(FXApp* a,const FXuchar *pixels=NULL,const FXuchar *mask=NULL,FXColor clr=FXRGB(192,192,192),FXuint opts=0,FXint w=1,FXint h=1){
-      return new FXRbXBMIcon(a,pixels,mask,clr,opts,w,h);
+      return new HinXBMIcon(a,pixels,mask,clr,opts,w,h);
       }
     }
 

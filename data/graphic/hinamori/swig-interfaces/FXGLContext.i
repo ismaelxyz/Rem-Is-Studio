@@ -42,14 +42,14 @@ public:
     * Construct an OpenGL context with its own private display list.
     */
     FXGLContext(FXApp* a,FXGLVisual *vis){
-      return new FXRbGLContext(a,vis);
+      return new HinGLContext(a,vis);
       }
 
     /**
     * Construct an OpenGL context sharing display lists with an existing GL context.
     */
     FXGLContext(FXApp* a,FXGLVisual *vis,FXGLContext *shared){
-      return new FXRbGLContext(a,vis,shared);
+      return new HinGLContext(a,vis,shared);
       }
     }
 

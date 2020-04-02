@@ -41,7 +41,7 @@ public:
     * typically an FXToolBarShell window.
     */
     FXMenuBar(FXComposite* p,FXComposite* q,FXuint opts=LAYOUT_TOP|LAYOUT_LEFT|LAYOUT_FILL_X,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=3,FXint pr=3,FXint pt=2,FXint pb=2,FXint hs=DEFAULT_SPACING,FXint vs=DEFAULT_SPACING){
-      return new FXRbMenuBar(p,q,opts,x,y,w,h,pl,pr,pt,pb,hs,vs);
+      return new HinMenuBar(p,q,opts,x,y,w,h,pl,pr,pt,pb,hs,vs);
       }
 
     /**
@@ -49,7 +49,7 @@ public:
     * The menubar can not be undocked.
     */
     FXMenuBar(FXComposite* p,FXuint opts,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=3,FXint pr=3,FXint pt=2,FXint pb=2,FXint hs=DEFAULT_SPACING,FXint vs=DEFAULT_SPACING){
-      return new FXRbMenuBar(p,opts,x,y,w,h,pl,pr,pt,pb,hs,vs);
+      return new HinMenuBar(p,opts,x,y,w,h,pl,pr,pt,pb,hs,vs);
       }
     }
 

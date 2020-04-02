@@ -42,7 +42,7 @@ public:
   /// Construct an icon from memory stream formatted in TIFF format
   %extend {
     FXTIFIcon(FXApp *a,const void *pix=NULL,FXColor clr=0,FXuint opts=0,FXint w=1,FXint h=1){
-      return new FXRbTIFIcon(a,pix,clr,opts,w,h);
+      return new HinTIFIcon(a,pix,clr,opts,w,h);
       }
     }
 

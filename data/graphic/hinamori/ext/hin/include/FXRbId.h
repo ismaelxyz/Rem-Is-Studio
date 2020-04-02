@@ -21,7 +21,7 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbId.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinId.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBID_H
@@ -41,30 +41,30 @@ inline void klass ## _destroy(klass* self){ \
 
 #define IMPLEMENT_FXID_STUBS(cls) \
   void cls::create(){ \
-    FXRbCallVoidMethod(this,"create"); \
+    HinCallVoidMethod(this,"create"); \
     } \
   void cls::detach(){ \
-    FXRbCallVoidMethod(this,"detach"); \
+    HinCallVoidMethod(this,"detach"); \
     } \
   void cls::destroy(){ \
-    FXRbCallVoidMethod(this,"destroy"); \
+    HinCallVoidMethod(this,"destroy"); \
     }
 
 
-class FXRbId : public FXId {
-  FXDECLARE(FXRbId)
+class HinId : public FXId {
+  FXDECLARE(HinId)
 protected:
-  FXRbId(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
+  HinId(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
 protected:
   // Constructor
-  FXRbId(FXApp* a) : FXId(a){}
+  HinId(FXApp* a) : FXId(a){}
 
 public:
   // Destructor
-  virtual ~FXRbId(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinId(){
+    HinUnregisterRubyObj(this);
     }
 
   // Mark dependencies for the GC

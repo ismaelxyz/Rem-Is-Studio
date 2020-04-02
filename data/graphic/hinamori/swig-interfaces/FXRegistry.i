@@ -51,7 +51,7 @@ public:
   */
   %extend {
     FXRegistry(const FXString& akey=FXString::null,const FXString& vkey=FXString::null){
-      return new FXRbRegistry(akey,vkey);
+      return new HinRegistry(akey,vkey);
       }
     }
 

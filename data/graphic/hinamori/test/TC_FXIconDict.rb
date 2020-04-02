@@ -1,5 +1,5 @@
 require 'test/unit'
-require 'fox16'
+require 'hin16'
 require 'testcase'
 
 class TC_FXIconDict < Fox::TestCase
@@ -10,7 +10,7 @@ class TC_FXIconDict < Fox::TestCase
   end
 
   def test_defaultIconPath_s
-    assert_equal("~/.foxicons:/usr/local/share/icons:/usr/share/icons", FXIconDict.defaultIconPath)
+    assert_equal("~/.hinicons:/usr/local/share/icons:/usr/share/icons", FXIconDict.defaultIconPath)
   end
 
   def test_empty

@@ -55,7 +55,7 @@ public:
   %extend {
     /// Constructor
     FXFoldingItem(const FXString& text,FXIcon* oi=NULL,FXIcon* ci=NULL,void* ITEMDATA=NULL){
-      return new FXRbFoldingItem(text,oi,ci,ITEMDATA);
+      return new HinFoldingItem(text,oi,ci,ITEMDATA);
       }
   }
 
@@ -204,7 +204,7 @@ public:
   %extend {
     /// Construct a folding list with nvis visible items; the folding list is initially empty
     FXFoldingList(FXComposite *p,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=FOLDINGLIST_NORMAL,FXint x=0,FXint y=0,FXint w=0,FXint h=0){
-      return new FXRbFoldingList(p,tgt,sel,opts,x,y,w,h);
+      return new HinFoldingList(p,tgt,sel,opts,x,y,w,h);
       }
   }
 
@@ -281,8 +281,8 @@ public:
   %extend {
     /// Insert [possibly subclassed] item under father before other item
     FXFoldingItem* insertItem(FXFoldingItem* other,FXFoldingItem* father,FXFoldingItem* item,FXbool notify=FALSE){
-      if(item->isMemberOf(FXMETACLASS(FXRbFoldingItem))){
-        dynamic_cast<FXRbFoldingItem*>(item)->owned=TRUE;
+      if(item->isMemberOf(FXMETACLASS(HinFoldingItem))){
+        dynamic_cast<HinFoldingItem*>(item)->owned=TRUE;
         }
       return self->insertItem(other,father,item,notify);
       }
@@ -294,8 +294,8 @@ public:
   %extend {
     /// Append new [possibly subclassed] item after to other item
     FXFoldingItem* appendItem(FXFoldingItem* father,FXFoldingItem* item,FXbool notify=FALSE){
-      if(item->isMemberOf(FXMETACLASS(FXRbFoldingItem))){
-        dynamic_cast<FXRbFoldingItem*>(item)->owned=TRUE;
+      if(item->isMemberOf(FXMETACLASS(HinFoldingItem))){
+        dynamic_cast<HinFoldingItem*>(item)->owned=TRUE;
         }
       return self->appendItem(father,item,notify);
       }
@@ -307,8 +307,8 @@ public:
   %extend {
     /// Prepend [possibly subclassed] item as first child of father
     FXFoldingItem* prependItem(FXFoldingItem* father,FXFoldingItem* item,FXbool notify=FALSE){
-      if(item->isMemberOf(FXMETACLASS(FXRbFoldingItem))){
-        dynamic_cast<FXRbFoldingItem*>(item)->owned=TRUE;
+      if(item->isMemberOf(FXMETACLASS(HinFoldingItem))){
+        dynamic_cast<HinFoldingItem*>(item)->owned=TRUE;
         }
       return self->prependItem(father,item,notify);
       }
@@ -328,14 +328,14 @@ public:
     void removeItem(FXFoldingItem* item,FXbool notify=FALSE){
       // Save pointer(s) to the soon-to-be-destroyed items
       FXObjectListOf<FXFoldingItem> items;
-      FXRbFoldingList::enumerateItem(item,items);
+      HinFoldingList::enumerateItem(item,items);
 
       // Do the deed
       self->removeItem(item,notify);
 
       // Now zero-out pointers held by still-alive Ruby objects
       for(FXint i=0;i<items.no();i++){
-        FXRbUnregisterRubyObj(items[i]);
+        HinUnregisterRubyObj(items[i]);
         }
       }
 
@@ -343,14 +343,14 @@ public:
     void removeItems(FXFoldingItem* fm,FXFoldingItem* to,FXbool notify=FALSE){
       // Save pointer(s) to the soon-to-be-destroyed items
       FXObjectListOf<FXFoldingItem> items;
-      FXRbFoldingList::enumerateItems(fm,to,items);
+      HinFoldingList::enumerateItems(fm,to,items);
 
       // Do the deed
       self->removeItems(fm,to,notify);
 
       // Now zero-out pointers held by still-alive Ruby objects
       for(FXint i=0;i<items.no();i++){
-        FXRbUnregisterRubyObj(items[i]);
+        HinUnregisterRubyObj(items[i]);
         }
       }
 
@@ -358,14 +358,14 @@ public:
     void clearItems(FXbool notify=FALSE){
       // Save pointer(s) to the soon-to-be-destroyed items
       FXObjectListOf<FXFoldingItem> items;
-      FXRbFoldingList::enumerateItems(self->getFirstItem(),self->getLastItem(),items);
+      HinFoldingList::enumerateItems(self->getFirstItem(),self->getLastItem(),items);
 
       // Do the deed
       self->clearItems(notify);
 
       // Now zero-out pointers held by still-alive Ruby objects
       for(FXint i=0;i<items.no();i++){
-        FXRbUnregisterRubyObj(items[i]);
+        HinUnregisterRubyObj(items[i]);
         }
       }
   }

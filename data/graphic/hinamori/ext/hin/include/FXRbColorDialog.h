@@ -21,32 +21,32 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbColorDialog.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinColorDialog.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBCOLORDIALOG_H
 #define FXRBCOLORDIALOG_H
 
-class FXRbColorDialog : public FXColorDialog {
-  FXDECLARE(FXRbColorDialog)
+class HinColorDialog : public FXColorDialog {
+  FXDECLARE(HinColorDialog)
 protected:
-  FXRbColorDialog(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
-#include "FXRbTopWindowVirtuals.h"
-#include "FXRbDialogBoxVirtuals.h"
+  HinColorDialog(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
+#include "HinTopWindowVirtuals.h"
+#include "HinDialogBoxVirtuals.h"
 public:
   /// Construct color dialog
-  FXRbColorDialog(FXWindow* owner,const FXString& name,FXuint opts=0,FXint x=0,FXint y=0,FXint w=0,FXint h=0) : FXColorDialog(owner,name,opts,x,y,w,h){}
+  HinColorDialog(FXWindow* owner,const FXString& name,FXuint opts=0,FXint x=0,FXint y=0,FXint w=0,FXint h=0) : FXColorDialog(owner,name,opts,x,y,w,h){}
 
   // Mark dependencies for the GC
   static void markfunc(FXColorDialog* dlg);
 
   // Destructor
-  virtual ~FXRbColorDialog(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinColorDialog(){
+    HinUnregisterRubyObj(this);
     }
   };
 

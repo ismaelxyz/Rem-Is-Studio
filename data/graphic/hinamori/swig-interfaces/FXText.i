@@ -321,7 +321,7 @@ public:
   /// Construct multi-line text widget
   %extend {
     FXText(FXComposite* p,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=0,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=3,FXint pr=3,FXint pt=2,FXint pb=2){
-      return new FXRbText(p,tgt,sel,opts,x,y,w,h,pl,pr,pt,pb);
+      return new HinText(p,tgt,sel,opts,x,y,w,h,pl,pr,pt,pb);
       }
     }
 
@@ -548,8 +548,8 @@ public:
       }
       if(self->findText(string,beg,end,start,flags,ngroups)){
         ary=rb_ary_new();
-        rb_ary_push(ary,FXRbMakeArray(beg,ngroups));
-        rb_ary_push(ary,FXRbMakeArray(end,ngroups));
+        rb_ary_push(ary,HinMakeArray(beg,ngroups));
+        rb_ary_push(ary,HinMakeArray(end,ngroups));
       }
       FXFREE(&beg);
       FXFREE(&end);
@@ -709,8 +709,8 @@ public:
   %extend {
     /// Set highlight styles
     void setHiliteStyles(VALUE styles){
-      if(self->isMemberOf(FXMETACLASS(FXRbText))){
-        FXRbText *text=dynamic_cast<FXRbText*>(self);
+      if(self->isMemberOf(FXMETACLASS(HinText))){
+        HinText *text=dynamic_cast<HinText*>(self);
 	FXASSERT(text);
         Check_Type(styles,T_ARRAY);
 	if(text->numStyles>0){
@@ -735,12 +735,12 @@ public:
 
     /// Get highlight styles
     VALUE getHiliteStyles() const {
-      if(self->isMemberOf(FXMETACLASS(FXRbText))){
-        const FXRbText* text=dynamic_cast<const FXRbText*>(self);
+      if(self->isMemberOf(FXMETACLASS(HinText))){
+        const HinText* text=dynamic_cast<const HinText*>(self);
 	FXASSERT(text);
         VALUE ary=rb_ary_new();
         for(FXint i=0; i<text->numStyles; i++){
-	  rb_ary_push(ary,FXRbGetRubyObj(&(text->styles[i]),"FXHiliteStyle *"));
+	  rb_ary_push(ary,HinGetRubyObj(&(text->styles[i]),"FXHiliteStyle *"));
 	  }
 	return ary;
 	}

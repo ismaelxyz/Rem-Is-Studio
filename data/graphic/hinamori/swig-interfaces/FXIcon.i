@@ -30,7 +30,7 @@ public:
     * and options as in FXImage.
     */
     FXIcon(FXApp* a,const FXColor *PIXELS=NULL,FXColor clr=0,FXuint opts=0,FXint w=1,FXint h=1){
-      return new FXRbIcon(a,PIXELS,clr,opts,w,h);
+      return new HinIcon(a,PIXELS,clr,opts,w,h);
       }
     }
 

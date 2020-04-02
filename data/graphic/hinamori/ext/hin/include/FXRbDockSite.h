@@ -21,7 +21,7 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbDockSite.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinDockSite.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBDOCKSITE_H
@@ -43,42 +43,42 @@
 
 #define IMPLEMENT_FXDOCKSITE_STUBS(cls) \
   void cls::moveToolBar(FXDockBar* bar,FXint barx,FXint bary){ \
-    FXRbCallVoidMethod(this,"moveToolBar",bar,barx,bary); \
+    HinCallVoidMethod(this,"moveToolBar",bar,barx,bary); \
     } \
   void cls::dockToolBar(FXDockBar* bar,FXWindow* before){ \
-    FXRbCallVoidMethod(this,"dockToolBar",bar,before); \
+    HinCallVoidMethod(this,"dockToolBar",bar,before); \
     } \
   void cls::dockToolBar(FXDockBar* bar,FXint barx,FXint bary){ \
-    FXRbCallVoidMethod(this,"dockToolBar",bar,barx,bary); \
+    HinCallVoidMethod(this,"dockToolBar",bar,barx,bary); \
     } \
   void cls::undockToolBar(FXDockBar* bar){ \
-    FXRbCallVoidMethod(this,"undockToolBar",bar); \
+    HinCallVoidMethod(this,"undockToolBar",bar); \
     }
 
 
-class FXRbDockSite : public FXDockSite {
-  FXDECLARE(FXRbDockSite)
+class HinDockSite : public FXDockSite {
+  FXDECLARE(HinDockSite)
 protected:
-  FXRbDockSite(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
-#include "FXRbDockSiteVirtuals.h"
+  HinDockSite(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
+#include "HinDockSiteVirtuals.h"
 public:
   /**
   * Construct a toolbar dock layout manager.  Passing LAYOUT_SIDE_TOP or LAYOUT_SIDE_BOTTOM
   * causes the toolbar dock to be oriented horizontally.  Passing LAYOUT_SIDE_LEFT or
   * LAYOUT_SIDE_RIGHT causes it to be oriented vertically.
   */
-  FXRbDockSite(FXComposite *p,FXuint opts=0,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=0,FXint pr=0,FXint pt=0,FXint pb=0,FXint hs=0,FXint vs=0) : FXDockSite(p,opts,x,y,w,h,pl,pr,pt,pb,hs,vs){}
+  HinDockSite(FXComposite *p,FXuint opts=0,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=0,FXint pr=0,FXint pt=0,FXint pb=0,FXint hs=0,FXint vs=0) : FXDockSite(p,opts,x,y,w,h,pl,pr,pt,pb,hs,vs){}
 
   // Mark dependencies for the GC
   static void markfunc(FXDockSite* self);
 
   // Destructor
-  virtual ~FXRbDockSite(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinDockSite(){
+    HinUnregisterRubyObj(this);
     }
   };
 

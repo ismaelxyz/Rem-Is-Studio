@@ -38,7 +38,7 @@ public:
   %extend {
     /// Construct an icon source
     FXIconSource(FXApp* a){
-      return new FXRbIconSource(a);
+      return new HinIconSource(a);
       }
   }
 

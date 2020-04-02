@@ -21,7 +21,7 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbTranslator.h 2303 2005-12-09 03:17:28Z lyle $
+ * $Id: HinTranslator.h 2303 2005-12-09 03:17:28Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBTRANSLATOR_H
@@ -35,26 +35,26 @@ inline const FXchar* klass ## _tr(const klass* self,const FXchar* context,const 
 
 #define IMPLEMENT_FXTRANSLATOR_STUBS(cls) \
   const FXchar* cls::tr(const FXchar* context,const FXchar* message,const FXchar* hint) const { \
-    return FXRbCallCStringMethod(this,"tr",context,message,hint); \
+    return HinCallCStringMethod(this,"tr",context,message,hint); \
     }
 
-class FXRbTranslator : public FXTranslator {
-  FXDECLARE(FXRbTranslator)
+class HinTranslator : public FXTranslator {
+  FXDECLARE(HinTranslator)
 protected:
-  FXRbTranslator(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbTranslatorVirtuals.h"
+  HinTranslator(){}
+#include "HinObjectVirtuals.h"
+#include "HinTranslatorVirtuals.h"
 public:
   // Default constructor
-  FXRbTranslator(FXApp* a) : FXTranslator(a){
+  HinTranslator(FXApp* a) : FXTranslator(a){
     }
 
   // Mark dependencies for the GC
   static void markfunc(FXTranslator* t);
 
   // Destructor
-  virtual ~FXRbTranslator(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinTranslator(){
+    HinUnregisterRubyObj(this);
     }
   };
 

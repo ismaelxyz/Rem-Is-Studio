@@ -79,7 +79,7 @@ public:
   %extend {
     /// Construct scroll bar
     FXScrollBar(FXComposite* p,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=SCROLLBAR_VERTICAL,FXint x=0,FXint y=0,FXint w=0,FXint h=0){
-      return new FXRbScrollBar(p,tgt,sel,opts,x,y,w,h);
+      return new HinScrollBar(p,tgt,sel,opts,x,y,w,h);
       }
     }
 
@@ -160,7 +160,7 @@ public:
   %extend {
     /// Constructor
     FXScrollCorner(FXComposite* p){
-      return new FXRbScrollCorner(p);
+      return new HinScrollCorner(p);
       }
     }
 

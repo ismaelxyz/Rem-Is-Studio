@@ -21,28 +21,28 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbFileDict.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinFileDict.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBFILEDICT_H
 #define FXRBFILEDICT_H
 
 /// Icon dictionary
-class FXRbIconDict : public FXIconDict {
-  FXDECLARE(FXRbIconDict)
+class HinIconDict : public FXIconDict {
+  FXDECLARE(HinIconDict)
 protected:
-  FXRbIconDict(){}
-#include "FXRbObjectVirtuals.h"
+  HinIconDict(){}
+#include "HinObjectVirtuals.h"
 public:
   /// Construct an icon dictionary, with given path
-  FXRbIconDict(FXApp* a,const FXString& p=defaultIconPath) : FXIconDict(a,p){}
+  HinIconDict(FXApp* a,const FXString& p=defaultIconPath) : FXIconDict(a,p){}
 
   // Mark dependencies for the GC
   static void markfunc(FXIconDict* self);
 
   // Destructor
-  virtual ~FXRbIconDict(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinIconDict(){
+    HinUnregisterRubyObj(this);
     }
   };
 
@@ -61,42 +61,42 @@ inline FXFileAssoc* klass ## _findExecBinding(klass* self,const FXchar* pathname
 
 #define IMPLEMENT_FXFILEDICT_STUBS(cls) \
   FXFileAssoc* cls::findFileBinding(const FXchar* pathname){ \
-    return FXRbCallFileAssocMethod(this,"findFileBinding",pathname); \
+    return HinCallFileAssocMethod(this,"findFileBinding",pathname); \
     } \
   FXFileAssoc* cls::findDirBinding(const FXchar* pathname){ \
-    return FXRbCallFileAssocMethod(this,"findDirBinding",pathname); \
+    return HinCallFileAssocMethod(this,"findDirBinding",pathname); \
     } \
   FXFileAssoc* cls::findExecBinding(const FXchar* pathname){ \
-    return FXRbCallFileAssocMethod(this,"findExecBinding",pathname); \
+    return HinCallFileAssocMethod(this,"findExecBinding",pathname); \
     }
 
 
 /// File Association dictionary
-class FXRbFileDict : public FXFileDict {
-  FXDECLARE(FXRbFileDict)
+class HinFileDict : public FXFileDict {
+  FXDECLARE(HinFileDict)
 protected:
-  FXRbFileDict(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbFileDictVirtuals.h"
+  HinFileDict(){}
+#include "HinObjectVirtuals.h"
+#include "HinFileDictVirtuals.h"
 public:
   /**
   * Construct a dictionary mapping file-extension to file associations,
   * using the application registry settings as a source for the bindings.
   */
-  FXRbFileDict(FXApp* a) : FXFileDict(a){}
+  HinFileDict(FXApp* a) : FXFileDict(a){}
 
   /**
   * Construct a dictionary mapping file-extension to file associations,
   * using the specified settings database as a source for the bindings.
   */
-  FXRbFileDict(FXApp* a,FXSettings* db) : FXFileDict(a,db){}
+  HinFileDict(FXApp* a,FXSettings* db) : FXFileDict(a,db){}
 
   // Mark dependencies for the GC
   static void markfunc(FXFileDict* self);
 
   // Destructor
-  virtual ~FXRbFileDict(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinFileDict(){
+    HinUnregisterRubyObj(this);
     }
   };
 

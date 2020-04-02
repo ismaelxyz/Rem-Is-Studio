@@ -42,7 +42,7 @@ public:
   %extend {
     /// Construct a menu command
     FXMenuCommand(FXComposite* p,const FXString& text,FXIcon* ic=NULL,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=0){
-      return new FXRbMenuCommand(p,text,ic,tgt,sel,opts);
+      return new HinMenuCommand(p,text,ic,tgt,sel,opts);
       }
     }
 

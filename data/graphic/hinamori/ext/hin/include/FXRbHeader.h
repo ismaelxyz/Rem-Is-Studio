@@ -21,7 +21,7 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbHeader.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinHeader.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBHEADER_H
@@ -53,40 +53,40 @@ inline void klass ## _destroy(klass* self){ \
 
 #define IMPLEMENT_FXHEADERITEM_STUBS(cls) \
   void cls::setText(const FXString& text){ \
-    FXRbCallVoidMethod(this,"setText",text); \
+    HinCallVoidMethod(this,"setText",text); \
     } \
   void cls::setIcon(FXIcon* icn){ \
-    FXRbCallVoidMethod(this,"setIcon",icn); \
+    HinCallVoidMethod(this,"setIcon",icn); \
     } \
   FXint cls::getWidth(const FXHeader* header) const { \
-    return FXRbCallIntMethod(this,"getWidth",header); \
+    return HinCallIntMethod(this,"getWidth",header); \
     } \
   FXint cls::getHeight(const FXHeader* header) const { \
-    return FXRbCallIntMethod(this,"getHeight",header); \
+    return HinCallIntMethod(this,"getHeight",header); \
     } \
   void cls::create(){ \
-    FXRbCallVoidMethod(this,"create"); \
+    HinCallVoidMethod(this,"create"); \
     } \
   void cls::detach(){ \
-    FXRbCallVoidMethod(this,"detach"); \
+    HinCallVoidMethod(this,"detach"); \
     } \
   void cls::destroy(){ \
-    FXRbCallVoidMethod(this,"destroy"); \
+    HinCallVoidMethod(this,"destroy"); \
     }
 
 
-class FXRbHeaderItem : public FXHeaderItem {
-  FXDECLARE(FXRbHeaderItem)
+class HinHeaderItem : public FXHeaderItem {
+  FXDECLARE(HinHeaderItem)
 protected:
-  FXRbHeaderItem(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbHeaderItemVirtuals.h"
+  HinHeaderItem(){}
+#include "HinObjectVirtuals.h"
+#include "HinHeaderItemVirtuals.h"
 public:
   // Is this header item owned by an FXHeader yet?
   FXbool owned;
 public:
   /// Construct new item with given text, icon, size, and user-data
-  FXRbHeaderItem(const FXString& text,FXIcon* ic=NULL,FXint s=0,void* ptr=NULL) : FXHeaderItem(text,ic,s,ptr),owned(FALSE){}
+  HinHeaderItem(const FXString& text,FXIcon* ic=NULL,FXint s=0,void* ptr=NULL) : FXHeaderItem(text,ic,s,ptr),owned(FALSE){}
 
   // Mark dependencies for the GC
   static void markfunc(FXHeaderItem* self);
@@ -95,23 +95,23 @@ public:
   static void freefunc(FXHeaderItem* self);
 
   // Destructor
-  virtual ~FXRbHeaderItem(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinHeaderItem(){
+    HinUnregisterRubyObj(this);
     }
   };
 
 
-class FXRbHeader : public FXHeader {
-  FXDECLARE(FXRbHeader)
+class HinHeader : public FXHeader {
+  FXDECLARE(HinHeader)
 protected:
-  FXRbHeader(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
+  HinHeader(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
 public:
   /// Construct new header control
-  FXRbHeader(FXComposite* p,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=HEADER_NORMAL,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=DEFAULT_PAD,FXint pr=DEFAULT_PAD,FXint pt=DEFAULT_PAD,FXint pb=DEFAULT_PAD) : FXHeader(p,tgt,sel,opts,x,y,w,h,pl,pr,pt,pb){}
+  HinHeader(FXComposite* p,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=HEADER_NORMAL,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=DEFAULT_PAD,FXint pr=DEFAULT_PAD,FXint pt=DEFAULT_PAD,FXint pb=DEFAULT_PAD) : FXHeader(p,tgt,sel,opts,x,y,w,h,pl,pr,pt,pb){}
 
   // Mark dependencies for the GC
   static void markfunc(FXHeader* self);
@@ -120,9 +120,9 @@ public:
   static void unregisterOwnedObjects(FXHeader *pHeader);
 
   // Destructor
-  virtual ~FXRbHeader(){
+  virtual ~HinHeader(){
     unregisterOwnedObjects(this);
-    FXRbUnregisterRubyObj(this);
+    HinUnregisterRubyObj(this);
     }
   };
 

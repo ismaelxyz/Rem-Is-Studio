@@ -21,30 +21,30 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbSplitter.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinSplitter.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBSPLITTER_H
 #define FXRBSPLITTER_H
 
-class FXRbSplitter : public FXSplitter {
-  FXDECLARE(FXRbSplitter)
+class HinSplitter : public FXSplitter {
+  FXDECLARE(HinSplitter)
 protected:
-  FXRbSplitter(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
+  HinSplitter(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
 public:
   /// Construct new splitter widget
-  FXRbSplitter(FXComposite* p,FXuint opts=SPLITTER_NORMAL,FXint x=0,FXint y=0,FXint w=0,FXint h=0) : FXSplitter(p,opts,x,y,w,h){}
+  HinSplitter(FXComposite* p,FXuint opts=SPLITTER_NORMAL,FXint x=0,FXint y=0,FXint w=0,FXint h=0) : FXSplitter(p,opts,x,y,w,h){}
 
   /// Construct new splitter widget; target is informed of size changes
-  FXRbSplitter(FXComposite* p,FXObject* tgt,FXSelector sel,FXuint opts=SPLITTER_NORMAL,FXint x=0,FXint y=0,FXint w=0,FXint h=0) : FXSplitter(p,tgt,sel,opts,x,y,w,h){}
+  HinSplitter(FXComposite* p,FXObject* tgt,FXSelector sel,FXuint opts=SPLITTER_NORMAL,FXint x=0,FXint y=0,FXint w=0,FXint h=0) : FXSplitter(p,tgt,sel,opts,x,y,w,h){}
 
   // Destructor
-  virtual ~FXRbSplitter(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinSplitter(){
+    HinUnregisterRubyObj(this);
     }
 
   // Mark dependencies for the GC

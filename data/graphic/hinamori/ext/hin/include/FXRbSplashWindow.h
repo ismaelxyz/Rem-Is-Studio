@@ -21,35 +21,35 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbSplashWindow.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinSplashWindow.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBSPLASHWINDOW_H
 #define FXRBSPLASHWINDOW_H
 
 // Main window class
-class FXRbSplashWindow : public FXSplashWindow {
-  FXDECLARE(FXRbSplashWindow)
+class HinSplashWindow : public FXSplashWindow {
+  FXDECLARE(HinSplashWindow)
 protected:
-  FXRbSplashWindow(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
-#include "FXRbTopWindowVirtuals.h"
+  HinSplashWindow(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
+#include "HinTopWindowVirtuals.h"
 public:
   // Constructor
-  FXRbSplashWindow(FXApp* ap,FXIcon* ic,FXuint opts=SPLASH_SIMPLE,FXuint ms=5000) : FXSplashWindow(ap,ic,opts,ms){}
+  HinSplashWindow(FXApp* ap,FXIcon* ic,FXuint opts=SPLASH_SIMPLE,FXuint ms=5000) : FXSplashWindow(ap,ic,opts,ms){}
 
   // Constructor
-  FXRbSplashWindow(FXWindow *ow,FXIcon* ic,FXuint opts=SPLASH_SIMPLE,FXuint ms=5000) : FXSplashWindow(ow,ic,opts,ms){}
+  HinSplashWindow(FXWindow *ow,FXIcon* ic,FXuint opts=SPLASH_SIMPLE,FXuint ms=5000) : FXSplashWindow(ow,ic,opts,ms){}
 
   // Mark dependencies for the GC
   static void markfunc(FXSplashWindow *self);
 
   // Destructor
-  virtual ~FXRbSplashWindow(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinSplashWindow(){
+    HinUnregisterRubyObj(this);
     }
   };
 

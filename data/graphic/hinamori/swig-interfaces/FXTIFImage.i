@@ -42,7 +42,7 @@ public:
   /// Construct an image from memory stream formatted in TIFF format
   %extend {
     FXTIFImage(FXApp *a,const void *pix=NULL,FXuint opts=0,FXint w=1,FXint h=1){
-      return new FXRbTIFImage(a,pix,opts,w,h);
+      return new HinTIFImage(a,pix,opts,w,h);
       }
     }
 
@@ -72,7 +72,7 @@ DECLARE_FXIMAGE_VIRTUALS(FXTIFImage)
     FXushort codec;
     if(fxloadTIF(store,data,width,height,codec)){
       VALUE ary=rb_ary_new();
-      rb_ary_push(ary,FXRbMakeColorArray(data,width,height));
+      rb_ary_push(ary,HinMakeColorArray(data,width,height));
       FXFREE(&data);
       rb_ary_push(ary,to_ruby(width));
       rb_ary_push(ary,to_ruby(height));

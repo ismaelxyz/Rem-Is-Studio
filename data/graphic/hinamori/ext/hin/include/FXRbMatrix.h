@@ -21,27 +21,27 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbMatrix.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinMatrix.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBMATRIX_H
 #define FXRBMATRIX_H
 
-class FXRbMatrix : public FXMatrix {
-  FXDECLARE(FXRbMatrix)
+class HinMatrix : public FXMatrix {
+  FXDECLARE(HinMatrix)
 protected:
-  FXRbMatrix(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
+  HinMatrix(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
 public:
   /// Construct a matrix layout manager with n rows or columns
-  FXRbMatrix(FXComposite *p,FXint n=1,FXuint opts=0,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=DEFAULT_SPACING,FXint pr=DEFAULT_SPACING,FXint pt=DEFAULT_SPACING,FXint pb=DEFAULT_SPACING,FXint hs=DEFAULT_SPACING,FXint vs=DEFAULT_SPACING) : FXMatrix(p,n,opts,x,y,w,h,pl,pr,pt,pb,hs,vs){}
+  HinMatrix(FXComposite *p,FXint n=1,FXuint opts=0,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=DEFAULT_SPACING,FXint pr=DEFAULT_SPACING,FXint pt=DEFAULT_SPACING,FXint pb=DEFAULT_SPACING,FXint hs=DEFAULT_SPACING,FXint vs=DEFAULT_SPACING) : FXMatrix(p,n,opts,x,y,w,h,pl,pr,pt,pb,hs,vs){}
 
   // Destructor
-  virtual ~FXRbMatrix(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinMatrix(){
+    HinUnregisterRubyObj(this);
     }
 
   // Mark dependencies for the GC

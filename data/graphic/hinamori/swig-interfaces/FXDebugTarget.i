@@ -46,7 +46,7 @@ public:
   %extend {
     /// Construct a debug target
     FXDebugTarget(){
-      return new FXRbDebugTarget();
+      return new HinDebugTarget();
       }
     }
   };

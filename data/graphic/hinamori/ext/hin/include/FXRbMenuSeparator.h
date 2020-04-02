@@ -21,27 +21,27 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbMenuSeparator.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinMenuSeparator.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBMENUSEPARATOR_H
 #define FXRBMENUSEPARATOR_H
 
-class FXRbMenuSeparator : public FXMenuSeparator {
-  FXDECLARE(FXRbMenuSeparator)
+class HinMenuSeparator : public FXMenuSeparator {
+  FXDECLARE(HinMenuSeparator)
 protected:
-  FXRbMenuSeparator(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
+  HinMenuSeparator(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
 public:
   /// Construct a menu separator
-  FXRbMenuSeparator(FXComposite* p,FXuint opts=0) : FXMenuSeparator(p,opts){}
+  HinMenuSeparator(FXComposite* p,FXuint opts=0) : FXMenuSeparator(p,opts){}
 
   // Destructor
-  virtual ~FXRbMenuSeparator(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinMenuSeparator(){
+    HinUnregisterRubyObj(this);
     }
 
   // Mark dependencies for the GC

@@ -41,7 +41,7 @@ public:
   %extend {
     /// Construct an image from memory stream formatted in JPG format
     FXJPGImage(FXApp *a,const void *pix=NULL,FXuint opts=0,FXint w=1,FXint h=1,FXint q=75){
-      return new FXRbJPGImage(a,pix,opts,w,h,q);
+      return new HinJPGImage(a,pix,opts,w,h,q);
       }
     }
 

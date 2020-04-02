@@ -3,7 +3,7 @@
  *
  */
 
-#include "FXRbCommon.h"
+#include "HinCommon.h"
 
 #ifdef HAVE___THREAD
   __thread int g_fxrb_thread_has_gvl = 1;

@@ -21,25 +21,25 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbDocument.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinDocument.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBDOCUMENT_H
 #define FXRBDOCUMENT_H
 
-class FXRbDocument : public FXDocument {
-  FXDECLARE(FXRbDocument)
-#include "FXRbObjectVirtuals.h"
+class HinDocument : public FXDocument {
+  FXDECLARE(HinDocument)
+#include "HinObjectVirtuals.h"
 public:
   // Constructor
-  FXRbDocument(){}
+  HinDocument(){}
 
   // Mark dependencies for the GC
   static void markfunc(FXDocument* self);
 
   // Destructor
-  virtual ~FXRbDocument(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinDocument(){
+    HinUnregisterRubyObj(this);
     }
   };
 

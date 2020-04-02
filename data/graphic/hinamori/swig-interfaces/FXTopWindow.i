@@ -106,12 +106,12 @@ public:
   %extend {
     // Construct free-floating top-level window
     FXTopWindow(FXApp* a,const FXString& name,FXIcon *ic,FXIcon *mi,FXuint opts,FXint x,FXint y,FXint w,FXint h,FXint pl,FXint pr,FXint pt,FXint pb,FXint hs,FXint vs){
-      return new FXRbTopWindow(a,name,ic,mi,opts,x,y,w,h,pl,pr,pt,pb,hs,vs);
+      return new HinTopWindow(a,name,ic,mi,opts,x,y,w,h,pl,pr,pt,pb,hs,vs);
       }
 
     // Construct owned top-level window
     FXTopWindow(FXWindow* owner,const FXString& name,FXIcon *ic,FXIcon *mi,FXuint opts,FXint x,FXint y,FXint w,FXint h,FXint pl,FXint pr,FXint pt,FXint pb,FXint hs,FXint vs){
-      return new FXRbTopWindow(owner,name,ic,mi,opts,x,y,w,h,pl,pr,pt,pb,hs,vs);
+      return new HinTopWindow(owner,name,ic,mi,opts,x,y,w,h,pl,pr,pt,pb,hs,vs);
       }
     }
 

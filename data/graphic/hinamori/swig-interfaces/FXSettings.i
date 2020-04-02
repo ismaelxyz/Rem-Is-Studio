@@ -42,7 +42,7 @@ public:
   /// Construct settings database.
   %extend {
     FXSettings(){
-      return new FXRbSettings();
+      return new HinSettings();
       }
     }
 

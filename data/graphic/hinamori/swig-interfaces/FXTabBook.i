@@ -51,7 +51,7 @@ public:
   /// Construct tab book
   %extend {
     FXTabBook(FXComposite* p,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=TABBOOK_NORMAL,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=DEFAULT_SPACING,FXint pr=DEFAULT_SPACING,FXint pt=DEFAULT_SPACING,FXint pb=DEFAULT_SPACING){
-      return new FXRbTabBook(p,tgt,sel,opts,x,y,w,h,pl,pr,pt,pb);
+      return new HinTabBook(p,tgt,sel,opts,x,y,w,h,pl,pr,pt,pb);
       }
     }
 

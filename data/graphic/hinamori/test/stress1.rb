@@ -2,7 +2,7 @@
 # An FXRuby stress test developed by Gilles Filippini
 #
 
-require "fox16"
+require "hin16"
 
 include Fox
 

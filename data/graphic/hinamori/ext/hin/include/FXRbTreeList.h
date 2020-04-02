@@ -21,7 +21,7 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbTreeList.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinTreeList.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBTREELIST_H
@@ -74,66 +74,66 @@ inline void klass ## _destroy(klass* self){ \
 
 #define IMPLEMENT_FXTREEITEM_STUBS(klass,superklass) \
   void klass::setText(const FXString& txt){ \
-    FXRbCallVoidMethod(this,"setText",txt); \
+    HinCallVoidMethod(this,"setText",txt); \
     } \
   void klass::setOpenIcon(FXIcon* icn,FXbool owned){ \
-    FXRbCallVoidMethod(this,"setOpenIcon",icn,owned); \
+    HinCallVoidMethod(this,"setOpenIcon",icn,owned); \
     } \
   void klass::setClosedIcon(FXIcon* icn,FXbool owned){ \
-    FXRbCallVoidMethod(this,"setClosedIcon",icn,owned); \
+    HinCallVoidMethod(this,"setClosedIcon",icn,owned); \
     } \
   void klass::setFocus(FXbool focus){ \
-    if(NIL_P(FXRbGetRubyObj(this,false))){ \
+    if(NIL_P(HinGetRubyObj(this,false))){ \
       superklass::setFocus(focus); \
       } \
     else{ \
-      FXRbCallVoidMethod(this,"setFocus",focus); \
+      HinCallVoidMethod(this,"setFocus",focus); \
       } \
     } \
   void klass::setSelected(FXbool selected){ \
-    FXRbCallVoidMethod(this,"setSelected",selected); \
+    HinCallVoidMethod(this,"setSelected",selected); \
     } \
   void klass::setOpened(FXbool opened){ \
-    FXRbCallVoidMethod(this,"setOpened",opened); \
+    HinCallVoidMethod(this,"setOpened",opened); \
     } \
   void klass::setExpanded(FXbool expanded){ \
-    FXRbCallVoidMethod(this,"setExpanded",expanded); \
+    HinCallVoidMethod(this,"setExpanded",expanded); \
     } \
   void klass::setEnabled(FXbool enabled){ \
-    FXRbCallVoidMethod(this,"setEnabled",enabled); \
+    HinCallVoidMethod(this,"setEnabled",enabled); \
     } \
   void klass::setDraggable(FXbool draggable){ \
-    FXRbCallVoidMethod(this,"setDraggable",draggable); \
+    HinCallVoidMethod(this,"setDraggable",draggable); \
     } \
   FXint klass::getWidth(const FXTreeList* list) const { \
-    return FXRbCallIntMethod(this,"getWidth",list); \
+    return HinCallIntMethod(this,"getWidth",list); \
     } \
   FXint klass::getHeight(const FXTreeList* list) const { \
-    return FXRbCallIntMethod(this,"getHeight",list); \
+    return HinCallIntMethod(this,"getHeight",list); \
     } \
   void klass::create(){ \
-    FXRbCallVoidMethod(this,"create"); \
+    HinCallVoidMethod(this,"create"); \
     } \
   void klass::detach(){ \
-    FXRbCallVoidMethod(this,"detach"); \
+    HinCallVoidMethod(this,"detach"); \
     } \
   void klass::destroy(){ \
-    FXRbCallVoidMethod(this,"destroy"); \
+    HinCallVoidMethod(this,"destroy"); \
     }
 
 
-class FXRbTreeItem : public FXTreeItem {
-  FXDECLARE(FXRbTreeItem)
+class HinTreeItem : public FXTreeItem {
+  FXDECLARE(HinTreeItem)
 protected:
-  FXRbTreeItem(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbTreeItemVirtuals.h"
+  HinTreeItem(){}
+#include "HinObjectVirtuals.h"
+#include "HinTreeItemVirtuals.h"
 public:
   // Is this tree item owned by an FXTreeList yet?
   FXbool owned;
 public:
   // Constructor
-  FXRbTreeItem(const FXString& text,FXIcon* oi=NULL,FXIcon* ci=NULL,void* ptr=NULL) : FXTreeItem(text,oi,ci,ptr),owned(FALSE){}
+  HinTreeItem(const FXString& text,FXIcon* oi=NULL,FXIcon* ci=NULL,void* ptr=NULL) : FXTreeItem(text,oi,ci,ptr),owned(FALSE){}
 
   // Mark dependencies for the GC
   static void markfunc(FXTreeItem* self);
@@ -142,8 +142,8 @@ public:
   static void freefunc(FXTreeItem* self);
 
   // Destructor
-  virtual ~FXRbTreeItem(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinTreeItem(){
+    HinUnregisterRubyObj(this);
     }
   };
 
@@ -195,63 +195,63 @@ inline FXbool klass ## _disableItem(klass* self,FXTreeItem* item){ \
 
 #define IMPLEMENT_FXTREELIST_STUBS(cls) \
   FXbool cls::selectItem(FXTreeItem* item,FXbool notify){ \
-    return FXRbCallBoolMethod(this,"selectItem",item,notify); \
+    return HinCallBoolMethod(this,"selectItem",item,notify); \
     } \
   FXbool cls::deselectItem(FXTreeItem* item,FXbool notify){ \
-    return FXRbCallBoolMethod(this,"deselectItem",item,notify); \
+    return HinCallBoolMethod(this,"deselectItem",item,notify); \
     } \
   FXbool cls::toggleItem(FXTreeItem* item,FXbool notify){ \
-    return FXRbCallBoolMethod(this,"toggleItem",item,notify); \
+    return HinCallBoolMethod(this,"toggleItem",item,notify); \
     } \
   FXbool cls::extendSelection(FXTreeItem* item,FXbool notify){ \
-    return FXRbCallBoolMethod(this,"extendSelection",item,notify); \
+    return HinCallBoolMethod(this,"extendSelection",item,notify); \
     } \
   FXbool cls::killSelection(FXbool notify){ \
-    return FXRbCallBoolMethod(this,"killSelection",notify); \
+    return HinCallBoolMethod(this,"killSelection",notify); \
     } \
   FXbool cls::openItem(FXTreeItem* item,FXbool notify){ \
-    return FXRbCallBoolMethod(this,"openItem",item,notify); \
+    return HinCallBoolMethod(this,"openItem",item,notify); \
     } \
   FXbool cls::closeItem(FXTreeItem* item,FXbool notify){ \
-    return FXRbCallBoolMethod(this,"closeItem",item,notify); \
+    return HinCallBoolMethod(this,"closeItem",item,notify); \
     } \
   FXbool cls::collapseTree(FXTreeItem* tree,FXbool notify){ \
-    return FXRbCallBoolMethod(this,"collapseTree",tree,notify); \
+    return HinCallBoolMethod(this,"collapseTree",tree,notify); \
     } \
   FXbool cls::expandTree(FXTreeItem* tree,FXbool notify){ \
-    return FXRbCallBoolMethod(this,"expandTree",tree,notify); \
+    return HinCallBoolMethod(this,"expandTree",tree,notify); \
     } \
   void cls::setCurrentItem(FXTreeItem* item,FXbool notify){ \
-    FXRbCallVoidMethod(this,"setCurrentItem",item,notify); \
+    HinCallVoidMethod(this,"setCurrentItem",item,notify); \
     } \
   FXTreeItem* cls::getItemAt(FXint x,FXint y) const { \
-    return FXRbCallTreeItemMethod(this,"getItemAt",x,y); \
+    return HinCallTreeItemMethod(this,"getItemAt",x,y); \
     } \
   void cls::makeItemVisible(FXTreeItem* item) { \
-    FXRbCallVoidMethod(this,"makeItemVisible",item); \
+    HinCallVoidMethod(this,"makeItemVisible",item); \
     } \
   FXbool cls::enableItem(FXTreeItem* item){ \
-    return FXRbCallBoolMethod(this,"enableItem",item); \
+    return HinCallBoolMethod(this,"enableItem",item); \
     } \
   FXbool cls::disableItem(FXTreeItem* item){ \
-    return FXRbCallBoolMethod(this,"disableItem",item); \
+    return HinCallBoolMethod(this,"disableItem",item); \
     }
 
 
-class FXRbTreeList : public FXTreeList {
-  FXDECLARE(FXRbTreeList)
+class HinTreeList : public FXTreeList {
+  FXDECLARE(HinTreeList)
 protected:
-  FXRbTreeList(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
-#include "FXRbScrollAreaVirtuals.h"
-#include "FXRbTreeListVirtuals.h"
+  HinTreeList(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
+#include "HinScrollAreaVirtuals.h"
+#include "HinTreeListVirtuals.h"
 public:
   /// Construct a new, initially empty tree list
-  FXRbTreeList(FXComposite *p,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=TREELIST_NORMAL,FXint x=0,FXint y=0,FXint w=0,FXint h=0) : FXTreeList(p,tgt,sel,opts,x,y,w,h){
-    setSortFunc(FXRbTreeList::sortFunc);
+  HinTreeList(FXComposite *p,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=TREELIST_NORMAL,FXint x=0,FXint y=0,FXint w=0,FXint h=0) : FXTreeList(p,tgt,sel,opts,x,y,w,h){
+    setSortFunc(HinTreeList::sortFunc);
     }
 
   // Sort function stand-in
@@ -268,9 +268,9 @@ public:
   static void enumerateItems(FXTreeItem* fm,FXTreeItem* to,FXObjectListOf<FXTreeItem>& items);
 
   // Destructor
-  virtual ~FXRbTreeList(){
-    FXRbTreeList::unregisterOwnedObjects(this);
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinTreeList(){
+    HinTreeList::unregisterOwnedObjects(this);
+    HinUnregisterRubyObj(this);
     }
   };
 

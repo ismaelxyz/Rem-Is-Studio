@@ -21,24 +21,24 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbScrollWindow.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinScrollWindow.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBSCROLLWINDOW_H
 #define FXRBSCROLLWINDOW_H
 
-class FXRbScrollWindow : public FXScrollWindow {
-  FXDECLARE(FXRbScrollWindow)
+class HinScrollWindow : public FXScrollWindow {
+  FXDECLARE(HinScrollWindow)
 protected:
-  FXRbScrollWindow(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
-#include "FXRbScrollAreaVirtuals.h"
+  HinScrollWindow(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
+#include "HinScrollAreaVirtuals.h"
 public:
   /// Construct a scroll window
-  FXRbScrollWindow(FXComposite* p,FXuint opts=0,FXint x=0,FXint y=0,FXint w=0,FXint h=0) : FXScrollWindow(p,opts,x,y,w,h){}
+  HinScrollWindow(FXComposite* p,FXuint opts=0,FXint x=0,FXint y=0,FXint w=0,FXint h=0) : FXScrollWindow(p,opts,x,y,w,h){}
 
   // Mark dependencies for the GC
   static void markfunc(FXScrollWindow* self);
@@ -47,10 +47,10 @@ public:
   static void unregisterOwnedObjects(FXScrollWindow *pScrollWindow);
 
   // Destructor
-  virtual ~FXRbScrollWindow(){
-    FXRbScrollWindow::unregisterOwnedObjects(this);
-    FXRbUnregisterRubyObj(corner); // created by FXScrollArea; must do this here; no public accessor method for it
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinScrollWindow(){
+    HinScrollWindow::unregisterOwnedObjects(this);
+    HinUnregisterRubyObj(corner); // created by FXScrollArea; must do this here; no public accessor method for it
+    HinUnregisterRubyObj(this);
     }
   };
 

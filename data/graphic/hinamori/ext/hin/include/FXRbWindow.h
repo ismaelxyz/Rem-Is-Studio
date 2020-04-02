@@ -21,7 +21,7 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbWindow.h 2344 2006-02-12 21:19:36Z lyle $
+ * $Id: HinWindow.h 2344 2006-02-12 21:19:36Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBWINDOW_H
@@ -125,123 +125,123 @@ inline void klass ## _dropDisable(klass* self){ \
 
 #define IMPLEMENT_FXWINDOW_STUBS(cls) \
   void cls::layout(){ \
-    FXRbCallVoidMethod(this,"layout"); \
+    HinCallVoidMethod(this,"layout"); \
     } \
   FXint cls::getDefaultWidth(){ \
-    return FXRbCallIntMethod(this,"getDefaultWidth"); \
+    return HinCallIntMethod(this,"getDefaultWidth"); \
     } \
   FXint cls::getDefaultHeight(){ \
-    return FXRbCallIntMethod(this,"getDefaultHeight"); \
+    return HinCallIntMethod(this,"getDefaultHeight"); \
     } \
   FXint cls::getWidthForHeight(FXint givenheight){ \
-    return FXRbCallIntMethod(this,"getWidthForHeight",givenheight); \
+    return HinCallIntMethod(this,"getWidthForHeight",givenheight); \
     } \
   FXint cls::getHeightForWidth(FXint givenwidth){ \
-    return FXRbCallIntMethod(this,"getHeightForWidth",givenwidth); \
+    return HinCallIntMethod(this,"getHeightForWidth",givenwidth); \
     } \
   bool cls::canFocus() const { \
-    return FXRbCallBoolMethod(this,"canFocus"); \
+    return HinCallBoolMethod(this,"canFocus"); \
     } \
   void cls::setFocus(){ \
-    FXRbCallVoidMethod(this,"setFocus"); \
+    HinCallVoidMethod(this,"setFocus"); \
     } \
   void cls::killFocus(){ \
-    FXRbCallVoidMethod(this,"killFocus"); \
+    HinCallVoidMethod(this,"killFocus"); \
     } \
   void cls::changeFocus(FXWindow* child){ \
-    if(!FXRbIsInGC(this)) FXRbCallVoidMethod(this,"changeFocus",child); \
+    if(!HinIsInGC(this)) HinCallVoidMethod(this,"changeFocus",child); \
     } \
   void cls::setDefault(FXbool enable){ \
-    FXRbCallVoidMethod(this,"setDefault",enable); \
+    HinCallVoidMethod(this,"setDefault",enable); \
     } \
   void cls::enable(){ \
-    FXRbCallVoidMethod(this,"enable"); \
+    HinCallVoidMethod(this,"enable"); \
     } \
   void cls::disable(){ \
-    FXRbCallVoidMethod(this,"disable"); \
+    HinCallVoidMethod(this,"disable"); \
     } \
   void cls::raise(){ \
-    FXRbCallVoidMethod(this,"raiseWindow"); \
+    HinCallVoidMethod(this,"raiseWindow"); \
     } \
   void cls::lower(){ \
-    FXRbCallVoidMethod(this,"lower"); \
+    HinCallVoidMethod(this,"lower"); \
     } \
   void cls::move(FXint x,FXint y){ \
-    FXRbCallVoidMethod(this,"move",x,y); \
+    HinCallVoidMethod(this,"move",x,y); \
     } \
   void cls::position(FXint x,FXint y,FXint w,FXint h){ \
-    FXRbCallVoidMethod(this,"position",x,y,w,h); \
+    HinCallVoidMethod(this,"position",x,y,w,h); \
     } \
   void cls::recalc(){ \
-    if(!FXRbIsInGC(this)) FXRbCallVoidMethod(this,"recalc"); \
+    if(!HinIsInGC(this)) HinCallVoidMethod(this,"recalc"); \
     } \
   void cls::reparent(FXWindow* father,FXWindow* other){ \
-    FXRbCallVoidMethod(this,"reparent",father,other); \
+    HinCallVoidMethod(this,"reparent",father,other); \
     } \
   void cls::show(){ \
-    FXRbCallVoidMethod(this,"show"); \
+    HinCallVoidMethod(this,"show"); \
     } \
   void cls::hide(){ \
-    FXRbCallVoidMethod(this,"hide"); \
+    HinCallVoidMethod(this,"hide"); \
     } \
   bool cls::isComposite() const { \
-    return FXRbCallBoolMethod(this,"isComposite"); \
+    return HinCallBoolMethod(this,"isComposite"); \
     } \
   bool cls::contains(FXint parentx,FXint parenty) const{ \
-    return FXRbCallBoolMethod(this,"contains",parentx,parenty); \
+    return HinCallBoolMethod(this,"contains",parentx,parenty); \
     } \
   bool cls::doesSaveUnder() const { \
-    return FXRbCallBoolMethod(this,"doesSaveUnder"); \
+    return HinCallBoolMethod(this,"doesSaveUnder"); \
     } \
   void cls::setBackColor(FXColor clr) { \
-    FXRbCallVoidMethod(this,"setBackColor",clr); \
+    HinCallVoidMethod(this,"setBackColor",clr); \
     } \
   const FXchar* cls::tr(const FXchar* message,const FXchar* hint) const { \
-    return FXRbCallCStringMethod(this,"tr",message,hint); \
+    return HinCallCStringMethod(this,"tr",message,hint); \
     } \
   void cls::setShape(const FXRegion& region) { \
-    FXRbCallVoidMethod(this,"setShape",region); \
+    HinCallVoidMethod(this,"setShape",region); \
     } \
   void cls::setShape(FXBitmap* bitmap) { \
-    FXRbCallVoidMethod(this,"setShape",bitmap); \
+    HinCallVoidMethod(this,"setShape",bitmap); \
     } \
   void cls::setShape(FXIcon* icon) { \
-    FXRbCallVoidMethod(this,"setShape",icon); \
+    HinCallVoidMethod(this,"setShape",icon); \
     } \
   void cls::clearShape() { \
-    FXRbCallVoidMethod(this,"clearShape"); \
+    HinCallVoidMethod(this,"clearShape"); \
     } \
   void cls::dropEnable() { \
-    FXRbCallVoidMethod(this,"dropEnable"); \
+    HinCallVoidMethod(this,"dropEnable"); \
     } \
   void cls::dropDisable() { \
-    FXRbCallVoidMethod(this,"dropDisable"); \
+    HinCallVoidMethod(this,"dropDisable"); \
     }
 
-class FXRbWindow : public FXWindow {
-  FXDECLARE(FXRbWindow)
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
+class HinWindow : public FXWindow {
+  FXDECLARE(HinWindow)
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
 protected:
-  FXRbWindow(){}
+  HinWindow(){}
 public:
   // Constructor
-  FXRbWindow(FXComposite* p,FXuint opts=0,FXint x=0,FXint y=0,FXint w=0,FXint h=0) : FXWindow(p,opts,x,y,w,h){}
+  HinWindow(FXComposite* p,FXuint opts=0,FXint x=0,FXint y=0,FXint w=0,FXint h=0) : FXWindow(p,opts,x,y,w,h){}
 
   // Another constructor
-  FXRbWindow(FXApp* a,FXVisual *vis):FXWindow(a,vis){}
+  HinWindow(FXApp* a,FXVisual *vis):FXWindow(a,vis){}
 
   // Yet another constructor
-  FXRbWindow(FXApp* a,FXWindow* own,FXuint opts,FXint x,FXint y,FXint w,FXint h):FXWindow(a,own,opts,x,y,w,h){}
+  HinWindow(FXApp* a,FXWindow* own,FXuint opts,FXint x,FXint y,FXint w,FXint h):FXWindow(a,own,opts,x,y,w,h){}
 
   // Mark dependencies for the GC
   static void markfunc(FXWindow* win);
 
   // Destructor
-  virtual ~FXRbWindow(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinWindow(){
+    HinUnregisterRubyObj(this);
     }
   };
 

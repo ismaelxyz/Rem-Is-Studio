@@ -12,7 +12,7 @@ class Processor
   end
 
   def getBaseClassName(klass)
-    klass.sub(/FXRb/, "FX")
+    klass.sub(/Hin/, "FX")
   end
 
   def start_class(classname, baseclass)
@@ -59,7 +59,7 @@ class MyProcessor < Processor
   def start_class(classname, baseclass)
     @classname = classname
     @baseclass = baseclass
-    if classname == "FXRbScintilla"
+    if classname == "HinScintilla"
       @fcpp.puts "#ifdef WITH_FXSCINTILLA\n\n"
       @finc.puts "#ifdef WITH_FXSCINTILLA\n\n"
     end
@@ -68,7 +68,7 @@ class MyProcessor < Processor
   end
 
   def implement_overrides(filename)
-    stubclass = filename.gsub('"', '').sub("FXRb", "FX")
+    stubclass = filename.gsub('"', '').sub("Hin", "FX")
     stubclass = stubclass.sub(/Virtuals\.h/, "").upcase
     unless $special_stubclasses.include? stubclass
       @fcpp.printf("IMPLEMENT_%s_STUBS(%s)\n", stubclass, @classname)
@@ -78,7 +78,7 @@ class MyProcessor < Processor
   end
 
   def implement_stubs(filename)
-    stubclass = filename.gsub('"', '').sub("FXRb", "FX")
+    stubclass = filename.gsub('"', '').sub("Hin", "FX")
     stubclass = stubclass.sub(/Virtuals\.h/, "").upcase
     unless $special_stubclasses.include? stubclass
       @finc.printf("DECLARE_%s_STUBS(%s)\n", stubclass, @baseclass)
@@ -97,7 +97,7 @@ class MyProcessor < Processor
   end
 
   def end_class
-    if @classname == "FXRbScintilla"
+    if @classname == "HinScintilla"
       @fcpp.puts "\n#endif"
       @finc.puts "\n#endif"
     end
@@ -110,7 +110,7 @@ end
 
 fcpp = File.new('impl.cpp', 'wb')
 finc = File.new('./include/inlinestubs.h', 'wb')
-fcpp.puts '#include "FXRbCommon.h"'
+fcpp.puts '#include "HinCommon.h"'
 Dir.glob("./include/FX*.h").sort.each do |file|
   unless file =~ /BitmapView/
     MyProcessor.new(fcpp, finc).process(file)

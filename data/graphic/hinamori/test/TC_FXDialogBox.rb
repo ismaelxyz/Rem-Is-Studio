@@ -1,5 +1,5 @@
 require 'test/unit'
-require 'fox16'
+require 'hin16'
 
 class TC_FXDialogBox < Test::Unit::TestCase
   include Fox

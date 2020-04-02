@@ -79,7 +79,7 @@ public:
   %extend {
     /// Constructor
     FXMenuButton(FXComposite* p,const FXString& text,FXIcon* ic=NULL,FXPopup* pup=NULL,FXuint opts=JUSTIFY_NORMAL|ICON_BEFORE_TEXT|MENUBUTTON_DOWN,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=DEFAULT_PAD,FXint pr=DEFAULT_PAD,FXint pt=DEFAULT_PAD,FXint pb=DEFAULT_PAD){
-      return new FXRbMenuButton(p,text,ic,pup,opts,x,y,w,h,pl,pr,pt,pb);
+      return new HinMenuButton(p,text,ic,pup,opts,x,y,w,h,pl,pr,pt,pb);
       }
     }
 

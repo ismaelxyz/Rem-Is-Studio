@@ -33,7 +33,7 @@
 #   records are moved to the redo-list, they usually contain different
 #   information!
 
-require 'fox16/responder'
+require 'hin16/responder'
 
 module Fox
 

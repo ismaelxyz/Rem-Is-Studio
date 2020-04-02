@@ -21,33 +21,33 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbTGAImage.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinTGAImage.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBTGAIMAGE_H
 #define FXRBTGAIMAGE_H
 
-class FXRbTGAImage : public FXTGAImage {
-  FXDECLARE(FXRbTGAImage)
+class HinTGAImage : public FXTGAImage {
+  FXDECLARE(HinTGAImage)
 protected:
-  FXRbTGAImage(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbImageVirtuals.h"
+  HinTGAImage(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinImageVirtuals.h"
 public:
   /// Construct an image from memory stream formatted as TGA format
-  FXRbTGAImage(FXApp* a,const void *pix=NULL,FXuint opts=0,FXint w=1,FXint h=1) : FXTGAImage(a,pix,opts,w,h){
-    FXRbRegisterAppSensitiveObject(this);
+  HinTGAImage(FXApp* a,const void *pix=NULL,FXuint opts=0,FXint w=1,FXint h=1) : FXTGAImage(a,pix,opts,w,h){
+    HinRegisterAppSensitiveObject(this);
     }
 
   // Mark dependencies for the GC
   static void markfunc(FXTGAImage* self);
 
   // Destructor
-  virtual ~FXRbTGAImage(){
-    FXRbUnregisterRubyObj(this);
-    FXRbUnregisterAppSensitiveObject(this);
+  virtual ~HinTGAImage(){
+    HinUnregisterRubyObj(this);
+    HinUnregisterAppSensitiveObject(this);
     }
   };
 

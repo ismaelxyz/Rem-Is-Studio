@@ -21,30 +21,30 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbArrowButton.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinArrowButton.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBARROWBUTTON_H
 #define FXRBARROWBUTTON_H
 
-class FXRbArrowButton : public FXArrowButton {
-  FXDECLARE(FXRbArrowButton)
+class HinArrowButton : public FXArrowButton {
+  FXDECLARE(HinArrowButton)
 protected:
-  FXRbArrowButton(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
+  HinArrowButton(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
 public:
   /// Construct arrow button
-  FXRbArrowButton(FXComposite* p,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=ARROW_NORMAL,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=DEFAULT_PAD,FXint pr=DEFAULT_PAD,FXint pt=DEFAULT_PAD,FXint pb=DEFAULT_PAD) : FXArrowButton(p,tgt,sel,opts,x,y,w,h,pl,pr,pt,pb){}
+  HinArrowButton(FXComposite* p,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=ARROW_NORMAL,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=DEFAULT_PAD,FXint pr=DEFAULT_PAD,FXint pt=DEFAULT_PAD,FXint pb=DEFAULT_PAD) : FXArrowButton(p,tgt,sel,opts,x,y,w,h,pl,pr,pt,pb){}
 
   // Mark dependencies for the GC
   static void markfunc(FXArrowButton *btn);
 
   // Destructor
-  virtual ~FXRbArrowButton(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinArrowButton(){
+    HinUnregisterRubyObj(this);
     }
   };
 

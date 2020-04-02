@@ -29,7 +29,7 @@ public:
   %extend {
     /// Construct default visual
     FXGLVisual(FXApp* a,FXuint flags){
-      return new FXRbGLVisual(a,flags);
+      return new HinGLVisual(a,flags);
       }
     }
 

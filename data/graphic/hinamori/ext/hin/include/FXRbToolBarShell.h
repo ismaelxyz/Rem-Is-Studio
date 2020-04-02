@@ -21,28 +21,28 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbToolBarShell.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinToolBarShell.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBTOOLBARSHELL_H
 #define FXRBTOOLBARSHELL_H
 
-class FXRbToolBarShell : public FXToolBarShell {
-  FXDECLARE(FXRbToolBarShell)
+class HinToolBarShell : public FXToolBarShell {
+  FXDECLARE(HinToolBarShell)
 protected:
-  FXRbToolBarShell(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
-#include "FXRbTopWindowVirtuals.h"
+  HinToolBarShell(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
+#include "HinTopWindowVirtuals.h"
 public:
   /// Construct a toolbar shell
-  FXRbToolBarShell(FXWindow* owner,FXuint opts=FRAME_RAISED|FRAME_THICK,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint hs=4,FXint vs=4) : FXToolBarShell(owner,opts,x,y,w,h){}
+  HinToolBarShell(FXWindow* owner,FXuint opts=FRAME_RAISED|FRAME_THICK,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint hs=4,FXint vs=4) : FXToolBarShell(owner,opts,x,y,w,h){}
 
   // Destructor
-  virtual ~FXRbToolBarShell(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinToolBarShell(){
+    HinUnregisterRubyObj(this);
     }
 
   // Mark dependencies for the GC

@@ -1,5 +1,5 @@
 begin
-  require 'fox16_c'
+  require 'hin16_c'
 rescue LoadError
   # If it's a Windows binary gem, try the <major>.<minor> subdirectory
   if RUBY_PLATFORM =~/(mswin|mingw)/i
@@ -24,23 +24,23 @@ rescue LoadError
     end
     ports_bin = File.expand_path("../../ports/#{ports_dir}/bin", __FILE__)
     add_dll_path.call(ports_bin) do
-      require "#{major_minor}/fox16_c"
+      require "#{major_minor}/hin16_c"
     end
   else
     raise
   end
 end
 
-require "fox16/core"
-require "fox16/dict"
-require "fox16/settings"
-require "fox16/iterators"
-require "fox16/keys"
-require "fox16/aliases"
-require "fox16/responder2"
-require "fox16/glgroup"
-require "fox16/execute_nonmodal"
-require "fox16/version"
-require "fox16/kwargs"
-require "fox16/exceptions_for_fxerror"
-require "fox16/thread"
+require "hin16/core"
+require "hin16/dict"
+require "hin16/settings"
+require "hin16/iterators"
+require "hin16/keys"
+require "hin16/aliases"
+require "hin16/responder2"
+require "hin16/glgroup"
+require "hin16/execute_nonmodal"
+require "hin16/version"
+require "hin16/kwargs"
+require "hin16/exceptions_for_fxerror"
+require "hin16/thread"

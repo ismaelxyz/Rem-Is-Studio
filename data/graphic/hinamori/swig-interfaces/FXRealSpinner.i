@@ -71,7 +71,7 @@ public:
   /// Construct a spinner
   %extend {
     FXRealSpinner(FXComposite* p,FXint cols,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=REALSPIN_NORMAL,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=DEFAULT_PAD,FXint pr=DEFAULT_PAD,FXint pt=DEFAULT_PAD,FXint pb=DEFAULT_PAD){
-      return new FXRbRealSpinner(p,cols,tgt,sel,opts,x,y,w,h,pl,pr,pt,pb);
+      return new HinRealSpinner(p,cols,tgt,sel,opts,x,y,w,h,pl,pr,pt,pb);
       }
     }
 
@@ -106,7 +106,7 @@ public:
     /// Change the spinner's range
     void setRange(VALUE range,FXbool notify=FALSE){
       FXdouble lo,hi;
-      FXRbRange2LoHi(range,lo,hi);
+      HinRange2LoHi(range,lo,hi);
       self->setRange(lo,hi);
       }
 

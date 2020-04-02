@@ -65,7 +65,7 @@ module Fox
         end
       end
       # FIXME: The target objects stored in the accelerator table are currently
-      # private. Therefore FXRbAccelTable::markfunc() doesn't mark them as used.
+      # private. Therefore HinAccelTable::markfunc() doesn't mark them as used.
       # As a workaround the objects are additionally stored in @targets Hash.
       @targets = {} unless instance_variable_defined?('@targets')
       @targets[hotKey] = tgt

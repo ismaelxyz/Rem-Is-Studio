@@ -54,11 +54,11 @@ public:
   %extend {
     /// Constructor
     FXObject(){
-      return new FXRbObject();
+      return new HinObject();
       }
     }
 
-  /// Handle is actually declared (hidden) in FXRbDECLARE
+  /// Handle is actually declared (hidden) in HinDECLARE
   virtual long handle(FXObject* sender,FXSelector sel,void* PTR_MAGIC);
 
   /// Get class name of some object

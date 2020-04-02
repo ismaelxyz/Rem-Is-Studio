@@ -21,33 +21,33 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbTIFImage.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinTIFImage.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBTIFIMAGE_H
 #define FXRBTIFIMAGE_H
 
-class FXRbTIFImage : public FXTIFImage {
-  FXDECLARE(FXRbTIFImage)
+class HinTIFImage : public FXTIFImage {
+  FXDECLARE(HinTIFImage)
 protected:
-  FXRbTIFImage(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbImageVirtuals.h"
+  HinTIFImage(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinImageVirtuals.h"
 public:
   /// Construct an image from memory stream formatted as TIFF
-  FXRbTIFImage(FXApp* a,const void *pix=NULL,FXuint opts=0,FXint w=1,FXint h=1) : FXTIFImage(a,pix,opts,w,h){
-    FXRbRegisterAppSensitiveObject(this);
+  HinTIFImage(FXApp* a,const void *pix=NULL,FXuint opts=0,FXint w=1,FXint h=1) : FXTIFImage(a,pix,opts,w,h){
+    HinRegisterAppSensitiveObject(this);
     }
 
   // Mark dependencies for the GC
   static void markfunc(FXTIFImage* self);
 
   // Destructor
-  virtual ~FXRbTIFImage(){
-    FXRbUnregisterRubyObj(this);
-    FXRbUnregisterAppSensitiveObject(this);
+  virtual ~HinTIFImage(){
+    HinUnregisterRubyObj(this);
+    HinUnregisterAppSensitiveObject(this);
     }
   };
 

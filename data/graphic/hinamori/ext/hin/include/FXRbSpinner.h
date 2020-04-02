@@ -21,7 +21,7 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbSpinner.h 2238 2005-11-09 13:41:54Z lyle $
+ * $Id: HinSpinner.h 2238 2005-11-09 13:41:54Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBSPINNER_H
@@ -35,26 +35,26 @@ inline void klass ## _setValue(klass* self,FXint value,FXbool notify){ \
 
 #define IMPLEMENT_FXSPINNER_STUBS(cls) \
   void cls::setValue(FXint value,FXbool notify){ \
-    FXRbCallVoidMethod(this,"setValue",value,notify); \
+    HinCallVoidMethod(this,"setValue",value,notify); \
     }
 
 
-class FXRbSpinner : public FXSpinner {
-  FXDECLARE(FXRbSpinner)
+class HinSpinner : public FXSpinner {
+  FXDECLARE(HinSpinner)
 protected:
-  FXRbSpinner(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
-#include "FXRbSpinnerVirtuals.h"
+  HinSpinner(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
+#include "HinSpinnerVirtuals.h"
 public:
   /// Construct a spinner
-  FXRbSpinner(FXComposite *p,FXint cols,FXObject *tgt=NULL,FXSelector sel=0,FXuint opts=SPIN_NORMAL,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=DEFAULT_PAD,FXint pr=DEFAULT_PAD,FXint pt=DEFAULT_PAD,FXint pb=DEFAULT_PAD) : FXSpinner(p,cols,tgt,sel,opts,x,y,w,h,pl,pr,pt,pb){}
+  HinSpinner(FXComposite *p,FXint cols,FXObject *tgt=NULL,FXSelector sel=0,FXuint opts=SPIN_NORMAL,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=DEFAULT_PAD,FXint pr=DEFAULT_PAD,FXint pt=DEFAULT_PAD,FXint pb=DEFAULT_PAD) : FXSpinner(p,cols,tgt,sel,opts,x,y,w,h,pl,pr,pt,pb){}
 
   // Destructor
-  virtual ~FXRbSpinner(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinSpinner(){
+    HinUnregisterRubyObj(this);
     }
 
   // Mark dependencies for the GC

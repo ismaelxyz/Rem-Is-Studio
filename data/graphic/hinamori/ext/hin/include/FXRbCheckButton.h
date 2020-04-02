@@ -21,30 +21,30 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbCheckButton.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinCheckButton.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBCHECKBUTTON_H
 #define FXRBCHECKBUTTON_H
 
-class FXRbCheckButton : public FXCheckButton {
-  FXDECLARE(FXRbCheckButton)
+class HinCheckButton : public FXCheckButton {
+  FXDECLARE(HinCheckButton)
 protected:
-  FXRbCheckButton(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
+  HinCheckButton(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
 public:
   /// Construct new check button
-  FXRbCheckButton(FXComposite* p,const FXString& text,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=CHECKBUTTON_NORMAL,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=DEFAULT_PAD,FXint pr=DEFAULT_PAD,FXint pt=DEFAULT_PAD,FXint pb=DEFAULT_PAD) : FXCheckButton(p,text,tgt,sel,opts,x,y,w,h,pl,pr,pt,pb){}
+  HinCheckButton(FXComposite* p,const FXString& text,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=CHECKBUTTON_NORMAL,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=DEFAULT_PAD,FXint pr=DEFAULT_PAD,FXint pt=DEFAULT_PAD,FXint pb=DEFAULT_PAD) : FXCheckButton(p,text,tgt,sel,opts,x,y,w,h,pl,pr,pt,pb){}
 
   // Mark dependencies for GC
   static void markfunc(FXCheckButton* cb);
 
   // Destructor
-  virtual ~FXRbCheckButton(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinCheckButton(){
+    HinUnregisterRubyObj(this);
     }
   };
 

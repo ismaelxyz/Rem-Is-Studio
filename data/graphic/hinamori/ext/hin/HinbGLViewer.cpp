@@ -21,13 +21,13 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbGLViewer.cpp 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinGLViewer.cpp 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
-#include "FXRbCommon.h"
+#include "HinCommon.h"
 
 // Process picks
-FXGLObject* FXRbGLViewer::processHits(FXuint *pickbuffer,FXint nhits){
+FXGLObject* HinGLViewer::processHits(FXuint *pickbuffer,FXint nhits){
   FXuint d1,d2,i,n,zmin,zmax,sel=0,nnames=0;
   if(0<=nhits){
     for(i=0,zmin=zmax=4294967295U; nhits>0; i+=n+3,nhits--){
@@ -41,14 +41,14 @@ FXGLObject* FXRbGLViewer::processHits(FXuint *pickbuffer,FXint nhits){
 	nnames=n;
         }
       }
-    FXASSERT(scene->isMemberOf(FXMETACLASS(FXRbGLObject)) || scene->isMemberOf(FXMETACLASS(FXRbGLShape)));
-    if(scene->isMemberOf(FXMETACLASS(FXRbGLObject))){
-      FXRbGLObject* obj=dynamic_cast<FXRbGLObject*>(scene);
+    FXASSERT(scene->isMemberOf(FXMETACLASS(HinGLObject)) || scene->isMemberOf(FXMETACLASS(HinGLShape)));
+    if(scene->isMemberOf(FXMETACLASS(HinGLObject))){
+      HinGLObject* obj=dynamic_cast<HinGLObject*>(scene);
       FXASSERT(obj!=0);
       return obj->identify(&pickbuffer[4+sel],nnames-1);
       }
     else{
-      FXRbGLShape* shape=dynamic_cast<FXRbGLShape*>(scene);
+      HinGLShape* shape=dynamic_cast<HinGLShape*>(scene);
       FXASSERT(shape!=0);
       return shape->identify(&pickbuffer[4+sel],nnames-1);
       }
@@ -58,7 +58,7 @@ FXGLObject* FXRbGLViewer::processHits(FXuint *pickbuffer,FXint nhits){
 
 
 // Build NULL-terminated list of ALL picked objects overlapping rectangle
-FXGLObject** FXRbGLViewer::_select(FXint x,FXint y,FXint w,FXint h){
+FXGLObject** HinGLViewer::_select(FXint x,FXint y,FXint w,FXint h){
   FXGLObject *obj,**objects=NULL;
   FXint nhits,i,j;
   FXuint *hits;
@@ -66,18 +66,18 @@ FXGLObject** FXRbGLViewer::_select(FXint x,FXint y,FXint w,FXint h){
   if(scene && maxhits){
     if(selectHits(hits,nhits,x,y,w,h)){     // FIXME leak
       FXMALLOC(&objects,FXGLObject*,nhits+1);
-      FXASSERT(scene->isMemberOf(FXMETACLASS(FXRbGLObject)) || scene->isMemberOf(FXMETACLASS(FXRbGLShape)));
-      if(scene->isMemberOf(FXMETACLASS(FXRbGLObject))){
+      FXASSERT(scene->isMemberOf(FXMETACLASS(HinGLObject)) || scene->isMemberOf(FXMETACLASS(HinGLShape)));
+      if(scene->isMemberOf(FXMETACLASS(HinGLObject))){
         for(i=j=0; nhits>0; i+=hits[i]+3,nhits--){
           nnames=hits[i];
-          obj=dynamic_cast<FXRbGLObject*>(scene)->identify(&hits[4+i],nnames-1);
+          obj=dynamic_cast<HinGLObject*>(scene)->identify(&hits[4+i],nnames-1);
           if(obj!=NULL) objects[j++]=obj;
           }
         }
       else{
         for(i=j=0; nhits>0; i+=hits[i]+3,nhits--){
           nnames=hits[i];
-          obj=dynamic_cast<FXRbGLShape*>(scene)->identify(&hits[4+i],nnames-1);
+          obj=dynamic_cast<HinGLShape*>(scene)->identify(&hits[4+i],nnames-1);
           if(obj!=NULL) objects[j++]=obj;
           }
         }

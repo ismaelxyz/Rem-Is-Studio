@@ -21,30 +21,30 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbPacker.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinPacker.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBPACKER_H
 #define FXRBPACKER_H
 
-class FXRbPacker : public FXPacker {
-  FXDECLARE(FXRbPacker)
+class HinPacker : public FXPacker {
+  FXDECLARE(HinPacker)
 protected:
-  FXRbPacker(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
+  HinPacker(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
 public:
   /// Construct packer layout manager
-  FXRbPacker(FXComposite *p,FXuint opts=0,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=DEFAULT_SPACING,FXint pr=DEFAULT_SPACING,FXint pt=DEFAULT_SPACING,FXint pb=DEFAULT_SPACING,FXint hs=DEFAULT_SPACING,FXint vs=DEFAULT_SPACING) : FXPacker(p,opts,x,y,w,h,pl,pr,pt,pb,hs,vs){}
+  HinPacker(FXComposite *p,FXuint opts=0,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=DEFAULT_SPACING,FXint pr=DEFAULT_SPACING,FXint pt=DEFAULT_SPACING,FXint pb=DEFAULT_SPACING,FXint hs=DEFAULT_SPACING,FXint vs=DEFAULT_SPACING) : FXPacker(p,opts,x,y,w,h,pl,pr,pt,pb,hs,vs){}
 
   // Mark dependencies for the GC
   static void markfunc(FXPacker* packer);
 
   // Destructor
-  virtual ~FXRbPacker(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinPacker(){
+    HinUnregisterRubyObj(this);
     }
   };
 

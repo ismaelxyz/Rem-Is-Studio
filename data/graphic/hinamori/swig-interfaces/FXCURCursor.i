@@ -33,7 +33,7 @@ public:
   %extend {
     /// Construct CUR cursor from memory stream in Microsoft CUR format
     FXCURCursor(FXApp* a,const void* pix){
-      return new FXRbCURCursor(a,pix);
+      return new HinCURCursor(a,pix);
       }
     }
 

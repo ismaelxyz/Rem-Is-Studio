@@ -57,7 +57,7 @@ public:
 public:
   %extend {
     FXTreeItem(const FXString& text,FXIcon* oi=NULL,FXIcon* ci=NULL,void* ITEMDATA=NULL){
-      return new FXRbTreeItem(text,oi,ci,ITEMDATA);
+      return new HinTreeItem(text,oi,ci,ITEMDATA);
       }
     }
 
@@ -191,7 +191,7 @@ public:
   /// Construct a new, initially empty tree list
   %extend {
     FXTreeList(FXComposite* p,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=TREELIST_NORMAL,FXint x=0,FXint y=0,FXint w=0,FXint h=0){
-      return new FXRbTreeList(p,tgt,sel,opts,x,y,w,h);
+      return new HinTreeList(p,tgt,sel,opts,x,y,w,h);
       }
     }
 
@@ -216,8 +216,8 @@ public:
   %extend {
     /// Insert [possibly subclassed] item under father before other item
     FXTreeItem* insertItem(FXTreeItem* other,FXTreeItem* father,FXTreeItem* item,FXbool notify=FALSE){
-      if(item->isMemberOf(FXMETACLASS(FXRbTreeItem))){
-        dynamic_cast<FXRbTreeItem*>(item)->owned=TRUE;
+      if(item->isMemberOf(FXMETACLASS(HinTreeItem))){
+        dynamic_cast<HinTreeItem*>(item)->owned=TRUE;
         }
       return self->insertItem(other,father,item,notify);
       }
@@ -229,8 +229,8 @@ public:
   %extend {
     /// Append [possibly subclassed] item as last child of father
     FXTreeItem* appendItem(FXTreeItem* father,FXTreeItem* item,FXbool notify=FALSE){
-      if(item->isMemberOf(FXMETACLASS(FXRbTreeItem))){
-        dynamic_cast<FXRbTreeItem*>(item)->owned=TRUE;
+      if(item->isMemberOf(FXMETACLASS(HinTreeItem))){
+        dynamic_cast<HinTreeItem*>(item)->owned=TRUE;
         }
       return self->appendItem(father,item,notify);
       }
@@ -242,8 +242,8 @@ public:
   %extend {
     /// Prepend [possibly subclassed] item as first child of father
     FXTreeItem* prependItem(FXTreeItem* father,FXTreeItem* item,FXbool notify=FALSE){
-      if(item->isMemberOf(FXMETACLASS(FXRbTreeItem))){
-        dynamic_cast<FXRbTreeItem*>(item)->owned=TRUE;
+      if(item->isMemberOf(FXMETACLASS(HinTreeItem))){
+        dynamic_cast<HinTreeItem*>(item)->owned=TRUE;
         }
       return self->prependItem(father,item,notify);
       }
@@ -263,14 +263,14 @@ public:
     void removeItem(FXTreeItem* item,FXbool notify=FALSE){
       // Save pointer(s) to the soon-to-be-destroyed items
       FXObjectListOf<FXTreeItem> items;
-      FXRbTreeList::enumerateItem(item,items);
+      HinTreeList::enumerateItem(item,items);
 
       // Do the deed
       self->removeItem(item,notify);
 
       // Now zero-out pointers held by still-alive Ruby objects
       for(FXint i=0;i<items.no();i++){
-        FXRbUnregisterRubyObj(items[i]);
+        HinUnregisterRubyObj(items[i]);
         }
       }
 
@@ -278,14 +278,14 @@ public:
     void removeItems(FXTreeItem* fm,FXTreeItem* to,FXbool notify=FALSE){
       // Save pointer(s) to the soon-to-be-destroyed items
       FXObjectListOf<FXTreeItem> items;
-      FXRbTreeList::enumerateItems(fm,to,items);
+      HinTreeList::enumerateItems(fm,to,items);
 
       // Do the deed
       self->removeItems(fm,to,notify);
 
       // Now zero-out pointers held by still-alive Ruby objects
       for(FXint i=0;i<items.no();i++){
-        FXRbUnregisterRubyObj(items[i]);
+        HinUnregisterRubyObj(items[i]);
         }
       }
 
@@ -293,14 +293,14 @@ public:
     void clearItems(FXbool notify=FALSE){
       // Save pointer(s) to the soon-to-be-destroyed items
       FXObjectListOf<FXTreeItem> items;
-      FXRbTreeList::enumerateItems(self->getFirstItem(),self->getLastItem(),items);
+      HinTreeList::enumerateItems(self->getFirstItem(),self->getLastItem(),items);
 
       // Do the deed
       self->clearItems(notify);
 
       // Now zero-out pointers held by still-alive Ruby objects
       for(FXint i=0;i<items.no();i++){
-        FXRbUnregisterRubyObj(items[i]);
+        HinUnregisterRubyObj(items[i]);
         }
       }
     }

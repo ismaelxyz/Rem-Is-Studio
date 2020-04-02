@@ -29,7 +29,7 @@ public:
   %extend {
     /// Constructor
     FXFontDialog(FXWindow* owner,const FXString& name,FXuint opts=0,FXint x=0,FXint y=0,FXint w=600,FXint h=380){
-      return new FXRbFontDialog(owner,name,opts,x,y,w,h);
+      return new HinFontDialog(owner,name,opts,x,y,w,h);
       }
     }
 

@@ -21,30 +21,30 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbPPMImage.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinPPMImage.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBPPMIMAGE_H
 #define FXRBPPMIMAGE_H
 
-class FXRbPPMImage : public FXPPMImage {
-  FXDECLARE(FXRbPPMImage)
+class HinPPMImage : public FXPPMImage {
+  FXDECLARE(HinPPMImage)
 protected:
-  FXRbPPMImage(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbImageVirtuals.h"
+  HinPPMImage(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinImageVirtuals.h"
 public:
   /// Construct an image from memory stream formatted in PNG format
-  FXRbPPMImage(FXApp *a,const void *pix=NULL,FXuint opts=0,FXint w=1,FXint h=1) : FXPPMImage(a,pix,opts,w,h){
-    FXRbRegisterAppSensitiveObject(this);
+  HinPPMImage(FXApp *a,const void *pix=NULL,FXuint opts=0,FXint w=1,FXint h=1) : FXPPMImage(a,pix,opts,w,h){
+    HinRegisterAppSensitiveObject(this);
     }
 
   // Destructor
-  virtual ~FXRbPPMImage(){
-    FXRbUnregisterRubyObj(this);
-    FXRbUnregisterAppSensitiveObject(this);
+  virtual ~HinPPMImage(){
+    HinUnregisterRubyObj(this);
+    HinUnregisterAppSensitiveObject(this);
     }
 
   // Mark dependencies for the GC

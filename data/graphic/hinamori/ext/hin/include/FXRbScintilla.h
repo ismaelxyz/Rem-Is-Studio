@@ -21,31 +21,31 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbScintilla.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinScintilla.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBSCINTILLA_H
 #define FXRBSCINTILLA_H
 
-class FXRbScintilla : public FXScintilla {
-  FXDECLARE(FXRbScintilla)
+class HinScintilla : public FXScintilla {
+  FXDECLARE(HinScintilla)
 protected:
-  FXRbScintilla(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
-#include "FXRbScrollAreaVirtuals.h"
+  HinScintilla(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
+#include "HinScrollAreaVirtuals.h"
 public:
   /// Constructor
-  FXRbScintilla(FXComposite* p,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=0,FXint x=0,FXint y=0,FXint w=0,FXint h=0) : FXScintilla(p,tgt,sel,opts,x,y,w,h){}
+  HinScintilla(FXComposite* p,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=0,FXint x=0,FXint y=0,FXint w=0,FXint h=0) : FXScintilla(p,tgt,sel,opts,x,y,w,h){}
 
   // Mark dependencies for garbage collector
   static void markfunc(FXScintilla* self);
 
   // Destructor
-  virtual ~FXRbScintilla(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinScintilla(){
+    HinUnregisterRubyObj(this);
     }
   };
 

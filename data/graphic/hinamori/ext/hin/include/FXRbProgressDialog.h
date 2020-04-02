@@ -21,29 +21,29 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbProgressDialog.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinProgressDialog.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBPROGRESSDIALOG_H
 #define FXRBPROGRESSDIALOG_H
 
-class FXRbProgressDialog : public FXProgressDialog {
-  FXDECLARE(FXRbProgressDialog)
+class HinProgressDialog : public FXProgressDialog {
+  FXDECLARE(HinProgressDialog)
 protected:
-  FXRbProgressDialog(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
-#include "FXRbTopWindowVirtuals.h"
-#include "FXRbDialogBoxVirtuals.h"
+  HinProgressDialog(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
+#include "HinTopWindowVirtuals.h"
+#include "HinDialogBoxVirtuals.h"
 public:
   /// Construct progress dialog
-  FXRbProgressDialog(FXWindow* owner,const FXString& caption,const FXString& label,FXuint opts=PROGRESSDIALOG_NORMAL,FXint x=0,FXint y=0,FXint w=0,FXint h=0) : FXProgressDialog(owner,caption,label,opts,x,y,w,h){}
+  HinProgressDialog(FXWindow* owner,const FXString& caption,const FXString& label,FXuint opts=PROGRESSDIALOG_NORMAL,FXint x=0,FXint y=0,FXint w=0,FXint h=0) : FXProgressDialog(owner,caption,label,opts,x,y,w,h){}
 
   // Destructor
-  virtual ~FXRbProgressDialog(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinProgressDialog(){
+    HinUnregisterRubyObj(this);
     }
 
   // Mark dependencies for the GC

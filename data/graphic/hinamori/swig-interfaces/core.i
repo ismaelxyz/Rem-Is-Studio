@@ -30,8 +30,8 @@
 
 %inline %{
 void setIgnoreExceptions(VALUE ignore){
-  extern FXbool FXRbCatchExceptions;
-  FXRbCatchExceptions=(ignore==Qtrue)? TRUE : FALSE;
+  extern FXbool HinCatchExceptions;
+  HinCatchExceptions=(ignore==Qtrue)? TRUE : FALSE;
   }
 %}
 

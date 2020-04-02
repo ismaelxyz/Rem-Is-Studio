@@ -35,7 +35,7 @@ public:
   %extend {
     /// Construct a drag corner
     FXDragCorner(FXComposite* p){
-      return new FXRbDragCorner(p);
+      return new HinDragCorner(p);
       }
     }
 

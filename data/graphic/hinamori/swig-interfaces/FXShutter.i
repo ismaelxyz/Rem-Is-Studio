@@ -44,7 +44,7 @@ public:
   /// Constructor
   %extend {
     FXShutterItem(FXShutter* p,const FXString& text=FXString::null,FXIcon* icon=NULL,FXuint opts=0,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=DEFAULT_SPACING,FXint pr=DEFAULT_SPACING,FXint pt=DEFAULT_SPACING,FXint pb=DEFAULT_SPACING,FXint hs=DEFAULT_SPACING,FXint vs=DEFAULT_SPACING){
-      return new FXRbShutterItem(p,text,icon,opts,x,y,w,h,pl,pr,pt,pb,hs,vs);
+      return new HinShutterItem(p,text,icon,opts,x,y,w,h,pl,pr,pt,pb,hs,vs);
       }
     }
 
@@ -106,7 +106,7 @@ public:
   /// Constructor
   %extend {
     FXShutter(FXComposite* p,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=0,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=DEFAULT_SPACING,FXint pr=DEFAULT_SPACING,FXint pt=DEFAULT_SPACING,FXint pb=DEFAULT_SPACING,FXint hs=DEFAULT_SPACING,FXint vs=DEFAULT_SPACING){
-      return new FXRbShutter(p,tgt,sel,opts,x,y,w,h,pl,pr,pt,pb,hs,vs);
+      return new HinShutter(p,tgt,sel,opts,x,y,w,h,pl,pr,pt,pb,hs,vs);
       }
     }
 

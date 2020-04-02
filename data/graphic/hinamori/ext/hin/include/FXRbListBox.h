@@ -21,7 +21,7 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbListBox.h 2255 2005-11-30 13:55:50Z lyle $
+ * $Id: HinListBox.h 2255 2005-11-30 13:55:50Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBLISTBOX_H
@@ -34,22 +34,22 @@ inline void klass ## _setCurrentItem(klass* self,FXint index,FXbool notify){ \
 
 #define IMPLEMENT_FXLISTBOX_STUBS(cls) \
   void cls::setCurrentItem(FXint index,FXbool notify){ \
-    FXRbCallVoidMethod(this,"setCurrentItem",index,notify); \
+    HinCallVoidMethod(this,"setCurrentItem",index,notify); \
     }
 
-class FXRbListBox : public FXListBox {
-  FXDECLARE(FXRbListBox)
+class HinListBox : public FXListBox {
+  FXDECLARE(HinListBox)
 protected:
-  FXRbListBox(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
-#include "FXRbListBoxVirtuals.h"
+  HinListBox(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
+#include "HinListBoxVirtuals.h"
 public:
   /// Constructor
-  FXRbListBox(FXComposite *p,FXObject* tgt,FXSelector sel,FXuint opts,FXint x,FXint y,FXint w,FXint h,FXint pl,FXint pr,FXint pt,FXint pb) : FXListBox(p,tgt,sel,opts,x,y,w,h,pl,pr,pt,pb){
-    setSortFunc(FXRbListBox::sortFunc);
+  HinListBox(FXComposite *p,FXObject* tgt,FXSelector sel,FXuint opts,FXint x,FXint y,FXint w,FXint h,FXint pl,FXint pr,FXint pt,FXint pb) : FXListBox(p,tgt,sel,opts,x,y,w,h,pl,pr,pt,pb){
+    setSortFunc(HinListBox::sortFunc);
     }
 
   // Sort function stand-in
@@ -59,8 +59,8 @@ public:
   static void markfunc(FXListBox* self);
 
   // Destructor
-  virtual ~FXRbListBox(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinListBox(){
+    HinUnregisterRubyObj(this);
     }
   };
 

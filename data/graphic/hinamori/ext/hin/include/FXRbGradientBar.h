@@ -21,7 +21,7 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbGradientBar.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinGradientBar.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBGRADIENTBAR_H
@@ -31,24 +31,24 @@
 #include "FXGradientBar.h"
 #endif
 
-class FXRbGradientBar : public FXGradientBar {
-  FXDECLARE(FXRbGradientBar)
+class HinGradientBar : public FXGradientBar {
+  FXDECLARE(HinGradientBar)
 protected:
-  FXRbGradientBar(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
+  HinGradientBar(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
 public:
   /// Construct a gradient bar
-  FXRbGradientBar(FXComposite* p,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=FRAME_NORMAL,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=DEFAULT_PAD,FXint pr=DEFAULT_PAD,FXint pt=DEFAULT_PAD,FXint pb=DEFAULT_PAD) : FXGradientBar(p,tgt,sel,opts,x,y,w,h,pl,pr,pt,pb){}
+  HinGradientBar(FXComposite* p,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=FRAME_NORMAL,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=DEFAULT_PAD,FXint pr=DEFAULT_PAD,FXint pt=DEFAULT_PAD,FXint pb=DEFAULT_PAD) : FXGradientBar(p,tgt,sel,opts,x,y,w,h,pl,pr,pt,pb){}
 
   // Mark dependencies for the GC
   static void markfunc(FXGradientBar* self);
 
   // Destructor
-  virtual ~FXRbGradientBar(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinGradientBar(){
+    HinUnregisterRubyObj(this);
     }
   };
 

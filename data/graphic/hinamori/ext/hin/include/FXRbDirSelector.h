@@ -21,30 +21,30 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbDirSelector.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinDirSelector.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBDIRSELECTOR_H
 #define FXRBDIRSELECTOR_H
 
-class FXRbDirSelector : public FXDirSelector {
-  FXDECLARE(FXRbDirSelector)
+class HinDirSelector : public FXDirSelector {
+  FXDECLARE(HinDirSelector)
 protected:
-  FXRbDirSelector(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
+  HinDirSelector(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
 public:
   /// Constructor
-  FXRbDirSelector(FXComposite *p,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=0,FXint x=0,FXint y=0,FXint w=0,FXint h=0) : FXDirSelector(p,tgt,sel,opts,x,y,w,h){}
+  HinDirSelector(FXComposite *p,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=0,FXint x=0,FXint y=0,FXint w=0,FXint h=0) : FXDirSelector(p,tgt,sel,opts,x,y,w,h){}
 
   // Mark dependencies for the GC
   static void markfunc(FXDirSelector* self);
 
   // Destructor
-  virtual ~FXRbDirSelector(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinDirSelector(){
+    HinUnregisterRubyObj(this);
     }
   };
 

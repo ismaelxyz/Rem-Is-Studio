@@ -21,10 +21,10 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbApp.cpp 2902 2008-12-11 14:09:20Z lyle $
+ * $Id: HinApp.cpp 2902 2008-12-11 14:09:20Z lyle $
  ***********************************************************************/
 
-#include "FXRbCommon.h"
+#include "HinCommon.h"
 
 #ifdef HAVE_SYS_TIME_H
 #include <sys/time.h> /* For struct timeval */
@@ -36,41 +36,41 @@
 #endif
 
 // Message map
-FXDEFMAP(FXRbApp) FXRbAppMap[]={
+FXDEFMAP(HinApp) HinAppMap[]={
 #if defined(HAVE_RB_THREAD_CALL_WITHOUT_GVL)
-  FXMAPFUNC(SEL_IO_READ,FXRbApp::ID_CHORE_THREADS,FXRbApp::onChoreThreads),
+  FXMAPFUNC(SEL_IO_READ,HinApp::ID_CHORE_THREADS,HinApp::onChoreThreads),
 #else
-  FXMAPFUNC(SEL_CHORE,FXRbApp::ID_CHORE_THREADS,FXRbApp::onChoreThreads),
+  FXMAPFUNC(SEL_CHORE,HinApp::ID_CHORE_THREADS,HinApp::onChoreThreads),
 #endif
   };
 
 // Class implementation
-FXRbIMPLEMENT(FXRbApp,FXApp,FXRbAppMap,ARRAYNUMBER(FXRbAppMap))
+HinIMPLEMENT(HinApp,FXApp,HinAppMap,ARRAYNUMBER(HinAppMap))
 
 #ifdef WIN32
-WSAEVENT FXRbApp::interrupt_event = NULL;
+WSAEVENT HinApp::interrupt_event = NULL;
 #else
-int FXRbApp::interrupt_fds[2] = {-1, -1};
+int HinApp::interrupt_fds[2] = {-1, -1};
 #endif
 
 // Constructor
-FXRbApp::FXRbApp(const FXchar* appname,const FXchar* vendor) : FXApp(appname,vendor),m_bThreadsEnabled(FALSE),sleepTime(100){
+HinApp::HinApp(const FXchar* appname,const FXchar* vendor) : FXApp(appname,vendor),m_bThreadsEnabled(FALSE),sleepTime(100){
   setThreadsEnabled(TRUE);
   }
 
 
 // Constructor that also calls FXApp::init()
-FXRbApp* FXRbApp::constructAndInit(const FXchar* appname,const FXchar* vendor){
+HinApp* HinApp::constructAndInit(const FXchar* appname,const FXchar* vendor){
   int argc=1;
   static char* argv[]={(char*)"",0};
-  FXRbApp* app=new FXRbApp(appname,vendor);
+  HinApp* app=new HinApp(appname,vendor);
   app->FXApp::init(argc,argv);
   return app;
   }
 
 
 // Enable (or disable) threads
-void FXRbApp::setThreadsEnabled(FXbool enabled){
+void HinApp::setThreadsEnabled(FXbool enabled){
   if(enabled){
     if(!m_bThreadsEnabled){
       m_bThreadsEnabled=TRUE;
@@ -107,17 +107,17 @@ void FXRbApp::setThreadsEnabled(FXbool enabled){
 
 
 // Set sleep time
-void FXRbApp::setSleepTime(FXuint ms){
+void HinApp::setSleepTime(FXuint ms){
   sleepTime=ms;
   }
 
 
 // Get sleep time
-FXuint FXRbApp::getSleepTime() const {
+FXuint HinApp::getSleepTime() const {
   return sleepTime;
   }
 
-long FXRbApp::onChoreThreads(FXObject *obj,FXSelector sel,void *p){
+long HinApp::onChoreThreads(FXObject *obj,FXSelector sel,void *p){
 #if defined(HAVE_RB_THREAD_CALL_WITHOUT_GVL)
 #ifdef WIN32
   ResetEvent(interrupt_event);
@@ -127,15 +127,15 @@ long FXRbApp::onChoreThreads(FXObject *obj,FXSelector sel,void *p){
   if(read(interrupt_fds[0], &byte, 1) != 1) rb_fatal("failed to read from pipe for interrupt events");
 #endif
 #endif
-  return FXRbApp_onChoreThreads(this, obj, sel, p);
+  return HinApp_onChoreThreads(this, obj, sel, p);
   }
 
-long FXRbApp_onChoreThreads_gvlcb(FXRbApp *self,FXObject *obj,FXSelector sel,void *p){
+long HinApp_onChoreThreads_gvlcb(HinApp *self,FXObject *obj,FXSelector sel,void *p){
   return self->onChoreThreads_gvlcb(obj, sel, p);
   }
 
 // Process threads
-long FXRbApp::onChoreThreads_gvlcb(FXObject*,FXSelector,void*){
+long HinApp::onChoreThreads_gvlcb(FXObject*,FXSelector,void*){
 #if defined(HAVE_RB_THREAD_CALL_WITHOUT_GVL)
 #else
   // Pause for 'sleepTime' millseconds
@@ -154,25 +154,25 @@ long FXRbApp::onChoreThreads_gvlcb(FXObject*,FXSelector,void*){
   }
 
 #if defined(HAVE_RB_THREAD_CALL_WITHOUT_GVL)
-void fxrb_wakeup_fox(void *){
+void fxrb_wakeup_hin(void *){
 #ifdef WIN32
-  SetEvent(FXRbApp::interrupt_event);
+  SetEvent(HinApp::interrupt_event);
 #else
-  if(write(FXRbApp::interrupt_fds[1], "X", 1) != 1) rb_fatal("failed to write to pipe for interrupt events");
+  if(write(HinApp::interrupt_fds[1], "X", 1) != 1) rb_fatal("failed to write to pipe for interrupt events");
 #endif
   }
 #endif
 
 // Destructor
-FXRbApp::~FXRbApp(){
-  FXTRACE((100,"FXRbApp::~FXRbApp()\n"));
+HinApp::~HinApp(){
+  FXTRACE((100,"HinApp::~HinApp()\n"));
   VALUE myRegistry;
   setThreadsEnabled(FALSE);
-  FXRbDestroyAppSensitiveObjects();
-  myRegistry=FXRbGetRubyObj(&(reg()),true);
+  HinDestroyAppSensitiveObjects();
+  myRegistry=HinGetRubyObj(&(reg()),true);
   if(!NIL_P(myRegistry)){
     DATA_PTR(myRegistry)=0;
     }
-  FXRbUnregisterRubyObj(this);
+  HinUnregisterRubyObj(this);
   }
 

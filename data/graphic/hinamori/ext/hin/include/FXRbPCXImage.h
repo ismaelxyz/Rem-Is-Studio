@@ -21,33 +21,33 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbPCXImage.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinPCXImage.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBPCXIMAGE_H
 #define FXRBPCXIMAGE_H
 
-class FXRbPCXImage : public FXPCXImage {
-  FXDECLARE(FXRbPCXImage)
+class HinPCXImage : public FXPCXImage {
+  FXDECLARE(HinPCXImage)
 protected:
-  FXRbPCXImage(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbImageVirtuals.h"
+  HinPCXImage(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinImageVirtuals.h"
 public:
   /// Construct an image from memory stream formatted as PCX
-  FXRbPCXImage(FXApp* a,const void *pix=NULL,FXuint opts=0,FXint w=1,FXint h=1) : FXPCXImage(a,pix,opts,w,h){
-    FXRbRegisterAppSensitiveObject(this);
+  HinPCXImage(FXApp* a,const void *pix=NULL,FXuint opts=0,FXint w=1,FXint h=1) : FXPCXImage(a,pix,opts,w,h){
+    HinRegisterAppSensitiveObject(this);
     }
 
   // Mark dependencies for the GC
   static void markfunc(FXPCXImage* self);
 
   // Destructor
-  virtual ~FXRbPCXImage(){
-    FXRbUnregisterRubyObj(this);
-    FXRbUnregisterAppSensitiveObject(this);
+  virtual ~HinPCXImage(){
+    HinUnregisterRubyObj(this);
+    HinUnregisterAppSensitiveObject(this);
     }
   };
 

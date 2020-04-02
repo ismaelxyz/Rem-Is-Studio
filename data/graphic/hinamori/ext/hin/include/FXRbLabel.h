@@ -21,30 +21,30 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbLabel.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinLabel.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBLABEL_H
 #define FXRBLABEL_H
 
-class FXRbLabel : public FXLabel {
-  FXDECLARE(FXRbLabel)
+class HinLabel : public FXLabel {
+  FXDECLARE(HinLabel)
 protected:
-  FXRbLabel(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
+  HinLabel(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
 public:
   /// Construct label with given text and icon
-  FXRbLabel(FXComposite* p,const FXString& text,FXIcon* ic=0,FXuint opts=LABEL_NORMAL,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=DEFAULT_PAD,FXint pr=DEFAULT_PAD,FXint pt=DEFAULT_PAD,FXint pb=DEFAULT_PAD) : FXLabel(p,text,ic,opts,x,y,w,h,pl,pr,pt,pb){}
+  HinLabel(FXComposite* p,const FXString& text,FXIcon* ic=0,FXuint opts=LABEL_NORMAL,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=DEFAULT_PAD,FXint pr=DEFAULT_PAD,FXint pt=DEFAULT_PAD,FXint pb=DEFAULT_PAD) : FXLabel(p,text,ic,opts,x,y,w,h,pl,pr,pt,pb){}
 
   // Mark dependencies for the GC
   static void markfunc(FXLabel* label);
 
   // Destructor
-  virtual ~FXRbLabel(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinLabel(){
+    HinUnregisterRubyObj(this);
     }
   };
 

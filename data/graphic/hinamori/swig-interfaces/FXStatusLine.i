@@ -46,7 +46,7 @@ public:
   %extend {
     /// Constructor
     FXStatusLine(FXComposite* p,FXObject* tgt=NULL,FXSelector sel=0){
-      return new FXRbStatusLine(p,tgt,sel);
+      return new HinStatusLine(p,tgt,sel);
       }
     }
 

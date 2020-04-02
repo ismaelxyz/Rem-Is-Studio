@@ -36,7 +36,7 @@ public:
   %extend {
     /// Construct image from memory stream formatted in Microsoft BMP format
     FXBMPImage(FXApp* a,const void *pix=NULL,FXuint opts=0,FXint w=1,FXint h=1){
-      return new FXRbBMPImage(a,pix,opts,w,h);
+      return new HinBMPImage(a,pix,opts,w,h);
       }
     }
 

@@ -44,12 +44,12 @@ public:
   %extend {
     /// Construct free-floating Wizard
     FXWizard(FXApp* a,const FXString& name,FXImage *image,FXuint opts=DECOR_TITLE|DECOR_BORDER|DECOR_RESIZE,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=10,FXint pr=10,FXint pt=10,FXint pb=10,FXint hs=10,FXint vs=10){
-      return new FXRbWizard(a,name,image,opts,x,y,w,h,pl,pr,pt,pb,hs,vs);
+      return new HinWizard(a,name,image,opts,x,y,w,h,pl,pr,pt,pb,hs,vs);
       }
 
     /// Construct Wizard which will always float over the owner window
     FXWizard(FXWindow* owner,const FXString& name,FXImage *image,FXuint opts=DECOR_TITLE|DECOR_BORDER|DECOR_RESIZE,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=10,FXint pr=10,FXint pt=10,FXint pb=10,FXint hs=10,FXint vs=10){
-      return new FXRbWizard(owner,name,image,opts,x,y,w,h,pl,pr,pt,pb,hs,vs);
+      return new HinWizard(owner,name,image,opts,x,y,w,h,pl,pr,pt,pb,hs,vs);
       }
     }
 

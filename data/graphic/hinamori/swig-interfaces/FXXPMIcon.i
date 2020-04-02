@@ -38,7 +38,7 @@ public:
   /// Construct icon from compiled-in X Pixmap format
   %extend {
     FXXPMIcon(FXApp* a,const FXchar **pix=NULL,FXColor clr=0,FXuint opts=0,FXint w=1,FXint h=1){
-      return new FXRbXPMIcon(a,pix,clr,opts,w,h);
+      return new HinXPMIcon(a,pix,clr,opts,w,h);
       }
     }
 
@@ -61,7 +61,7 @@ DECLARE_FXIMAGE_VIRTUALS(FXXPMIcon)
     FXint height;
     if(fxloadXPM(store,data,width,height)){
       VALUE ary=rb_ary_new();
-      rb_ary_push(ary,FXRbMakeColorArray(data,width,height));
+      rb_ary_push(ary,HinMakeColorArray(data,width,height));
       FXFREE(&data);
       rb_ary_push(ary,to_ruby(width));
       rb_ary_push(ary,to_ruby(height));
@@ -98,7 +98,7 @@ DECLARE_FXIMAGE_VIRTUALS(FXXPMIcon)
 	}
       if(fxloadXPM(pix,data,width,height)){
 	ary=rb_ary_new();
-	rb_ary_push(ary,FXRbMakeColorArray(data,width,height));
+	rb_ary_push(ary,HinMakeColorArray(data,width,height));
 	FXFREE(&data);
 	rb_ary_push(ary,to_ruby(width));
 	rb_ary_push(ary,to_ruby(height));

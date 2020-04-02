@@ -51,14 +51,14 @@ public:
 public:
   %extend {
     /// Make new recent files group, using global application instance
-    FXRecentFiles(){ return new FXRbRecentFiles(); }
+    FXRecentFiles(){ return new HinRecentFiles(); }
 
     /// Make new recent files group with default groupname
-    FXRecentFiles(FXApp* a){ return new FXRbRecentFiles(a); }
+    FXRecentFiles(FXApp* a){ return new HinRecentFiles(a); }
 
     /// Make new recent files group with groupname gp
     FXRecentFiles(FXApp* a,const FXString& gp,FXObject *tgt=NULL,FXSelector sel=0){
-      return new FXRbRecentFiles(a,gp,tgt,sel);
+      return new HinRecentFiles(a,gp,tgt,sel);
       }
     }
 

@@ -1,6 +1,6 @@
 require 'test/unit'
 require 'testcase'
-require 'fox16'
+require 'hin16'
 
 class TC_FXMenuRadio < Fox::TestCase
   include Fox

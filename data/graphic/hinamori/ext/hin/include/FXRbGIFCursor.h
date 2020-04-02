@@ -21,27 +21,27 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbGIFCursor.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinGIFCursor.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBGIFCURSOR_H
 #define FXRBGIFCURSOR_H
 
-class FXRbGIFCursor : public FXGIFCursor {
-  FXDECLARE(FXRbGIFCursor)
+class HinGIFCursor : public FXGIFCursor {
+  FXDECLARE(HinGIFCursor)
 protected:
-  FXRbGIFCursor(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbCursorVirtuals.h"
+  HinGIFCursor(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinCursorVirtuals.h"
 public:
   // Is this cursor owned by the FXApp?
   FXbool ownedByApp;
 
 public:
   /// Construct a cursor from memory stream formatted as CompuServe GIF format
-  FXRbGIFCursor(FXApp* a,const void* pix,FXint hx=0,FXint hy=0):FXGIFCursor(a,pix,hx,hy),ownedByApp(FALSE){
-    FXRbRegisterAppSensitiveObject(this);
+  HinGIFCursor(FXApp* a,const void* pix,FXint hx=0,FXint hy=0):FXGIFCursor(a,pix,hx,hy),ownedByApp(FALSE){
+    HinRegisterAppSensitiveObject(this);
     }
 
   // Mark dependencies for the GC
@@ -51,9 +51,9 @@ public:
   static void freefunc(FXGIFCursor* self);
 
   // Destructor
-  virtual ~FXRbGIFCursor(){
-    FXRbUnregisterRubyObj(this);
-    FXRbUnregisterAppSensitiveObject(this);
+  virtual ~HinGIFCursor(){
+    HinUnregisterRubyObj(this);
+    HinUnregisterAppSensitiveObject(this);
     }
   };
 

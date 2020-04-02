@@ -64,7 +64,7 @@ public:
     * using the application registry settings as a source for the bindings.
     */
     FXFileDict(FXApp* a){
-      return new FXRbFileDict(a);
+      return new HinFileDict(a);
       }
 
     /**
@@ -72,7 +72,7 @@ public:
     * using the specified settings database as a source for the bindings.
     */
     FXFileDict(FXApp* a,FXSettings* db){
-      return new FXRbFileDict(a,db);
+      return new HinFileDict(a,db);
       }
     }
 

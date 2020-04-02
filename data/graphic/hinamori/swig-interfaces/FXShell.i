@@ -42,12 +42,12 @@ public:
   %extend {
     // Construct free-floating shell window
     FXShell(FXApp* a,FXuint opts,FXint x,FXint y,FXint w,FXint h){
-      return new FXRbShell(a,opts,x,y,w,h);
+      return new HinShell(a,opts,x,y,w,h);
       }
 
     // Construct owned shell window
     FXShell(FXWindow* own,FXuint opts,FXint x,FXint y,FXint w,FXint h){
-      return new FXRbShell(own,opts,x,y,w,h);
+      return new HinShell(own,opts,x,y,w,h);
       }
     }
 

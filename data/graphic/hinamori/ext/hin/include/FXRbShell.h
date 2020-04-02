@@ -21,35 +21,35 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbShell.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinShell.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBSHELL_H
 #define FXRBSHELL_H
 
-class FXRbShell : public FXShell {
-  FXDECLARE(FXRbShell)
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
+class HinShell : public FXShell {
+  FXDECLARE(HinShell)
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
 protected:
   // Default constructor
-  FXRbShell(){}
+  HinShell(){}
 
 public:
   // Construct shell with specified application
-  FXRbShell(FXApp* a,FXuint opts,FXint x,FXint y,FXint w,FXint h) : FXShell(a,opts,x,y,w,h){}
+  HinShell(FXApp* a,FXuint opts,FXint x,FXint y,FXint w,FXint h) : FXShell(a,opts,x,y,w,h){}
 
   // Construct owned shell window
-  FXRbShell(FXWindow* own,FXuint opts,FXint x,FXint y,FXint w,FXint h) : FXShell(own,opts,x,y,w,h){}
+  HinShell(FXWindow* own,FXuint opts,FXint x,FXint y,FXint w,FXint h) : FXShell(own,opts,x,y,w,h){}
 
   // Mark dependencies for the GC
   static void markfunc(FXShell* shell);
 
   // Destructor
-  virtual ~FXRbShell(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinShell(){
+    HinUnregisterRubyObj(this);
     }
   };
 

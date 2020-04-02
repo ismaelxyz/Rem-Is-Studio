@@ -21,27 +21,27 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbRadioButton.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinRadioButton.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBRADIOBUTTON_H
 #define FXRBRADIOBUTTON_H
 
-class FXRbRadioButton : public FXRadioButton {
-  FXDECLARE(FXRbRadioButton)
+class HinRadioButton : public FXRadioButton {
+  FXDECLARE(HinRadioButton)
 protected:
-  FXRbRadioButton(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
+  HinRadioButton(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
 public:
   /// Construct new radio button
-  FXRbRadioButton(FXComposite* p,const FXString& text,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=RADIOBUTTON_NORMAL,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=DEFAULT_PAD,FXint pr=DEFAULT_PAD,FXint pt=DEFAULT_PAD,FXint pb=DEFAULT_PAD) : FXRadioButton(p,text,tgt,sel,opts,x,y,w,h,pl,pr,pt,pb){}
+  HinRadioButton(FXComposite* p,const FXString& text,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=RADIOBUTTON_NORMAL,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=DEFAULT_PAD,FXint pr=DEFAULT_PAD,FXint pt=DEFAULT_PAD,FXint pb=DEFAULT_PAD) : FXRadioButton(p,text,tgt,sel,opts,x,y,w,h,pl,pr,pt,pb){}
 
   // Destructor
-  virtual ~FXRbRadioButton(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinRadioButton(){
+    HinUnregisterRubyObj(this);
     }
 
   // Mark dependencies for the GC

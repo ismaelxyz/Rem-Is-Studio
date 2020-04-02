@@ -49,7 +49,7 @@ public:
   %extend {
     /// Construct a menu check
     FXMenuCheck(FXComposite* p,const FXString& text,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=0){
-      return new FXRbMenuCheck(p,text,tgt,sel,opts);
+      return new HinMenuCheck(p,text,tgt,sel,opts);
       }
     }
 

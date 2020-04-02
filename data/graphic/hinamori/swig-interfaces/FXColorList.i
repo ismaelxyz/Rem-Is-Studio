@@ -29,7 +29,7 @@ public:
   %extend {
     /// Construct new item with given text, color, and user-data
     FXColorItem(const FXString& text,FXColor clr,void* ITEMDATA=NULL){
-      return new FXRbColorItem(text,clr,ITEMDATA);
+      return new HinColorItem(text,clr,ITEMDATA);
       }
   }
 
@@ -54,7 +54,7 @@ public:
   %extend {
     /// Construct a list with initially no items in it
     FXColorList(FXComposite *p,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=LIST_BROWSESELECT,FXint x=0,FXint y=0,FXint w=0,FXint h=0){
-      return new FXRbColorList(p,tgt,sel,opts,x,y,w,h);
+      return new HinColorList(p,tgt,sel,opts,x,y,w,h);
       }
   }
 

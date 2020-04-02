@@ -32,7 +32,7 @@ public:
   %extend {
     /// Construct a menu separator
     FXMenuSeparator(FXComposite* p,FXuint opts=0){
-      return new FXRbMenuSeparator(p,opts);
+      return new HinMenuSeparator(p,opts);
       }
     }
 

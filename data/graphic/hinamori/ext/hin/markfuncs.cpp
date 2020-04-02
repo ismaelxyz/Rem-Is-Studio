@@ -2,7 +2,7 @@
  * $Id: markfuncs.cpp 2928 2008-12-29 19:16:57Z lyle $
  ***********************************************************************/
 
-#include "FXRbCommon.h"
+#include "HinCommon.h"
 
 #ifdef MARK
 #undef MARK
@@ -13,14 +13,14 @@
 template<class BASECLASS,class SUBCLASS>
 static void delete_if_not_owned(BASECLASS* self,SUBCLASS*){
   if(self!=0){
-    if(!FXRbIsBorrowed(self)){
+    if(!HinIsBorrowed(self)){
       if(self->isMemberOf(FXMETACLASS(SUBCLASS))){
         if(!dynamic_cast<SUBCLASS*>(self)->owned){
           delete self; // also unregisters it
           }
         }
       }
-    FXRbUnregisterRubyObj(self);
+    HinUnregisterRubyObj(self);
     }
   }
 
@@ -28,49 +28,49 @@ static void delete_if_not_owned(BASECLASS* self,SUBCLASS*){
 template<class BASECLASS,class SUBCLASS>
 static void delete_if_not_owned_by_app(BASECLASS* self,SUBCLASS*){
   if(self!=0){
-    if(!FXRbIsBorrowed(self)){
+    if(!HinIsBorrowed(self)){
       if(self->isMemberOf(FXMETACLASS(SUBCLASS))){
         if(!dynamic_cast<SUBCLASS*>(self)->ownedByApp){
           delete self; // also unregisters it
           }
         }
       }
-    FXRbUnregisterRubyObj(self);
+    HinUnregisterRubyObj(self);
     }
   }
 
 
 // FIXME: How to get to the target objects stored in the accelerator
 // table? This is currently private (not protected) data for the class.
-// See workaround in lib/fox16/accel_table.rb.
-void FXRbAccelTable::markfunc(FXAccelTable* accelTable){
-  FXRbObject::markfunc(accelTable);
+// See workaround in lib/hin16/accel_table.rb.
+void HinAccelTable::markfunc(FXAccelTable* accelTable){
+  HinObject::markfunc(accelTable);
   }
 
 
 // Mark dependencies for the GC
-void FXRbObject::markfunc(FXObject* obj){
-  FXTRACE((100,"%s::markfunc(%p)\n",obj?obj->getClassName():"FXRbObject",obj));
+void HinObject::markfunc(FXObject* obj){
+  FXTRACE((100,"%s::markfunc(%p)\n",obj?obj->getClassName():"HinObject",obj));
   }
 
-static void FXRbSetInGCParentsRecursive(FXWindow *window, bool enabled){
-  FXRbSetInGC( window, true );
-  if(window->getParent()) FXRbSetInGCParentsRecursive( window->getParent(), enabled );
+static void HinSetInGCParentsRecursive(FXWindow *window, bool enabled){
+  HinSetInGC( window, true );
+  if(window->getParent()) HinSetInGCParentsRecursive( window->getParent(), enabled );
   }
 
-static void FXRbSetInGCChildrenRecursive(FXWindow *window, bool enabled){
-  FXRbSetInGC( window, true );
+static void HinSetInGCChildrenRecursive(FXWindow *window, bool enabled){
+  HinSetInGC( window, true );
   for(FXWindow* child=window->getFirst(); child; child=child->getNext()){
-    FXRbSetInGCChildrenRecursive( child, enabled );
+    HinSetInGCChildrenRecursive( child, enabled );
     }
   }
 
 
-void FXRbObject::freefunc(FXObject* self){
+void HinObject::freefunc(FXObject* self){
   if(self!=0){
     // Unregister, but don't destroy, borrowed references
-    if(FXRbIsBorrowed(self)){
-      FXRbUnregisterRubyObj(self);
+    if(HinIsBorrowed(self)){
+      HinUnregisterRubyObj(self);
       return;
       }
 
@@ -86,224 +86,224 @@ void FXRbObject::freefunc(FXObject* self){
       // the child window would have been marked as used.
       if(self->isMemberOf(FXMETACLASS(FXWindow))){
         FXWindow *window = dynamic_cast<FXWindow*>(self);
-        FXRbSetInGCParentsRecursive( window, true );
-        FXRbSetInGCChildrenRecursive( window, true );
+        HinSetInGCParentsRecursive( window, true );
+        HinSetInGCChildrenRecursive( window, true );
         }
       delete self;
       }
     else{
-      FXRbUnregisterRubyObj(self);
+      HinUnregisterRubyObj(self);
       }
     }
   }
 
-void FXRbIconSource::markfunc(FXIconSource* iconSource){
-  FXRbObject::markfunc(iconSource);
+void HinIconSource::markfunc(FXIconSource* iconSource){
+  HinObject::markfunc(iconSource);
   }
 
-void FXRbTranslator::markfunc(FXTranslator* translator){
-  FXRbObject::markfunc(translator);
+void HinTranslator::markfunc(FXTranslator* translator){
+  HinObject::markfunc(translator);
   if(translator){
-    FXRbGcMark(translator->FXTranslator::getApp());
-    FXRbGcMark(translator->FXTranslator::getTextCodec());
+    HinGcMark(translator->FXTranslator::getApp());
+    HinGcMark(translator->FXTranslator::getTextCodec());
     }
   }
 
-void FXRbBMPIcon::markfunc(FXBMPIcon *icon){
-  FXRbIcon::markfunc(icon);
+void HinBMPIcon::markfunc(FXBMPIcon *icon){
+  HinIcon::markfunc(icon);
   }
 
 
-void FXRbIcon::markfunc(FXIcon* icon){
-  FXRbImage::markfunc(icon);
+void HinIcon::markfunc(FXIcon* icon){
+  HinImage::markfunc(icon);
   }
 
 
-void FXRbImage::markfunc(FXImage* image){
-  FXRbDrawable::markfunc(image);
+void HinImage::markfunc(FXImage* image){
+  HinDrawable::markfunc(image);
   }
 
 
-void FXRbBMPImage::markfunc(FXBMPImage* image){
-  FXRbImage::markfunc(image);
+void HinBMPImage::markfunc(FXBMPImage* image){
+  HinImage::markfunc(image);
   }
 
 
-void FXRbBitmap::markfunc(FXBitmap* bitmap){
-  FXRbDrawable::markfunc(bitmap);
+void HinBitmap::markfunc(FXBitmap* bitmap){
+  HinDrawable::markfunc(bitmap);
   }
 
 
-void FXRbButton::markfunc(FXButton* btn){
-  FXRbLabel::markfunc(btn);
+void HinButton::markfunc(FXButton* btn){
+  HinLabel::markfunc(btn);
   }
 
 
-void FXRbKnob::markfunc(FXKnob* self){
-  FXRbFrame::markfunc(self);
+void HinKnob::markfunc(FXKnob* self){
+  HinFrame::markfunc(self);
   }
 
 
-void FXRbLabel::markfunc(FXLabel* self){
-  FXRbFrame::markfunc(self);
+void HinLabel::markfunc(FXLabel* self){
+  HinFrame::markfunc(self);
   if(self){
-    FXRbGcMark(self->FXLabel::getFont());
-    FXRbGcMark(self->FXLabel::getIcon());
+    HinGcMark(self->FXLabel::getFont());
+    HinGcMark(self->FXLabel::getIcon());
     }
   }
 
 
-void FXRbFrame::markfunc(FXFrame* frame){
-  FXRbWindow::markfunc(frame);
+void HinFrame::markfunc(FXFrame* frame){
+  HinWindow::markfunc(frame);
   }
 
-void FXRb7Segment::markfunc(FX7Segment* seg){
-  FXRbFrame::markfunc(seg);
+void Hin7Segment::markfunc(FX7Segment* seg){
+  HinFrame::markfunc(seg);
   }
 
-void FXRbDockHandler::markfunc(FXDockHandler *dockhandler){
-  FXRbFrame::markfunc(dockhandler);
+void HinDockHandler::markfunc(FXDockHandler *dockhandler){
+  HinFrame::markfunc(dockhandler);
   }
 
-void FXRbDockTitle::markfunc(FXDockTitle *self){
-  FXRbDockHandler::markfunc(self);
+void HinDockTitle::markfunc(FXDockTitle *self){
+  HinDockHandler::markfunc(self);
   if(self){
-    FXRbGcMark(self->FXDockTitle::getFont());
+    HinGcMark(self->FXDockTitle::getFont());
     }
   }
 
-void FXRbDrawable::markfunc(FXDrawable* drawable){
-  FXRbId::markfunc(drawable);
-  if(drawable) FXRbGcMark(drawable->FXDrawable::getVisual());
+void HinDrawable::markfunc(FXDrawable* drawable){
+  HinId::markfunc(drawable);
+  if(drawable) HinGcMark(drawable->FXDrawable::getVisual());
   }
 
 
-void FXRbId::markfunc(FXId* self){
-  FXRbObject::markfunc(self);
+void HinId::markfunc(FXId* self){
+  HinObject::markfunc(self);
   if(self){
-    FXRbGcMark(self->FXId::getApp());
+    HinGcMark(self->FXId::getApp());
     if(void *d=self->FXId::getUserData())
       MARK(d);
     }
   }
 
 
-void FXRbCanvas::markfunc(FXCanvas* canvas){
-  FXRbWindow::markfunc(canvas);
+void HinCanvas::markfunc(FXCanvas* canvas){
+  HinWindow::markfunc(canvas);
   }
 
 
-void FXRbCheckButton::markfunc(FXCheckButton* cb){
-  FXRbLabel::markfunc(cb);
+void HinCheckButton::markfunc(FXCheckButton* cb){
+  HinLabel::markfunc(cb);
   }
 
 
-void FXRbColorDialog::markfunc(FXColorDialog* dlg){
-  FXRbDialogBox::markfunc(dlg);
+void HinColorDialog::markfunc(FXColorDialog* dlg){
+  HinDialogBox::markfunc(dlg);
   }
 
-void FXRbChoiceBox::markfunc(FXChoiceBox* box){
-  FXRbDialogBox::markfunc(box);
+void HinChoiceBox::markfunc(FXChoiceBox* box){
+  HinDialogBox::markfunc(box);
   }
 
-void FXRbWindow::markfunc(FXWindow* self){
-  FXRbDrawable::markfunc(self);
+void HinWindow::markfunc(FXWindow* self){
+  HinDrawable::markfunc(self);
   if(self){
-    FXRbGcMark(self->FXWindow::getParent());
-    FXRbGcMark(self->FXWindow::getOwner());
-    FXRbGcMark(self->FXWindow::getShell());
-    FXRbGcMark(self->FXWindow::getRoot());
-    // FXRbGcMark(self->FXWindow::getNext());
-    // FXRbGcMark(self->FXWindow::getPrev());
-    FXRbGcMark(self->FXWindow::getFocus());
-    FXRbGcMark(self->FXWindow::getTarget());
-    FXRbGcMark(self->FXWindow::getAccelTable());
-    FXRbGcMark(self->FXWindow::getDefaultCursor());
-    FXRbGcMark(self->FXWindow::getDragCursor());
+    HinGcMark(self->FXWindow::getParent());
+    HinGcMark(self->FXWindow::getOwner());
+    HinGcMark(self->FXWindow::getShell());
+    HinGcMark(self->FXWindow::getRoot());
+    // HinGcMark(self->FXWindow::getNext());
+    // HinGcMark(self->FXWindow::getPrev());
+    HinGcMark(self->FXWindow::getFocus());
+    HinGcMark(self->FXWindow::getTarget());
+    HinGcMark(self->FXWindow::getAccelTable());
+    HinGcMark(self->FXWindow::getDefaultCursor());
+    HinGcMark(self->FXWindow::getDragCursor());
 
     // Mark child windows
     register FXWindow* child=self->FXWindow::getFirst();
     while(child!=NULL){
-      FXRbGcMark(child);
+      HinGcMark(child);
       child=child->FXWindow::getNext();
       }
     }
   }
 
 
-void FXRbDialogBox::markfunc(FXDialogBox* dlg){
-  FXRbTopWindow::markfunc(dlg);
+void HinDialogBox::markfunc(FXDialogBox* dlg){
+  HinTopWindow::markfunc(dlg);
   }
 
 
-void FXRbTopWindow::markfunc(FXTopWindow* top){
-  FXRbShell::markfunc(top);
+void HinTopWindow::markfunc(FXTopWindow* top){
+  HinShell::markfunc(top);
   if(top){
-    FXRbGcMark(top->FXTopWindow::getIcon());
-    FXRbGcMark(top->FXTopWindow::getMiniIcon());
+    HinGcMark(top->FXTopWindow::getIcon());
+    HinGcMark(top->FXTopWindow::getMiniIcon());
     }
   }
 
 
-void FXRbShell::markfunc(FXShell* shell){
-  FXRbComposite::markfunc(shell);
+void HinShell::markfunc(FXShell* shell){
+  HinComposite::markfunc(shell);
   }
 
 
-void FXRbComposite::markfunc(FXComposite* c){
-  FXRbWindow::markfunc(c);
+void HinComposite::markfunc(FXComposite* c){
+  HinWindow::markfunc(c);
   }
 
 
-void FXRbColorSelector::markfunc(FXColorSelector* cs){
-  FXRbPacker::markfunc(cs);
+void HinColorSelector::markfunc(FXColorSelector* cs){
+  HinPacker::markfunc(cs);
   }
 
 
-void FXRbPacker::markfunc(FXPacker* packer){
-  FXRbComposite::markfunc(packer);
+void HinPacker::markfunc(FXPacker* packer){
+  HinComposite::markfunc(packer);
   }
 
-void FXRbDockBar::markfunc(FXDockBar* dockbar){
-  FXRbPacker::markfunc(dockbar);
+void HinDockBar::markfunc(FXDockBar* dockbar){
+  HinPacker::markfunc(dockbar);
   }
 
-void FXRbDockSite::markfunc(FXDockSite* dockSite){
-  FXRbPacker::markfunc(dockSite);
+void HinDockSite::markfunc(FXDockSite* dockSite){
+  HinPacker::markfunc(dockSite);
   }
 
-void FXRbSpring::markfunc(FXSpring* self){
-  FXRbPacker::markfunc(self);
-  }
-
-
-void FXRbHorizontalFrame::markfunc(FXHorizontalFrame* self){
-  FXRbPacker::markfunc(self);
+void HinSpring::markfunc(FXSpring* self){
+  HinPacker::markfunc(self);
   }
 
 
-void FXRbVerticalFrame::markfunc(FXVerticalFrame* self){
-  FXRbPacker::markfunc(self);
+void HinHorizontalFrame::markfunc(FXHorizontalFrame* self){
+  HinPacker::markfunc(self);
   }
 
 
-void FXRbGroupBox::markfunc(FXGroupBox* self){
-  FXRbPacker::markfunc(self);
+void HinVerticalFrame::markfunc(FXVerticalFrame* self){
+  HinPacker::markfunc(self);
+  }
+
+
+void HinGroupBox::markfunc(FXGroupBox* self){
+  HinPacker::markfunc(self);
   if(self){
-    FXRbGcMark(self->FXGroupBox::getFont());
+    HinGcMark(self->FXGroupBox::getFont());
     }
   }
 
 
-void FXRbColorWell::markfunc(FXColorWell* cw){
-  FXRbFrame::markfunc(cw);
+void HinColorWell::markfunc(FXColorWell* cw){
+  HinFrame::markfunc(cw);
   }
 
 
-void FXRbComboBox::markfunc(FXComboBox* self){
-  FXRbPacker::markfunc(self);
+void HinComboBox::markfunc(FXComboBox* self){
+  HinPacker::markfunc(self);
   if(self){
-    FXRbGcMark(self->FXComboBox::getFont());
+    HinGcMark(self->FXComboBox::getFont());
     for(FXint i=0; i<self->getNumItems(); i++){
       if(void *d=self->FXComboBox::getItemData(i))
         MARK(d);
@@ -312,387 +312,387 @@ void FXRbComboBox::markfunc(FXComboBox* self){
   }
 
 
-void FXRbCursor::markfunc(FXCursor* cursor){
-  FXRbId::markfunc(cursor);
+void HinCursor::markfunc(FXCursor* cursor){
+  HinId::markfunc(cursor);
   }
 
 
-void FXRbCursor::freefunc(FXCursor* self){
-  delete_if_not_owned_by_app(self,reinterpret_cast<FXRbCursor*>(0));
+void HinCursor::freefunc(FXCursor* self){
+  delete_if_not_owned_by_app(self,reinterpret_cast<HinCursor*>(0));
   }
 
 
-void FXRbApp::markfunc(FXApp *self){
-  FXRbObject::markfunc(self);
+void HinApp::markfunc(FXApp *self){
+  HinObject::markfunc(self);
   if(self){
     // Visuals
-    FXRbGcMark(self->FXApp::getMonoVisual());
-    FXRbGcMark(self->FXApp::getDefaultVisual());
+    HinGcMark(self->FXApp::getMonoVisual());
+    HinGcMark(self->FXApp::getDefaultVisual());
 
     // Fonts
-    FXRbGcMark(self->FXApp::getNormalFont());
+    HinGcMark(self->FXApp::getNormalFont());
 
     // Cursors
-    FXRbGcMark(self->FXApp::getWaitCursor());
-    FXRbGcMark(self->FXApp::getDefaultCursor(DEF_ARROW_CURSOR));
-    FXRbGcMark(self->FXApp::getDefaultCursor(DEF_RARROW_CURSOR));
-    FXRbGcMark(self->FXApp::getDefaultCursor(DEF_TEXT_CURSOR));
-    FXRbGcMark(self->FXApp::getDefaultCursor(DEF_HSPLIT_CURSOR));
-    FXRbGcMark(self->FXApp::getDefaultCursor(DEF_VSPLIT_CURSOR));
-    FXRbGcMark(self->FXApp::getDefaultCursor(DEF_XSPLIT_CURSOR));
-    FXRbGcMark(self->FXApp::getDefaultCursor(DEF_SWATCH_CURSOR));
-    FXRbGcMark(self->FXApp::getDefaultCursor(DEF_MOVE_CURSOR));
-    FXRbGcMark(self->FXApp::getDefaultCursor(DEF_DRAGH_CURSOR));
-    FXRbGcMark(self->FXApp::getDefaultCursor(DEF_DRAGV_CURSOR));
-    FXRbGcMark(self->FXApp::getDefaultCursor(DEF_DRAGTL_CURSOR));
-    FXRbGcMark(self->FXApp::getDefaultCursor(DEF_DRAGBR_CURSOR));
-    FXRbGcMark(self->FXApp::getDefaultCursor(DEF_DRAGTR_CURSOR));
-    FXRbGcMark(self->FXApp::getDefaultCursor(DEF_DRAGBL_CURSOR));
-    FXRbGcMark(self->FXApp::getDefaultCursor(DEF_DNDSTOP_CURSOR));
-    FXRbGcMark(self->FXApp::getDefaultCursor(DEF_DNDCOPY_CURSOR));
-    FXRbGcMark(self->FXApp::getDefaultCursor(DEF_DNDMOVE_CURSOR));
-    FXRbGcMark(self->FXApp::getDefaultCursor(DEF_DNDLINK_CURSOR));
-    FXRbGcMark(self->FXApp::getDefaultCursor(DEF_CROSSHAIR_CURSOR));
-    FXRbGcMark(self->FXApp::getDefaultCursor(DEF_CORNERNE_CURSOR));
-    FXRbGcMark(self->FXApp::getDefaultCursor(DEF_CORNERNW_CURSOR));
-    FXRbGcMark(self->FXApp::getDefaultCursor(DEF_CORNERSE_CURSOR));
-    FXRbGcMark(self->FXApp::getDefaultCursor(DEF_CORNERSW_CURSOR));
-    FXRbGcMark(self->FXApp::getDefaultCursor(DEF_ROTATE_CURSOR));
+    HinGcMark(self->FXApp::getWaitCursor());
+    HinGcMark(self->FXApp::getDefaultCursor(DEF_ARROW_CURSOR));
+    HinGcMark(self->FXApp::getDefaultCursor(DEF_RARROW_CURSOR));
+    HinGcMark(self->FXApp::getDefaultCursor(DEF_TEXT_CURSOR));
+    HinGcMark(self->FXApp::getDefaultCursor(DEF_HSPLIT_CURSOR));
+    HinGcMark(self->FXApp::getDefaultCursor(DEF_VSPLIT_CURSOR));
+    HinGcMark(self->FXApp::getDefaultCursor(DEF_XSPLIT_CURSOR));
+    HinGcMark(self->FXApp::getDefaultCursor(DEF_SWATCH_CURSOR));
+    HinGcMark(self->FXApp::getDefaultCursor(DEF_MOVE_CURSOR));
+    HinGcMark(self->FXApp::getDefaultCursor(DEF_DRAGH_CURSOR));
+    HinGcMark(self->FXApp::getDefaultCursor(DEF_DRAGV_CURSOR));
+    HinGcMark(self->FXApp::getDefaultCursor(DEF_DRAGTL_CURSOR));
+    HinGcMark(self->FXApp::getDefaultCursor(DEF_DRAGBR_CURSOR));
+    HinGcMark(self->FXApp::getDefaultCursor(DEF_DRAGTR_CURSOR));
+    HinGcMark(self->FXApp::getDefaultCursor(DEF_DRAGBL_CURSOR));
+    HinGcMark(self->FXApp::getDefaultCursor(DEF_DNDSTOP_CURSOR));
+    HinGcMark(self->FXApp::getDefaultCursor(DEF_DNDCOPY_CURSOR));
+    HinGcMark(self->FXApp::getDefaultCursor(DEF_DNDMOVE_CURSOR));
+    HinGcMark(self->FXApp::getDefaultCursor(DEF_DNDLINK_CURSOR));
+    HinGcMark(self->FXApp::getDefaultCursor(DEF_CROSSHAIR_CURSOR));
+    HinGcMark(self->FXApp::getDefaultCursor(DEF_CORNERNE_CURSOR));
+    HinGcMark(self->FXApp::getDefaultCursor(DEF_CORNERNW_CURSOR));
+    HinGcMark(self->FXApp::getDefaultCursor(DEF_CORNERSE_CURSOR));
+    HinGcMark(self->FXApp::getDefaultCursor(DEF_CORNERSW_CURSOR));
+    HinGcMark(self->FXApp::getDefaultCursor(DEF_ROTATE_CURSOR));
 
     // Other windows
-    FXRbGcMark(self->FXApp::getFocusWindow());
-    FXRbGcMark(self->FXApp::getCursorWindow());
+    HinGcMark(self->FXApp::getFocusWindow());
+    HinGcMark(self->FXApp::getCursorWindow());
 
     /**
      * Root window is a special case; popups (like FXTooltip) can be created
      * without an "owner" by passing FXApp as the first argument to their
      * constructor, but in fact the "owner" of these window is the root window.
-     * So unless we invoke FXRbRootWindow's mark function here, unowned windows
+     * So unless we invoke HinRootWindow's mark function here, unowned windows
      * like tooltips may get garbage-collected prematurely.
      */
     if(self->FXApp::getRootWindow()){
-      FXRbGcMark(self->FXApp::getRootWindow());
-      FXRbRootWindow::markfunc(self->FXApp::getRootWindow());
+      HinGcMark(self->FXApp::getRootWindow());
+      HinRootWindow::markfunc(self->FXApp::getRootWindow());
       }
 
     // Registry
-    FXRbGcMark(&(self->FXApp::reg()));
+    HinGcMark(&(self->FXApp::reg()));
 
     // Timers, chores and signals are recycled and should never be destroyed
     }
   }
 
 
-void FXRbArrowButton::markfunc(FXArrowButton *btn){
-  FXRbFrame::markfunc(btn);
+void HinArrowButton::markfunc(FXArrowButton *btn){
+  HinFrame::markfunc(btn);
   }
 
 
-void FXRbDataTarget::markfunc(FXDataTarget* obj){
-  FXRbObject::markfunc(obj);
+void HinDataTarget::markfunc(FXDataTarget* obj){
+  HinObject::markfunc(obj);
   }
 
 
-void FXRbMainWindow::markfunc(FXMainWindow* obj){
-  FXRbTopWindow::markfunc(obj);
+void HinMainWindow::markfunc(FXMainWindow* obj){
+  HinTopWindow::markfunc(obj);
   }
 
 
-void FXRbTreeItem::markfunc(FXTreeItem* self){
-  FXRbObject::markfunc(self);
+void HinTreeItem::markfunc(FXTreeItem* self){
+  HinObject::markfunc(self);
   if(self){
-    FXRbGcMark(self->FXTreeItem::getParent());
-    FXRbGcMark(self->FXTreeItem::getNext());
-    FXRbGcMark(self->FXTreeItem::getPrev());
+    HinGcMark(self->FXTreeItem::getParent());
+    HinGcMark(self->FXTreeItem::getNext());
+    HinGcMark(self->FXTreeItem::getPrev());
     for(FXTreeItem* item=self->FXTreeItem::getFirst(); item; item=item->FXTreeItem::getNext()){
-      FXRbGcMark(item);
-      FXRbTreeItem::markfunc(item);
+      HinGcMark(item);
+      HinTreeItem::markfunc(item);
       }
-    FXRbGcMark(self->FXTreeItem::getBelow());
-    FXRbGcMark(self->FXTreeItem::getAbove());
-    FXRbGcMark(self->FXTreeItem::getOpenIcon());
-    FXRbGcMark(self->FXTreeItem::getClosedIcon());
+    HinGcMark(self->FXTreeItem::getBelow());
+    HinGcMark(self->FXTreeItem::getAbove());
+    HinGcMark(self->FXTreeItem::getOpenIcon());
+    HinGcMark(self->FXTreeItem::getClosedIcon());
     if(void *d=self->FXTreeItem::getData())
       MARK(d);
     }
   }
 
 
-void FXRbTreeItem::freefunc(FXTreeItem* self){
-  delete_if_not_owned(self,reinterpret_cast<FXRbTreeItem*>(0));
+void HinTreeItem::freefunc(FXTreeItem* self){
+  delete_if_not_owned(self,reinterpret_cast<HinTreeItem*>(0));
   }
 
 
-void FXRbTreeList::markfunc(FXTreeList* self){
-  FXRbScrollArea::markfunc(self);
+void HinTreeList::markfunc(FXTreeList* self){
+  HinScrollArea::markfunc(self);
   if(self){
     for(FXTreeItem* item=self->FXTreeList::getFirstItem(); item; item=item->FXTreeItem::getNext()){
-      FXRbGcMark(item);
-      FXRbTreeItem::markfunc(item);
+      HinGcMark(item);
+      HinTreeItem::markfunc(item);
       }
-    FXRbGcMark(self->FXTreeList::getFont());
+    HinGcMark(self->FXTreeList::getFont());
     }
   }
 
 
-void FXRbFoldingItem::markfunc(FXFoldingItem* self){
-  FXRbObject::markfunc(self);
+void HinFoldingItem::markfunc(FXFoldingItem* self){
+  HinObject::markfunc(self);
   if(self){
-    FXRbGcMark(self->FXFoldingItem::getParent());
-    FXRbGcMark(self->FXFoldingItem::getNext());
-    FXRbGcMark(self->FXFoldingItem::getPrev());
+    HinGcMark(self->FXFoldingItem::getParent());
+    HinGcMark(self->FXFoldingItem::getNext());
+    HinGcMark(self->FXFoldingItem::getPrev());
     for(FXFoldingItem* item=self->FXFoldingItem::getFirst(); item; item=item->FXFoldingItem::getNext()){
-      FXRbGcMark(item);
-      FXRbFoldingItem::markfunc(item);
+      HinGcMark(item);
+      HinFoldingItem::markfunc(item);
       }
-    FXRbGcMark(self->FXFoldingItem::getBelow());
-    FXRbGcMark(self->FXFoldingItem::getAbove());
-    FXRbGcMark(self->FXFoldingItem::getOpenIcon());
-    FXRbGcMark(self->FXFoldingItem::getClosedIcon());
+    HinGcMark(self->FXFoldingItem::getBelow());
+    HinGcMark(self->FXFoldingItem::getAbove());
+    HinGcMark(self->FXFoldingItem::getOpenIcon());
+    HinGcMark(self->FXFoldingItem::getClosedIcon());
     if(void *d=self->FXFoldingItem::getData())
       MARK(d);
     }
   }
 
 
-void FXRbFoldingItem::freefunc(FXFoldingItem* self){
-  delete_if_not_owned(self,reinterpret_cast<FXRbFoldingItem*>(0));
+void HinFoldingItem::freefunc(FXFoldingItem* self){
+  delete_if_not_owned(self,reinterpret_cast<HinFoldingItem*>(0));
   }
 
 
-void FXRbFoldingList::markfunc(FXFoldingList* self){
-  FXRbScrollArea::markfunc(self);
+void HinFoldingList::markfunc(FXFoldingList* self){
+  HinScrollArea::markfunc(self);
   if(self){
     for(FXFoldingItem* item=self->FXFoldingList::getFirstItem(); item; item=item->FXFoldingItem::getNext()){
-      FXRbGcMark(item);
-      FXRbFoldingItem::markfunc(item);
+      HinGcMark(item);
+      HinFoldingItem::markfunc(item);
       }
-    FXRbGcMark(self->FXFoldingList::getFont());
+    HinGcMark(self->FXFoldingList::getFont());
     }
   }
 
 
-void FXRbListItem::markfunc(FXListItem* self){
-  FXRbObject::markfunc(self);
+void HinListItem::markfunc(FXListItem* self){
+  HinObject::markfunc(self);
   if(self){
-    FXRbGcMark(self->FXListItem::getIcon());
+    HinGcMark(self->FXListItem::getIcon());
     if(void *d=self->FXListItem::getData())
       MARK(d);
     }
   }
 
 
-void FXRbListItem::freefunc(FXListItem* self){
-  delete_if_not_owned(self,reinterpret_cast<FXRbListItem*>(0));
+void HinListItem::freefunc(FXListItem* self){
+  delete_if_not_owned(self,reinterpret_cast<HinListItem*>(0));
   }
 
 
-void FXRbColorItem::markfunc(FXColorItem* self){
-  FXRbListItem::markfunc(self);
+void HinColorItem::markfunc(FXColorItem* self){
+  HinListItem::markfunc(self);
   }
 
 
-void FXRbColorItem::freefunc(FXColorItem* self){
-  delete_if_not_owned(self,reinterpret_cast<FXRbColorItem*>(0));
+void HinColorItem::freefunc(FXColorItem* self){
+  delete_if_not_owned(self,reinterpret_cast<HinColorItem*>(0));
   }
 
 
-void FXRbList::markfunc(FXList* self){
-  FXRbScrollArea::markfunc(self);
+void HinList::markfunc(FXList* self){
+  HinScrollArea::markfunc(self);
   if(self){
     for(FXint i=0;i<self->FXList::getNumItems();i++){
       FXListItem* item=self->FXList::getItem(i);
-      FXRbGcMark(item);
-      FXRbListItem::markfunc(item);
+      HinGcMark(item);
+      HinListItem::markfunc(item);
       }
-    FXRbGcMark(self->FXList::getFont());
+    HinGcMark(self->FXList::getFont());
     }
   }
 
 
-void FXRbColorList::markfunc(FXColorList* self){
-  FXRbList::markfunc(self);
+void HinColorList::markfunc(FXColorList* self){
+  HinList::markfunc(self);
   }
 
 
-void FXRbTableItem::markfunc(FXTableItem* self){
-  FXRbObject::markfunc(self);
+void HinTableItem::markfunc(FXTableItem* self){
+  HinObject::markfunc(self);
   if(self){
-    FXRbGcMark(self->FXTableItem::getIcon());
+    HinGcMark(self->FXTableItem::getIcon());
     if(void* d=self->FXTableItem::getData())
       MARK(d);
     }
   }
 
 
-void FXRbTableItem::freefunc(FXTableItem* self){
-  delete_if_not_owned(self,reinterpret_cast<FXRbTableItem*>(0));
+void HinTableItem::freefunc(FXTableItem* self){
+  delete_if_not_owned(self,reinterpret_cast<HinTableItem*>(0));
   }
 
 
-void FXRbTable::markfunc(FXTable* self){
-  FXRbScrollArea::markfunc(self);
+void HinTable::markfunc(FXTable* self){
+  HinScrollArea::markfunc(self);
   if(self){
-    FXRbGcMark(self->FXTable::getFont());
-    FXRbGcMark(self->FXTable::getRowHeaderFont());
-    FXRbGcMark(self->FXTable::getColumnHeaderFont());
+    HinGcMark(self->FXTable::getFont());
+    HinGcMark(self->FXTable::getRowHeaderFont());
+    HinGcMark(self->FXTable::getColumnHeaderFont());
     for(FXint row=0;row<self->FXTable::getNumRows();row++){
       for(FXint col=0;col<self->FXTable::getNumColumns();col++){
         FXTableItem* item=self->FXTable::getItem(row,col);
-        FXRbGcMark(item);
+        HinGcMark(item);
         }
       }
     }
   }
 
 
-void FXRbHeaderItem::markfunc(FXHeaderItem* self){
-  FXRbObject::markfunc(self);
+void HinHeaderItem::markfunc(FXHeaderItem* self){
+  HinObject::markfunc(self);
   if(self){
-    FXRbGcMark(self->FXHeaderItem::getIcon());
+    HinGcMark(self->FXHeaderItem::getIcon());
     if(void* d=self->FXHeaderItem::getData())
       MARK(d);
     }
   }
 
 
-void FXRbHeaderItem::freefunc(FXHeaderItem* self){
-  delete_if_not_owned(self,reinterpret_cast<FXRbHeaderItem*>(0));
+void HinHeaderItem::freefunc(FXHeaderItem* self){
+  delete_if_not_owned(self,reinterpret_cast<HinHeaderItem*>(0));
   }
 
 
-void FXRbHeader::markfunc(FXHeader* self){
-  FXRbFrame::markfunc(self);
+void HinHeader::markfunc(FXHeader* self){
+  HinFrame::markfunc(self);
   if(self){
     for(FXint i=0;i<self->FXHeader::getNumItems();i++){
       FXHeaderItem* item=self->FXHeader::getItem(i);
-      FXRbGcMark(item);
-      FXRbHeaderItem::markfunc(item);
+      HinGcMark(item);
+      HinHeaderItem::markfunc(item);
       }
-    FXRbGcMark(self->FXHeader::getFont());
+    HinGcMark(self->FXHeader::getFont());
     }
   }
 
 
-void FXRbIconItem::markfunc(FXIconItem* self){
-  FXRbObject::markfunc(self);
+void HinIconItem::markfunc(FXIconItem* self){
+  HinObject::markfunc(self);
   if(self){
-    FXRbGcMark(self->FXIconItem::getBigIcon());
-    FXRbGcMark(self->FXIconItem::getMiniIcon());
+    HinGcMark(self->FXIconItem::getBigIcon());
+    HinGcMark(self->FXIconItem::getMiniIcon());
     if(void *d=self->FXIconItem::getData())
       MARK(d);
     }
   }
 
 
-void FXRbIconItem::freefunc(FXIconItem* self){
-  delete_if_not_owned(self,reinterpret_cast<FXRbIconItem*>(0));
+void HinIconItem::freefunc(FXIconItem* self){
+  delete_if_not_owned(self,reinterpret_cast<HinIconItem*>(0));
   }
 
 
-void FXRbIconList::markfunc(FXIconList* self){
-  FXRbScrollArea::markfunc(self);
+void HinIconList::markfunc(FXIconList* self){
+  HinScrollArea::markfunc(self);
   if(self){
-    FXRbGcMark(self->FXIconList::getHeader());
+    HinGcMark(self->FXIconList::getHeader());
     for(FXint i=0;i<self->FXIconList::getNumItems();i++){
       FXIconItem* item=self->FXIconList::getItem(i);
-      FXRbGcMark(item);
-      FXRbIconItem::markfunc(item);
+      HinGcMark(item);
+      HinIconItem::markfunc(item);
       }
-    FXRbGcMark(self->FXIconList::getFont());
+    HinGcMark(self->FXIconList::getFont());
     }
   }
 
 
-void FXRbDelegator::markfunc(FXDelegator* self){
-  FXRbObject::markfunc(self);
+void HinDelegator::markfunc(FXDelegator* self){
+  HinObject::markfunc(self);
   if(self){
-    FXRbGcMark(self->FXDelegator::getDelegate());
+    HinGcMark(self->FXDelegator::getDelegate());
     }
   }
 
 
-void FXRbDebugTarget::markfunc(FXDebugTarget* self){
-  FXRbObject::markfunc(self);
+void HinDebugTarget::markfunc(FXDebugTarget* self){
+  HinObject::markfunc(self);
   }
 
 
-void FXRbDict::markfunc(FXDict* self){
-  FXRbObject::markfunc(self);
+void HinDict::markfunc(FXDict* self){
+  HinObject::markfunc(self);
   }
 
 
-void FXRbSettings::markfunc(FXSettings* self){
-  FXRbDict::markfunc(self);
+void HinSettings::markfunc(FXSettings* self){
+  HinDict::markfunc(self);
   }
 
 
-void FXRbRegistry::markfunc(FXRegistry* self){
-  FXRbSettings::markfunc(self);
+void HinRegistry::markfunc(FXRegistry* self){
+  HinSettings::markfunc(self);
   }
 
 
-void FXRbStringDict::markfunc(FXStringDict* self){
-  FXRbDict::markfunc(self);
+void HinStringDict::markfunc(FXStringDict* self){
+  HinDict::markfunc(self);
   }
 
 
-void FXRbRecentFiles::markfunc(FXRecentFiles* self){
-  FXRbObject::markfunc(self);
+void HinRecentFiles::markfunc(FXRecentFiles* self){
+  HinObject::markfunc(self);
   if(self){
-    FXRbGcMark(self->FXRecentFiles::getTarget());
+    HinGcMark(self->FXRecentFiles::getTarget());
     }
   }
 
 
-void FXRbScrollArea::markfunc(FXScrollArea* self){
-  FXRbComposite::markfunc(self);
+void HinScrollArea::markfunc(FXScrollArea* self){
+  HinComposite::markfunc(self);
   if(self){
-    FXRbGcMark(self->FXScrollArea::horizontalScrollBar());
-    FXRbGcMark(self->FXScrollArea::verticalScrollBar());
+    HinGcMark(self->FXScrollArea::horizontalScrollBar());
+    HinGcMark(self->FXScrollArea::verticalScrollBar());
     }
   }
 
 
-void FXRbDocument::markfunc(FXDocument* self){
-  FXRbObject::markfunc(self);
+void HinDocument::markfunc(FXDocument* self){
+  HinObject::markfunc(self);
   }
 
 
-void FXRbGLContext::markfunc(FXGLContext* self){
-  FXRbObject::markfunc(self);
+void HinGLContext::markfunc(FXGLContext* self){
+  HinObject::markfunc(self);
   if(self){
-    FXRbGcMark(self->FXGLContext::getVisual());
+    HinGcMark(self->FXGLContext::getVisual());
     }
   }
 
 
-void FXRbGLObject::markfunc(FXGLObject* self){
-  FXRbObject::markfunc(self);
+void HinGLObject::markfunc(FXGLObject* self){
+  HinObject::markfunc(self);
   }
 
 
-void FXRbFont::markfunc(FXFont* self){
-  FXRbId::markfunc(self);
+void HinFont::markfunc(FXFont* self){
+  HinId::markfunc(self);
   }
 
 
-void FXRbFont::freefunc(FXFont *self){
-  delete_if_not_owned_by_app(self,reinterpret_cast<FXRbFont*>(0));
+void HinFont::freefunc(FXFont *self){
+  delete_if_not_owned_by_app(self,reinterpret_cast<HinFont*>(0));
   }
 
 
-void FXRbIconDict::markfunc(FXIconDict* self){
-  FXRbDict::markfunc(self);
+void HinIconDict::markfunc(FXIconDict* self){
+  HinDict::markfunc(self);
   if(self){
-    FXRbGcMark(self->FXIconDict::getIconSource());
+    HinGcMark(self->FXIconDict::getIconSource());
     if(self->FXIconDict::no()>0){
       FXint pos=self->FXIconDict::first();
       FXint last=self->FXIconDict::last();
       while(pos<=last){
         const FXchar* name=self->FXIconDict::key(pos);
         FXIcon* icon=self->FXIconDict::find(name);
-        FXRbGcMark(icon);
+        HinGcMark(icon);
         pos=self->FXIconDict::next(pos);
         }
       }
@@ -700,9 +700,9 @@ void FXRbIconDict::markfunc(FXIconDict* self){
   }
 
 
-void FXRbFileDict::markfunc(FXFileDict* self){
-  FXRbDict::markfunc(self);
-  FXRbGcMark(self->FXFileDict::getSettings());
+void HinFileDict::markfunc(FXFileDict* self){
+  HinDict::markfunc(self);
+  HinGcMark(self->FXFileDict::getSettings());
   if(self){
     if(self->FXFileDict::no()>0){
       FXint pos=self->FXFileDict::first();
@@ -710,7 +710,7 @@ void FXRbFileDict::markfunc(FXFileDict* self){
       while(pos<=last){
         const FXchar* key=self->FXFileDict::key(pos);
         FXFileAssoc* assoc=self->FXFileDict::find(key);
-        FXRbGcMark(assoc);
+        HinGcMark(assoc);
         pos=self->FXFileDict::next(pos);
         }
       }
@@ -718,146 +718,146 @@ void FXRbFileDict::markfunc(FXFileDict* self){
   }
 
 
-void FXRbDial::markfunc(FXDial* self){
-  FXTRACE((100,"FXRbDial::markfunc() %p\n",self));
-  FXRbFrame::markfunc(self);
+void HinDial::markfunc(FXDial* self){
+  FXTRACE((100,"HinDial::markfunc() %p\n",self));
+  HinFrame::markfunc(self);
   }
 
 
-void FXRbDragCorner::markfunc(FXDragCorner* self){
-  FXTRACE((100,"FXRbDragCorner::markfunc() %p\n",self));
-  FXRbWindow::markfunc(self);
+void HinDragCorner::markfunc(FXDragCorner* self){
+  FXTRACE((100,"HinDragCorner::markfunc() %p\n",self));
+  HinWindow::markfunc(self);
   }
 
 
-void FXRbDirItem::markfunc(FXDirItem* self){
-  FXTRACE((100,"FXRbDirItem::markfunc() %p\n",self));
-  FXRbTreeItem::markfunc(self);
+void HinDirItem::markfunc(FXDirItem* self){
+  FXTRACE((100,"HinDirItem::markfunc() %p\n",self));
+  HinTreeItem::markfunc(self);
   if(self){
-    FXRbGcMark(self->FXDirItem::getAssoc());
+    HinGcMark(self->FXDirItem::getAssoc());
     }
   }
 
 
-void FXRbDirItem::freefunc(FXDirItem* self){
-  delete_if_not_owned(self,reinterpret_cast<FXRbDirItem*>(0));
+void HinDirItem::freefunc(FXDirItem* self){
+  delete_if_not_owned(self,reinterpret_cast<HinDirItem*>(0));
   }
 
-void FXRbDirList::markfunc(FXDirList* self){
-  FXTRACE((100,"FXRbDirList::markfunc() %p\n",self));
-  FXRbTreeList::markfunc(self);
+void HinDirList::markfunc(FXDirList* self){
+  FXTRACE((100,"HinDirList::markfunc() %p\n",self));
+  HinTreeList::markfunc(self);
   if(self){
-    FXRbGcMark(self->FXDirList::getAssociations());
+    HinGcMark(self->FXDirList::getAssociations());
     }
   }
 
 
-void FXRb4Splitter::markfunc(FX4Splitter* self){
-  FXTRACE((100,"FXRb4Splitter::markfunc() %p\n",self));
-  FXRbComposite::markfunc(self);
+void Hin4Splitter::markfunc(FX4Splitter* self){
+  FXTRACE((100,"Hin4Splitter::markfunc() %p\n",self));
+  HinComposite::markfunc(self);
   if(self){
-    FXRbGcMark(self->FX4Splitter::getTopLeft());
-    FXRbGcMark(self->FX4Splitter::getTopRight());
-    FXRbGcMark(self->FX4Splitter::getBottomLeft());
-    FXRbGcMark(self->FX4Splitter::getBottomRight());
+    HinGcMark(self->FX4Splitter::getTopLeft());
+    HinGcMark(self->FX4Splitter::getTopRight());
+    HinGcMark(self->FX4Splitter::getBottomLeft());
+    HinGcMark(self->FX4Splitter::getBottomRight());
     }
   }
 
 
-void FXRbFileItem::markfunc(FXFileItem* self){
-  FXTRACE((100,"FXRbFileItem::markfunc() %p\n",self));
-  FXRbIconItem::markfunc(self);
+void HinFileItem::markfunc(FXFileItem* self){
+  FXTRACE((100,"HinFileItem::markfunc() %p\n",self));
+  HinIconItem::markfunc(self);
   if(self){
-    FXRbGcMark(self->FXFileItem::getAssoc());
+    HinGcMark(self->FXFileItem::getAssoc());
     }
   }
 
 
-void FXRbFileItem::freefunc(FXFileItem* self){
-  delete_if_not_owned(self,reinterpret_cast<FXRbFileItem*>(0));
+void HinFileItem::freefunc(FXFileItem* self){
+  delete_if_not_owned(self,reinterpret_cast<HinFileItem*>(0));
   }
 
 
-void FXRbFileList::markfunc(FXFileList* self){
-  FXTRACE((100,"FXRbFileList::markfunc() %p\n",self));
-  FXRbIconList::markfunc(self);
+void HinFileList::markfunc(FXFileList* self){
+  FXTRACE((100,"HinFileList::markfunc() %p\n",self));
+  HinIconList::markfunc(self);
   if(self){
-    FXRbGcMark(self->FXFileList::getAssociations());
+    HinGcMark(self->FXFileList::getAssociations());
     for(FXint i=0;i<self->FXFileList::getNumItems();i++){
       FXFileAssoc* assoc=self->FXFileList::getItemAssoc(i);
-      FXRbGcMark(assoc);
+      HinGcMark(assoc);
       }
     }
   }
 
 
-void FXRbDirBox::markfunc(FXDirBox* self){
-  FXTRACE((100,"FXRbDirBox::markfunc() %p\n",self));
-  FXRbTreeListBox::markfunc(self);
+void HinDirBox::markfunc(FXDirBox* self){
+  FXTRACE((100,"HinDirBox::markfunc() %p\n",self));
+  HinTreeListBox::markfunc(self);
   }
 
 
-void FXRbDriveBox::markfunc(FXDriveBox* self){
-  FXTRACE((100,"FXRbDriveBox::markfunc() %p\n",self));
-  FXRbListBox::markfunc(self);
+void HinDriveBox::markfunc(FXDriveBox* self){
+  FXTRACE((100,"HinDriveBox::markfunc() %p\n",self));
+  HinListBox::markfunc(self);
   }
 
 
-void FXRbDirSelector::markfunc(FXDirSelector* self){
-  FXTRACE((100,"FXRbDirSelector::markfunc() %p\n",self));
-  FXRbPacker::markfunc(self);
+void HinDirSelector::markfunc(FXDirSelector* self){
+  FXTRACE((100,"HinDirSelector::markfunc() %p\n",self));
+  HinPacker::markfunc(self);
   if(self){
-    FXRbGcMark(self->FXDirSelector::acceptButton());
-    FXRbGcMark(self->FXDirSelector::cancelButton());
+    HinGcMark(self->FXDirSelector::acceptButton());
+    HinGcMark(self->FXDirSelector::cancelButton());
     }
   }
 
 
-void FXRbFileSelector::markfunc(FXFileSelector* self){
-  FXTRACE((100,"FXRbFileSelector::markfunc() %p\n",self));
-  FXRbPacker::markfunc(self);
+void HinFileSelector::markfunc(FXFileSelector* self){
+  FXTRACE((100,"HinFileSelector::markfunc() %p\n",self));
+  HinPacker::markfunc(self);
   if(self){
-    FXRbGcMark(self->FXFileSelector::acceptButton());
-    FXRbGcMark(self->FXFileSelector::cancelButton());
+    HinGcMark(self->FXFileSelector::acceptButton());
+    HinGcMark(self->FXFileSelector::cancelButton());
     }
   }
 
 
-void FXRbFontSelector::markfunc(FXFontSelector* self){
-  FXTRACE((100,"FXRbFontSelector::markfunc() %p\n",self));
-  FXRbPacker::markfunc(self);
+void HinFontSelector::markfunc(FXFontSelector* self){
+  FXTRACE((100,"HinFontSelector::markfunc() %p\n",self));
+  HinPacker::markfunc(self);
   if(self){
-    FXRbGcMark(self->FXFontSelector::acceptButton());
-    FXRbGcMark(self->FXFontSelector::cancelButton());
+    HinGcMark(self->FXFontSelector::acceptButton());
+    HinGcMark(self->FXFontSelector::cancelButton());
     }
   }
 
 
-void FXRbDirDialog::markfunc(FXDirDialog* self){
-  FXTRACE((100,"FXRbDirDialog::markfunc() %p\n",self));
-  FXRbDialogBox::markfunc(self);
+void HinDirDialog::markfunc(FXDirDialog* self){
+  FXTRACE((100,"HinDirDialog::markfunc() %p\n",self));
+  HinDialogBox::markfunc(self);
   }
 
 
-void FXRbFileDialog::markfunc(FXFileDialog* self){
-  FXTRACE((100,"FXRbFileDialog::markfunc() %p\n",self));
-  FXRbDialogBox::markfunc(self);
+void HinFileDialog::markfunc(FXFileDialog* self){
+  FXTRACE((100,"HinFileDialog::markfunc() %p\n",self));
+  HinDialogBox::markfunc(self);
   }
 
 
-void FXRbFontDialog::markfunc(FXFontDialog* self){
-  FXTRACE((100,"FXRbFontDialog::markfunc() %p\n",self));
-  FXRbDialogBox::markfunc(self);
+void HinFontDialog::markfunc(FXFontDialog* self){
+  FXTRACE((100,"HinFontDialog::markfunc() %p\n",self));
+  HinDialogBox::markfunc(self);
   }
 
 
-void FXRbListBox::markfunc(FXListBox* self){
-  FXTRACE((100,"FXRbListBox::markfunc() %p\n",self));
-  FXRbPacker::markfunc(self);
+void HinListBox::markfunc(FXListBox* self){
+  FXTRACE((100,"HinListBox::markfunc() %p\n",self));
+  HinPacker::markfunc(self);
   if(self){
-    FXRbGcMark(self->FXListBox::getFont());
+    HinGcMark(self->FXListBox::getFont());
     for(FXint i=0;i<self->FXListBox::getNumItems();i++){
-      FXRbGcMark(self->FXListBox::getItemIcon(i));
+      HinGcMark(self->FXListBox::getItemIcon(i));
       if(self->FXListBox::getItemData(i))
         MARK(self->FXListBox::getItemData(i));
       }
@@ -865,782 +865,782 @@ void FXRbListBox::markfunc(FXListBox* self){
   }
 
 
-void FXRbTreeListBox::markfunc(FXTreeListBox* self){
-  FXTRACE((100,"FXRbTreeListBox::markfunc() %p\n",self));
-  FXRbPacker::markfunc(self);
+void HinTreeListBox::markfunc(FXTreeListBox* self){
+  FXTRACE((100,"HinTreeListBox::markfunc() %p\n",self));
+  HinPacker::markfunc(self);
   if(self){
-    FXRbGcMark(self->FXTreeListBox::getFont());
+    HinGcMark(self->FXTreeListBox::getFont());
     for(FXTreeItem* item=self->FXTreeListBox::getFirstItem();item!=0;item=item->FXTreeItem::getNext()){
-      FXRbGcMark(item);
-      FXRbTreeItem::markfunc(item);
+      HinGcMark(item);
+      HinTreeItem::markfunc(item);
       }
     }
   }
 
 
-void FXRbToolTip::markfunc(FXToolTip* self){
-  FXTRACE((100,"FXRbToolTip::markfunc() %p\n",self));
-  FXRbShell::markfunc(self);
+void HinToolTip::markfunc(FXToolTip* self){
+  FXTRACE((100,"HinToolTip::markfunc() %p\n",self));
+  HinShell::markfunc(self);
   if(self){
-    FXRbGcMark(self->FXToolTip::getFont());
+    HinGcMark(self->FXToolTip::getFont());
     }
   }
 
 
-void FXRbRootWindow::markfunc(FXRootWindow* self){
-  FXTRACE((100,"FXRbRootWindow::markfunc() %p\n",self));
-  FXRbComposite::markfunc(self);
+void HinRootWindow::markfunc(FXRootWindow* self){
+  FXTRACE((100,"HinRootWindow::markfunc() %p\n",self));
+  HinComposite::markfunc(self);
   }
 
 
-void FXRbPNGIcon::markfunc(FXPNGIcon *self){
-  FXTRACE((100,"FXRbPNGIcon::markfunc() %p\n",self));
-  FXRbIcon::markfunc(self);
+void HinPNGIcon::markfunc(FXPNGIcon *self){
+  FXTRACE((100,"HinPNGIcon::markfunc() %p\n",self));
+  HinIcon::markfunc(self);
   }
 
 
-void FXRbMDIMenu::markfunc(FXMDIMenu *self){
-  FXTRACE((100,"FXRbMDIMenu::markfunc() %p\n",self));
-  FXRbMenuPane::markfunc(self);
+void HinMDIMenu::markfunc(FXMDIMenu *self){
+  FXTRACE((100,"HinMDIMenu::markfunc() %p\n",self));
+  HinMenuPane::markfunc(self);
   }
 
 
-void FXRbMDIRestoreButton::markfunc(FXMDIRestoreButton *self){
-  FXTRACE((100,"FXRbMDIRestoreButton::markfunc() %p\n",self));
-  FXRbButton::markfunc(self);
+void HinMDIRestoreButton::markfunc(FXMDIRestoreButton *self){
+  FXTRACE((100,"HinMDIRestoreButton::markfunc() %p\n",self));
+  HinButton::markfunc(self);
   }
 
 
-void FXRbXBMImage::markfunc(FXXBMImage *self){
-  FXTRACE((100,"FXRbXBMImage::markfunc() %p\n",self));
-  FXRbImage::markfunc(self);
+void HinXBMImage::markfunc(FXXBMImage *self){
+  FXTRACE((100,"HinXBMImage::markfunc() %p\n",self));
+  HinImage::markfunc(self);
   }
 
 
-void FXRbXPMImage::markfunc(FXXPMImage *self){
-  FXTRACE((100,"FXRbXPMImage::markfunc() %p\n",self));
-  FXRbImage::markfunc(self);
+void HinXPMImage::markfunc(FXXPMImage *self){
+  FXTRACE((100,"HinXPMImage::markfunc() %p\n",self));
+  HinImage::markfunc(self);
   }
 
 
-void FXRbJPGImage::markfunc(FXJPGImage *self){
-  FXTRACE((100,"FXRbJPGImage::markfunc() %p\n",self));
-  FXRbImage::markfunc(self);
+void HinJPGImage::markfunc(FXJPGImage *self){
+  FXTRACE((100,"HinJPGImage::markfunc() %p\n",self));
+  HinImage::markfunc(self);
   }
 
 
-void FXRbTextField::markfunc(FXTextField *self){
-  FXTRACE((100,"FXRbTextField::markfunc() %p\n",self));
-  FXRbFrame::markfunc(self);
+void HinTextField::markfunc(FXTextField *self){
+  FXTRACE((100,"HinTextField::markfunc() %p\n",self));
+  HinFrame::markfunc(self);
   if(self){
-    FXRbGcMark(self->FXTextField::getFont());
+    HinGcMark(self->FXTextField::getFont());
     }
   }
 
 
-void FXRbMenuCascade::markfunc(FXMenuCascade *self){
-  FXTRACE((100,"FXRbMenuCascade::markfunc() %p\n",self));
-  FXRbMenuCaption::markfunc(self);
+void HinMenuCascade::markfunc(FXMenuCascade *self){
+  FXTRACE((100,"HinMenuCascade::markfunc() %p\n",self));
+  HinMenuCaption::markfunc(self);
   if(self){
-    FXRbGcMark(self->FXMenuCascade::getMenu());
+    HinGcMark(self->FXMenuCascade::getMenu());
     }
   }
 
 
-void FXRbMenuCommand::markfunc(FXMenuCommand *self){
-  FXTRACE((100,"FXRbMenuCommand::markfunc() %p\n",self));
-  FXRbMenuCaption::markfunc(self);
+void HinMenuCommand::markfunc(FXMenuCommand *self){
+  FXTRACE((100,"HinMenuCommand::markfunc() %p\n",self));
+  HinMenuCaption::markfunc(self);
   }
 
 
-void FXRbMenuBar::markfunc(FXMenuBar *self){
-  FXTRACE((100,"FXRbMenuBar::markfunc() %p\n",self));
-  FXRbToolBar::markfunc(self);
+void HinMenuBar::markfunc(FXMenuBar *self){
+  FXTRACE((100,"HinMenuBar::markfunc() %p\n",self));
+  HinToolBar::markfunc(self);
   }
 
 
-void FXRbScrollCorner::markfunc(FXScrollCorner *self){
-  FXTRACE((100,"FXRbScrollCorner::markfunc() %p\n",self));
-  FXRbWindow::markfunc(self);
+void HinScrollCorner::markfunc(FXScrollCorner *self){
+  FXTRACE((100,"HinScrollCorner::markfunc() %p\n",self));
+  HinWindow::markfunc(self);
   }
 
 
-void FXRbShutter::markfunc(FXShutter *self){
-  FXRbVerticalFrame::markfunc(self);
+void HinShutter::markfunc(FXShutter *self){
+  HinVerticalFrame::markfunc(self);
   }
 
 
-void FXRbProgressBar::markfunc(FXProgressBar *self){
-  FXTRACE((100,"FXRbProgressBar::markfunc() %p\n",self));
-  FXRbFrame::markfunc(self);
+void HinProgressBar::markfunc(FXProgressBar *self){
+  FXTRACE((100,"HinProgressBar::markfunc() %p\n",self));
+  HinFrame::markfunc(self);
   if(self){
-    FXRbGcMark(self->FXProgressBar::getFont());
+    HinGcMark(self->FXProgressBar::getFont());
     }
   }
 
 
-void FXRbSeparator::markfunc(FXSeparator* self){
-  FXTRACE((100,"FXRbSeparator::markfunc() %p\n",self));
-  FXRbFrame::markfunc(self);
+void HinSeparator::markfunc(FXSeparator* self){
+  FXTRACE((100,"HinSeparator::markfunc() %p\n",self));
+  HinFrame::markfunc(self);
  }
 
 
-void FXRbHorizontalSeparator::markfunc(FXHorizontalSeparator *self){
-  FXTRACE((100,"FXRbHorizontalSeparator::markfunc() %p\n",self));
-  FXRbSeparator::markfunc(self);
+void HinHorizontalSeparator::markfunc(FXHorizontalSeparator *self){
+  FXTRACE((100,"HinHorizontalSeparator::markfunc() %p\n",self));
+  HinSeparator::markfunc(self);
   }
 
 
-void FXRbSpinner::markfunc(FXSpinner *self){
-  FXTRACE((100,"FXRbSpinner::markfunc() %p\n",self));
-  FXRbPacker::markfunc(self);
+void HinSpinner::markfunc(FXSpinner *self){
+  FXTRACE((100,"HinSpinner::markfunc() %p\n",self));
+  HinPacker::markfunc(self);
   if(self){
-    FXRbGcMark(self->FXSpinner::getFont());
+    HinGcMark(self->FXSpinner::getFont());
     }
   }
 
 
-void FXRbRealSpinner::markfunc(FXRealSpinner *self){
-  FXTRACE((100,"FXRbRealSpinner::markfunc() %p\n",self));
-  FXRbPacker::markfunc(self);
+void HinRealSpinner::markfunc(FXRealSpinner *self){
+  FXTRACE((100,"HinRealSpinner::markfunc() %p\n",self));
+  HinPacker::markfunc(self);
   if(self){
-    FXRbGcMark(self->FXRealSpinner::getFont());
+    HinGcMark(self->FXRealSpinner::getFont());
     }
   }
 
 
-void FXRbGIFIcon::markfunc(FXGIFIcon *self){
-  FXTRACE((100,"FXRbGIFIcon::markfunc() %p\n",self));
-  FXRbIcon::markfunc(self);
+void HinGIFIcon::markfunc(FXGIFIcon *self){
+  FXTRACE((100,"HinGIFIcon::markfunc() %p\n",self));
+  HinIcon::markfunc(self);
   }
 
 
-void FXRbTIFIcon::markfunc(FXTIFIcon *self){
-  FXTRACE((100,"FXRbTIFIcon::markfunc() %p\n",self));
-  FXRbIcon::markfunc(self);
+void HinTIFIcon::markfunc(FXTIFIcon *self){
+  FXTRACE((100,"HinTIFIcon::markfunc() %p\n",self));
+  HinIcon::markfunc(self);
   }
 
 
-void FXRbPCXIcon::markfunc(FXPCXIcon *self){
-  FXTRACE((100,"FXRbPCXIcon::markfunc() %p\n",self));
-  FXRbIcon::markfunc(self);
+void HinPCXIcon::markfunc(FXPCXIcon *self){
+  FXTRACE((100,"HinPCXIcon::markfunc() %p\n",self));
+  HinIcon::markfunc(self);
   }
 
 
-void FXRbRGBIcon::markfunc(FXRGBIcon *self){
-  FXTRACE((100,"FXRbRGBIcon::markfunc() %p\n",self));
-  FXRbIcon::markfunc(self);
+void HinRGBIcon::markfunc(FXRGBIcon *self){
+  FXTRACE((100,"HinRGBIcon::markfunc() %p\n",self));
+  HinIcon::markfunc(self);
   }
 
 
-void FXRbMDIMaximizeButton::markfunc(FXMDIMaximizeButton *self){
-  FXTRACE((100,"FXRbMDIMaximizeButton::markfunc() %p\n",self));
-  FXRbButton::markfunc(self);
+void HinMDIMaximizeButton::markfunc(FXMDIMaximizeButton *self){
+  FXTRACE((100,"HinMDIMaximizeButton::markfunc() %p\n",self));
+  HinButton::markfunc(self);
   }
 
 
-void FXRbMDIDeleteButton::markfunc(FXMDIDeleteButton *self){
-  FXTRACE((100,"FXRbMDIDeleteButton::markfunc() %p\n",self));
-  FXRbButton::markfunc(self);
+void HinMDIDeleteButton::markfunc(FXMDIDeleteButton *self){
+  FXTRACE((100,"HinMDIDeleteButton::markfunc() %p\n",self));
+  HinButton::markfunc(self);
   }
 
 
-void FXRbMenuButton::markfunc(FXMenuButton *self){
-  FXTRACE((100,"FXRbMenuButton::markfunc() %p\n",self));
-  FXRbLabel::markfunc(self);
+void HinMenuButton::markfunc(FXMenuButton *self){
+  FXTRACE((100,"HinMenuButton::markfunc() %p\n",self));
+  HinLabel::markfunc(self);
   if(self){
-    FXRbGcMark(self->FXMenuButton::getMenu());
+    HinGcMark(self->FXMenuButton::getMenu());
     }
   }
 
 
-void FXRbMatrix::markfunc(FXMatrix *self){
-  FXTRACE((100,"FXRbMatrix::markfunc() %p\n",self));
-  FXRbPacker::markfunc(self);
+void HinMatrix::markfunc(FXMatrix *self){
+  FXTRACE((100,"HinMatrix::markfunc() %p\n",self));
+  HinPacker::markfunc(self);
   }
 
 
-void FXRbMenuSeparator::markfunc(FXMenuSeparator *self){
-  FXTRACE((100,"FXRbMenuSeparator::markfunc() %p\n",self));
-  FXRbWindow::markfunc(self);
+void HinMenuSeparator::markfunc(FXMenuSeparator *self){
+  FXTRACE((100,"HinMenuSeparator::markfunc() %p\n",self));
+  HinWindow::markfunc(self);
   }
 
 
-void FXRbSwitcher::markfunc(FXSwitcher *self){
-  FXTRACE((100,"FXRbSwitcher::markfunc() %p\n",self));
-  FXRbPacker::markfunc(self);
+void HinSwitcher::markfunc(FXSwitcher *self){
+  FXTRACE((100,"HinSwitcher::markfunc() %p\n",self));
+  HinPacker::markfunc(self);
   }
 
 
-void FXRbRealSlider::markfunc(FXRealSlider *self){
-  FXTRACE((100,"FXRbRealSlider::markfunc() %p\n",self));
-  FXRbFrame::markfunc(self);
+void HinRealSlider::markfunc(FXRealSlider *self){
+  FXTRACE((100,"HinRealSlider::markfunc() %p\n",self));
+  HinFrame::markfunc(self);
   }
 
 
-void FXRbSlider::markfunc(FXSlider *self){
-  FXTRACE((100,"FXRbSlider::markfunc() %p\n",self));
-  FXRbFrame::markfunc(self);
+void HinSlider::markfunc(FXSlider *self){
+  FXTRACE((100,"HinSlider::markfunc() %p\n",self));
+  HinFrame::markfunc(self);
   }
 
 
-void FXRbToolBarGrip::markfunc(FXToolBarGrip *self){
-  FXTRACE((100,"FXRbToolBarGrip::markfunc() %p\n",self));
-  FXRbDockHandler::markfunc(self);
+void HinToolBarGrip::markfunc(FXToolBarGrip *self){
+  FXTRACE((100,"HinToolBarGrip::markfunc() %p\n",self));
+  HinDockHandler::markfunc(self);
   }
 
 
-void FXRbJPGIcon::markfunc(FXJPGIcon *self){
-  FXTRACE((100,"FXRbJPGIcon::markfunc() %p\n",self));
-  FXRbIcon::markfunc(self);
+void HinJPGIcon::markfunc(FXJPGIcon *self){
+  FXTRACE((100,"HinJPGIcon::markfunc() %p\n",self));
+  HinIcon::markfunc(self);
   }
 
 
-void FXRbTabBar::markfunc(FXTabBar *self){
-  FXTRACE((100,"FXRbTabBar::markfunc() %p\n",self));
-  FXRbPacker::markfunc(self);
+void HinTabBar::markfunc(FXTabBar *self){
+  FXTRACE((100,"HinTabBar::markfunc() %p\n",self));
+  HinPacker::markfunc(self);
   }
 
 
-void FXRbToolBarTab::markfunc(FXToolBarTab *self){
-  FXTRACE((100,"FXRbToolBarTab::markfunc() %p\n",self));
-  FXRbFrame::markfunc(self);
+void HinToolBarTab::markfunc(FXToolBarTab *self){
+  FXTRACE((100,"HinToolBarTab::markfunc() %p\n",self));
+  HinFrame::markfunc(self);
   }
 
 
-void FXRbSearchDialog::markfunc(FXSearchDialog *self){
-  FXTRACE((100,"FXRbSearchDialog::markfunc() %p\n",self));
-  FXRbDialogBox::markfunc(self);
+void HinSearchDialog::markfunc(FXSearchDialog *self){
+  FXTRACE((100,"HinSearchDialog::markfunc() %p\n",self));
+  HinDialogBox::markfunc(self);
   }
 
 
-void FXRbPrintDialog::markfunc(FXPrintDialog *self){
-  FXTRACE((100,"FXRbPrintDialog::markfunc() %p\n",self));
-  FXRbDialogBox::markfunc(self);
+void HinPrintDialog::markfunc(FXPrintDialog *self){
+  FXTRACE((100,"HinPrintDialog::markfunc() %p\n",self));
+  HinDialogBox::markfunc(self);
   }
 
 
-void FXRbMDIMinimizeButton::markfunc(FXMDIMinimizeButton *self){
-  FXTRACE((100,"FXRbMDIMinimizeButton::markfunc() %p\n",self));
-  FXRbButton::markfunc(self);
+void HinMDIMinimizeButton::markfunc(FXMDIMinimizeButton *self){
+  FXTRACE((100,"HinMDIMinimizeButton::markfunc() %p\n",self));
+  HinButton::markfunc(self);
   }
 
 
-void FXRbGIFCursor::markfunc(FXGIFCursor *self){
-  FXTRACE((100,"FXRbGIFCursor::markfunc() %p\n",self));
-  FXRbCursor::markfunc(self);
+void HinGIFCursor::markfunc(FXGIFCursor *self){
+  FXTRACE((100,"HinGIFCursor::markfunc() %p\n",self));
+  HinCursor::markfunc(self);
   }
 
 
-void FXRbGIFCursor::freefunc(FXGIFCursor* self){
-  delete_if_not_owned_by_app(self,reinterpret_cast<FXRbGIFCursor*>(0));
+void HinGIFCursor::freefunc(FXGIFCursor* self){
+  delete_if_not_owned_by_app(self,reinterpret_cast<HinGIFCursor*>(0));
   }
 
 
-void FXRbCURCursor::markfunc(FXCURCursor *self){
-  FXTRACE((100,"FXRbCURCursor::markfunc() %p\n",self));
-  FXRbCursor::markfunc(self);
+void HinCURCursor::markfunc(FXCURCursor *self){
+  FXTRACE((100,"HinCURCursor::markfunc() %p\n",self));
+  HinCursor::markfunc(self);
   }
 
 
-void FXRbCURCursor::freefunc(FXCURCursor* self){
-  delete_if_not_owned_by_app(self,reinterpret_cast<FXRbCURCursor*>(0));
+void HinCURCursor::freefunc(FXCURCursor* self){
+  delete_if_not_owned_by_app(self,reinterpret_cast<HinCURCursor*>(0));
   }
 
 
-void FXRbGLViewer::markfunc(FXGLViewer *self){
-  FXTRACE((100,"FXRbGLViewer::markfunc() %p\n",self));
-  FXRbGLCanvas::markfunc(self);
+void HinGLViewer::markfunc(FXGLViewer *self){
+  FXTRACE((100,"HinGLViewer::markfunc() %p\n",self));
+  HinGLCanvas::markfunc(self);
   if(self){
-    FXRbGcMark(self->FXGLViewer::getScene());
-    FXRbGcMark(self->FXGLViewer::getSelection());
+    HinGcMark(self->FXGLViewer::getScene());
+    HinGcMark(self->FXGLViewer::getSelection());
     }
   }
 
 
-void FXRbGIFImage::markfunc(FXGIFImage *self){
-  FXTRACE((100,"FXRbGIFImage::markfunc() %p\n",self));
-  FXRbImage::markfunc(self);
+void HinGIFImage::markfunc(FXGIFImage *self){
+  FXTRACE((100,"HinGIFImage::markfunc() %p\n",self));
+  HinImage::markfunc(self);
   }
 
 
-void FXRbTIFImage::markfunc(FXTIFImage *self){
-  FXTRACE((100,"FXRbTIFImage::markfunc() %p\n",self));
-  FXRbImage::markfunc(self);
+void HinTIFImage::markfunc(FXTIFImage *self){
+  FXTRACE((100,"HinTIFImage::markfunc() %p\n",self));
+  HinImage::markfunc(self);
   }
 
 
-void FXRbPCXImage::markfunc(FXPCXImage *self){
-  FXTRACE((100,"FXRbPCXImage::markfunc() %p\n",self));
-  FXRbImage::markfunc(self);
+void HinPCXImage::markfunc(FXPCXImage *self){
+  FXTRACE((100,"HinPCXImage::markfunc() %p\n",self));
+  HinImage::markfunc(self);
   }
 
 
-void FXRbRGBImage::markfunc(FXRGBImage *self){
-  FXTRACE((100,"FXRbRGBImage::markfunc() %p\n",self));
-  FXRbImage::markfunc(self);
+void HinRGBImage::markfunc(FXRGBImage *self){
+  FXTRACE((100,"HinRGBImage::markfunc() %p\n",self));
+  HinImage::markfunc(self);
   }
 
 
-void FXRbMenuPane::markfunc(FXMenuPane *self){
-  FXTRACE((100,"FXRbMenuPane::markfunc() %p\n",self));
-  FXRbPopup::markfunc(self);
+void HinMenuPane::markfunc(FXMenuPane *self){
+  FXTRACE((100,"HinMenuPane::markfunc() %p\n",self));
+  HinPopup::markfunc(self);
   }
 
 
-void FXRbScrollPane::markfunc(FXScrollPane *self){
-  FXRbMenuPane::markfunc(self);
+void HinScrollPane::markfunc(FXScrollPane *self){
+  HinMenuPane::markfunc(self);
   }
 
 
-void FXRbSplitter::markfunc(FXSplitter *self){
-  FXTRACE((100,"FXRbSplitter::markfunc() %p\n",self));
-  FXRbComposite::markfunc(self);
+void HinSplitter::markfunc(FXSplitter *self){
+  FXTRACE((100,"HinSplitter::markfunc() %p\n",self));
+  HinComposite::markfunc(self);
   }
 
 
-void FXRbStatusBar::markfunc(FXStatusBar *self){
-  FXTRACE((100,"FXRbStatusBar::markfunc() %p\n",self));
-  FXRbHorizontalFrame::markfunc(self);
+void HinStatusBar::markfunc(FXStatusBar *self){
+  FXTRACE((100,"HinStatusBar::markfunc() %p\n",self));
+  HinHorizontalFrame::markfunc(self);
   if(self){
-    FXRbGcMark(self->FXStatusBar::getStatusLine());
-    FXRbGcMark(self->FXStatusBar::getDragCorner());
+    HinGcMark(self->FXStatusBar::getStatusLine());
+    HinGcMark(self->FXStatusBar::getDragCorner());
     }
   }
 
 
-void FXRbMDIChild::markfunc(FXMDIChild *self){
-  FXTRACE((100,"FXRbMDIChild::markfunc() %p\n",self));
-  FXRbComposite::markfunc(self);
+void HinMDIChild::markfunc(FXMDIChild *self){
+  FXTRACE((100,"HinMDIChild::markfunc() %p\n",self));
+  HinComposite::markfunc(self);
   if(self){
-    FXRbGcMark(self->FXMDIChild::contentWindow());
-    FXRbGcMark(self->FXMDIChild::getIcon());
-    FXRbGcMark(self->FXMDIChild::getMenu());
-    FXRbGcMark(self->FXMDIChild::getFont());
+    HinGcMark(self->FXMDIChild::contentWindow());
+    HinGcMark(self->FXMDIChild::getIcon());
+    HinGcMark(self->FXMDIChild::getMenu());
+    HinGcMark(self->FXMDIChild::getFont());
     }
   }
 
 
-void FXRbPNGImage::markfunc(FXPNGImage *self){
-  FXTRACE((100,"FXRbPNGImage::markfunc() %p\n",self));
-  FXRbImage::markfunc(self);
+void HinPNGImage::markfunc(FXPNGImage *self){
+  FXTRACE((100,"HinPNGImage::markfunc() %p\n",self));
+  HinImage::markfunc(self);
   }
 
 
-void FXRbVisual::markfunc(FXVisual *self){
-  FXTRACE((100,"FXRbVisual::markfunc() %p\n",self));
-  FXRbId::markfunc(self);
+void HinVisual::markfunc(FXVisual *self){
+  FXTRACE((100,"HinVisual::markfunc() %p\n",self));
+  HinId::markfunc(self);
   }
 
 
-void FXRbVisual::freefunc(FXVisual *self){
-  delete_if_not_owned_by_app(self,reinterpret_cast<FXRbVisual*>(0));
+void HinVisual::freefunc(FXVisual *self){
+  delete_if_not_owned_by_app(self,reinterpret_cast<HinVisual*>(0));
   }
 
 
-void FXRbVerticalSeparator::markfunc(FXVerticalSeparator *self){
-  FXTRACE((100,"FXRbVerticalSeparator::markfunc() %p\n",self));
-  FXRbSeparator::markfunc(self);
+void HinVerticalSeparator::markfunc(FXVerticalSeparator *self){
+  FXTRACE((100,"HinVerticalSeparator::markfunc() %p\n",self));
+  HinSeparator::markfunc(self);
   }
 
 
-void FXRbToggleButton::markfunc(FXToggleButton *self){
-  FXTRACE((100,"FXRbToggleButton::markfunc() %p\n",self));
-  FXRbLabel::markfunc(self);
+void HinToggleButton::markfunc(FXToggleButton *self){
+  FXTRACE((100,"HinToggleButton::markfunc() %p\n",self));
+  HinLabel::markfunc(self);
   if(self){
-    FXRbGcMark(self->FXToggleButton::getAltIcon());
+    HinGcMark(self->FXToggleButton::getAltIcon());
     }
   }
 
 
-void FXRbTriStateButton::markfunc(FXTriStateButton *self){
-  FXTRACE((100,"FXRbTriStateButton::markfunc() %p\n",self));
-  FXRbToggleButton::markfunc(self);
+void HinTriStateButton::markfunc(FXTriStateButton *self){
+  FXTRACE((100,"HinTriStateButton::markfunc() %p\n",self));
+  HinToggleButton::markfunc(self);
   if(self){
-    FXRbGcMark(self->FXTriStateButton::getMaybeIcon());
+    HinGcMark(self->FXTriStateButton::getMaybeIcon());
     }
   }
 
 
-void FXRbPopup::markfunc(FXPopup *self){
-  FXTRACE((100,"FXRbPopup::markfunc() %p\n",self));
-  FXRbShell::markfunc(self);
+void HinPopup::markfunc(FXPopup *self){
+  FXTRACE((100,"HinPopup::markfunc() %p\n",self));
+  HinShell::markfunc(self);
   if(self){
-    FXRbGcMark(self->FXPopup::getGrabOwner());
+    HinGcMark(self->FXPopup::getGrabOwner());
     }
   }
 
 
-void FXRbOptionMenu::markfunc(FXOptionMenu *self){
-  FXTRACE((100,"FXRbOptionMenu::markfunc() %p\n",self));
-  FXRbLabel::markfunc(self);
+void HinOptionMenu::markfunc(FXOptionMenu *self){
+  FXTRACE((100,"HinOptionMenu::markfunc() %p\n",self));
+  HinLabel::markfunc(self);
   if(self){
-    FXRbGcMark(self->FXOptionMenu::getCurrent());
-    FXRbGcMark(self->FXOptionMenu::getMenu());
+    HinGcMark(self->FXOptionMenu::getCurrent());
+    HinGcMark(self->FXOptionMenu::getMenu());
     }
   }
 
 
-void FXRbMessageBox::markfunc(FXMessageBox *self){
-  FXTRACE((100,"FXRbMessageBox::markfunc() %p\n",self));
-  FXRbDialogBox::markfunc(self);
+void HinMessageBox::markfunc(FXMessageBox *self){
+  FXTRACE((100,"HinMessageBox::markfunc() %p\n",self));
+  HinDialogBox::markfunc(self);
   }
 
 
-void FXRbToolBar::markfunc(FXToolBar *self){
-  FXTRACE((100,"FXRbToolBar::markfunc() %p\n",self));
-  FXRbPacker::markfunc(self);
+void HinToolBar::markfunc(FXToolBar *self){
+  FXTRACE((100,"HinToolBar::markfunc() %p\n",self));
+  HinPacker::markfunc(self);
   if(self){
-    FXRbGcMark(self->FXToolBar::getDryDock());
-    FXRbGcMark(self->FXToolBar::getWetDock());
+    HinGcMark(self->FXToolBar::getDryDock());
+    HinGcMark(self->FXToolBar::getWetDock());
     }
   }
 
 
-void FXRbGLCanvas::markfunc(FXGLCanvas *self){
-  FXTRACE((100,"FXRbGLCanvas::markfunc() %p\n",self));
-  FXRbCanvas::markfunc(self);
+void HinGLCanvas::markfunc(FXGLCanvas *self){
+  FXTRACE((100,"HinGLCanvas::markfunc() %p\n",self));
+  HinCanvas::markfunc(self);
   }
 
 
-void FXRbGLVisual::markfunc(FXGLVisual *self){
-  FXTRACE((100,"FXRbGLVisual::markfunc() %p\n",self));
-  FXRbVisual::markfunc(self);
+void HinGLVisual::markfunc(FXGLVisual *self){
+  FXTRACE((100,"HinGLVisual::markfunc() %p\n",self));
+  HinVisual::markfunc(self);
   }
 
 
-void FXRbGLVisual::freefunc(FXGLVisual *self){
-  delete_if_not_owned_by_app(self,reinterpret_cast<FXRbGLVisual*>(0));
+void HinGLVisual::freefunc(FXGLVisual *self){
+  delete_if_not_owned_by_app(self,reinterpret_cast<HinGLVisual*>(0));
   }
 
 
-void FXRbOption::markfunc(FXOption *self){
-  FXTRACE((100,"FXRbOption::markfunc() %p\n",self));
-  FXRbLabel::markfunc(self);
+void HinOption::markfunc(FXOption *self){
+  FXTRACE((100,"HinOption::markfunc() %p\n",self));
+  HinLabel::markfunc(self);
   }
 
 
-void FXRbScrollWindow::markfunc(FXScrollWindow *self){
-  FXTRACE((100,"FXRbScrollWindow::markfunc() %p\n",self));
-  FXRbScrollArea::markfunc(self);
+void HinScrollWindow::markfunc(FXScrollWindow *self){
+  FXTRACE((100,"HinScrollWindow::markfunc() %p\n",self));
+  HinScrollArea::markfunc(self);
   if(self){
-    FXRbGcMark(self->FXScrollWindow::contentWindow());
+    HinGcMark(self->FXScrollWindow::contentWindow());
     }
   }
 
 
-void FXRbText::markfunc(FXText *self){
-  FXTRACE((100,"FXRbText::markfunc() %p\n",self));
-  FXRbScrollArea::markfunc(self);
+void HinText::markfunc(FXText *self){
+  FXTRACE((100,"HinText::markfunc() %p\n",self));
+  HinScrollArea::markfunc(self);
   if(self){
-    FXRbGcMark(self->FXText::getFont());
+    HinGcMark(self->FXText::getFont());
     }
   }
 
 
-void FXRbToolBarShell::markfunc(FXToolBarShell *self){
-  FXTRACE((100,"FXRbToolBarShell::markfunc() %p\n",self));
-  FXRbTopWindow::markfunc(self);
+void HinToolBarShell::markfunc(FXToolBarShell *self){
+  FXTRACE((100,"HinToolBarShell::markfunc() %p\n",self));
+  HinTopWindow::markfunc(self);
   }
 
-void FXRbSplashWindow::markfunc(FXSplashWindow *self){
-  FXTRACE((100,"FXRbSplashWindow::markfunc() %p\n",self));
-  FXRbTopWindow::markfunc(self);
+void HinSplashWindow::markfunc(FXSplashWindow *self){
+  FXTRACE((100,"HinSplashWindow::markfunc() %p\n",self));
+  HinTopWindow::markfunc(self);
   if(self){
-    FXRbGcMark(self->FXSplashWindow::getIcon());
+    HinGcMark(self->FXSplashWindow::getIcon());
     }
   }
 
-void FXRbInputDialog::markfunc(FXInputDialog *self){
-  FXTRACE((100,"FXRbInputDialog::markfunc() %p\n",self));
-  FXRbDialogBox::markfunc(self);
+void HinInputDialog::markfunc(FXInputDialog *self){
+  FXTRACE((100,"HinInputDialog::markfunc() %p\n",self));
+  HinDialogBox::markfunc(self);
   }
 
 
-void FXRbMDIClient::markfunc(FXMDIClient *self){
-  FXTRACE((100,"FXRbMDIClient::markfunc() %p\n",self));
-  FXRbComposite::markfunc(self);
+void HinMDIClient::markfunc(FXMDIClient *self){
+  FXTRACE((100,"HinMDIClient::markfunc() %p\n",self));
+  HinComposite::markfunc(self);
   }
 
 
-void FXRbMenuTitle::markfunc(FXMenuTitle *self){
-  FXTRACE((100,"FXRbMenuTitle::markfunc() %p\n",self));
-  FXRbMenuCaption::markfunc(self);
+void HinMenuTitle::markfunc(FXMenuTitle *self){
+  FXTRACE((100,"HinMenuTitle::markfunc() %p\n",self));
+  HinMenuCaption::markfunc(self);
   if(self){
-    FXRbGcMark(self->FXMenuTitle::getMenu());
+    HinGcMark(self->FXMenuTitle::getMenu());
     }
   }
 
 
 /*
-void FXRbBitmapView::markfunc(FXBitmapView *self){
-  FXRbScrollArea::markfunc(self);
+void HinBitmapView::markfunc(FXBitmapView *self){
+  HinScrollArea::markfunc(self);
   if(self){
-    FXRbGcMark(self->getBitmap());
+    HinGcMark(self->getBitmap());
     }
   }
 */
 
 
-void FXRbImageView::markfunc(FXImageView *self){
-  FXRbScrollArea::markfunc(self);
+void HinImageView::markfunc(FXImageView *self){
+  HinScrollArea::markfunc(self);
   if(self){
-    FXRbGcMark(self->FXImageView::getImage());
+    HinGcMark(self->FXImageView::getImage());
     }
   }
 
 
-void FXRbShutterItem::markfunc(FXShutterItem *self){
-  FXRbVerticalFrame::markfunc(self);
+void HinShutterItem::markfunc(FXShutterItem *self){
+  HinVerticalFrame::markfunc(self);
   if(self){
-    FXRbGcMark(self->FXShutterItem::getButton());
-    FXRbGcMark(self->FXShutterItem::getContent());
+    HinGcMark(self->FXShutterItem::getButton());
+    HinGcMark(self->FXShutterItem::getContent());
     }
   }
 
 
-void FXRbMDIWindowButton::markfunc(FXMDIWindowButton *self){
-  FXTRACE((100,"FXRbMDIWindowButton::markfunc() %p\n",self));
-  FXRbMenuButton::markfunc(self);
+void HinMDIWindowButton::markfunc(FXMDIWindowButton *self){
+  FXTRACE((100,"HinMDIWindowButton::markfunc() %p\n",self));
+  HinMenuButton::markfunc(self);
   }
 
 
-void FXRbMenuCaption::markfunc(FXMenuCaption *self){
-  FXTRACE((100,"FXRbMenuCaption::markfunc() %p\n",self));
-  FXRbWindow::markfunc(self);
+void HinMenuCaption::markfunc(FXMenuCaption *self){
+  FXTRACE((100,"HinMenuCaption::markfunc() %p\n",self));
+  HinWindow::markfunc(self);
   if(self){
-    FXRbGcMark(self->FXMenuCaption::getFont());
-    FXRbGcMark(self->FXMenuCaption::getIcon());
+    HinGcMark(self->FXMenuCaption::getFont());
+    HinGcMark(self->FXMenuCaption::getIcon());
     }
   }
 
 
-void FXRbTabItem::markfunc(FXTabItem *self){
-  FXTRACE((100,"FXRbTabItem::markfunc() %p\n",self));
-  FXRbLabel::markfunc(self);
+void HinTabItem::markfunc(FXTabItem *self){
+  FXTRACE((100,"HinTabItem::markfunc() %p\n",self));
+  HinLabel::markfunc(self);
   }
 
 
-void FXRbStatusLine::markfunc(FXStatusLine *self){
-  FXTRACE((100,"FXRbStatusLine::markfunc() %p\n",self));
-  FXRbFrame::markfunc(self);
+void HinStatusLine::markfunc(FXStatusLine *self){
+  FXTRACE((100,"HinStatusLine::markfunc() %p\n",self));
+  HinFrame::markfunc(self);
   if(self){
-    FXRbGcMark(self->FXStatusLine::getFont());
+    HinGcMark(self->FXStatusLine::getFont());
     }
   }
 
 
-void FXRbGLShape::markfunc(FXGLShape *self){
-  FXTRACE((100,"FXRbGLShape::markfunc() %p\n",self));
-  FXRbGLObject::markfunc(self);
+void HinGLShape::markfunc(FXGLShape *self){
+  FXTRACE((100,"HinGLShape::markfunc() %p\n",self));
+  HinGLObject::markfunc(self);
   }
 
 
-void FXRbTabBook::markfunc(FXTabBook *self){
-  FXTRACE((100,"FXRbTabBook::markfunc() %p\n",self));
-  FXRbTabBar::markfunc(self);
+void HinTabBook::markfunc(FXTabBook *self){
+  FXTRACE((100,"HinTabBook::markfunc() %p\n",self));
+  HinTabBar::markfunc(self);
   }
 
 
-void FXRbReplaceDialog::markfunc(FXReplaceDialog *self){
-  FXTRACE((100,"FXRbReplaceDialog::markfunc() %p\n",self));
-  FXRbDialogBox::markfunc(self);
+void HinReplaceDialog::markfunc(FXReplaceDialog *self){
+  FXTRACE((100,"HinReplaceDialog::markfunc() %p\n",self));
+  HinDialogBox::markfunc(self);
   }
 
 
-void FXRbXBMIcon::markfunc(FXXBMIcon *self){
-  FXTRACE((100,"FXRbXBMIcon::markfunc() %p\n",self));
-  FXRbIcon::markfunc(self);
+void HinXBMIcon::markfunc(FXXBMIcon *self){
+  FXTRACE((100,"HinXBMIcon::markfunc() %p\n",self));
+  HinIcon::markfunc(self);
   }
 
 
-void FXRbXPMIcon::markfunc(FXXPMIcon *self){
-  FXTRACE((100,"FXRbXPMIcon::markfunc() %p\n",self));
-  FXRbIcon::markfunc(self);
+void HinXPMIcon::markfunc(FXXPMIcon *self){
+  FXTRACE((100,"HinXPMIcon::markfunc() %p\n",self));
+  HinIcon::markfunc(self);
   }
 
 
-void FXRbRadioButton::markfunc(FXRadioButton *self){
-  FXTRACE((100,"FXRbRadioButton::markfunc() %p\n",self));
-  FXRbLabel::markfunc(self);
+void HinRadioButton::markfunc(FXRadioButton *self){
+  FXTRACE((100,"HinRadioButton::markfunc() %p\n",self));
+  HinLabel::markfunc(self);
   }
 
 
-void FXRbScrollBar::markfunc(FXScrollBar *self){
-  FXTRACE((100,"FXRbScrollBar::markfunc() %p\n",self));
-  FXRbWindow::markfunc(self);
+void HinScrollBar::markfunc(FXScrollBar *self){
+  FXTRACE((100,"HinScrollBar::markfunc() %p\n",self));
+  HinWindow::markfunc(self);
   }
 
 
-void FXRbStream::markfunc(FXStream *self){
-  FXTRACE((100,"FXRbStream::markfunc() %p\n",self));
+void HinStream::markfunc(FXStream *self){
+  FXTRACE((100,"HinStream::markfunc() %p\n",self));
   if(self){
-    FXRbGcMark((void*)self->FXStream::container());
+    HinGcMark((void*)self->FXStream::container());
     }
   }
 
 
-void FXRbFileStream::markfunc(FXFileStream *self){
-  FXTRACE((100,"FXRbFileStream::markfunc() %p\n",self));
-  FXRbStream::markfunc(self);
+void HinFileStream::markfunc(FXFileStream *self){
+  FXTRACE((100,"HinFileStream::markfunc() %p\n",self));
+  HinStream::markfunc(self);
   }
 
 
-void FXRbMemoryStream::markfunc(FXMemoryStream *self){
-  FXTRACE((100,"FXRbMemoryStream::markfunc() %p\n",self));
-  FXRbStream::markfunc(self);
+void HinMemoryStream::markfunc(FXMemoryStream *self){
+  FXTRACE((100,"HinMemoryStream::markfunc() %p\n",self));
+  HinStream::markfunc(self);
   }
 
 
-void FXRbDC::markfunc(FXDC *self){
-  FXTRACE((100,"FXRbDC::markfunc() %p\n",self));
+void HinDC::markfunc(FXDC *self){
+  FXTRACE((100,"HinDC::markfunc() %p\n",self));
   }
 
 
-void FXRbDCWindow::markfunc(FXDCWindow *self){
-  FXTRACE((100,"FXRbDCWindow::markfunc() %p\n",self));
-  FXRbDC::markfunc(self);
+void HinDCWindow::markfunc(FXDCWindow *self){
+  FXTRACE((100,"HinDCWindow::markfunc() %p\n",self));
+  HinDC::markfunc(self);
   }
 
 
-void FXRbDCPrint::markfunc(FXDCPrint *self){
-  FXTRACE((100,"FXRbDCPrint::markfunc() %p\n",self));
-  FXRbDC::markfunc(self);
+void HinDCPrint::markfunc(FXDCPrint *self){
+  FXTRACE((100,"HinDCPrint::markfunc() %p\n",self));
+  HinDC::markfunc(self);
   }
 
 
-void FXRbProgressDialog::markfunc(FXProgressDialog* self){
-  FXTRACE((100,"FXRbProgressDialog::markfunc() %p\n",self));
-  FXRbDialogBox::markfunc(self);
+void HinProgressDialog::markfunc(FXProgressDialog* self){
+  FXTRACE((100,"HinProgressDialog::markfunc() %p\n",self));
+  HinDialogBox::markfunc(self);
   }
 
 
-void FXRbPicker::markfunc(FXPicker* self){
-  FXTRACE((100,"FXRbPicker::markfunc() %p\n",self));
-  FXRbButton::markfunc(self);
+void HinPicker::markfunc(FXPicker* self){
+  FXTRACE((100,"HinPicker::markfunc() %p\n",self));
+  HinButton::markfunc(self);
   }
 
 
-void FXRbColorBar::markfunc(FXColorBar* self){
-  FXTRACE((100,"FXRbColorBar::markfunc() %p\n",self));
-  FXRbFrame::markfunc(self);
+void HinColorBar::markfunc(FXColorBar* self){
+  FXTRACE((100,"HinColorBar::markfunc() %p\n",self));
+  HinFrame::markfunc(self);
   }
 
 
-void FXRbColorRing::markfunc(FXColorRing* self){
-  FXTRACE((100,"FXRbColorRing::markfunc() %p\n",self));
-  FXRbFrame::markfunc(self);
+void HinColorRing::markfunc(FXColorRing* self){
+  FXTRACE((100,"HinColorRing::markfunc() %p\n",self));
+  HinFrame::markfunc(self);
   }
 
 
-void FXRbColorWheel::markfunc(FXColorWheel* self){
-  FXTRACE((100,"FXRbColorWheel::markfunc() %p\n",self));
-  FXRbFrame::markfunc(self);
+void HinColorWheel::markfunc(FXColorWheel* self){
+  FXTRACE((100,"HinColorWheel::markfunc() %p\n",self));
+  HinFrame::markfunc(self);
   }
 
 
-void FXRbICOIcon::markfunc(FXICOIcon* self){
-  FXTRACE((100,"FXRbICOIcon::markfunc() %p\n",self));
-  FXRbIcon::markfunc(self);
+void HinICOIcon::markfunc(FXICOIcon* self){
+  FXTRACE((100,"HinICOIcon::markfunc() %p\n",self));
+  HinIcon::markfunc(self);
   }
 
 
-void FXRbICOImage::markfunc(FXICOImage* self){
-  FXTRACE((100,"FXRbICOImage::markfunc() %p\n",self));
-  FXRbImage::markfunc(self);
+void HinICOImage::markfunc(FXICOImage* self){
+  FXTRACE((100,"HinICOImage::markfunc() %p\n",self));
+  HinImage::markfunc(self);
   }
 
 
-void FXRbTGAIcon::markfunc(FXTGAIcon* self){
-  FXTRACE((100,"FXRbTGAIcon::markfunc() %p\n",self));
-  FXRbIcon::markfunc(self);
+void HinTGAIcon::markfunc(FXTGAIcon* self){
+  FXTRACE((100,"HinTGAIcon::markfunc() %p\n",self));
+  HinIcon::markfunc(self);
   }
 
 
-void FXRbTGAImage::markfunc(FXTGAImage* self){
-  FXTRACE((100,"FXRbTGAImage::markfunc() %p\n",self));
-  FXRbImage::markfunc(self);
+void HinTGAImage::markfunc(FXTGAImage* self){
+  FXTRACE((100,"HinTGAImage::markfunc() %p\n",self));
+  HinImage::markfunc(self);
   }
 
 
-void FXRbBitmapFrame::markfunc(FXBitmapFrame* self){
-  FXTRACE((100,"start FXRbBitmapFrame::markfunc(%p)\n",self));
-  FXRbFrame::markfunc(self);
+void HinBitmapFrame::markfunc(FXBitmapFrame* self){
+  FXTRACE((100,"start HinBitmapFrame::markfunc(%p)\n",self));
+  HinFrame::markfunc(self);
   if(self!=0){
-    FXRbGcMark(self->FXBitmapFrame::getBitmap());
+    HinGcMark(self->FXBitmapFrame::getBitmap());
     }
-  FXTRACE((100,"end FXRbBitmapFrame::markfunc(%p)\n",self));
+  FXTRACE((100,"end HinBitmapFrame::markfunc(%p)\n",self));
   }
 
 
-void FXRbImageFrame::markfunc(FXImageFrame* self){
-  FXTRACE((100,"start FXRbImageFrame::markfunc(%p)\n",self));
-  FXRbFrame::markfunc(self);
+void HinImageFrame::markfunc(FXImageFrame* self){
+  FXTRACE((100,"start HinImageFrame::markfunc(%p)\n",self));
+  HinFrame::markfunc(self);
   if(self!=0){
-    FXRbGcMark(self->FXImageFrame::getImage());
+    HinGcMark(self->FXImageFrame::getImage());
     }
-  FXTRACE((100,"end FXRbImageFrame::markfunc(%p)\n",self));
+  FXTRACE((100,"end HinImageFrame::markfunc(%p)\n",self));
   }
 
 
-void FXRbGradientBar::markfunc(FXGradientBar* self){
-  FXTRACE((100,"start FXRbGradientBar::markfunc(%p)\n",self));
-  FXRbFrame::markfunc(self);
-  FXTRACE((100,"end FXRbGradientBar::markfunc(%p)\n",self));
+void HinGradientBar::markfunc(FXGradientBar* self){
+  FXTRACE((100,"start HinGradientBar::markfunc(%p)\n",self));
+  HinFrame::markfunc(self);
+  FXTRACE((100,"end HinGradientBar::markfunc(%p)\n",self));
   }
 
 #ifdef WITH_FXSCINTILLA
 
-void FXRbScintilla::markfunc(FXScintilla* self){
-  FXTRACE((100,"FXRbScintilla::markfunc() %p\n",self));
-  FXRbScrollArea::markfunc(self);
+void HinScintilla::markfunc(FXScintilla* self){
+  FXTRACE((100,"HinScintilla::markfunc() %p\n",self));
+  HinScrollArea::markfunc(self);
   }
 
 #endif
 
-void FXRbWizard::markfunc(FXWizard* self){
-  FXTRACE((100,"FXRbWizard::markfunc() %p\n",self));
-  FXRbDialogBox::markfunc(self);
+void HinWizard::markfunc(FXWizard* self){
+  FXTRACE((100,"HinWizard::markfunc() %p\n",self));
+  HinDialogBox::markfunc(self);
   if(self){
-    FXRbGcMark(self->FXWizard::advanceButton());
-    FXRbGcMark(self->FXWizard::retreatButton());
-    FXRbGcMark(self->FXWizard::finishButton());
-    FXRbGcMark(self->FXWizard::cancelButton());
-    FXRbGcMark(self->FXWizard::getContainer());
-    FXRbGcMark(self->FXWizard::getImage());
+    HinGcMark(self->FXWizard::advanceButton());
+    HinGcMark(self->FXWizard::retreatButton());
+    HinGcMark(self->FXWizard::finishButton());
+    HinGcMark(self->FXWizard::cancelButton());
+    HinGcMark(self->FXWizard::getContainer());
+    HinGcMark(self->FXWizard::getImage());
     }
   }
 
 
-void FXRbRuler::markfunc(FXRuler* self){
-  FXTRACE((100,"FXRbRuler::markfunc() %p\n",self));
-  FXRbFrame::markfunc(self);
+void HinRuler::markfunc(FXRuler* self){
+  FXTRACE((100,"HinRuler::markfunc() %p\n",self));
+  HinFrame::markfunc(self);
   if(self){
-    FXRbGcMark(self->FXRuler::getFont());
+    HinGcMark(self->FXRuler::getFont());
     }
   }
 
 
-void FXRbRulerView::markfunc(FXRulerView* self){
-  FXTRACE((100,"FXRbRulerView::markfunc() %p\n",self));
-  FXRbScrollArea::markfunc(self);
+void HinRulerView::markfunc(FXRulerView* self){
+  FXTRACE((100,"HinRulerView::markfunc() %p\n",self));
+  HinScrollArea::markfunc(self);
   if(self){
-    FXRbGcMark(self->FXRulerView::horizontalRuler());
-    FXRbGcMark(self->FXRulerView::verticalRuler());
-    FXRbGcMark(self->FXRulerView::getHRulerFont());
-    FXRbGcMark(self->FXRulerView::getVRulerFont());
+    HinGcMark(self->FXRulerView::horizontalRuler());
+    HinGcMark(self->FXRulerView::verticalRuler());
+    HinGcMark(self->FXRulerView::getHRulerFont());
+    HinGcMark(self->FXRulerView::getVRulerFont());
     }
   }
 
 
-void FXRbPPMIcon::markfunc(FXPPMIcon* self){
-  FXTRACE((100,"FXRbPPMIcon::markfunc() %p\n",self));
-  FXRbIcon::markfunc(self);
+void HinPPMIcon::markfunc(FXPPMIcon* self){
+  FXTRACE((100,"HinPPMIcon::markfunc() %p\n",self));
+  HinIcon::markfunc(self);
   }
 
 
-void FXRbPPMImage::markfunc(FXPPMImage* self){
-  FXTRACE((100,"FXRbPPMImage::markfunc() %p\n",self));
-  FXRbImage::markfunc(self);
+void HinPPMImage::markfunc(FXPPMImage* self){
+  FXTRACE((100,"HinPPMImage::markfunc() %p\n",self));
+  HinImage::markfunc(self);
   }
 

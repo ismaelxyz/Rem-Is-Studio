@@ -78,12 +78,12 @@ public:
   %extend {
     /// Construct with specified origin and options
     FXGLShape(FXfloat x,FXfloat y,FXfloat z,FXuint opts){
-      return new FXRbGLShape(x,y,z,opts);
+      return new HinGLShape(x,y,z,opts);
       }
 
     /// Construct with specified origin, options and front and back materials
     FXGLShape(FXfloat x,FXfloat y,FXfloat z,FXuint opts,const FXMaterial& front,const FXMaterial& back){
-      return new FXRbGLShape(x,y,z,opts,front,back);
+      return new HinGLShape(x,y,z,opts,front,back);
       }
     }
 
@@ -106,14 +106,14 @@ public:
   %extend {
     // Get position
     FXVec3f getPosition() const {
-      FXASSERT(self->isMemberOf(FXMETACLASS(FXRbGLShape)));
-      return dynamic_cast<const FXRbGLShape*>(self)->getPosition();
+      FXASSERT(self->isMemberOf(FXMETACLASS(HinGLShape)));
+      return dynamic_cast<const HinGLShape*>(self)->getPosition();
       }
 
     // Set position
     void setPosition(const FXVec3f& pos) {
-      FXASSERT(self->isMemberOf(FXMETACLASS(FXRbGLShape)));
-      dynamic_cast<FXRbGLShape*>(self)->setPosition(pos);
+      FXASSERT(self->isMemberOf(FXMETACLASS(HinGLShape)));
+      dynamic_cast<HinGLShape*>(self)->setPosition(pos);
       }
 
     // Get the material for specified side (where side = 0 or 1)
@@ -125,8 +125,8 @@ public:
 
     // Set the range for this shape
     void setRange(const FXRangef& box){
-      FXASSERT(self->isMemberOf(FXMETACLASS(FXRbGLShape)));
-      dynamic_cast<FXRbGLShape*>(self)->setRange(box);
+      FXASSERT(self->isMemberOf(FXMETACLASS(HinGLShape)));
+      dynamic_cast<HinGLShape*>(self)->setRange(box);
       }
     }
 

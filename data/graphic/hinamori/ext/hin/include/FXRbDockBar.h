@@ -21,7 +21,7 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbDockBar.h 2225 2005-11-08 13:51:28Z lyle $
+ * $Id: HinDockBar.h 2225 2005-11-08 13:51:28Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBDOCKBAR_H
@@ -40,25 +40,25 @@
 
 #define IMPLEMENT_FXDOCKBAR_STUBS(cls) \
   void cls::dock(FXDockSite* docksite,FXWindow* before,FXbool notify){ \
-    FXRbCallVoidMethod(this,"dock",docksite,before,notify); \
+    HinCallVoidMethod(this,"dock",docksite,before,notify); \
     } \
   void cls::dock(FXDockSite* docksite,FXint localx,FXint localy,FXbool notify){ \
-    FXRbCallVoidMethod(this,"dock",docksite,localx,localy,notify); \
+    HinCallVoidMethod(this,"dock",docksite,localx,localy,notify); \
     } \
   void cls::undock(FXint rootx,FXint rooty, FXbool notify){ \
-    FXRbCallVoidMethod(this,"undock",rootx,rooty,notify); \
+    HinCallVoidMethod(this,"undock",rootx,rooty,notify); \
     }
 
 
-class FXRbDockBar : public FXDockBar {
-  FXDECLARE(FXRbDockBar)
+class HinDockBar : public FXDockBar {
+  FXDECLARE(HinDockBar)
 protected:
-  FXRbDockBar(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
-#include "FXRbDockBarVirtuals.h"
+  HinDockBar(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
+#include "HinDockBarVirtuals.h"
 public:
   /**
   * Construct a floatable Dockbar
@@ -66,17 +66,17 @@ public:
   * When floated, the Dockbar can be docked under window q, which is
   * typically an FXToolBarShell window.
   */
-  FXRbDockBar(FXComposite* p,FXComposite* q,FXuint opts=LAYOUT_TOP|LAYOUT_LEFT|LAYOUT_FILL_X,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=3,FXint pr=3,FXint pt=2,FXint pb=2,FXint hs=DEFAULT_SPACING,FXint vs=DEFAULT_SPACING) : FXDockBar(p,q,opts,x,y,w,h,pl,pr,pt,pb,hs,vs){}
+  HinDockBar(FXComposite* p,FXComposite* q,FXuint opts=LAYOUT_TOP|LAYOUT_LEFT|LAYOUT_FILL_X,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=3,FXint pr=3,FXint pt=2,FXint pb=2,FXint hs=DEFAULT_SPACING,FXint vs=DEFAULT_SPACING) : FXDockBar(p,q,opts,x,y,w,h,pl,pr,pt,pb,hs,vs){}
 
   /**
   * Construct a non-floatable Dockbar.
   * The Dockbar can not be undocked.
   */
-  FXRbDockBar(FXComposite* p,FXuint opts=LAYOUT_TOP|LAYOUT_LEFT|LAYOUT_FILL_X,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=2,FXint pr=3,FXint pt=3,FXint pb=2,FXint hs=DEFAULT_SPACING,FXint vs=DEFAULT_SPACING) : FXDockBar(p,opts,x,y,w,h,pl,pr,pt,pb,hs,vs){}
+  HinDockBar(FXComposite* p,FXuint opts=LAYOUT_TOP|LAYOUT_LEFT|LAYOUT_FILL_X,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=2,FXint pr=3,FXint pt=3,FXint pb=2,FXint hs=DEFAULT_SPACING,FXint vs=DEFAULT_SPACING) : FXDockBar(p,opts,x,y,w,h,pl,pr,pt,pb,hs,vs){}
 
   // Destructor
-  virtual ~FXRbDockBar(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinDockBar(){
+    HinUnregisterRubyObj(this);
     }
 
   // Mark dependencies for the GC

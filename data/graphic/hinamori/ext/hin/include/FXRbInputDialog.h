@@ -21,32 +21,32 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbInputDialog.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinInputDialog.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBINPUTDIALOG_H
 #define FXRBINPUTDIALOG_H
 
-class FXRbInputDialog : public FXInputDialog {
-  FXDECLARE(FXRbInputDialog)
+class HinInputDialog : public FXInputDialog {
+  FXDECLARE(HinInputDialog)
 protected:
-  FXRbInputDialog(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
-#include "FXRbTopWindowVirtuals.h"
-#include "FXRbDialogBoxVirtuals.h"
+  HinInputDialog(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
+#include "HinTopWindowVirtuals.h"
+#include "HinDialogBoxVirtuals.h"
 public:
   /// Construct input dialog box with given caption, icon, and prompt text
-  FXRbInputDialog(FXWindow* owner,const FXString& caption,const FXString& label,FXIcon* ic=NULL,FXuint opts=INPUTDIALOG_STRING,FXint x=0,FXint y=0,FXint w=0,FXint h=0) : FXInputDialog(owner,caption,label,ic,opts,x,y,w,h){}
+  HinInputDialog(FXWindow* owner,const FXString& caption,const FXString& label,FXIcon* ic=NULL,FXuint opts=INPUTDIALOG_STRING,FXint x=0,FXint y=0,FXint w=0,FXint h=0) : FXInputDialog(owner,caption,label,ic,opts,x,y,w,h){}
 
   /// Construct free-floating input dialog box with given caption, icon, and prompt text
-  FXRbInputDialog(FXApp* a,const FXString& caption,const FXString& label,FXIcon* ic=NULL,FXuint opts=INPUTDIALOG_STRING,FXint x=0,FXint y=0,FXint w=0,FXint h=0) : FXInputDialog(a,caption,label,ic,opts,x,y,w,h){}
+  HinInputDialog(FXApp* a,const FXString& caption,const FXString& label,FXIcon* ic=NULL,FXuint opts=INPUTDIALOG_STRING,FXint x=0,FXint y=0,FXint w=0,FXint h=0) : FXInputDialog(a,caption,label,ic,opts,x,y,w,h){}
 
   // Destructor
-  virtual ~FXRbInputDialog(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinInputDialog(){
+    HinUnregisterRubyObj(this);
     }
 
   // Mark dependencies for the GC

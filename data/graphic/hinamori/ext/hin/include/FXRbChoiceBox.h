@@ -21,35 +21,35 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbChoiceBox.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinChoiceBox.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBCHOICEBOX_H
 #define FXRBCHOICEBOX_H
 
-class FXRbChoiceBox : public FXChoiceBox {
-  FXDECLARE(FXRbChoiceBox)
+class HinChoiceBox : public FXChoiceBox {
+  FXDECLARE(HinChoiceBox)
 protected:
-  FXRbChoiceBox(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
-#include "FXRbTopWindowVirtuals.h"
-#include "FXRbDialogBoxVirtuals.h"
+  HinChoiceBox(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
+#include "HinTopWindowVirtuals.h"
+#include "HinDialogBoxVirtuals.h"
 public:
   /// Construct color dialog
-  FXRbChoiceBox(FXWindow* owner,const FXString& caption,const FXString& text,FXIcon* icon,const FXchar** choices,FXuint opts=0,FXint x=0,FXint y=0,FXint w=0,FXint h=0) : FXChoiceBox(owner,caption,text,icon,choices,opts,x,y,w,h){}
+  HinChoiceBox(FXWindow* owner,const FXString& caption,const FXString& text,FXIcon* icon,const FXchar** choices,FXuint opts=0,FXint x=0,FXint y=0,FXint w=0,FXint h=0) : FXChoiceBox(owner,caption,text,icon,choices,opts,x,y,w,h){}
 
   /// Construct color dialog
-  FXRbChoiceBox(FXApp* app,const FXString& caption,const FXString& text,FXIcon* icon,const FXchar** choices,FXuint opts=0,FXint x=0,FXint y=0,FXint w=0,FXint h=0) : FXChoiceBox(app,caption,text,icon,choices,opts,x,y,w,h){}
+  HinChoiceBox(FXApp* app,const FXString& caption,const FXString& text,FXIcon* icon,const FXchar** choices,FXuint opts=0,FXint x=0,FXint y=0,FXint w=0,FXint h=0) : FXChoiceBox(app,caption,text,icon,choices,opts,x,y,w,h){}
 
   // Mark dependencies for the GC
   static void markfunc(FXChoiceBox* dlg);
 
   // Destructor
-  virtual ~FXRbChoiceBox(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinChoiceBox(){
+    HinUnregisterRubyObj(this);
     }
   };
 

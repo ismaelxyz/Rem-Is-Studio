@@ -20,15 +20,15 @@
  * at "lars@greiz-reinsdorf.de".
  ***********************************************************************/
 
-#include "FXRbCommon.h"
-#include "FXRbObjRegistry.h"
+#include "HinCommon.h"
+#include "HinObjRegistry.h"
 #include "swigruby.h"
 
-FXRbObjRegistry::FXRbObjRegistry(){
+HinObjRegistry::HinObjRegistry(){
   FXRuby_Objects=st_init_numtable();
 }
 
-const char * FXRbObjRegistry::safe_rb_obj_classname(VALUE obj)
+const char * HinObjRegistry::safe_rb_obj_classname(VALUE obj)
 {
   int tdata = TYPE(obj)==T_DATA;
   if( (tdata && IsInGC(DATA_PTR(obj)))
@@ -46,14 +46,14 @@ const char * FXRbObjRegistry::safe_rb_obj_classname(VALUE obj)
   }
 }
 
-VALUE FXRbObjRegistry::NewBorrowedObj(void *ptr,swig_type_info* ty){
+VALUE HinObjRegistry::NewBorrowedObj(void *ptr,swig_type_info* ty){
   if(ptr!=0){
     FXASSERT(ty!=0);
     ObjDesc *desc;
 
     if(FXMALLOC(&desc,ObjDesc,1)){
       VALUE obj = SWIG_Ruby_NewPointerObj(ptr,ty,1);
-      FXTRACE((1,"FXRbNewPointerObj(foxObj=%p) => rubyObj=%p (%s)\n",ptr,(void *)obj,safe_rb_obj_classname(obj)));
+      FXTRACE((1,"HinNewPointerObj(hinObj=%p) => rubyObj=%p (%s)\n",ptr,(void *)obj,safe_rb_obj_classname(obj)));
       desc->obj = obj;
       desc->type = borrowed;
       desc->in_gc = false;
@@ -70,19 +70,19 @@ VALUE FXRbObjRegistry::NewBorrowedObj(void *ptr,swig_type_info* ty){
   }
 }
 
-void FXRbObjRegistry::RegisterRubyObj(VALUE rubyObj,const void* foxObj) {
+void HinObjRegistry::RegisterRubyObj(VALUE rubyObj,const void* hinObj) {
   FXASSERT(!NIL_P(rubyObj));
-  FXASSERT(foxObj!=0);
+  FXASSERT(hinObj!=0);
   ObjDesc* desc;
-  FXTRACE((1,"FXRbRegisterRubyObj(rubyObj=%p (%s),foxObj=%p)\n",(void *)rubyObj,safe_rb_obj_classname(rubyObj),foxObj));
-  if(st_lookup(FXRuby_Objects,reinterpret_cast<st_data_t>(const_cast<void*>(foxObj)),reinterpret_cast<st_data_t *>(&desc))!=0){
+  FXTRACE((1,"HinRegisterRubyObj(rubyObj=%p (%s),hinObj=%p)\n",(void *)rubyObj,safe_rb_obj_classname(rubyObj),hinObj));
+  if(st_lookup(FXRuby_Objects,reinterpret_cast<st_data_t>(const_cast<void*>(hinObj)),reinterpret_cast<st_data_t *>(&desc))!=0){
     FXASSERT(desc->type == borrowed);
-    /* There is already a Ruby object registered for this foxObj.
-     * This can happen, if libfox calls methods out of the C++ object constructor,
+    /* There is already a Ruby object registered for this hinObj.
+     * This can happen, if libhin calls methods out of the C++ object constructor,
      * that can be overwritten in Ruby (like changeFocus) with the object as
      * parameter. FXFileSelector is one example.
-     * To avoid double references to the same foxObj from different Ruby objects,
-     * we decouple the foxObj from previoius ruby object and point to the new one.
+     * To avoid double references to the same hinObj from different Ruby objects,
+     * we decouple the hinObj from previoius ruby object and point to the new one.
      */
     DATA_PTR(desc->obj) = 0;
     desc->obj = rubyObj;
@@ -92,37 +92,37 @@ void FXRbObjRegistry::RegisterRubyObj(VALUE rubyObj,const void* foxObj) {
       desc->obj = rubyObj;
       desc->type = own;
       desc->in_gc = false;
-      int overwritten = st_insert(FXRuby_Objects,reinterpret_cast<st_data_t>(const_cast<void*>(foxObj)),reinterpret_cast<st_data_t>(desc));
+      int overwritten = st_insert(FXRuby_Objects,reinterpret_cast<st_data_t>(const_cast<void*>(hinObj)),reinterpret_cast<st_data_t>(desc));
       FXASSERT(!overwritten);
     } else {
       FXASSERT(FALSE);
     }
   }
-  FXASSERT(GetRubyObj(foxObj,false)==rubyObj);
+  FXASSERT(GetRubyObj(hinObj,false)==rubyObj);
 }
 
-void FXRbObjRegistry::UnregisterRubyObj(const void* foxObj, bool alsoOwned){
-  if(foxObj!=0){
+void HinObjRegistry::UnregisterRubyObj(const void* hinObj, bool alsoOwned){
+  if(hinObj!=0){
     ObjDesc* desc;
-    if(st_lookup(FXRuby_Objects,reinterpret_cast<st_data_t>(const_cast<void*>(foxObj)),reinterpret_cast<st_data_t *>(&desc))!=0){
+    if(st_lookup(FXRuby_Objects,reinterpret_cast<st_data_t>(const_cast<void*>(hinObj)),reinterpret_cast<st_data_t *>(&desc))!=0){
       if( !alsoOwned && desc->type!=borrowed ) return;
-      FXTRACE((1,"FXRbUnregisterRubyObj(rubyObj=%p (%s),foxObj=%p)\n",(void *)desc->obj,safe_rb_obj_classname(desc->obj),foxObj));
+      FXTRACE((1,"HinUnregisterRubyObj(rubyObj=%p (%s),hinObj=%p)\n",(void *)desc->obj,safe_rb_obj_classname(desc->obj),hinObj));
       DATA_PTR(desc->obj)=0;
       FXFREE(&desc);
-      st_delete(FXRuby_Objects,reinterpret_cast<st_data_t *>(const_cast<void**>(&foxObj)),reinterpret_cast<st_data_t *>(0));
-      FXASSERT(st_lookup(FXRuby_Objects,reinterpret_cast<st_data_t>(const_cast<void*>(foxObj)),reinterpret_cast<st_data_t *>(0))==0);
+      st_delete(FXRuby_Objects,reinterpret_cast<st_data_t *>(const_cast<void**>(&hinObj)),reinterpret_cast<st_data_t *>(0));
+      FXASSERT(st_lookup(FXRuby_Objects,reinterpret_cast<st_data_t>(const_cast<void*>(hinObj)),reinterpret_cast<st_data_t *>(0))==0);
     }
   }
 }
 
 
-VALUE FXRbObjRegistry::GetRubyObj(const void *foxObj,bool alsoBorrowed, bool in_gc_mark){
+VALUE HinObjRegistry::GetRubyObj(const void *hinObj,bool alsoBorrowed, bool in_gc_mark){
   ObjDesc* desc;
-  if(foxObj!=0 && st_lookup(FXRuby_Objects,reinterpret_cast<st_data_t>(const_cast<void*>(foxObj)),reinterpret_cast<st_data_t *>(&desc))!=0){
+  if(hinObj!=0 && st_lookup(FXRuby_Objects,reinterpret_cast<st_data_t>(const_cast<void*>(hinObj)),reinterpret_cast<st_data_t *>(&desc))!=0){
     FXASSERT(desc!=0);
     if(alsoBorrowed || desc->type!=borrowed){
       const char *classname = in_gc_mark ? "in GC" : safe_rb_obj_classname(desc->obj);
-      FXTRACE((2,"%s(foxObj=%p) => rubyObj=%p (%s)\n", in_gc_mark ? "FXRbGcMark" : "FXRbGetRubyObj", foxObj, (void *)desc->obj, classname));
+      FXTRACE((2,"%s(hinObj=%p) => rubyObj=%p (%s)\n", in_gc_mark ? "HinGcMark" : "HinGetRubyObj", hinObj, (void *)desc->obj, classname));
       return desc->obj;
     }
   }
@@ -130,7 +130,7 @@ VALUE FXRbObjRegistry::GetRubyObj(const void *foxObj,bool alsoBorrowed, bool in_
 }
 
 
-bool FXRbObjRegistry::IsBorrowed(void* ptr){
+bool HinObjRegistry::IsBorrowed(void* ptr){
   FXASSERT(ptr!=0);
   ObjDesc *desc;
   if(st_lookup(FXRuby_Objects,reinterpret_cast<st_data_t>(ptr),reinterpret_cast<st_data_t *>(&desc))!=0){
@@ -141,7 +141,7 @@ bool FXRbObjRegistry::IsBorrowed(void* ptr){
   }
 }
 
-bool FXRbObjRegistry::SetInGC(const void* ptr, bool enabled){
+bool HinObjRegistry::SetInGC(const void* ptr, bool enabled){
   FXASSERT(ptr!=0);
   ObjDesc *desc;
   if(st_lookup(FXRuby_Objects,reinterpret_cast<st_data_t>(ptr),reinterpret_cast<st_data_t *>(&desc))!=0){
@@ -151,7 +151,7 @@ bool FXRbObjRegistry::SetInGC(const void* ptr, bool enabled){
   return false;
 }
 
-bool FXRbObjRegistry::IsInGC(const void* ptr){
+bool HinObjRegistry::IsInGC(const void* ptr){
   FXASSERT(ptr!=0);
   ObjDesc *desc;
 
@@ -166,4 +166,4 @@ bool FXRbObjRegistry::IsInGC(const void* ptr){
   return false;
 }
 
-FXRbObjRegistry FXRbObjRegistry::main;
+HinObjRegistry HinObjRegistry::main;

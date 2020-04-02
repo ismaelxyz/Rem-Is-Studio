@@ -44,7 +44,7 @@ public:
   %extend {
     /// Constructor
     FXSeparator(FXComposite* p,FXuint opts=SEPARATOR_GROOVE|LAYOUT_FILL_X,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=0,FXint pr=0,FXint pt=0,FXint pb=0){
-      return new FXRbSeparator(p,opts,x,y,w,h,pl,pr,pt,pb);
+      return new HinSeparator(p,opts,x,y,w,h,pl,pr,pt,pb);
       }
   }
 
@@ -91,7 +91,7 @@ public:
   /// Constructor
   %extend {
     FXHorizontalSeparator(FXComposite* p,FXuint opts=SEPARATOR_GROOVE|LAYOUT_FILL_X,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=1,FXint pr=1,FXint pt=0,FXint pb=0){
-      return new FXRbHorizontalSeparator(p,opts,x,y,w,h,pl,pr,pt,pb);
+      return new HinHorizontalSeparator(p,opts,x,y,w,h,pl,pr,pt,pb);
       }
     }
 
@@ -113,7 +113,7 @@ public:
   /// Constructor
   %extend {
     FXVerticalSeparator(FXComposite* p,FXuint opts=SEPARATOR_GROOVE|LAYOUT_FILL_Y,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=0,FXint pr=0,FXint pt=1,FXint pb=1){
-      return new FXRbVerticalSeparator(p,opts,x,y,w,h,pl,pr,pt,pb);
+      return new HinVerticalSeparator(p,opts,x,y,w,h,pl,pr,pt,pb);
       }
     }
 

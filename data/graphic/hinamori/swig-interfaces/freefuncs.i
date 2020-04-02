@@ -22,7 +22,7 @@
 
 /**
  * The default protocol for what happens to objects at garbage-collection
- * time is defined by FXRbObject::freefunc, and it is associated with
+ * time is defined by HinObject::freefunc, and it is associated with
  * all of the classes as part of the DO_CLASS_SETUP macro (see exceptions.i).
  */
 
@@ -30,64 +30,64 @@
  * Special cases.
  */
 
-%freefunc FXCursor "FXRbCursor::freefunc";
-%freefunc FXCURCursor "FXRbCURCursor::freefunc";
-%freefunc FXGIFCursor "FXRbGIFCursor::freefunc";
-%freefunc FXGLVisual "FXRbGLVisual::freefunc";
-%freefunc FXColorItem "FXRbColorItem::freefunc";
-%freefunc FXDirItem "FXRbDirItem::freefunc";
-%freefunc FXFileItem "FXRbFileItem::freefunc";
-%freefunc FXFoldingItem "FXRbFoldingItem::freefunc";
-%freefunc FXFont "FXRbFont::freefunc";
-%freefunc FXHeaderItem "FXRbHeaderItem::freefunc";
-%freefunc FXIconItem "FXRbIconItem::freefunc";
-%freefunc FXListItem "FXRbListItem::freefunc";
-%freefunc FXTableItem "FXRbTableItem::freefunc";
-%freefunc FXTreeItem "FXRbTreeItem::freefunc";
-%freefunc FXVisual "FXRbVisual::freefunc";
+%freefunc FXCursor "HinCursor::freefunc";
+%freefunc FXCURCursor "HinCURCursor::freefunc";
+%freefunc FXGIFCursor "HinGIFCursor::freefunc";
+%freefunc FXGLVisual "HinGLVisual::freefunc";
+%freefunc FXColorItem "HinColorItem::freefunc";
+%freefunc FXDirItem "HinDirItem::freefunc";
+%freefunc FXFileItem "HinFileItem::freefunc";
+%freefunc FXFoldingItem "HinFoldingItem::freefunc";
+%freefunc FXFont "HinFont::freefunc";
+%freefunc FXHeaderItem "HinHeaderItem::freefunc";
+%freefunc FXIconItem "HinIconItem::freefunc";
+%freefunc FXListItem "HinListItem::freefunc";
+%freefunc FXTableItem "HinTableItem::freefunc";
+%freefunc FXTreeItem "HinTreeItem::freefunc";
+%freefunc FXVisual "HinVisual::freefunc";
 
 /**
  * Other structs and classes not derived from FXObject.
  * Just unregister these.
  */
 
-%freefunc FXChore "FXRbUnregisterRubyObj";
-%freefunc FXDC "FXRbUnregisterRubyObj";
-%freefunc FXDCPrint "FXRbUnregisterRubyObj";
-%freefunc FXEvent "FXRbUnregisterRubyObj";
-%freefunc FXExtentd "FXRbUnregisterRubyObj";
-%freefunc FXExtentf "FXRbUnregisterRubyObj";
-%freefunc FXFileAssoc "FXRbUnregisterRubyObj";
-%freefunc FXFileStream "FXRbUnregisterRubyObj";
-%freefunc FXFontDesc "FXRbUnregisterRubyObj";
-%freefunc FXLight "FXRbUnregisterRubyObj";
-%freefunc FXMat3d "FXRbUnregisterRubyObj";
-%freefunc FXMat3f "FXRbUnregisterRubyObj";
-%freefunc FXMat4d "FXRbUnregisterRubyObj";
-%freefunc FXMat4f "FXRbUnregisterRubyObj";
-%freefunc FXMaterial "FXRbUnregisterRubyObj";
-%freefunc FXMemoryStream "FXRbUnregisterRubyObj";
-%freefunc FXPoint "FXRbUnregisterRubyObj";
-%freefunc FXPrinter "FXRbUnregisterRubyObj";
-%freefunc FXQuatd "FXRbUnregisterRubyObj";
-%freefunc FXQuatf "FXRbUnregisterRubyObj";
-%freefunc FXRanged "FXRbUnregisterRubyObj";
-%freefunc FXRangef "FXRbUnregisterRubyObj";
-%freefunc FXRectangle "FXRbUnregisterRubyObj";
-%freefunc FXRegion "FXRbUnregisterRubyObj";
-%freefunc FXSize "FXRbUnregisterRubyObj";
-%freefunc FXSphered "FXRbUnregisterRubyObj";
-%freefunc FXSpheref "FXRbUnregisterRubyObj";
-%freefunc FXStream "FXRbUnregisterRubyObj";
-// %freefunc FXTablePos "FXRbUnregisterRubyObj";
-// %freefunc FXTableRange "FXRbUnregisterRubyObj";
-%freefunc FXTimer "FXRbUnregisterRubyObj";
-%freefunc FXVec2d "FXRbUnregisterRubyObj";
-%freefunc FXVec2f "FXRbUnregisterRubyObj";
-%freefunc FXVec3d "FXRbUnregisterRubyObj";
-%freefunc FXVec3f "FXRbUnregisterRubyObj";
-%freefunc FXVec4d "FXRbUnregisterRubyObj";
-%freefunc FXVec4f "FXRbUnregisterRubyObj";
-%freefunc FXViewport "FXRbUnregisterRubyObj";
-%freefunc NotifyHeader "FXRbUnregisterRubyObj";
-%freefunc SCNotification "FXRbUnregisterRubyObj";
+%freefunc FXChore "HinUnregisterRubyObj";
+%freefunc FXDC "HinUnregisterRubyObj";
+%freefunc FXDCPrint "HinUnregisterRubyObj";
+%freefunc FXEvent "HinUnregisterRubyObj";
+%freefunc FXExtentd "HinUnregisterRubyObj";
+%freefunc FXExtentf "HinUnregisterRubyObj";
+%freefunc FXFileAssoc "HinUnregisterRubyObj";
+%freefunc FXFileStream "HinUnregisterRubyObj";
+%freefunc FXFontDesc "HinUnregisterRubyObj";
+%freefunc FXLight "HinUnregisterRubyObj";
+%freefunc FXMat3d "HinUnregisterRubyObj";
+%freefunc FXMat3f "HinUnregisterRubyObj";
+%freefunc FXMat4d "HinUnregisterRubyObj";
+%freefunc FXMat4f "HinUnregisterRubyObj";
+%freefunc FXMaterial "HinUnregisterRubyObj";
+%freefunc FXMemoryStream "HinUnregisterRubyObj";
+%freefunc FXPoint "HinUnregisterRubyObj";
+%freefunc FXPrinter "HinUnregisterRubyObj";
+%freefunc FXQuatd "HinUnregisterRubyObj";
+%freefunc FXQuatf "HinUnregisterRubyObj";
+%freefunc FXRanged "HinUnregisterRubyObj";
+%freefunc FXRangef "HinUnregisterRubyObj";
+%freefunc FXRectangle "HinUnregisterRubyObj";
+%freefunc FXRegion "HinUnregisterRubyObj";
+%freefunc FXSize "HinUnregisterRubyObj";
+%freefunc FXSphered "HinUnregisterRubyObj";
+%freefunc FXSpheref "HinUnregisterRubyObj";
+%freefunc FXStream "HinUnregisterRubyObj";
+// %freefunc FXTablePos "HinUnregisterRubyObj";
+// %freefunc FXTableRange "HinUnregisterRubyObj";
+%freefunc FXTimer "HinUnregisterRubyObj";
+%freefunc FXVec2d "HinUnregisterRubyObj";
+%freefunc FXVec2f "HinUnregisterRubyObj";
+%freefunc FXVec3d "HinUnregisterRubyObj";
+%freefunc FXVec3f "HinUnregisterRubyObj";
+%freefunc FXVec4d "HinUnregisterRubyObj";
+%freefunc FXVec4f "HinUnregisterRubyObj";
+%freefunc FXViewport "HinUnregisterRubyObj";
+%freefunc NotifyHeader "HinUnregisterRubyObj";
+%freefunc SCNotification "HinUnregisterRubyObj";

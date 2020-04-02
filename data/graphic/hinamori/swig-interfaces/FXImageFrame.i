@@ -32,7 +32,7 @@ public:
   %extend {
     /// Construct image frame and pass it an image
     FXImageFrame(FXComposite* p,FXImage *img,FXuint opts=FRAME_SUNKEN|FRAME_THICK,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=0,FXint pr=0,FXint pt=0,FXint pb=0){
-      return new FXRbImageFrame(p,img,opts,x,y,w,h,pl,pr,pt,pb);
+      return new HinImageFrame(p,img,opts,x,y,w,h,pl,pr,pt,pb);
       }
     }
 

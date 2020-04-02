@@ -21,7 +21,7 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbIconList.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinIconList.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBICONLIST_H
@@ -88,85 +88,85 @@ inline void klass ## _destroy(klass* self){ \
 
 #define IMPLEMENT_FXICONITEM_STUBS(klass,superklass) \
   void klass::draw(const FXIconList* list,FXDC& dc,FXint x,FXint y,FXint w,FXint h) const { \
-    FXRbCallVoidMethod(this,"draw",list,dc,x,y,w,h); \
+    HinCallVoidMethod(this,"draw",list,dc,x,y,w,h); \
     } \
   void klass::public_draw(const FXIconList* list,FXDC& dc,FXint x,FXint y,FXint w,FXint h) const { \
     superklass::draw(list,dc,x,y,w,h); \
     } \
   FXint klass::hitItem(const FXIconList* list,FXint rx,FXint ry,FXint rw,FXint rh) const { \
-    return FXRbCallIntMethod(this,"hitItem",list,rx,ry,rw,rh); \
+    return HinCallIntMethod(this,"hitItem",list,rx,ry,rw,rh); \
     } \
   FXint klass::public_hitItem(const FXIconList* list,FXint rx,FXint ry,FXint rw,FXint rh) const { \
     return superklass::hitItem(list,rx,ry,rw,rh); \
     } \
   void klass::drawBigIcon(const FXIconList* list,FXDC& dc,FXint x,FXint y,FXint w,FXint h) const { \
-    FXRbCallVoidMethod(this,"drawBigIcon",list,dc,x,y,w,h); \
+    HinCallVoidMethod(this,"drawBigIcon",list,dc,x,y,w,h); \
     } \
   void klass::public_drawBigIcon(const FXIconList* list,FXDC& dc,FXint x,FXint y,FXint w,FXint h) const { \
     superklass::drawBigIcon(list,dc,x,y,w,h); \
     } \
   void klass::drawMiniIcon(const FXIconList* list,FXDC& dc,FXint x,FXint y,FXint w,FXint h) const { \
-    FXRbCallVoidMethod(this,"drawMiniIcon",list,dc,x,y,w,h); \
+    HinCallVoidMethod(this,"drawMiniIcon",list,dc,x,y,w,h); \
     } \
   void klass::public_drawMiniIcon(const FXIconList* list,FXDC& dc,FXint x,FXint y,FXint w,FXint h) const { \
     superklass::drawMiniIcon(list,dc,x,y,w,h); \
     } \
   void klass::drawDetails(const FXIconList* list,FXDC& dc,FXint x,FXint y,FXint w,FXint h) const { \
-    FXRbCallVoidMethod(this,"drawDetails",list,dc,x,y,w,h); \
+    HinCallVoidMethod(this,"drawDetails",list,dc,x,y,w,h); \
     } \
   void klass::public_drawDetails(const FXIconList* list,FXDC& dc,FXint x,FXint y,FXint w,FXint h) const { \
     superklass::drawDetails(list,dc,x,y,w,h); \
     } \
   void klass::setText(const FXString& txt){ \
-    FXRbCallVoidMethod(this,"setText",txt); \
+    HinCallVoidMethod(this,"setText",txt); \
     } \
   void klass::setBigIcon(FXIcon* icn,FXbool owned){ \
-    FXRbCallVoidMethod(this,"setBigIcon",icn,owned); \
+    HinCallVoidMethod(this,"setBigIcon",icn,owned); \
     } \
   void klass::setMiniIcon(FXIcon* icn,FXbool owned){ \
-    FXRbCallVoidMethod(this,"setMiniIcon",icn,owned); \
+    HinCallVoidMethod(this,"setMiniIcon",icn,owned); \
     } \
   void klass::setFocus(FXbool focus){ \
-    FXRbCallVoidMethod(this,"setFocus",focus); \
+    HinCallVoidMethod(this,"setFocus",focus); \
     } \
   void klass::setSelected(FXbool selected){ \
-    FXRbCallVoidMethod(this,"setSelected",selected); \
+    HinCallVoidMethod(this,"setSelected",selected); \
     } \
   void klass::setEnabled(FXbool enabled){ \
-    FXRbCallVoidMethod(this,"setEnabled",enabled); \
+    HinCallVoidMethod(this,"setEnabled",enabled); \
     } \
   void klass::setDraggable(FXbool draggable){ \
-    FXRbCallVoidMethod(this,"setDraggable",draggable); \
+    HinCallVoidMethod(this,"setDraggable",draggable); \
     } \
   FXint klass::getWidth(const FXIconList* list) const { \
-    return FXRbCallIntMethod(this,"getWidth",list); \
+    return HinCallIntMethod(this,"getWidth",list); \
     } \
   FXint klass::getHeight(const FXIconList* list) const { \
-    return FXRbCallIntMethod(this,"getHeight",list); \
+    return HinCallIntMethod(this,"getHeight",list); \
     } \
   void klass::create(){ \
-    FXRbCallVoidMethod(this,"create"); \
+    HinCallVoidMethod(this,"create"); \
     } \
   void klass::detach(){ \
-    FXRbCallVoidMethod(this,"detach"); \
+    HinCallVoidMethod(this,"detach"); \
     } \
   void klass::destroy(){ \
-    FXRbCallVoidMethod(this,"destroy"); \
+    HinCallVoidMethod(this,"destroy"); \
     }
 
 
-class FXRbIconItem : public FXIconItem {
-  FXDECLARE(FXRbIconItem)
+class HinIconItem : public FXIconItem {
+  FXDECLARE(HinIconItem)
 protected:
-  FXRbIconItem(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIconItemVirtuals.h"
+  HinIconItem(){}
+#include "HinObjectVirtuals.h"
+#include "HinIconItemVirtuals.h"
 public:
   // Is this icon item owned by an FXIconList yet?
   FXbool owned;
 public:
   // Constructor
-  FXRbIconItem(const FXString& text,FXIcon* bi=NULL,FXIcon* mi=NULL,void* ptr=NULL) : FXIconItem(text,bi,mi,ptr),owned(FALSE){}
+  HinIconItem(const FXString& text,FXIcon* bi=NULL,FXIcon* mi=NULL,void* ptr=NULL) : FXIconItem(text,bi,mi,ptr),owned(FALSE){}
 
   // Mark dependencies for the GC
   static void markfunc(FXIconItem* self);
@@ -175,8 +175,8 @@ public:
   static void freefunc(FXIconItem* self);
 
   // Destructor
-  virtual ~FXRbIconItem(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinIconItem(){
+    HinUnregisterRubyObj(this);
     }
   };
 
@@ -219,54 +219,54 @@ inline FXbool klass ## _disableItem(klass* self,FXint index){ \
 
 #define IMPLEMENT_FXICONLIST_STUBS(cls) \
   FXbool cls::selectItem(FXint index,FXbool notify){ \
-    return FXRbCallBoolMethod(this,"selectItem",index,notify); \
+    return HinCallBoolMethod(this,"selectItem",index,notify); \
     } \
   FXbool cls::deselectItem(FXint index,FXbool notify){ \
-    return FXRbCallBoolMethod(this,"deselectItem",index,notify); \
+    return HinCallBoolMethod(this,"deselectItem",index,notify); \
     } \
   FXbool cls::toggleItem(FXint index,FXbool notify){ \
-    return FXRbCallBoolMethod(this,"toggleItem",index,notify); \
+    return HinCallBoolMethod(this,"toggleItem",index,notify); \
     } \
   FXbool cls::selectInRectangle(FXint x,FXint y,FXint w,FXint h,FXbool notify){ \
-    return FXRbCallBoolMethod(this,"selectInRectangle",x,y,w,h,notify); \
+    return HinCallBoolMethod(this,"selectInRectangle",x,y,w,h,notify); \
     } \
   FXbool cls::extendSelection(FXint index,FXbool notify){ \
-    return FXRbCallBoolMethod(this,"extendSelection",index,notify); \
+    return HinCallBoolMethod(this,"extendSelection",index,notify); \
     } \
   FXbool cls::killSelection(FXbool notify){ \
-    return FXRbCallBoolMethod(this,"killSelection",notify); \
+    return HinCallBoolMethod(this,"killSelection",notify); \
     } \
   void cls::setCurrentItem(FXint index,FXbool notify){ \
-    FXRbCallVoidMethod(this,"setCurrentItem",index,notify); \
+    HinCallVoidMethod(this,"setCurrentItem",index,notify); \
     } \
   FXint cls::getItemAt(FXint x,FXint y) const { \
-    return FXRbCallIntMethod(this,"getItemAt",x,y); \
+    return HinCallIntMethod(this,"getItemAt",x,y); \
     } \
   void cls::makeItemVisible(FXint index){ \
-    FXRbCallVoidMethod(this,"makeItemVisible",index); \
+    HinCallVoidMethod(this,"makeItemVisible",index); \
     } \
   FXbool cls::enableItem(FXint index){ \
-    return FXRbCallBoolMethod(this,"enableItem",index); \
+    return HinCallBoolMethod(this,"enableItem",index); \
     } \
   FXbool cls::disableItem(FXint index){ \
-    return FXRbCallBoolMethod(this,"disableItem",index); \
+    return HinCallBoolMethod(this,"disableItem",index); \
     }
 
 
-class FXRbIconList : public FXIconList {
-  FXDECLARE(FXRbIconList)
+class HinIconList : public FXIconList {
+  FXDECLARE(HinIconList)
 protected:
-  FXRbIconList(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
-#include "FXRbScrollAreaVirtuals.h"
-#include "FXRbIconListVirtuals.h"
+  HinIconList(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
+#include "HinScrollAreaVirtuals.h"
+#include "HinIconListVirtuals.h"
 public:
   /// Construct icon list
-  FXRbIconList(FXComposite *p,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=ICONLIST_NORMAL,FXint x=0,FXint y=0,FXint w=0,FXint h=0) : FXIconList(p,tgt,sel,opts,x,y,w,h){
-    setSortFunc(FXRbIconList::sortFunc);
+  HinIconList(FXComposite *p,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=ICONLIST_NORMAL,FXint x=0,FXint y=0,FXint w=0,FXint h=0) : FXIconList(p,tgt,sel,opts,x,y,w,h){
+    setSortFunc(HinIconList::sortFunc);
     }
 
   // Mark dependencies for the GC
@@ -279,9 +279,9 @@ public:
   static FXint sortFunc(const FXIconItem* a,const FXIconItem* b);
 
   // Destructor
-  virtual ~FXRbIconList(){
-    FXRbIconList::unregisterOwnedObjects(this);
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinIconList(){
+    HinIconList::unregisterOwnedObjects(this);
+    HinUnregisterRubyObj(this);
     }
   };
 

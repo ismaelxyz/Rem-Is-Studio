@@ -21,7 +21,7 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbTreeListBox.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinTreeListBox.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBTREELISTBOX_H
@@ -34,30 +34,30 @@ inline void klass ## _setCurrentItem(klass* self,FXTreeItem* item,FXbool notify)
 
 #define IMPLEMENT_FXTREELISTBOX_STUBS(cls) \
   void cls::setCurrentItem(FXTreeItem* item,FXbool notify){ \
-    FXRbCallVoidMethod(this,"setCurrentItem",item,notify); \
+    HinCallVoidMethod(this,"setCurrentItem",item,notify); \
     }
 
-class FXRbTreeListBox : public FXTreeListBox {
-  FXDECLARE(FXRbTreeListBox)
+class HinTreeListBox : public FXTreeListBox {
+  FXDECLARE(HinTreeListBox)
 protected:
-  FXRbTreeListBox(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
-#include "FXRbTreeListBoxVirtuals.h"
+  HinTreeListBox(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
+#include "HinTreeListBoxVirtuals.h"
 public:
   /// Construct tree list box
-  FXRbTreeListBox(FXComposite *p,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=FRAME_SUNKEN|FRAME_THICK|TREELISTBOX_NORMAL,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=DEFAULT_PAD,FXint pr=DEFAULT_PAD,FXint pt=DEFAULT_PAD,FXint pb=DEFAULT_PAD) : FXTreeListBox(p,tgt,sel,opts,x,y,w,h,pl,pr,pt,pb){
-    setSortFunc(FXRbTreeList::sortFunc);
+  HinTreeListBox(FXComposite *p,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=FRAME_SUNKEN|FRAME_THICK|TREELISTBOX_NORMAL,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=DEFAULT_PAD,FXint pr=DEFAULT_PAD,FXint pt=DEFAULT_PAD,FXint pb=DEFAULT_PAD) : FXTreeListBox(p,tgt,sel,opts,x,y,w,h,pl,pr,pt,pb){
+    setSortFunc(HinTreeList::sortFunc);
     }
 
   // Mark dependencies for the GC
   static void markfunc(FXTreeListBox* self);
 
   // Destructor
-  virtual ~FXRbTreeListBox(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinTreeListBox(){
+    HinUnregisterRubyObj(this);
     }
   };
 

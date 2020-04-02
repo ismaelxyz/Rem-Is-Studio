@@ -21,7 +21,7 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbDC.h 2823 2008-03-28 02:04:22Z lyle $
+ * $Id: HinDC.h 2823 2008-03-28 02:04:22Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBDC_H
@@ -218,209 +218,209 @@ inline void klass ## _clipChildren(klass* self,FXbool yes){ \
 
 #define IMPLEMENT_FXDC_STUBS(cls) \
   FXColor cls::readPixel(FXint x,FXint y){ \
-    return FXRbCallColorMethod(this,"readPixel",x,y); \
+    return HinCallColorMethod(this,"readPixel",x,y); \
     } \
   void cls::drawPoint(FXint x,FXint y){ \
-    FXRbCallVoidMethod(this,"drawPoint",x,y); \
+    HinCallVoidMethod(this,"drawPoint",x,y); \
     } \
   void cls::drawPoints(const FXPoint* points,FXuint npoints){ \
-    FXRbCallVoidArrayMethod(this,"drawPoints",points,npoints); \
+    HinCallVoidArrayMethod(this,"drawPoints",points,npoints); \
     } \
   void cls::drawPointsRel(const FXPoint* points,FXuint npoints){ \
-    FXRbCallVoidArrayMethod(this,"drawPointsRel",points,npoints); \
+    HinCallVoidArrayMethod(this,"drawPointsRel",points,npoints); \
     } \
   void cls::drawLine(FXint x1,FXint y1,FXint x2,FXint y2){ \
-    FXRbCallVoidMethod(this,"drawLine",x1,y1,x2,y2); \
+    HinCallVoidMethod(this,"drawLine",x1,y1,x2,y2); \
     } \
   void cls::drawLines(const FXPoint* points,FXuint npoints){ \
-    FXRbCallVoidArrayMethod(this,"drawLines",points,npoints); \
+    HinCallVoidArrayMethod(this,"drawLines",points,npoints); \
     } \
   void cls::drawLinesRel(const FXPoint* points,FXuint npoints){ \
-    FXRbCallVoidArrayMethod(this,"drawLinesRel",points,npoints); \
+    HinCallVoidArrayMethod(this,"drawLinesRel",points,npoints); \
     } \
   void cls::drawLineSegments(const FXSegment* segments,FXuint nsegments){ \
-    FXRbCallVoidArrayMethod(this,"drawLineSegments",segments,nsegments); \
+    HinCallVoidArrayMethod(this,"drawLineSegments",segments,nsegments); \
     } \
   void cls::drawRectangle(FXint x,FXint y,FXint w,FXint h){ \
-    FXRbCallVoidMethod(this,"drawRectangle",x,y,w,h); \
+    HinCallVoidMethod(this,"drawRectangle",x,y,w,h); \
     } \
   void cls::drawRoundRectangle(FXint x,FXint y,FXint w,FXint h,FXint ew,FXint eh){ \
-    FXRbCallVoidMethod(this,"drawRoundRectangle",x,y,w,h,ew,eh); \
+    HinCallVoidMethod(this,"drawRoundRectangle",x,y,w,h,ew,eh); \
     } \
   void cls::drawRectangles(const FXRectangle* rectangles,FXuint nrectangles){ \
-    FXRbCallVoidArrayMethod(this,"drawRectangles",rectangles,nrectangles); \
+    HinCallVoidArrayMethod(this,"drawRectangles",rectangles,nrectangles); \
     } \
   void cls::drawArc(FXint x,FXint y,FXint w,FXint h,FXint ang1,FXint ang2){ \
-    FXRbCallVoidMethod(this,"drawArc",x,y,w,h,ang1,ang2); \
+    HinCallVoidMethod(this,"drawArc",x,y,w,h,ang1,ang2); \
     } \
   void cls::drawArcs(const FXArc* arcs,FXuint narcs){ \
-    FXRbCallVoidArrayMethod(this,"drawArcs",arcs,narcs); \
+    HinCallVoidArrayMethod(this,"drawArcs",arcs,narcs); \
     } \
   void cls::drawEllipse(FXint x,FXint y,FXint w,FXint h){ \
-    FXRbCallVoidMethod(this,"drawEllipse",x,y,w,h); \
+    HinCallVoidMethod(this,"drawEllipse",x,y,w,h); \
     } \
   void cls::fillRectangle(FXint x,FXint y,FXint w,FXint h){ \
-    FXRbCallVoidMethod(this,"fillRectangle",x,y,w,h); \
+    HinCallVoidMethod(this,"fillRectangle",x,y,w,h); \
     } \
   void cls::fillRectangles(const FXRectangle* rectangles,FXuint nrectangles){ \
-    FXRbCallVoidArrayMethod(this,"fillRectangles",rectangles,nrectangles); \
+    HinCallVoidArrayMethod(this,"fillRectangles",rectangles,nrectangles); \
     } \
   void cls::fillRoundRectangle(FXint x,FXint y,FXint w,FXint h,FXint ew,FXint eh){ \
-    FXRbCallVoidMethod(this,"fillRoundRectangle",x,y,w,h,ew,eh); \
+    HinCallVoidMethod(this,"fillRoundRectangle",x,y,w,h,ew,eh); \
     } \
   void cls::fillChord(FXint x,FXint y,FXint w,FXint h,FXint ang1,FXint ang2){ \
-    FXRbCallVoidMethod(this,"fillChord",x,y,w,h,ang1,ang2); \
+    HinCallVoidMethod(this,"fillChord",x,y,w,h,ang1,ang2); \
     } \
   void cls::fillChords(const FXArc* chords,FXuint nchords){ \
-    FXRbCallVoidArrayMethod(this,"fillChords",chords,nchords); \
+    HinCallVoidArrayMethod(this,"fillChords",chords,nchords); \
     } \
   void cls::fillArc(FXint x,FXint y,FXint w,FXint h,FXint ang1,FXint ang2){ \
-    FXRbCallVoidMethod(this,"fillArc",x,y,w,h,ang1,ang2); \
+    HinCallVoidMethod(this,"fillArc",x,y,w,h,ang1,ang2); \
     } \
   void cls::fillArcs(const FXArc* arcs,FXuint narcs){ \
-    FXRbCallVoidArrayMethod(this,"fillArcs",arcs,narcs); \
+    HinCallVoidArrayMethod(this,"fillArcs",arcs,narcs); \
     } \
   void cls::fillEllipse(FXint x,FXint y,FXint w,FXint h){ \
-    FXRbCallVoidMethod(this,"fillEllipse",x,y,w,h); \
+    HinCallVoidMethod(this,"fillEllipse",x,y,w,h); \
     } \
   void cls::fillPolygon(const FXPoint* points,FXuint npoints){ \
-    FXRbCallVoidArrayMethod(this,"fillPolygon",points,npoints); \
+    HinCallVoidArrayMethod(this,"fillPolygon",points,npoints); \
     } \
   void cls::fillConcavePolygon(const FXPoint* points,FXuint npoints){ \
-    FXRbCallVoidArrayMethod(this,"fillConcavePolygon",points,npoints); \
+    HinCallVoidArrayMethod(this,"fillConcavePolygon",points,npoints); \
     } \
   void cls::fillComplexPolygon(const FXPoint* points,FXuint npoints){ \
-    FXRbCallVoidArrayMethod(this,"fillComplexPolygon",points,npoints); \
+    HinCallVoidArrayMethod(this,"fillComplexPolygon",points,npoints); \
     } \
   void cls::fillPolygonRel(const FXPoint* points,FXuint npoints){ \
-    FXRbCallVoidArrayMethod(this,"fillPolygonRel",points,npoints); \
+    HinCallVoidArrayMethod(this,"fillPolygonRel",points,npoints); \
     } \
   void cls::fillConcavePolygonRel(const FXPoint* points,FXuint npoints){ \
-    FXRbCallVoidArrayMethod(this,"fillConcavePolygonRel",points,npoints); \
+    HinCallVoidArrayMethod(this,"fillConcavePolygonRel",points,npoints); \
     } \
   void cls::fillComplexPolygonRel(const FXPoint* points,FXuint npoints){ \
-    FXRbCallVoidArrayMethod(this,"fillComplexPolygonRel",points,npoints); \
+    HinCallVoidArrayMethod(this,"fillComplexPolygonRel",points,npoints); \
     } \
   void cls::drawHashBox(FXint x,FXint y,FXint w,FXint h,FXint b){ \
-    FXRbCallVoidMethod(this,"drawHashBox",x,y,w,h,b); \
+    HinCallVoidMethod(this,"drawHashBox",x,y,w,h,b); \
     } \
   void cls::drawFocusRectangle(FXint x,FXint y,FXint w,FXint h){ \
-    FXRbCallVoidMethod(this,"drawFocusRectangle",x,y,w,h); \
+    HinCallVoidMethod(this,"drawFocusRectangle",x,y,w,h); \
     } \
   void cls::drawArea(const FXDrawable* source,FXint sx,FXint sy,FXint sw,FXint sh,FXint dx,FXint dy){ \
-    FXRbCallVoidMethod(this,"drawArea",source,sx,sy,sw,sh,dx,dy); \
+    HinCallVoidMethod(this,"drawArea",source,sx,sy,sw,sh,dx,dy); \
     } \
   void cls::drawArea(const FXDrawable* source,FXint sx,FXint sy,FXint sw,FXint sh,FXint dx,FXint dy,FXint dw,FXint dh){ \
-    FXRbCallVoidMethod(this,"drawArea",source,sx,sy,sw,sh,dx,dy,dw,dh); \
+    HinCallVoidMethod(this,"drawArea",source,sx,sy,sw,sh,dx,dy,dw,dh); \
     } \
   void cls::drawImage(const FXImage* image,FXint dx,FXint dy){ \
-    FXRbCallVoidMethod(this,"drawImage",image,dx,dy); \
+    HinCallVoidMethod(this,"drawImage",image,dx,dy); \
     } \
   void cls::drawBitmap(const FXBitmap* bitmap,FXint dx,FXint dy){ \
-    FXRbCallVoidMethod(this,"drawBitmap",bitmap,dx,dy); \
+    HinCallVoidMethod(this,"drawBitmap",bitmap,dx,dy); \
     } \
   void cls::drawIcon(const FXIcon* icon,FXint dx,FXint dy){ \
-    FXRbCallVoidMethod(this,"drawIcon",icon,dx,dy); \
+    HinCallVoidMethod(this,"drawIcon",icon,dx,dy); \
     } \
   void cls::drawIconShaded(const FXIcon* icon,FXint dx,FXint dy){ \
-    FXRbCallVoidMethod(this,"drawIconShaded",icon,dx,dy); \
+    HinCallVoidMethod(this,"drawIconShaded",icon,dx,dy); \
     } \
   void cls::drawIconSunken(const FXIcon* icon,FXint dx,FXint dy){ \
-    FXRbCallVoidMethod(this,"drawIconSunken",icon,dx,dy); \
+    HinCallVoidMethod(this,"drawIconSunken",icon,dx,dy); \
     } \
   void cls::drawText(FXint x,FXint y,const FXString& string){ \
-    FXRbCallDCDrawMethod(this, "drawText", x, y, string); \
+    HinCallDCDrawMethod(this, "drawText", x, y, string); \
     } \
   void cls::drawText(FXint x,FXint y,const FXchar* string,FXuint length){ \
-    FXRbCallDCDrawMethod(this, "drawText", x, y, string, length); \
+    HinCallDCDrawMethod(this, "drawText", x, y, string, length); \
     } \
   void cls::drawImageText(FXint x,FXint y,const FXString& string){ \
-    FXRbCallDCDrawMethod(this, "drawImageText", x, y, string); \
+    HinCallDCDrawMethod(this, "drawImageText", x, y, string); \
     } \
   void cls::drawImageText(FXint x,FXint y,const FXchar* string,FXuint length){ \
-    FXRbCallDCDrawMethod(this, "drawImageText", x, y, string, length); \
+    HinCallDCDrawMethod(this, "drawImageText", x, y, string, length); \
     } \
   void cls::setForeground(FXColor clr){ \
-    FXRbCallVoidMethod(this,"setForeground",clr); \
+    HinCallVoidMethod(this,"setForeground",clr); \
     } \
   void cls::setBackground(FXColor clr){ \
-    FXRbCallVoidMethod(this,"setBackground",clr); \
+    HinCallVoidMethod(this,"setBackground",clr); \
     } \
   void cls::setDashes(FXuint dashoffset,const FXchar *dashpattern,FXuint dashlength){ \
-    FXRbCallSetDashes(this,"setDashes",dashoffset,dashpattern,dashlength); \
+    HinCallSetDashes(this,"setDashes",dashoffset,dashpattern,dashlength); \
     } \
   void cls::setLineWidth(FXuint linewidth){ \
-    FXRbCallVoidMethod(this,"setLineWidth",linewidth); \
+    HinCallVoidMethod(this,"setLineWidth",linewidth); \
     } \
   void cls::setLineCap(FXCapStyle capstyle){ \
-    FXRbCallVoidMethod(this,"setLineCap",capstyle); \
+    HinCallVoidMethod(this,"setLineCap",capstyle); \
     } \
   void cls::setLineJoin(FXJoinStyle joinstyle){ \
-    FXRbCallVoidMethod(this,"setLineJoin",joinstyle); \
+    HinCallVoidMethod(this,"setLineJoin",joinstyle); \
     } \
   void cls::setLineStyle(FXLineStyle linestyle){ \
-    FXRbCallVoidMethod(this,"setLineStyle",linestyle); \
+    HinCallVoidMethod(this,"setLineStyle",linestyle); \
     } \
   void cls::setFillStyle(FXFillStyle fillstyle){ \
-    FXRbCallVoidMethod(this,"setFillStyle",fillstyle); \
+    HinCallVoidMethod(this,"setFillStyle",fillstyle); \
     } \
   void cls::setFillRule(FXFillRule fillrule){ \
-    FXRbCallVoidMethod(this,"setFillRule",fillrule); \
+    HinCallVoidMethod(this,"setFillRule",fillrule); \
     } \
   void cls::setFunction(FXFunction func){ \
-    FXRbCallVoidMethod(this,"setFunction",func); \
+    HinCallVoidMethod(this,"setFunction",func); \
     } \
   void cls::setTile(FXImage* image,FXint dx,FXint dy){ \
-    FXRbCallVoidMethod(this,"setTile",image,dx,dy); \
+    HinCallVoidMethod(this,"setTile",image,dx,dy); \
     } \
   void cls::setStipple(FXBitmap *bitmap,FXint dx,FXint dy){ \
-    FXRbCallVoidMethod(this,"setStipple",bitmap,dx,dy); \
+    HinCallVoidMethod(this,"setStipple",bitmap,dx,dy); \
     } \
   void cls::setStipple(FXStipplePattern pat,FXint dx,FXint dy){ \
-    FXRbCallVoidMethod(this,"setStipple",pat,dx,dy); \
+    HinCallVoidMethod(this,"setStipple",pat,dx,dy); \
     } \
   void cls::setClipRegion(const FXRegion& region){ \
-    FXRbCallVoidMethod(this,"setClipRegion",region); \
+    HinCallVoidMethod(this,"setClipRegion",region); \
     } \
   void cls::setClipRectangle(FXint x,FXint y,FXint w,FXint h){ \
-    FXRbCallVoidMethod(this,"setClipRectangle",x,y,w,h); \
+    HinCallVoidMethod(this,"setClipRectangle",x,y,w,h); \
     } \
   void cls::setClipRectangle(const FXRectangle& rectangle){ \
-    FXRbCallVoidMethod(this,"setClipRectangle",rectangle); \
+    HinCallVoidMethod(this,"setClipRectangle",rectangle); \
     } \
   void cls::clearClipRectangle(){ \
-    FXRbCallVoidMethod(this,"clearClipRectangle"); \
+    HinCallVoidMethod(this,"clearClipRectangle"); \
     } \
   void cls::setClipMask(FXBitmap* bitmap,FXint dx,FXint dy){ \
-    FXRbCallVoidMethod(this,"setClipMask",bitmap,dx,dy); \
+    HinCallVoidMethod(this,"setClipMask",bitmap,dx,dy); \
     } \
   void cls::clearClipMask(){ \
-    FXRbCallVoidMethod(this,"clearClipMask"); \
+    HinCallVoidMethod(this,"clearClipMask"); \
     } \
   void cls::setFont(FXFont *fnt){ \
-    FXRbCallVoidMethod(this,"setFont",fnt); \
+    HinCallVoidMethod(this,"setFont",fnt); \
     } \
   void cls::clipChildren(FXbool yes){ \
-    FXRbCallVoidMethod(this,"clipChildren",yes); \
+    HinCallVoidMethod(this,"clipChildren",yes); \
     }
 
 
-class FXRbDC : public FXDC {
-#include "FXRbDCVirtuals.h"
+class HinDC : public FXDC {
+#include "HinDCVirtuals.h"
 public:
   // Constructor
-  FXRbDC(FXApp* app) : FXDC(app){
-    FXRbRegisterAppSensitiveObject(this);
+  HinDC(FXApp* app) : FXDC(app){
+    HinRegisterAppSensitiveObject(this);
     }
 
   // Mark dependencies for the GC
   static void markfunc(FXDC* self);
 
   // Destructor
-  virtual ~FXRbDC(){
-    FXTRACE((100,"FXRbDC::~FXRbDC() %p\n",this));
-    FXRbUnregisterRubyObj(this);
-    FXRbUnregisterAppSensitiveObject(this);
+  virtual ~HinDC(){
+    FXTRACE((100,"HinDC::~HinDC() %p\n",this));
+    HinUnregisterRubyObj(this);
+    HinUnregisterAppSensitiveObject(this);
     }
   };
 

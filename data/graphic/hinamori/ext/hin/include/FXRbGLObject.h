@@ -21,7 +21,7 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbGLObject.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinGLObject.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBGLOBJECT_H
@@ -55,38 +55,38 @@ inline FXbool klass ## _drag(klass* self,FXGLViewer* viewer,FXint fx,FXint fy,FX
 
 #define IMPLEMENT_FXGLOBJECT_STUBS(cls) \
   void cls::bounds(FXRangef& box){ \
-    box=FXRbCallRangeMethod(this,"bounds"); \
+    box=HinCallRangeMethod(this,"bounds"); \
     } \
   void cls::draw(FXGLViewer* viewer){ \
-    FXRbCallVoidMethod(this,"draw",viewer); \
+    HinCallVoidMethod(this,"draw",viewer); \
     } \
   void cls::hit(FXGLViewer* viewer){ \
-    FXRbCallVoidMethod(this,"hit",viewer); \
+    HinCallVoidMethod(this,"hit",viewer); \
     } \
   FXGLObject* cls::copy(){ \
-    return FXRbCallGLObjectMethod(this,"copy"); \
+    return HinCallGLObjectMethod(this,"copy"); \
     } \
   FXGLObject* cls::identify(FXuint* path,FXint n){ \
-    return FXRbCallGLObjectMethod(this,"identify",path,n); \
+    return HinCallGLObjectMethod(this,"identify",path,n); \
     } \
   FXbool cls::canDrag() const { \
-    return FXRbCallBoolMethod(this,"canDrag"); \
+    return HinCallBoolMethod(this,"canDrag"); \
     } \
   FXbool cls::canDelete() const{ \
-    return FXRbCallBoolMethod(this,"canDelete"); \
+    return HinCallBoolMethod(this,"canDelete"); \
     } \
   FXbool cls::drag(FXGLViewer* viewer,FXint fx,FXint fy,FXint tx,FXint ty){ \
-    return FXRbCallBoolMethod(this,"drag",viewer,fx,fy,tx,ty); \
+    return HinCallBoolMethod(this,"drag",viewer,fx,fy,tx,ty); \
     }
 
 
-class FXRbGLObject : public FXGLObject {
-  FXDECLARE(FXRbGLObject)
-#include "FXRbObjectVirtuals.h"
-#include "FXRbGLObjectVirtuals.h"
+class HinGLObject : public FXGLObject {
+  FXDECLARE(HinGLObject)
+#include "HinObjectVirtuals.h"
+#include "HinGLObjectVirtuals.h"
 public:
   // Constructor
-  FXRbGLObject(){}
+  HinGLObject(){}
 
   // Identify sub-object given path
   virtual FXGLObject* identify(FXuint* path,FXint n);
@@ -95,8 +95,8 @@ public:
   static void markfunc(FXGLObject* self);
 
   // Destructor
-  virtual ~FXRbGLObject(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinGLObject(){
+    HinUnregisterRubyObj(this);
     }
   };
 

@@ -21,28 +21,28 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbDCPrint.h 2372 2006-04-20 00:38:08Z lyle $
+ * $Id: HinDCPrint.h 2372 2006-04-20 00:38:08Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBDCPRINT_H
 #define FXRBDCPRINT_H
 
-class FXRbDCPrint : public FXDCPrint {
-#include "FXRbDCVirtuals.h"
+class HinDCPrint : public FXDCPrint {
+#include "HinDCVirtuals.h"
 public:
   // Constructor
-  FXRbDCPrint(FXApp* app) : FXDCPrint(app){
-    FXRbRegisterAppSensitiveObject(this);
+  HinDCPrint(FXApp* app) : FXDCPrint(app){
+    HinRegisterAppSensitiveObject(this);
     }
 
   // Mark dependencies for the GC
   static void markfunc(FXDCPrint* self);
 
   // Destructor
-  virtual ~FXRbDCPrint(){
-    FXTRACE((100,"FXRbDCPrint::~FXRbDCPrint() %p\n",this));
-    FXRbUnregisterRubyObj(this);
-    FXRbUnregisterAppSensitiveObject(this);
+  virtual ~HinDCPrint(){
+    FXTRACE((100,"HinDCPrint::~HinDCPrint() %p\n",this));
+    HinUnregisterRubyObj(this);
+    HinUnregisterAppSensitiveObject(this);
     }
   };
 

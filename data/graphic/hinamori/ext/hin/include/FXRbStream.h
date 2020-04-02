@@ -21,7 +21,7 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbStream.h 2344 2006-02-12 21:19:36Z lyle $
+ * $Id: HinStream.h 2344 2006-02-12 21:19:36Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBSTREAM_H
@@ -41,60 +41,60 @@ inline bool klass ## _position(klass* self,FXlong p,FXWhence whence){ \
 
 #define IMPLEMENT_FXSTREAM_STUBS(cls) \
   bool cls::close(){ \
-    return FXRbCallBoolMethod(this,"close"); \
+    return HinCallBoolMethod(this,"close"); \
     } \
   bool cls::flush(){ \
-    return FXRbCallBoolMethod(this,"flush"); \
+    return HinCallBoolMethod(this,"flush"); \
     } \
   bool cls::position(FXlong p,FXWhence whence){ \
-    return FXRbCallBoolMethod(this,"setPosition",p,whence); \
+    return HinCallBoolMethod(this,"setPosition",p,whence); \
     }
 
 
-class FXRbStream : public FXStream {
-#include "FXRbStreamVirtuals.h"
+class HinStream : public FXStream {
+#include "HinStreamVirtuals.h"
 public:
   /// Constructor
-  FXRbStream(const FXObject* cont=NULL) : FXStream(cont){}
+  HinStream(const FXObject* cont=NULL) : FXStream(cont){}
 
   // Mark dependencies for the GC
   static void markfunc(FXStream* self);
 
   // Destructor
-  virtual ~FXRbStream(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinStream(){
+    HinUnregisterRubyObj(this);
     }
   };
 
 
-class FXRbFileStream : public FXFileStream {
-#include "FXRbStreamVirtuals.h"
+class HinFileStream : public FXFileStream {
+#include "HinStreamVirtuals.h"
 public:
   /// Constructor
-  FXRbFileStream(const FXObject* cont=NULL) : FXFileStream(cont){}
+  HinFileStream(const FXObject* cont=NULL) : FXFileStream(cont){}
 
   // Mark dependencies for the GC
   static void markfunc(FXFileStream* self);
 
   // Destructor
-  virtual ~FXRbFileStream(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinFileStream(){
+    HinUnregisterRubyObj(this);
     }
   };
 
 
-class FXRbMemoryStream : public FXMemoryStream {
-#include "FXRbStreamVirtuals.h"
+class HinMemoryStream : public FXMemoryStream {
+#include "HinStreamVirtuals.h"
 public:
   /// Create memory store
-  FXRbMemoryStream(const FXObject* cont=NULL) : FXMemoryStream(cont){}
+  HinMemoryStream(const FXObject* cont=NULL) : FXMemoryStream(cont){}
 
   // Mark dependencies for the GC
   static void markfunc(FXMemoryStream* self);
 
   // Destructor
-  virtual ~FXRbMemoryStream(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinMemoryStream(){
+    HinUnregisterRubyObj(this);
     }
   };
 

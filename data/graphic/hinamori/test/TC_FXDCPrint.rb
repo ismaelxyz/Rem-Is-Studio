@@ -1,6 +1,6 @@
 require 'test/unit'
 
-require 'fox16'
+require 'hin16'
 require 'fileutils'
 
 class TC_FXDCPrint < Test::Unit::TestCase

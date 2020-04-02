@@ -21,29 +21,29 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbMenuCheck.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinMenuCheck.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBMENUCHECK_H
 #define FXRBMENUCHECK_H
 
-class FXRbMenuCheck : public FXMenuCheck {
-  FXDECLARE(FXRbMenuCheck)
+class HinMenuCheck : public FXMenuCheck {
+  FXDECLARE(HinMenuCheck)
 protected:
-  FXRbMenuCheck(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
+  HinMenuCheck(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
 public:
   /// Constructor
-  FXRbMenuCheck(FXComposite* p,const FXString& text,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=0) : FXMenuCheck(p,text,tgt,sel,opts){}
+  HinMenuCheck(FXComposite* p,const FXString& text,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=0) : FXMenuCheck(p,text,tgt,sel,opts){}
 
   // Mark dependencies for the GC
   static void markfunc(FXMenuCheck* self);
 
   // Destructor (implemented in FXRuby.cpp)
-  virtual ~FXRbMenuCheck();
+  virtual ~HinMenuCheck();
   };
 
 #endif

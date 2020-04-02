@@ -21,7 +21,7 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbTable.h 2303 2005-12-09 03:17:28Z lyle $
+ * $Id: HinTable.h 2303 2005-12-09 03:17:28Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBTABLE_H
@@ -109,106 +109,106 @@ inline void klass ## _destroy(klass* self){ \
 
 #define IMPLEMENT_FXTABLEITEM_STUBS(klass,superklass) \
   void klass::draw(const FXTable* table,FXDC& dc,FXint x,FXint y,FXint w,FXint h) const { \
-    FXRbCallVoidMethod(this,"draw",table,dc,x,y,w,h); \
+    HinCallVoidMethod(this,"draw",table,dc,x,y,w,h); \
     } \
   void klass::public_draw(const FXTable* table,FXDC& dc,FXint x,FXint y,FXint w,FXint h) const { \
     superklass::draw(table,dc,x,y,w,h); \
     } \
   void klass::drawBorders(const FXTable* table,FXDC& dc,FXint x,FXint y,FXint w,FXint h) const { \
-    FXRbCallVoidMethod(this,"drawBorders",table,dc,x,y,w,h); \
+    HinCallVoidMethod(this,"drawBorders",table,dc,x,y,w,h); \
     } \
   void klass::public_drawBorders(const FXTable* table,FXDC& dc,FXint x,FXint y,FXint w,FXint h) const { \
     superklass::drawBorders(table,dc,x,y,w,h); \
     } \
   void klass::drawContent(const FXTable* table,FXDC& dc,FXint x,FXint y,FXint w,FXint h) const { \
-    FXRbCallVoidMethod(this,"drawContent",table,dc,x,y,w,h); \
+    HinCallVoidMethod(this,"drawContent",table,dc,x,y,w,h); \
     } \
   void klass::public_drawContent(const FXTable* table,FXDC& dc,FXint x,FXint y,FXint w,FXint h) const { \
     superklass::drawContent(table,dc,x,y,w,h); \
     } \
   void klass::drawPattern(const FXTable* table,FXDC& dc,FXint x,FXint y,FXint w,FXint h) const { \
-    FXRbCallVoidMethod(this,"drawPattern",table,dc,x,y,w,h); \
+    HinCallVoidMethod(this,"drawPattern",table,dc,x,y,w,h); \
     } \
   void klass::public_drawPattern(const FXTable* table,FXDC& dc,FXint x,FXint y,FXint w,FXint h) const { \
     superklass::drawPattern(table,dc,x,y,w,h); \
     } \
   void klass::drawBackground(const FXTable* table,FXDC& dc,FXint x,FXint y,FXint w,FXint h) const { \
-    FXRbCallVoidMethod(this,"drawBackground",table,dc,x,y,w,h); \
+    HinCallVoidMethod(this,"drawBackground",table,dc,x,y,w,h); \
     } \
   void klass::public_drawBackground(const FXTable* table,FXDC& dc,FXint x,FXint y,FXint w,FXint h) const { \
     superklass::drawBackground(table,dc,x,y,w,h); \
     } \
   void klass::setText(const FXString& txt){ \
-    FXRbCallVoidMethod(this,"setText",txt); \
+    HinCallVoidMethod(this,"setText",txt); \
     } \
   FXString klass::getText() const { \
-    return FXRbCallStringMethod(this,"getText"); \
+    return HinCallStringMethod(this,"getText"); \
     } \
   void klass::setIcon(FXIcon* icn,FXbool owned){ \
-    FXRbCallVoidMethod(this,"setIcon",icn,owned); \
+    HinCallVoidMethod(this,"setIcon",icn,owned); \
     } \
   FXIcon* klass::getIcon() const { \
-    return FXRbCallIconMethod(this,"getIcon"); \
+    return HinCallIconMethod(this,"getIcon"); \
     } \
   void klass::setFocus(FXbool focus){ \
-    FXRbCallVoidMethod(this,"setFocus",focus); \
+    HinCallVoidMethod(this,"setFocus",focus); \
     } \
   void klass::setSelected(FXbool selected){ \
-    FXRbCallVoidMethod(this,"setSelected",selected); \
+    HinCallVoidMethod(this,"setSelected",selected); \
     } \
   void klass::setEnabled(FXbool enabled){ \
-    FXRbCallVoidMethod(this,"setEnabled",enabled); \
+    HinCallVoidMethod(this,"setEnabled",enabled); \
     } \
   void klass::setDraggable(FXbool draggable){ \
-    FXRbCallVoidMethod(this,"setDraggable",draggable); \
+    HinCallVoidMethod(this,"setDraggable",draggable); \
     } \
   void klass::setJustify(FXuint justify){ \
-    FXRbCallVoidMethod(this,"setJustify",justify); \
+    HinCallVoidMethod(this,"setJustify",justify); \
     } \
   void klass::setIconPosition(FXuint mode){ \
-    FXRbCallVoidMethod(this,"setIconPosition",mode); \
+    HinCallVoidMethod(this,"setIconPosition",mode); \
     } \
   void klass::setBorders(FXuint borders){ \
-    FXRbCallVoidMethod(this,"setBorders",borders); \
+    HinCallVoidMethod(this,"setBorders",borders); \
     } \
   void klass::setStipple(FXStipplePattern pattern){ \
-    FXRbCallVoidMethod(this,"setStipple",pattern); \
+    HinCallVoidMethod(this,"setStipple",pattern); \
     } \
   FXWindow* klass::getControlFor(FXTable* table){ \
-    return FXRbCallWindowMethod(this,"getControlFor",table); \
+    return HinCallWindowMethod(this,"getControlFor",table); \
     } \
   void klass::setFromControl(FXWindow* control){ \
-    FXRbCallVoidMethod(this,"setFromControl",control); \
+    HinCallVoidMethod(this,"setFromControl",control); \
     } \
   FXint klass::getWidth(const FXTable* table) const { \
-    return FXRbCallIntMethod(this,"getWidth",table); \
+    return HinCallIntMethod(this,"getWidth",table); \
     } \
   FXint klass::getHeight(const FXTable* table) const { \
-    return FXRbCallIntMethod(this,"getHeight",table); \
+    return HinCallIntMethod(this,"getHeight",table); \
     } \
   void klass::create(){ \
-    FXRbCallVoidMethod(this,"create"); \
+    HinCallVoidMethod(this,"create"); \
     } \
   void klass::detach(){ \
-    FXRbCallVoidMethod(this,"detach"); \
+    HinCallVoidMethod(this,"detach"); \
     } \
   void klass::destroy(){ \
-    FXRbCallVoidMethod(this,"destroy"); \
+    HinCallVoidMethod(this,"destroy"); \
     }
 
 
-class FXRbTableItem : public FXTableItem {
-  FXDECLARE(FXRbTableItem)
+class HinTableItem : public FXTableItem {
+  FXDECLARE(HinTableItem)
 protected:
-  FXRbTableItem(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbTableItemVirtuals.h"
+  HinTableItem(){}
+#include "HinObjectVirtuals.h"
+#include "HinTableItemVirtuals.h"
 public:
   // Is this table item owned by an FXTable yet?
   FXbool owned;
 public:
   // Constructor
-  FXRbTableItem(const FXString& text,FXIcon* ic=NULL,void* ptr=NULL) : FXTableItem(text,ic,ptr),owned(FALSE){}
+  HinTableItem(const FXString& text,FXIcon* ic=NULL,void* ptr=NULL) : FXTableItem(text,ic,ptr),owned(FALSE){}
 
   // Mark dependencies for the GC
   static void markfunc(FXTableItem* self);
@@ -217,8 +217,8 @@ public:
   static void freefunc(FXTableItem* self);
 
   // Destructor
-  virtual ~FXRbTableItem(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinTableItem(){
+    HinUnregisterRubyObj(this);
     }
   };
 
@@ -266,10 +266,10 @@ inline void klass ## _setTableSize(klass* self,FXint nr,FXint nc,FXbool notify){
     } \
   self->klass::setTableSize(nr,nc,notify); \
   for(i=0;i<tableItems.no();i++){ \
-    FXRbUnregisterRubyObj(tableItems[i]); \
+    HinUnregisterRubyObj(tableItems[i]); \
     } \
   for(i=0;i<headerItems.no();i++){ \
-    FXRbUnregisterRubyObj(headerItems[i]); \
+    HinUnregisterRubyObj(headerItems[i]); \
     } \
   } \
 inline void klass ## _insertRows(klass* self,FXint row,FXint nr,FXbool notify){ \
@@ -287,7 +287,7 @@ inline void klass ## _removeRows(klass* self,FXint row,FXint nr,FXbool notify){ 
     } \
   self->klass::removeRows(row,nr,notify); \
   for(FXint i=0;i<items.no();i++){ \
-    FXRbUnregisterRubyObj(items[i]); \
+    HinUnregisterRubyObj(items[i]); \
     } \
   } \
 inline void klass ## _removeColumns(klass* self,FXint col,FXint nc,FXbool notify){ \
@@ -299,7 +299,7 @@ inline void klass ## _removeColumns(klass* self,FXint col,FXint nc,FXbool notify
     } \
   self->klass::removeColumns(col,nc,notify); \
   for(FXint i=0;i<items.no();i++){ \
-    FXRbUnregisterRubyObj(items[i]); \
+    HinUnregisterRubyObj(items[i]); \
     } \
   } \
 inline FXTableItem* klass ## _extractItem(klass* self,FXint row,FXint col,FXbool notify){ \
@@ -308,7 +308,7 @@ inline FXTableItem* klass ## _extractItem(klass* self,FXint row,FXint col,FXbool
 inline void klass ## _removeItem(klass* self,FXint row,FXint col,FXbool notify=FALSE){ \
   FXTableItem* item=self->getItem(row,col); \
   self->klass::removeItem(row,col,notify); \
-  FXRbUnregisterRubyObj(item); \
+  HinUnregisterRubyObj(item); \
   } \
 inline void klass ## _removeRange(klass* self,FXint startrow,FXint startcol,FXint endrow,FXint endcol,FXbool notify){ \
   self->klass::removeRange(startrow,startcol,endrow,endcol,notify); \
@@ -322,7 +322,7 @@ inline void klass ## _clearItems(klass* self,FXbool notify){ \
     } \
   self->klass::clearItems(notify); \
   for(FXint i=0;i<items.no();i++){ \
-    FXRbUnregisterRubyObj(items[i]); \
+    HinUnregisterRubyObj(items[i]); \
     } \
   } \
 inline void klass ## _setColumnWidth(klass* self,FXint col,FXint cwidth){ \
@@ -371,125 +371,125 @@ inline FXbool klass ## _disableItem(klass* self,FXint r,FXint c){ \
 
 #define IMPLEMENT_FXTABLE_STUBS(klass,superklass) \
   void klass::drawCell(FXDC& dc,FXint sr,FXint er,FXint sc,FXint ec){ \
-    FXRbCallVoidMethod(this,"drawCell",dc,sr,er,sc,ec); \
+    HinCallVoidMethod(this,"drawCell",dc,sr,er,sc,ec); \
     } \
   void klass::public_drawCell(FXDC& dc,FXint sr,FXint er,FXint sc,FXint ec){ \
     superklass::drawCell(dc,sr,er,sc,ec); \
     } \
   void klass::drawRange(FXDC& dc,FXint rlo,FXint rhi,FXint clo,FXint chi){ \
-    FXRbCallVoidMethod(this,"drawRange",dc,rlo,rhi,clo,chi); \
+    HinCallVoidMethod(this,"drawRange",dc,rlo,rhi,clo,chi); \
     } \
   void klass::public_drawRange(FXDC& dc,FXint rlo,FXint rhi,FXint clo,FXint chi){ \
     superklass::drawRange(dc,rlo,rhi,clo,chi); \
     } \
   void klass::drawHGrid(FXDC& dc,FXint rlo,FXint rhi,FXint clo,FXint chi){ \
-    FXRbCallVoidMethod(this,"drawHGrid",dc,rlo,rhi,clo,chi); \
+    HinCallVoidMethod(this,"drawHGrid",dc,rlo,rhi,clo,chi); \
     } \
   void klass::public_drawHGrid(FXDC& dc,FXint rlo,FXint rhi,FXint clo,FXint chi){ \
     superklass::drawHGrid(dc,rlo,rhi,clo,chi); \
     } \
   void klass::drawVGrid(FXDC& dc,FXint rlo,FXint rhi,FXint clo,FXint chi){ \
-    FXRbCallVoidMethod(this,"drawVGrid",dc,rlo,rhi,clo,chi); \
+    HinCallVoidMethod(this,"drawVGrid",dc,rlo,rhi,clo,chi); \
     } \
   void klass::public_drawVGrid(FXDC& dc,FXint rlo,FXint rhi,FXint clo,FXint chi){ \
     superklass::drawVGrid(dc,rlo,rhi,clo,chi); \
     } \
   void klass::drawContents(FXDC& dc,FXint x,FXint y,FXint w,FXint h){ \
-    FXRbCallVoidMethod(this,"drawContents",dc,x,y,w,h); \
+    HinCallVoidMethod(this,"drawContents",dc,x,y,w,h); \
     } \
   void klass::public_drawContents(FXDC& dc,FXint x,FXint y,FXint w,FXint h){ \
     superklass::drawContents(dc,x,y,w,h); \
     } \
   FXTableItem* klass::createItem(const FXString& text,FXIcon* icon,void* ptr){ \
-    return FXRbCallTableItemMethod(this,"createItem",text,icon,ptr); \
+    return HinCallTableItemMethod(this,"createItem",text,icon,ptr); \
     } \
   FXTableItem* klass::public_createItem(const FXString& text,FXIcon* icon,void* ptr){ \
     return superklass::createItem(text,icon,ptr); \
     } \
   void klass::setTableSize(FXint nr,FXint nc,FXbool notify){ \
-    FXRbCallVoidMethod(this,"setTableSize",nr,nc,notify); \
+    HinCallVoidMethod(this,"setTableSize",nr,nc,notify); \
     } \
   void klass::insertRows(FXint row,FXint nr,FXbool notify){ \
-    FXRbCallVoidMethod(this,"insertRows",row,nr,notify); \
+    HinCallVoidMethod(this,"insertRows",row,nr,notify); \
     } \
   void klass::insertColumns(FXint col,FXint nc,FXbool notify){ \
-    FXRbCallVoidMethod(this,"insertColumns",col,nc,notify); \
+    HinCallVoidMethod(this,"insertColumns",col,nc,notify); \
     } \
   void klass::removeRows(FXint row,FXint nr,FXbool notify){ \
-    FXRbCallVoidMethod(this,"removeRows",row,nr,notify); \
+    HinCallVoidMethod(this,"removeRows",row,nr,notify); \
     } \
   void klass::removeColumns(FXint col,FXint nc,FXbool notify){ \
-    FXRbCallVoidMethod(this,"removeColumns",col,nc,notify); \
+    HinCallVoidMethod(this,"removeColumns",col,nc,notify); \
     } \
   FXTableItem* klass::extractItem(FXint row,FXint col,FXbool notify){ \
-    return FXRbCallTableItemMethod(this,"extractItem",row,col,notify); \
+    return HinCallTableItemMethod(this,"extractItem",row,col,notify); \
     } \
   void klass::removeItem(FXint row,FXint col,FXbool notify){ \
-    FXRbCallVoidMethod(this,"removeItem",row,col,notify); \
+    HinCallVoidMethod(this,"removeItem",row,col,notify); \
     } \
   void klass::removeRange(FXint startrow,FXint startcol,FXint endrow,FXint endcol,FXbool notify){ \
-    FXRbCallVoidMethod(this,"removeRange",startrow,startcol,endrow,endcol,notify); \
+    HinCallVoidMethod(this,"removeRange",startrow,startcol,endrow,endcol,notify); \
     } \
   void klass::clearItems(FXbool notify){ \
-    FXRbCallVoidMethod(this,"clearItems",notify); \
+    HinCallVoidMethod(this,"clearItems",notify); \
     } \
   void klass::setColumnWidth(FXint col,FXint cwidth){ \
-    FXRbCallVoidMethod(this,"setColumnWidth",col,cwidth); \
+    HinCallVoidMethod(this,"setColumnWidth",col,cwidth); \
     } \
   void klass::setRowHeight(FXint row,FXint rheight){ \
-    FXRbCallVoidMethod(this,"setRowHeight",row,rheight); \
+    HinCallVoidMethod(this,"setRowHeight",row,rheight); \
     } \
   void klass::setCurrentItem(FXint r,FXint c,FXbool notify){ \
-    FXRbCallVoidMethod(this,"setCurrentItem",r,c,notify); \
+    HinCallVoidMethod(this,"setCurrentItem",r,c,notify); \
     } \
   FXbool klass::selectRow(FXint row,FXbool notify){ \
-    return FXRbCallBoolMethod(this,"selectRow",row,notify); \
+    return HinCallBoolMethod(this,"selectRow",row,notify); \
     } \
   FXbool klass::selectColumn(FXint col,FXbool notify){ \
-    return FXRbCallBoolMethod(this,"selectColumn",col,notify); \
+    return HinCallBoolMethod(this,"selectColumn",col,notify); \
     } \
   FXbool klass::selectRange(FXint sr,FXint er,FXint sc,FXint ec,FXbool notify){ \
-    return FXRbCallBoolMethod(this,"selectRange",sr,er,sc,ec,notify); \
+    return HinCallBoolMethod(this,"selectRange",sr,er,sc,ec,notify); \
     } \
   FXbool klass::extendSelection(FXint r,FXint c,FXbool notify){ \
-    return FXRbCallBoolMethod(this,"extendSelection",r,c,notify); \
+    return HinCallBoolMethod(this,"extendSelection",r,c,notify); \
     } \
   FXbool klass::killSelection(FXbool notify){ \
-    return FXRbCallBoolMethod(this,"killSelection",notify); \
+    return HinCallBoolMethod(this,"killSelection",notify); \
     } \
   void klass::startInput(FXint row,FXint col){ \
-    FXRbCallVoidMethod(this,"startInput",row,col); \
+    HinCallVoidMethod(this,"startInput",row,col); \
     } \
   void klass::cancelInput(){ \
-    FXRbCallVoidMethod(this,"cancelInput"); \
+    HinCallVoidMethod(this,"cancelInput"); \
     } \
   void klass::acceptInput(FXbool notify){ \
-    FXRbCallVoidMethod(this,"acceptInput",notify); \
+    HinCallVoidMethod(this,"acceptInput",notify); \
     } \
   void klass::makePositionVisible(FXint r,FXint c){ \
-    FXRbCallVoidMethod(this,"makePositionVisible",r,c); \
+    HinCallVoidMethod(this,"makePositionVisible",r,c); \
     } \
   FXbool klass::enableItem(FXint r,FXint c){ \
-    return FXRbCallBoolMethod(this,"enableItem",r,c); \
+    return HinCallBoolMethod(this,"enableItem",r,c); \
     } \
   FXbool klass::disableItem(FXint r,FXint c){ \
-    return FXRbCallBoolMethod(this,"disableItem",r,c); \
+    return HinCallBoolMethod(this,"disableItem",r,c); \
     }
 
-class FXRbTable : public FXTable {
-  FXDECLARE(FXRbTable)
+class HinTable : public FXTable {
+  FXDECLARE(HinTable)
 protected:
-  FXRbTable(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
-#include "FXRbScrollAreaVirtuals.h"
-#include "FXRbTableVirtuals.h"
+  HinTable(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
+#include "HinScrollAreaVirtuals.h"
+#include "HinTableVirtuals.h"
 public:
   /// Make new table with nr visible rows and nc visible columns; the table
   /// is initially empty, i.e. contains no cells (nrows=0, ncols=0)
-  FXRbTable(FXComposite *p,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=0,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=DEFAULT_MARGIN,FXint pr=DEFAULT_MARGIN,FXint pt=DEFAULT_MARGIN,FXint pb=DEFAULT_MARGIN) : FXTable(p,tgt,sel,opts,x,y,w,h,pl,pr,pt,pb){}
+  HinTable(FXComposite *p,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=0,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=DEFAULT_MARGIN,FXint pr=DEFAULT_MARGIN,FXint pt=DEFAULT_MARGIN,FXint pb=DEFAULT_MARGIN) : FXTable(p,tgt,sel,opts,x,y,w,h,pl,pr,pt,pb){}
 
   // Mark dependencies for the GC
   static void markfunc(FXTable* self);
@@ -498,11 +498,11 @@ public:
   static void unregisterOwnedObjects(FXTable *pTable);
 
   // Destructor
-  virtual ~FXRbTable(){
-    FXRbTable::unregisterOwnedObjects(this);
-    FXRbUnregisterRubyObj(corner); // created by FXScrollArea; must do this here; no public accessor method for it
-    FXRbUnregisterRubyObj(cornerButton); // must do this here; no public accessor method for it
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinTable(){
+    HinTable::unregisterOwnedObjects(this);
+    HinUnregisterRubyObj(corner); // created by FXScrollArea; must do this here; no public accessor method for it
+    HinUnregisterRubyObj(cornerButton); // must do this here; no public accessor method for it
+    HinUnregisterRubyObj(this);
     }
   };
 

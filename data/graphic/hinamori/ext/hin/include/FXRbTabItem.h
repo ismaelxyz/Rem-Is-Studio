@@ -21,27 +21,27 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbTabItem.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinTabItem.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBTABITEM_H
 #define FXRBTABITEM_H
 
-class FXRbTabItem : public FXTabItem {
-  FXDECLARE(FXRbTabItem)
+class HinTabItem : public FXTabItem {
+  FXDECLARE(HinTabItem)
 protected:
-  FXRbTabItem(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
+  HinTabItem(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
 public:
   /// Construct a tab item
-  FXRbTabItem(FXTabBar* p,const FXString& text,FXIcon* ic=0,FXuint opts=TAB_TOP_NORMAL,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=DEFAULT_PAD,FXint pr=DEFAULT_PAD,FXint pt=DEFAULT_PAD,FXint pb=DEFAULT_PAD) : FXTabItem(p,text,ic,opts,x,y,w,h,pl,pr,pt,pb){}
+  HinTabItem(FXTabBar* p,const FXString& text,FXIcon* ic=0,FXuint opts=TAB_TOP_NORMAL,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=DEFAULT_PAD,FXint pr=DEFAULT_PAD,FXint pt=DEFAULT_PAD,FXint pb=DEFAULT_PAD) : FXTabItem(p,text,ic,opts,x,y,w,h,pl,pr,pt,pb){}
 
   // Destructor
-  virtual ~FXRbTabItem(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinTabItem(){
+    HinUnregisterRubyObj(this);
     }
 
   // Mark dependencies for the GC

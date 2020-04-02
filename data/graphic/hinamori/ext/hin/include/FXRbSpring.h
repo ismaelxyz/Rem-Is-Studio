@@ -21,30 +21,30 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbSpring.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinSpring.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBSPRING_H
 #define FXRBSPRING_H
 
-class FXRbSpring : public FXSpring {
-  FXDECLARE(FXRbSpring)
+class HinSpring : public FXSpring {
+  FXDECLARE(HinSpring)
 protected:
-  FXRbSpring(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
+  HinSpring(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
 public:
   /// Construct spring layout manager
-  FXRbSpring(FXComposite *p,FXuint opts=0,FXint relw=0,FXint relh=0,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=DEFAULT_SPACING,FXint pr=DEFAULT_SPACING,FXint pt=DEFAULT_SPACING,FXint pb=DEFAULT_SPACING,FXint hs=DEFAULT_SPACING,FXint vs=DEFAULT_SPACING) : FXSpring(p,opts,relw,relh,x,y,w,h,pl,pr,pt,pb,hs,vs){}
+  HinSpring(FXComposite *p,FXuint opts=0,FXint relw=0,FXint relh=0,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=DEFAULT_SPACING,FXint pr=DEFAULT_SPACING,FXint pt=DEFAULT_SPACING,FXint pb=DEFAULT_SPACING,FXint hs=DEFAULT_SPACING,FXint vs=DEFAULT_SPACING) : FXSpring(p,opts,relw,relh,x,y,w,h,pl,pr,pt,pb,hs,vs){}
 
   // Mark dependencies for the GC
   static void markfunc(FXSpring* self);
 
   // Destructor
-  virtual ~FXRbSpring(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinSpring(){
+    HinUnregisterRubyObj(this);
     }
   };
 

@@ -168,7 +168,7 @@ public:
   %extend {
     /// Construct dummy DC
     FXDC(FXApp* a){
-      return new FXRbDC(a);
+      return new HinDC(a);
       }
     }
 
@@ -187,7 +187,7 @@ public:
   %extend {
     /// Get dash pattern
     VALUE getDashPattern() const {
-      return FXRbMakeArray(self->getDashPattern(), self->getDashLength());
+      return HinMakeArray(self->getDashPattern(), self->getDashLength());
       }
     }
 

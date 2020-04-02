@@ -43,7 +43,7 @@ public:
     * Construct an empty dictionary.
     */
     FXDict(){
-      return new FXRbDict();
+      return new HinDict();
       }
     }
 

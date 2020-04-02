@@ -21,25 +21,25 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbSettings.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinSettings.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBSETTINGS_H
 #define FXRBSETTINGS_H
 
-class FXRbSettings : public FXSettings {
-  FXDECLARE(FXRbSettings)
-#include "FXRbObjectVirtuals.h"
+class HinSettings : public FXSettings {
+  FXDECLARE(HinSettings)
+#include "HinObjectVirtuals.h"
 public:
   // Constructor
-  FXRbSettings(){}
+  HinSettings(){}
 
   // Mark dependencies for the GC
   static void markfunc(FXSettings* self);
 
   // Destructor
-  virtual ~FXRbSettings(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinSettings(){
+    HinUnregisterRubyObj(this);
     }
   };
 

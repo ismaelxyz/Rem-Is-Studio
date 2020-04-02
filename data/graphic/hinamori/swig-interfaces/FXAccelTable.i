@@ -34,7 +34,7 @@ public:
   %extend {
     /// Construct empty accelerator table
     FXAccelTable(){
-      return new FXRbAccelTable();
+      return new HinAccelTable();
       }
     }
 

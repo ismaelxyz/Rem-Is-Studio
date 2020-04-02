@@ -70,7 +70,7 @@ public:
   %extend {
     /// Create a seven segment display
     FX7Segment(FXComposite* p,const FXString& text,FXuint opts=SEVENSEGMENT_NORMAL,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=DEFAULT_PAD,FXint pr=DEFAULT_PAD,FXint pt=DEFAULT_PAD,FXint pb=DEFAULT_PAD){
-      return new FXRb7Segment(p,text,opts,x,y,w,h,pl,pr,pt,pb);
+      return new Hin7Segment(p,text,opts,x,y,w,h,pl,pr,pt,pb);
       }
   }
 

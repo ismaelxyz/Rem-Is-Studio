@@ -4,7 +4,7 @@
 
 /**
  * The purpose of an unregisterOwnedObjects() function for a particular
- * class is to call FXRbUnregisterRubyObj() on any objects that this object
+ * class is to call HinUnregisterRubyObj() on any objects that this object
  * created itself, and which it "owns" and will destroy in its destructor.
  * This includes not only child widgets, like the horizontal and vertical
  * scrollbars managed by an FXScrollArea, but other non-widget objects
@@ -17,103 +17,103 @@
  *
  *     FXButton.new(parentFrame, ...)
  *
- * that Ruby object's peer is an FXRbButton instance, and the destructor for
- * the FXRbButton class calls FXRbUnregisterRubyObj(this). We only need to
+ * that Ruby object's peer is an HinButton instance, and the destructor for
+ * the HinButton class calls HinUnregisterRubyObj(this). We only need to
  * worry about the C++ objects that aren't subclasses of regular FOX classes,
  * but which have somehow been "exposed" to the Ruby layer.
  */
 
-#include "FXRbCommon.h"
+#include "HinCommon.h"
 
-void FXRbHeader::unregisterOwnedObjects(FXHeader *self)
+void HinHeader::unregisterOwnedObjects(FXHeader *self)
 {
-    // FXRbFrame::unregisterOwnedObjects(self);
-    for (FXint i = 0; i < self->getNumItems(); i++) FXRbUnregisterRubyObj(self->getItem(i));
+    // HinFrame::unregisterOwnedObjects(self);
+    for (FXint i = 0; i < self->getNumItems(); i++) HinUnregisterRubyObj(self->getItem(i));
 }
 
-void FXRbScrollArea::unregisterOwnedObjects(FXScrollArea *self)
+void HinScrollArea::unregisterOwnedObjects(FXScrollArea *self)
 {
-    // FXRbComposite::unregisterOwnedObjects(self);
-    FXRbUnregisterRubyObj(self->horizontalScrollBar());
-    FXRbUnregisterRubyObj(self->verticalScrollBar());
+    // HinComposite::unregisterOwnedObjects(self);
+    HinUnregisterRubyObj(self->horizontalScrollBar());
+    HinUnregisterRubyObj(self->verticalScrollBar());
 }
 
 /*
-void FXRbBitmapView::unregisterOwnedObjects(FXBitmapView *self)
+void HinBitmapView::unregisterOwnedObjects(FXBitmapView *self)
 {
-    FXRbScrollArea::unregisterOwnedObjects(self);
+    HinScrollArea::unregisterOwnedObjects(self);
 }
 */
 
-void FXRbFoldingList::unregisterOwnedObjects(FXFoldingList *self)
+void HinFoldingList::unregisterOwnedObjects(FXFoldingList *self)
 {
-    FXRbScrollArea::unregisterOwnedObjects(self);
-    FXRbUnregisterRubyObj(self->getHeader());
+    HinScrollArea::unregisterOwnedObjects(self);
+    HinUnregisterRubyObj(self->getHeader());
 
     // Save pointer(s) to the soon-to-be-destroyed items
     FXObjectListOf<FXFoldingItem> items;
-    FXRbFoldingList::enumerateItems(self->getFirstItem(),self->getLastItem(),items);
+    HinFoldingList::enumerateItems(self->getFirstItem(),self->getLastItem(),items);
 
     // Now zero-out pointers held by still-alive Ruby objects
-    for (FXint i = 0; i <items.no(); i++) FXRbUnregisterRubyObj(items[i]);
+    for (FXint i = 0; i <items.no(); i++) HinUnregisterRubyObj(items[i]);
 }
 
-void FXRbIconList::unregisterOwnedObjects(FXIconList *self)
+void HinIconList::unregisterOwnedObjects(FXIconList *self)
 {
-    FXRbScrollArea::unregisterOwnedObjects(self);
-    FXRbUnregisterRubyObj(self->getHeader());
-    for (FXint i = 0; i <self->getNumItems(); i++) FXRbUnregisterRubyObj(self->getItem(i));
+    HinScrollArea::unregisterOwnedObjects(self);
+    HinUnregisterRubyObj(self->getHeader());
+    for (FXint i = 0; i <self->getNumItems(); i++) HinUnregisterRubyObj(self->getItem(i));
 }
 
-void FXRbImageView::unregisterOwnedObjects(FXImageView *self)
+void HinImageView::unregisterOwnedObjects(FXImageView *self)
 {
-    FXRbScrollArea::unregisterOwnedObjects(self);
+    HinScrollArea::unregisterOwnedObjects(self);
 }
 
-void FXRbList::unregisterOwnedObjects(FXList *self)
+void HinList::unregisterOwnedObjects(FXList *self)
 {
-    FXRbScrollArea::unregisterOwnedObjects(self);
-    for (FXint i = 0; i < self->getNumItems(); i++) FXRbUnregisterRubyObj(self->getItem(i));
+    HinScrollArea::unregisterOwnedObjects(self);
+    for (FXint i = 0; i < self->getNumItems(); i++) HinUnregisterRubyObj(self->getItem(i));
 }
 
-void FXRbColorList::unregisterOwnedObjects(FXColorList *self)
+void HinColorList::unregisterOwnedObjects(FXColorList *self)
 {
-    FXRbList::unregisterOwnedObjects(self);
+    HinList::unregisterOwnedObjects(self);
 }
 
-void FXRbScrollWindow::unregisterOwnedObjects(FXScrollWindow *self)
+void HinScrollWindow::unregisterOwnedObjects(FXScrollWindow *self)
 {
-    FXRbScrollArea::unregisterOwnedObjects(self);
+    HinScrollArea::unregisterOwnedObjects(self);
 }
 
-void FXRbTable::unregisterOwnedObjects(FXTable *self)
+void HinTable::unregisterOwnedObjects(FXTable *self)
 {
     FXint r,c;
-    FXRbScrollArea::unregisterOwnedObjects(self);
-    FXRbHeader::unregisterOwnedObjects(self->getRowHeader());
-    FXRbHeader::unregisterOwnedObjects(self->getColumnHeader());
-    FXRbUnregisterRubyObj(self->getRowHeader());
-    FXRbUnregisterRubyObj(self->getColumnHeader());
+    HinScrollArea::unregisterOwnedObjects(self);
+    HinHeader::unregisterOwnedObjects(self->getRowHeader());
+    HinHeader::unregisterOwnedObjects(self->getColumnHeader());
+    HinUnregisterRubyObj(self->getRowHeader());
+    HinUnregisterRubyObj(self->getColumnHeader());
     for(r=0; r<self->getNumRows(); r++){
       for(c=0; c<self->getNumColumns(); c++){
-        FXRbUnregisterRubyObj(self->getItem(r,c));
+        HinUnregisterRubyObj(self->getItem(r,c));
         }
       }
 }
 
-void FXRbText::unregisterOwnedObjects(FXText *self)
+void HinText::unregisterOwnedObjects(FXText *self)
 {
-    FXRbScrollArea::unregisterOwnedObjects(self);
+    HinScrollArea::unregisterOwnedObjects(self);
 }
 
-void FXRbTreeList::unregisterOwnedObjects(FXTreeList *self)
+void HinTreeList::unregisterOwnedObjects(FXTreeList *self)
 {
-    FXRbScrollArea::unregisterOwnedObjects(self);
+    HinScrollArea::unregisterOwnedObjects(self);
 
     // Save pointer(s) to the soon-to-be-destroyed items
     FXObjectListOf<FXTreeItem> items;
-    FXRbTreeList::enumerateItems(self->getFirstItem(), self->getLastItem(), items);
+    HinTreeList::enumerateItems(self->getFirstItem(), self->getLastItem(), items);
 
     // Now zero-out pointers held by still-alive Ruby objects
-    for (FXint i = 0; i < items.no(); i++) FXRbUnregisterRubyObj(items[i]);
+    for (FXint i = 0; i < items.no(); i++) HinUnregisterRubyObj(items[i]);
 }

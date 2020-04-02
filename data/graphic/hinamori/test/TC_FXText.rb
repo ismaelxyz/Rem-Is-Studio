@@ -1,10 +1,10 @@
 #encoding: utf-8
 require 'test/unit'
-require 'fox16'
-require 'fox16/colors'
+require 'hin16'
+require 'hin16/colors'
 require 'testcase'
 
-SAMPLE = "The quick brown fox jumped over the lazy dog"
+SAMPLE = "The quick brown hin jumped over the lazy dog"
 
 class TC_FXText < Fox::TestCase
   include Fox

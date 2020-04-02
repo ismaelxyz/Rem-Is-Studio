@@ -21,7 +21,7 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbList.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinList.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBLIST_H
@@ -65,52 +65,52 @@ inline FXint klass ## _getHeight(const klass* self,const FXList* list){ \
 
 #define IMPLEMENT_FXLISTITEM_STUBS(cls) \
   void cls::create(){ \
-    FXRbCallVoidMethod(this,"create"); \
+    HinCallVoidMethod(this,"create"); \
     } \
   void cls::detach(){ \
-    FXRbCallVoidMethod(this,"detach"); \
+    HinCallVoidMethod(this,"detach"); \
     } \
   void cls::destroy(){ \
-    FXRbCallVoidMethod(this,"destroy"); \
+    HinCallVoidMethod(this,"destroy"); \
     } \
   void cls::setText(const FXString& txt){ \
-    FXRbCallVoidMethod(this,"setText",txt); \
+    HinCallVoidMethod(this,"setText",txt); \
     } \
   void cls::setIcon(FXIcon* icn,FXbool owned){ \
-    FXRbCallVoidMethod(this,"setIcon",icn,owned); \
+    HinCallVoidMethod(this,"setIcon",icn,owned); \
     } \
   void cls::setFocus(FXbool focus){ \
-    FXRbCallVoidMethod(this,"setFocus",focus); \
+    HinCallVoidMethod(this,"setFocus",focus); \
     } \
   void cls::setSelected(FXbool selected){ \
-    FXRbCallVoidMethod(this,"setSelected",selected); \
+    HinCallVoidMethod(this,"setSelected",selected); \
     } \
   void cls::setEnabled(FXbool enabled){ \
-    FXRbCallVoidMethod(this,"setEnabled",enabled); \
+    HinCallVoidMethod(this,"setEnabled",enabled); \
     } \
   void cls::setDraggable(FXbool draggable){ \
-    FXRbCallVoidMethod(this,"setDraggable",draggable); \
+    HinCallVoidMethod(this,"setDraggable",draggable); \
     } \
   FXint cls::getWidth(const FXList* list) const { \
-    return FXRbCallIntMethod(this,"getWidth",list); \
+    return HinCallIntMethod(this,"getWidth",list); \
     } \
   FXint cls::getHeight(const FXList* list) const { \
-    return FXRbCallIntMethod(this,"getHeight",list); \
+    return HinCallIntMethod(this,"getHeight",list); \
     }
 
 
-class FXRbListItem : public FXListItem {
-  FXDECLARE(FXRbListItem)
+class HinListItem : public FXListItem {
+  FXDECLARE(HinListItem)
 protected:
-  FXRbListItem(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbListItemVirtuals.h"
+  HinListItem(){}
+#include "HinObjectVirtuals.h"
+#include "HinListItemVirtuals.h"
 public:
   // Is this list item owned by an FXList yet?
   FXbool owned;
 public:
   // Constructor
-  FXRbListItem(const FXString& text,FXIcon* ic=NULL,void* ptr=NULL) : FXListItem(text,ic,ptr),owned(FALSE){}
+  HinListItem(const FXString& text,FXIcon* ic=NULL,void* ptr=NULL) : FXListItem(text,ic,ptr),owned(FALSE){}
 
   // Mark dependencies for the GC
   static void markfunc(FXListItem* self);
@@ -119,8 +119,8 @@ public:
   static void freefunc(FXListItem* self);
 
   // Destructor
-  virtual ~FXRbListItem(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinListItem(){
+    HinUnregisterRubyObj(this);
     }
   };
 
@@ -160,51 +160,51 @@ inline void klass ## _setCurrentItem(klass* self,FXint index,FXbool notify){ \
 
 #define IMPLEMENT_FXLIST_STUBS(cls) \
   FXbool cls::enableItem(FXint index){ \
-    return FXRbCallBoolMethod(this,"enableItem",index); \
+    return HinCallBoolMethod(this,"enableItem",index); \
     } \
   FXbool cls::disableItem(FXint index){ \
-    return FXRbCallBoolMethod(this,"disableItem",index); \
+    return HinCallBoolMethod(this,"disableItem",index); \
     } \
   void cls::makeItemVisible(FXint index) { \
-    FXRbCallVoidMethod(this,"makeItemVisible",index); \
+    HinCallVoidMethod(this,"makeItemVisible",index); \
     } \
   FXint cls::getItemAt(FXint x,FXint y) const { \
-    return FXRbCallIntMethod(this,"getItemAt",x,y); \
+    return HinCallIntMethod(this,"getItemAt",x,y); \
     } \
   FXbool cls::selectItem(FXint index,FXbool notify){ \
-    return FXRbCallBoolMethod(this,"selectItem",index,notify); \
+    return HinCallBoolMethod(this,"selectItem",index,notify); \
     } \
   FXbool cls::deselectItem(FXint index,FXbool notify){ \
-    return FXRbCallBoolMethod(this,"deselectItem",index,notify); \
+    return HinCallBoolMethod(this,"deselectItem",index,notify); \
     } \
   FXbool cls::toggleItem(FXint index,FXbool notify){ \
-    return FXRbCallBoolMethod(this,"toggleItem",index,notify); \
+    return HinCallBoolMethod(this,"toggleItem",index,notify); \
     } \
   FXbool cls::extendSelection(FXint index,FXbool notify){ \
-    return FXRbCallBoolMethod(this,"extendSelection",index,notify); \
+    return HinCallBoolMethod(this,"extendSelection",index,notify); \
     } \
   FXbool cls::killSelection(FXbool notify){ \
-    return FXRbCallBoolMethod(this,"killSelection",notify); \
+    return HinCallBoolMethod(this,"killSelection",notify); \
     } \
   void cls::setCurrentItem(FXint index,FXbool notify){ \
-    FXRbCallVoidMethod(this,"setCurrentItem",index,notify); \
+    HinCallVoidMethod(this,"setCurrentItem",index,notify); \
     }
 
 
-class FXRbList : public FXList {
-  FXDECLARE(FXRbList)
+class HinList : public FXList {
+  FXDECLARE(HinList)
 protected:
-  FXRbList(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
-#include "FXRbScrollAreaVirtuals.h"
-#include "FXRbListVirtuals.h"
+  HinList(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
+#include "HinScrollAreaVirtuals.h"
+#include "HinListVirtuals.h"
 public:
   /// Construct a list with initially no items in it
-  FXRbList(FXComposite *p,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=LIST_NORMAL,FXint x=0,FXint y=0,FXint w=0,FXint h=0) : FXList(p,tgt,sel,opts,x,y,w,h){
-    setSortFunc(FXRbList::sortFunc);
+  HinList(FXComposite *p,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=LIST_NORMAL,FXint x=0,FXint y=0,FXint w=0,FXint h=0) : FXList(p,tgt,sel,opts,x,y,w,h){
+    setSortFunc(HinList::sortFunc);
     }
 
   // Sort function stand-in
@@ -217,9 +217,9 @@ public:
   static void unregisterOwnedObjects(FXList *pList);
 
   // Destructor
-  virtual ~FXRbList(){
-    FXRbList::unregisterOwnedObjects(this);
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinList(){
+    HinList::unregisterOwnedObjects(this);
+    HinUnregisterRubyObj(this);
     }
   };
 

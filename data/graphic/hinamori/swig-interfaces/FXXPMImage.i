@@ -38,7 +38,7 @@ public:
   /// Construct image from compiled-in X Pixmap format
   %extend {
     FXXPMImage(FXApp* a,const FXchar **pix=NULL,FXuint opts=0,FXint w=1,FXint h=1){
-      return new FXRbXPMImage(a,pix,opts,w,h);
+      return new HinXPMImage(a,pix,opts,w,h);
       }
     }
 

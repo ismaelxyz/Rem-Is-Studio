@@ -68,7 +68,7 @@ public:
   %extend {
     /// Construct arrow button
     FXArrowButton(FXComposite* p,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=ARROW_NORMAL,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=DEFAULT_PAD,FXint pr=DEFAULT_PAD,FXint pt=DEFAULT_PAD,FXint pb=DEFAULT_PAD){
-      return new FXRbArrowButton(p,tgt,sel,opts,x,y,w,h,pl,pr,pt,pb);
+      return new HinArrowButton(p,tgt,sel,opts,x,y,w,h,pl,pr,pt,pb);
       }
     }
 

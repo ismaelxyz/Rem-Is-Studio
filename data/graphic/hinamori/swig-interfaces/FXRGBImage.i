@@ -38,7 +38,7 @@ public:
   /// Construct image from memory stream formatted in IRIS-RGB format
   %extend {
     FXRGBImage(FXApp* a,const void *pix=NULL,FXuint opts=0,FXint w=1,FXint h=1){
-      return new FXRbRGBImage(a,pix,opts,w,h);
+      return new HinRGBImage(a,pix,opts,w,h);
       }
     }
 

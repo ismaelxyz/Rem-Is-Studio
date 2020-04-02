@@ -49,7 +49,7 @@ public:
   %extend {
     /// Construct a tool tip
     FXToolTip(FXApp* a,FXuint opts=TOOLTIP_NORMAL,FXint x=0,FXint y=0,FXint w=0,FXint h=0){
-      return new FXRbToolTip(a,opts,x,y,w,h);
+      return new HinToolTip(a,opts,x,y,w,h);
       }
     }
 

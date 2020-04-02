@@ -4,7 +4,7 @@ require 'date'
 require 'rake/extensiontask'
 require 'bundler'
 require 'bundler/gem_helper'
-require './lib/fox16/version.rb'
+require './lib/hin16/version.rb'
 
 
 class FoxGemHelper < Bundler::GemHelper
@@ -74,9 +74,9 @@ LIBFXSCINTILLA_VERSION            = ENV['LIBFXSCINTILLA_VERSION'] || '2.28.0'
 LIBFXSCINTILLA_SOURCE_URI         = "http://download.savannah.gnu.org/releases/fxscintilla/fxscintilla-#{LIBFXSCINTILLA_VERSION}.tar.gz"
 
 SWIG = (RUBY_PLATFORM =~ /mingw/) ? "swig.exe" : "swig"
-SWIGFLAGS = "-c++ -ruby -nodefaultdtor -nodefaultctor -w302 -features compactdefaultargs -I../fox-includes"
+SWIGFLAGS = "-c++ -ruby -nodefaultdtor -nodefaultctor -w302 -features compactdefaultargs -I../hin-includes"
 
-CLEAN.include( ".config", "ext/fox16_c/Makefile", "ext/fox16_c/*.o", "ext/fox16_c/*.bundle", "ext/fox16_c/mkmf.log", "ext/fox16_c/conftest.dSYM", "ext/fox16_c/swigruby.h*", "ext/fox16_c/librb.c", "ext/fox16_c/include/inlinestubs.h", "ext/fox16_c/*_wrap.cpp", "tmp", "ports/*.installed", "ports/*mingw32*" )
+CLEAN.include( ".config", "ext/hin16_c/Makefile", "ext/hin16_c/*.o", "ext/hin16_c/*.bundle", "ext/hin16_c/mkmf.log", "ext/hin16_c/conftest.dSYM", "ext/hin16_c/swigruby.h*", "ext/hin16_c/librb.c", "ext/hin16_c/include/inlinestubs.h", "ext/hin16_c/*_wrap.cpp", "tmp", "ports/*.installed", "ports/*mingw32*" )
 
 CLOBBER.include( "pkg" )
 
@@ -85,12 +85,12 @@ task :test => [:compile] do
   sh "ruby -w -W2 -Ilib test/TS_All.rb -v"
 end
 
-task :gem => ["ext/fox16_c/extconf.rb", "fxruby:configure", :build]
+task :gem => ["ext/hin16_c/extconf.rb", "fxruby:configure", :build]
 
 
 gem_spec = Bundler.load_gemspec('fxruby.gemspec')
 
-ext_task = Rake::ExtensionTask.new("fox16_c", gem_spec) do |ext|
+ext_task = Rake::ExtensionTask.new("hin16_c", gem_spec) do |ext|
   ext.cross_compile = true
   ext.cross_platform = ['x86-mingw32', 'x64-mingw32']
   # Enable FXTRACE and FXASSERT for 'rake compile'
@@ -104,7 +104,7 @@ ext_task = Rake::ExtensionTask.new("fox16_c", gem_spec) do |ext|
 
   # Add dependent DLLs to the cross gems
   ext.cross_compiling do |spec|
-    # The fat binary gem doesn't depend on the fox package, since it bundles the libraries.
+    # The fat binary gem doesn't depend on the hin package, since it bundles the libraries.
     spec.metadata.delete('msys2_mingw_dependencies')
 
     platform_host_map =  {
@@ -241,13 +241,13 @@ namespace :swig do
     add_with_fxscintilla_cond(wrapper_src_file_name) if ["scintilla_wrap.cpp"].include?(File.basename(wrapper_src_file_name))
   end
 
-  task :swigruby_h => ["ext/fox16_c/swigruby.h"]
-  file "ext/fox16_c/swigruby.h.orig" do |task|
+  task :swigruby_h => ["ext/hin16_c/swigruby.h"]
+  file "ext/hin16_c/swigruby.h.orig" do |task|
     puts "generate #{task.name}"
     system "#{SWIG} -ruby -external-runtime #{task.name}"
   end
 
-  file "ext/fox16_c/swigruby.h"=>["ext/fox16_c/swigruby.h.orig"] do |task|
+  file "ext/hin16_c/swigruby.h"=>["ext/hin16_c/swigruby.h.orig"] do |task|
     puts "generate #{task.name}"
     text = File.read(task.prerequisites[0])
     text = patch_swigruby(text)
@@ -255,12 +255,12 @@ namespace :swig do
   end
 
   desc "Run SWIG to generate the wrapper files."
-  multitask :swig => [:swigruby_h] + SWIG_MODULES.map{|ifile, cppfile| File.join("ext/fox16_c", cppfile) }
+  multitask :swig => [:swigruby_h] + SWIG_MODULES.map{|ifile, cppfile| File.join("ext/hin16_c", cppfile) }
 end
 
 # add dependencies for compile *.i to *_wrap.cpp
 SWIG_MODULES.each do |ifile, cppfile|
-  cppfile_path = File.join("ext/fox16_c", cppfile)
+  cppfile_path = File.join("ext/hin16_c", cppfile)
 
   file cppfile_path => [ifile, 'macros.i', 'common.i', 'fxdefs.i', 'ruby-typemaps.i',
                         'markfuncs.i', 'exceptions.i', 'freefuncs.i', 'macros.i', 'handlers.i'
@@ -302,20 +302,20 @@ namespace :fxruby do
   end
 
   def make_impl
-    ruby '-Cext/fox16_c', "make_impl.rb"
+    ruby '-Cext/hin16_c', "make_impl.rb"
   end
 
   task :configure => [:scintilla, :setversions, :generate_kwargs_lib]
 
   rb_header_files = Dir['ext/include/*.h']
-  file 'ext/fox16_c/include/inlinestubs.h' => rb_header_files do
+  file 'ext/hin16_c/include/inlinestubs.h' => rb_header_files do
     make_impl
   end
-  file 'ext/fox16_c/impl.cpp' => rb_header_files do
+  file 'ext/hin16_c/impl.cpp' => rb_header_files do
     make_impl
   end
 
-  file "ext/fox16_c/extconf.rb" => ['ext/fox16_c/impl.cpp', 'ext/fox16_c/include/inlinestubs.h', 'swig:swig']
+  file "ext/hin16_c/extconf.rb" => ['ext/hin16_c/impl.cpp', 'ext/hin16_c/include/inlinestubs.h', 'swig:swig']
 
 
   directory "ports/archives"
@@ -330,13 +330,13 @@ namespace :fxruby do
     end
   end
 
-  task :scintilla => 'lib/fox16/scintilla.rb'
-  file 'lib/fox16/scintilla.rb' => ["tmp/fxscintilla/fxscintilla-2.28.0/include/Scintilla.iface", 'scripts/iface.rb'] do
-    ruby "scripts/iface.rb -i tmp/fxscintilla/fxscintilla-2.28.0/include/Scintilla.iface -o lib/fox16/scintilla.rb"
+  task :scintilla => 'lib/hin16/scintilla.rb'
+  file 'lib/hin16/scintilla.rb' => ["tmp/fxscintilla/fxscintilla-2.28.0/include/Scintilla.iface", 'scripts/iface.rb'] do
+    ruby "scripts/iface.rb -i tmp/fxscintilla/fxscintilla-2.28.0/include/Scintilla.iface -o lib/hin16/scintilla.rb"
   end
 
-  task :generate_kwargs_lib => 'lib/fox16/kwargs.rb'
-  file 'lib/fox16/kwargs.rb' => ['scripts/generate_kwargs_lib.rb'] + Dir.glob('rdoc-sources/*.rb') do
+  task :generate_kwargs_lib => 'lib/hin16/kwargs.rb'
+  file 'lib/hin16/kwargs.rb' => ['scripts/generate_kwargs_lib.rb'] + Dir.glob('rdoc-sources/*.rb') do
     ruby 'scripts/generate_kwargs_lib.rb'
   end
 end

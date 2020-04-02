@@ -21,27 +21,27 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbMenuCascade.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinMenuCascade.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBMENUCASCADE_H
 #define FXRBMENUCASCADE_H
 
-class FXRbMenuCascade : public FXMenuCascade {
-  FXDECLARE(FXRbMenuCascade)
+class HinMenuCascade : public FXMenuCascade {
+  FXDECLARE(HinMenuCascade)
 protected:
-  FXRbMenuCascade(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
+  HinMenuCascade(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
 public:
   /// Constructor
-  FXRbMenuCascade(FXComposite* p,const FXString& text,FXIcon* ic=NULL,FXPopup* pup=NULL,FXuint opts=0) : FXMenuCascade(p,text,ic,pup,opts){}
+  HinMenuCascade(FXComposite* p,const FXString& text,FXIcon* ic=NULL,FXPopup* pup=NULL,FXuint opts=0) : FXMenuCascade(p,text,ic,pup,opts){}
 
   // Destructor
-  virtual ~FXRbMenuCascade(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinMenuCascade(){
+    HinUnregisterRubyObj(this);
     }
 
   // Mark dependencies for the GC

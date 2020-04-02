@@ -21,30 +21,30 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbKnob.h 2294 2005-12-07 10:15:59Z lyle $
+ * $Id: HinKnob.h 2294 2005-12-07 10:15:59Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBKNOB_H
 #define FXRBKNOB_H
 
-class FXRbKnob : public FXKnob {
-  FXDECLARE(FXRbKnob)
+class HinKnob : public FXKnob {
+  FXDECLARE(HinKnob)
 protected:
-  FXRbKnob(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
+  HinKnob(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
 public:
   /// Construct frame window
-  FXRbKnob(FXComposite* p,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=KNOB_NORMAL,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=DEFAULT_PAD,FXint pr=DEFAULT_PAD,FXint pt=DEFAULT_PAD,FXint pb=DEFAULT_PAD) : FXKnob(p,tgt,sel,opts,x,y,w,h,pl,pr,pt,pb){}
+  HinKnob(FXComposite* p,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=KNOB_NORMAL,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=DEFAULT_PAD,FXint pr=DEFAULT_PAD,FXint pt=DEFAULT_PAD,FXint pb=DEFAULT_PAD) : FXKnob(p,tgt,sel,opts,x,y,w,h,pl,pr,pt,pb){}
 
   // Mark dependencies for the GC
   static void markfunc(FXKnob* knob);
 
   // Destructor
-  virtual ~FXRbKnob(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinKnob(){
+    HinUnregisterRubyObj(this);
     }
   };
 

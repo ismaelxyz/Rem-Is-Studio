@@ -21,7 +21,7 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbFont.h 2372 2006-04-20 00:38:08Z lyle $
+ * $Id: HinFont.h 2372 2006-04-20 00:38:08Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBFONT_H
@@ -85,85 +85,85 @@ inline FXint klass ## _getTextHeight(const klass* self,const FXString& str){ \
 
 #define IMPLEMENT_FXFONT_STUBS(cls) \
   void cls::setFontDesc(const FXFontDesc& desc) { \
-    FXRbCallVoidMethod(this,"setFontDesc",desc); \
+    HinCallVoidMethod(this,"setFontDesc",desc); \
     } \
   void cls::setAngle(FXint ang) { \
-    FXRbCallVoidMethod(this,"setAngle",ang); \
+    HinCallVoidMethod(this,"setAngle",ang); \
     } \
   void cls::setFont(const FXString& string) { \
-    FXRbCallVoidMethod(this,"setFont",string); \
+    HinCallVoidMethod(this,"setFont",string); \
     } \
   FXbool cls::isFontMono() const { \
-    return FXRbCallBoolMethod(this,"isFontMono"); \
+    return HinCallBoolMethod(this,"isFontMono"); \
     } \
   FXbool cls::hasChar(FXwchar ch) const { \
-    return FXRbCallBoolMethod(this,"hasChar",ch); \
+    return HinCallBoolMethod(this,"hasChar",ch); \
     } \
   FXwchar cls::getMinChar() const { \
-    return FXRbCallWCharMethod(this,"getMinChar"); \
+    return HinCallWCharMethod(this,"getMinChar"); \
     } \
   FXwchar cls::getMaxChar() const { \
-    return FXRbCallWCharMethod(this,"getMaxChar"); \
+    return HinCallWCharMethod(this,"getMaxChar"); \
     } \
   FXint cls::leftBearing(FXwchar ch) const { \
-    return FXRbCallIntMethod(this,"leftBearing",ch); \
+    return HinCallIntMethod(this,"leftBearing",ch); \
     } \
   FXint cls::rightBearing(FXwchar ch) const { \
-    return FXRbCallIntMethod(this,"rightBearing",ch); \
+    return HinCallIntMethod(this,"rightBearing",ch); \
     } \
   FXint cls::getFontWidth() const { \
-    return FXRbCallIntMethod(this,"getFontWidth"); \
+    return HinCallIntMethod(this,"getFontWidth"); \
     } \
   FXint cls::getFontHeight() const { \
-    return FXRbCallIntMethod(this,"getFontHeight"); \
+    return HinCallIntMethod(this,"getFontHeight"); \
     } \
   FXint cls::getFontAscent() const { \
-    return FXRbCallIntMethod(this,"getFontAscent"); \
+    return HinCallIntMethod(this,"getFontAscent"); \
     } \
   FXint cls::getFontDescent() const { \
-    return FXRbCallIntMethod(this,"getFontDescent"); \
+    return HinCallIntMethod(this,"getFontDescent"); \
     } \
   FXint cls::getFontLeading() const { \
-    return FXRbCallIntMethod(this,"getFontLeading"); \
+    return HinCallIntMethod(this,"getFontLeading"); \
     } \
   FXint cls::getFontSpacing() const { \
-    return FXRbCallIntMethod(this,"getFontSpacing"); \
+    return HinCallIntMethod(this,"getFontSpacing"); \
     } \
   FXint cls::getCharWidth(FXwchar ch) const { \
-    return FXRbCallIntMethod(this,"getCharWidth",ch); \
+    return HinCallIntMethod(this,"getCharWidth",ch); \
     } \
   FXint cls::getTextWidth(const FXString& str) const { \
-    return FXRbCallIntMethod(this,"getTextWidth",str); \
+    return HinCallIntMethod(this,"getTextWidth",str); \
     } \
   FXint cls::getTextHeight(const FXString& str) const { \
-    return FXRbCallIntMethod(this,"getTextHeight",str); \
+    return HinCallIntMethod(this,"getTextHeight",str); \
     }
 
-class FXRbFont : public FXFont {
-  FXDECLARE(FXRbFont)
+class HinFont : public FXFont {
+  FXDECLARE(HinFont)
 protected:
-  FXRbFont(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbFontVirtuals.h"
+  HinFont(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinFontVirtuals.h"
 public:
   // Is this font owned by the FXApp?
   FXbool ownedByApp;
 
 public:
   /// Construct font from font description
-  FXRbFont(FXApp* a,const FXFontDesc& fontdesc) : FXFont(a,fontdesc),ownedByApp(FALSE){
-    FXRbRegisterAppSensitiveObject(this);
+  HinFont(FXApp* a,const FXFontDesc& fontdesc) : FXFont(a,fontdesc),ownedByApp(FALSE){
+    HinRegisterAppSensitiveObject(this);
     }
 
   /// Construct a font with given face name, size in points(pixels), weight, slant, character set encoding, setwidth, and hints
-  FXRbFont(FXApp* a,const FXString& face,FXuint sz,FXuint wt=FXFont::Normal,FXuint sl=FXFont::Straight,FXuint enc=FONTENCODING_DEFAULT,FXuint setw=FXFont::NonExpanded,FXuint h=0) : FXFont(a,face,sz,wt,sl,enc,setw,h),ownedByApp(FALSE){
-    FXRbRegisterAppSensitiveObject(this);
+  HinFont(FXApp* a,const FXString& face,FXuint sz,FXuint wt=FXFont::Normal,FXuint sl=FXFont::Straight,FXuint enc=FONTENCODING_DEFAULT,FXuint setw=FXFont::NonExpanded,FXuint h=0) : FXFont(a,face,sz,wt,sl,enc,setw,h),ownedByApp(FALSE){
+    HinRegisterAppSensitiveObject(this);
     }
 
   /// Construct a font with given X11 font string
-  FXRbFont(FXApp* a,const FXString& nm) : FXFont(a,nm),ownedByApp(FALSE){
-    FXRbRegisterAppSensitiveObject(this);
+  HinFont(FXApp* a,const FXString& nm) : FXFont(a,nm),ownedByApp(FALSE){
+    HinRegisterAppSensitiveObject(this);
     }
 
   // Mark dependencies for the GC
@@ -173,10 +173,10 @@ public:
   static void freefunc(FXFont* self);
 
   // Destructor
-  virtual ~FXRbFont(){
-    FXTRACE((100,"FXRbFont::~FXRbFont() %p\n",this));
-    FXRbUnregisterRubyObj(this);
-    FXRbUnregisterAppSensitiveObject(this);
+  virtual ~HinFont(){
+    FXTRACE((100,"HinFont::~HinFont() %p\n",this));
+    HinUnregisterRubyObj(this);
+    HinUnregisterAppSensitiveObject(this);
     }
   };
 

@@ -42,12 +42,12 @@ public:
   %extend {
     /// Construct choice box with given caption, icon, message text, and with choices from array of strings
     FXChoiceBox(FXWindow* owner,const FXString& caption,const FXString& text,FXIcon* icon,const FXchar** choices,FXuint opts=0,FXint x=0,FXint y=0,FXint w=0,FXint h=0){
-      return new FXRbChoiceBox(owner,caption,text,icon,choices,opts,x,y,w,h);
+      return new HinChoiceBox(owner,caption,text,icon,choices,opts,x,y,w,h);
       }
 
     /// Construct free floating choice box with given caption, icon, message text, and with choices from array of strings
     FXChoiceBox(FXApp* app,const FXString& caption,const FXString& text,FXIcon* icon,const FXchar** choices,FXuint opts=0,FXint x=0,FXint y=0,FXint w=0,FXint h=0){
-      return new FXRbChoiceBox(app,caption,text,icon,choices,opts,x,y,w,h);
+      return new HinChoiceBox(app,caption,text,icon,choices,opts,x,y,w,h);
       }
   }
 

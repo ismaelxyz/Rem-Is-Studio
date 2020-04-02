@@ -66,7 +66,7 @@ public:
   /// Construct search and replace dialog box
   %extend {
     FXReplaceDialog(FXWindow* owner,const FXString& caption,FXIcon* ic=NULL,FXuint opts=0,FXint x=0,FXint y=0,FXint w=0,FXint h=0){
-      return new FXRbReplaceDialog(owner,caption,ic,opts,x,y,w,h);
+      return new HinReplaceDialog(owner,caption,ic,opts,x,y,w,h);
       }
     }
 

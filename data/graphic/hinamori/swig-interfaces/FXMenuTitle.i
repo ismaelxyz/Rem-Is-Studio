@@ -48,7 +48,7 @@ public:
   %extend {
     /// Constructor
     FXMenuTitle(FXComposite* p,const FXString& text,FXIcon* ic=NULL,FXPopup* pup=NULL,FXuint opts=0){
-      return new FXRbMenuTitle(p,text,ic,pup,opts);
+      return new HinMenuTitle(p,text,ic,pup,opts);
       }
     }
 

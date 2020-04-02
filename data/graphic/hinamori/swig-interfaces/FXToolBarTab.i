@@ -61,7 +61,7 @@ public:
   %extend {
    /// Construct toolbar tab
    FXToolBarTab(FXComposite* p,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=FRAME_RAISED,FXint x=0,FXint y=0,FXint w=0,FXint h=0){
-     return new FXRbToolBarTab(p,tgt,sel,opts,x,y,w,h);
+     return new HinToolBarTab(p,tgt,sel,opts,x,y,w,h);
      }
    }
 

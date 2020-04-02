@@ -1,17 +1,17 @@
 SOURCES = *.rb \
-        ../lib/fox/calendar.rb \
-        ../lib/fox/chore.rb \
-        ../lib/fox/core.rb \
-        ../lib/fox/glgroup.rb \
-        ../lib/fox/glshapes.rb \
-        ../lib/fox/input.rb \
-        ../lib/fox/iterators.rb \
-        ../lib/fox/responder2.rb \
-        ../lib/fox/scintilla.rb \
-        ../lib/fox/signal.rb \
-        ../lib/fox/timeout.rb \
-        ../lib/fox/undolist.rb \
-        ../lib/fox/version.rb
+        ../lib/hin/calendar.rb \
+        ../lib/hin/chore.rb \
+        ../lib/hin/core.rb \
+        ../lib/hin/glgroup.rb \
+        ../lib/hin/glshapes.rb \
+        ../lib/hin/input.rb \
+        ../lib/hin/iterators.rb \
+        ../lib/hin/responder2.rb \
+        ../lib/hin/scintilla.rb \
+        ../lib/hin/signal.rb \
+        ../lib/hin/timeout.rb \
+        ../lib/hin/undolist.rb \
+        ../lib/hin/version.rb
 
 rdoc:
  @rdoc --op ../doc/api --main README.rdoc $(SOURCES) README.rdoc

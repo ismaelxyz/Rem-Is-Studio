@@ -21,30 +21,30 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbFileSelector.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinFileSelector.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBFILESELECTOR_H
 #define FXRBFILESELECTOR_H
 
-class FXRbFileSelector : public FXFileSelector {
-  FXDECLARE(FXRbFileSelector)
+class HinFileSelector : public FXFileSelector {
+  FXDECLARE(HinFileSelector)
 protected:
-  FXRbFileSelector(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
+  HinFileSelector(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
 public:
   /// Constructor
-  FXRbFileSelector(FXComposite *p,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=0,FXint x=0,FXint y=0,FXint w=0,FXint h=0) : FXFileSelector(p,tgt,sel,opts,x,y,w,h){}
+  HinFileSelector(FXComposite *p,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=0,FXint x=0,FXint y=0,FXint w=0,FXint h=0) : FXFileSelector(p,tgt,sel,opts,x,y,w,h){}
 
   // Mark dependencies for the GC
   static void markfunc(FXFileSelector* self);
 
   // Destructor
-  virtual ~FXRbFileSelector(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinFileSelector(){
+    HinUnregisterRubyObj(this);
     }
   };
 

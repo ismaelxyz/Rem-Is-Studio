@@ -21,30 +21,30 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbDragCorner.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinDragCorner.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBDRAGCORNER_H
 #define FXRBDRAGCORNER_H
 
-class FXRbDragCorner : public FXDragCorner {
-  FXDECLARE(FXRbDragCorner)
+class HinDragCorner : public FXDragCorner {
+  FXDECLARE(HinDragCorner)
 protected:
-  FXRbDragCorner(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
+  HinDragCorner(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
 public:
   /// Construct a drag corner
-  FXRbDragCorner(FXComposite* p) : FXDragCorner(p){}
+  HinDragCorner(FXComposite* p) : FXDragCorner(p){}
 
   // Mark dependencies for the GC
   static void markfunc(FXDragCorner* self);
 
   // Destructor
-  virtual ~FXRbDragCorner(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinDragCorner(){
+    HinUnregisterRubyObj(this);
     }
   };
 

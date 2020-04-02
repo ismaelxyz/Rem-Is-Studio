@@ -1,6 +1,6 @@
 require 'test/unit'
 
-require 'fox16'
+require 'hin16'
 
 class TC_FXVec2d < Test::Unit::TestCase
   include Fox
@@ -89,7 +89,7 @@ class TC_FXVec2d < Test::Unit::TestCase
     }
   end
 
-  # As of fox-1.1.28, the length() function for FXVec2d is using the
+  # As of hin-1.1.28, the length() function for FXVec2d is using the
   # single-precision version of sqrtf() instead of the double-precision
   # sqrt() in its calculation. Let this test continue to fail until
   # that fix is made to FOX.

@@ -21,33 +21,33 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbICOImage.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinICOImage.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBICOIMAGE_H
 #define FXRBICOIMAGE_H
 
-class FXRbICOImage : public FXICOImage {
-  FXDECLARE(FXRbICOImage)
+class HinICOImage : public FXICOImage {
+  FXDECLARE(HinICOImage)
 protected:
-  FXRbICOImage(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbImageVirtuals.h"
+  HinICOImage(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinImageVirtuals.h"
 public:
   /// Construct an image from memory stream formatted as Windows ICO format
-  FXRbICOImage(FXApp* a,const void *pix=NULL,FXuint opts=0,FXint w=1,FXint h=1) : FXICOImage(a,pix,opts,w,h){
-    FXRbRegisterAppSensitiveObject(this);
+  HinICOImage(FXApp* a,const void *pix=NULL,FXuint opts=0,FXint w=1,FXint h=1) : FXICOImage(a,pix,opts,w,h){
+    HinRegisterAppSensitiveObject(this);
     }
 
   // Mark dependencies for the GC
   static void markfunc(FXICOImage* self);
 
   // Destructor
-  virtual ~FXRbICOImage(){
-    FXRbUnregisterRubyObj(this);
-    FXRbUnregisterAppSensitiveObject(this);
+  virtual ~HinICOImage(){
+    HinUnregisterRubyObj(this);
+    HinUnregisterAppSensitiveObject(this);
     }
   };
 

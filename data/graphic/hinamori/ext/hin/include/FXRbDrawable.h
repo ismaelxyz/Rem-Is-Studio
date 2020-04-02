@@ -21,7 +21,7 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbDrawable.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinDrawable.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBDRAWABLE_H
@@ -35,29 +35,29 @@ inline void klass ## _resize(klass* self,FXint w,FXint h){ \
 
 #define IMPLEMENT_FXDRAWABLE_STUBS(cls) \
   void cls::resize(FXint w,FXint h){ \
-    FXRbCallVoidMethod(this, "resize", w, h); \
+    HinCallVoidMethod(this, "resize", w, h); \
     }
 
 
-class FXRbDrawable : public FXDrawable {
-  FXDECLARE(FXRbDrawable)
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
+class HinDrawable : public FXDrawable {
+  FXDECLARE(HinDrawable)
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
 protected:
   // Default constructor
-  FXRbDrawable(){}
+  HinDrawable(){}
 
 public:
   // Construct with specified width and height
-  FXRbDrawable(FXApp* a,FXint w,FXint h) : FXDrawable(a,w,h){}
+  HinDrawable(FXApp* a,FXint w,FXint h) : FXDrawable(a,w,h){}
 
   // Mark dependencies for the GC
   static void markfunc(FXDrawable* drawable);
 
   // Destructor
-  virtual ~FXRbDrawable(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinDrawable(){
+    HinUnregisterRubyObj(this);
     }
   };
 

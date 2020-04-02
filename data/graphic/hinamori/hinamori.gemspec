@@ -1,7 +1,7 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'fox16/version'
+require 'hin16/version'
 
 SWIG_MODULES = {
   "core.i" => "core_wrap.cpp",
@@ -35,19 +35,19 @@ Gem::Specification.new do |spec|
   spec.license       = 'LGPL-2.1'
 
   spec.files         = `git ls-files -z`.split("\x0").reject do |f|
-    f=~/^fox-includes|^web/
+    f=~/^hin-includes|^web/
   end
-  spec.files += SWIG_MODULES.values.map{|f| File.join("ext/fox16_c", f) }
-  spec.files << 'ext/fox16_c/include/inlinestubs.h'
-  spec.files << 'ext/fox16_c/swigruby.h'
+  spec.files += SWIG_MODULES.values.map{|f| File.join("ext/hin16_c", f) }
+  spec.files << 'ext/hin16_c/include/inlinestubs.h'
+  spec.files << 'ext/hin16_c/swigruby.h'
   spec.files << 'doap.rdf'
-  spec.files << 'lib/fox16/kwargs.rb'
+  spec.files << 'lib/hin16/kwargs.rb'
 
   spec.bindir = "exe"
   spec.executables = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
-  spec.extensions = ["ext/fox16_c/extconf.rb"]
-  spec.metadata['msys2_mingw_dependencies'] = 'fox'
+  spec.extensions = ["ext/hin16_c/extconf.rb"]
+  spec.metadata['msys2_mingw_dependencies'] = 'hin'
   spec.required_ruby_version = "~> 2.2"
 
   spec.add_runtime_dependency 'mini_portile2', '~> 2.1'

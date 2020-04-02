@@ -21,27 +21,27 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbStatusLine.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinStatusLine.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBSTATUSLINE_H
 #define FXRBSTATUSLINE_H
 
-class FXRbStatusLine : public FXStatusLine {
-  FXDECLARE(FXRbStatusLine)
+class HinStatusLine : public FXStatusLine {
+  FXDECLARE(HinStatusLine)
 protected:
-  FXRbStatusLine(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
+  HinStatusLine(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
 public:
   /// Constructor
-  FXRbStatusLine(FXComposite* p,FXObject* tgt=NULL,FXSelector sel=0) : FXStatusLine(p,tgt,sel){}
+  HinStatusLine(FXComposite* p,FXObject* tgt=NULL,FXSelector sel=0) : FXStatusLine(p,tgt,sel){}
 
   // Destructor
-  virtual ~FXRbStatusLine(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinStatusLine(){
+    HinUnregisterRubyObj(this);
     }
 
   // Mark dependencies for the GC

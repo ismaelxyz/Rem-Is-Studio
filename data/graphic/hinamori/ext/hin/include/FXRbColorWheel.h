@@ -21,30 +21,30 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRbColorWheel.h 2190 2005-08-24 07:58:47Z lyle $
+ * $Id: HinColorWheel.h 2190 2005-08-24 07:58:47Z lyle $
  ***********************************************************************/
 
 #ifndef FXRBCOLORWHEEL_H
 #define FXRBCOLORWHEEL_H
 
-class FXRbColorWheel : public FXColorWheel {
-  FXDECLARE(FXRbColorWheel)
+class HinColorWheel : public FXColorWheel {
+  FXDECLARE(HinColorWheel)
 protected:
-  FXRbColorWheel(){}
-#include "FXRbObjectVirtuals.h"
-#include "FXRbIdVirtuals.h"
-#include "FXRbDrawableVirtuals.h"
-#include "FXRbWindowVirtuals.h"
+  HinColorWheel(){}
+#include "HinObjectVirtuals.h"
+#include "HinIdVirtuals.h"
+#include "HinDrawableVirtuals.h"
+#include "HinWindowVirtuals.h"
 public:
   /// Constructor
-  FXRbColorWheel(FXComposite* p,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=FRAME_NORMAL,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=DEFAULT_PAD,FXint pr=DEFAULT_PAD,FXint pt=DEFAULT_PAD,FXint pb=DEFAULT_PAD) : FXColorWheel(p,tgt,sel,opts,x,y,w,h,pl,pr,pt,pb){}
+  HinColorWheel(FXComposite* p,FXObject* tgt=NULL,FXSelector sel=0,FXuint opts=FRAME_NORMAL,FXint x=0,FXint y=0,FXint w=0,FXint h=0,FXint pl=DEFAULT_PAD,FXint pr=DEFAULT_PAD,FXint pt=DEFAULT_PAD,FXint pb=DEFAULT_PAD) : FXColorWheel(p,tgt,sel,opts,x,y,w,h,pl,pr,pt,pb){}
 
   // Mark dependencies for the GC
   static void markfunc(FXColorWheel* colorWheel);
 
   // Destructor
-  virtual ~FXRbColorWheel(){
-    FXRbUnregisterRubyObj(this);
+  virtual ~HinColorWheel(){
+    HinUnregisterRubyObj(this);
     }
   };
 
