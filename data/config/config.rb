@@ -3,6 +3,8 @@
 
 require_relative '../utilities/utilities'
 
+class Idiom
+end
 
 class Config
     attr_reader :data_config_app, :data_config_user
@@ -11,10 +13,10 @@ class Config
         @data_config_app = {}
         @data_config_user = {}
         
-
         # @info_user: Internal Use Only, not doc.
-        @info_user = {'Name' => nil, 'Language' => 'en', 'ActivateLog' =>nil,
-                      'Update' => nil, 'ReportError' => nil, 'Mode' => nil}
+        @info_user = {'Name' => `whoami`.split('\\')[1], 'Language' => 'en',
+                      'ActivateLog' =>nil, 'Update' => nil, 'ReportError' => nil,
+                      'Mode' => nil}
     end
 
     def load_all()
@@ -54,9 +56,8 @@ class Config
     def load_default_config_user()
         # Force, load config User and sync data
         # fc = file of config
-        force_path("#{@data_config_user['DirConfig']}/config.yaml" => 'f')
-        data = read_yaml("#{@data_config_user['DirConfig']}/config.yaml")
-        @info_user['Name'] = data['Name'] || @data_config_user['Name'] 
+        force_path("#{@data_config_user['DirConfig']}/config.yml" => 'f')
+        data = read_yaml("#{@data_config_user['DirConfig']}/config.yml")
 
         @info_user.each{|info|
             @data_config_user[info[0]] = info[1]
@@ -65,7 +66,7 @@ class Config
     end
 
     def load_default_config_app()
-        @data_config_app.update(read_yaml("#{@data_config_app['DirConfig']}/config.yaml"))
+        @data_config_app.update(read_yaml("#{@data_config_app['DirConfig']}/config.yml"))
     end
 
     def load_dir_run()
@@ -75,8 +76,8 @@ class Config
 
     def edit_config(data, command)
         command = {
-            'u' => "#{@data_config_user['DirConfig']}/config.yaml",
-            'a' => "#{@data_config_app['DirConfig']}/config.yaml"
+            'u' => "#{@data_config_user['DirConfig']}/config.yml",
+            'a' => "#{@data_config_app['DirConfig']}/config.yml"
         }[command]
         # data is a Hash.  edit config only for user.
         if data.is_a?(Hash)
@@ -87,12 +88,16 @@ class Config
     end
 end
 
+asd = Config.new()
+asd.load_all_user()
+print(asd.data_config_user())
+
 __END__
 asd = Config.new()
 asd.load_all_user()
 asd.load_all_app()
 print(asd.data_config_app(), "\n", asd.data_config_user())
-#print(read_yaml('C:/Users/juan/Documents/Ismael/Proyectos/Rem-Is-Studio-unstable/data/config/config.yaml'))
+#print(read_yaml('C:/Users/juan/Documents/Ismael/Proyectos/Rem-Is-Studio-unstable/data/config/config.yml'))
 
 MainLanguage: en
 PathDataApp: 'other'
