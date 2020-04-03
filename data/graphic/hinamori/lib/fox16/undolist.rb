@@ -43,7 +43,7 @@ module Fox
   # an application of the well-known <em>Command</em> pattern. Your application
   # code should implement any number of command classes and then add then to an
   # FXUndoList instance. For an example of how this works, see the textedit
-  # example program from the FXRuby distribution.
+  # example program from the Hinamori distribution.
   #
   # == Class Constants
   #

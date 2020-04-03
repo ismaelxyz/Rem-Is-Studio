@@ -1,5 +1,5 @@
 #
-# An FXRuby stress test developed by Gilles Filippini
+# An Hinamori stress test developed by Gilles Filippini
 #
 
 require "hin16"

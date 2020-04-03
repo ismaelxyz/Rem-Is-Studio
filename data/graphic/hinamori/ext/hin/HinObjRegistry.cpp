@@ -1,5 +1,5 @@
 /***********************************************************************
- * FXRuby -- the Ruby language bindings for the FOX GUI toolkit.
+ * Hinamori -- the Ruby language bindings for the FOX GUI toolkit.
  * Copyright (c) 2017-2017 by Lyle Johnson. All Rights Reserved.
  *
  * This library is free software; you can redistribute it and/or
@@ -25,7 +25,7 @@
 #include "swigruby.h"
 
 HinObjRegistry::HinObjRegistry(){
-  FXRuby_Objects=st_init_numtable();
+  Hinamori_Objects=st_init_numtable();
 }
 
 const char * HinObjRegistry::safe_rb_obj_classname(VALUE obj)
@@ -57,7 +57,7 @@ VALUE HinObjRegistry::NewBorrowedObj(void *ptr,swig_type_info* ty){
       desc->obj = obj;
       desc->type = borrowed;
       desc->in_gc = false;
-      int overwritten = st_insert(FXRuby_Objects,reinterpret_cast<st_data_t>(ptr),reinterpret_cast<st_data_t>(desc));
+      int overwritten = st_insert(Hinamori_Objects,reinterpret_cast<st_data_t>(ptr),reinterpret_cast<st_data_t>(desc));
       FXASSERT(!overwritten);
       return obj;
     } else {
@@ -75,7 +75,7 @@ void HinObjRegistry::RegisterRubyObj(VALUE rubyObj,const void* hinObj) {
   FXASSERT(hinObj!=0);
   ObjDesc* desc;
   FXTRACE((1,"HinRegisterRubyObj(rubyObj=%p (%s),hinObj=%p)\n",(void *)rubyObj,safe_rb_obj_classname(rubyObj),hinObj));
-  if(st_lookup(FXRuby_Objects,reinterpret_cast<st_data_t>(const_cast<void*>(hinObj)),reinterpret_cast<st_data_t *>(&desc))!=0){
+  if(st_lookup(Hinamori_Objects,reinterpret_cast<st_data_t>(const_cast<void*>(hinObj)),reinterpret_cast<st_data_t *>(&desc))!=0){
     FXASSERT(desc->type == borrowed);
     /* There is already a Ruby object registered for this hinObj.
      * This can happen, if libhin calls methods out of the C++ object constructor,
@@ -92,7 +92,7 @@ void HinObjRegistry::RegisterRubyObj(VALUE rubyObj,const void* hinObj) {
       desc->obj = rubyObj;
       desc->type = own;
       desc->in_gc = false;
-      int overwritten = st_insert(FXRuby_Objects,reinterpret_cast<st_data_t>(const_cast<void*>(hinObj)),reinterpret_cast<st_data_t>(desc));
+      int overwritten = st_insert(Hinamori_Objects,reinterpret_cast<st_data_t>(const_cast<void*>(hinObj)),reinterpret_cast<st_data_t>(desc));
       FXASSERT(!overwritten);
     } else {
       FXASSERT(FALSE);
@@ -104,13 +104,13 @@ void HinObjRegistry::RegisterRubyObj(VALUE rubyObj,const void* hinObj) {
 void HinObjRegistry::UnregisterRubyObj(const void* hinObj, bool alsoOwned){
   if(hinObj!=0){
     ObjDesc* desc;
-    if(st_lookup(FXRuby_Objects,reinterpret_cast<st_data_t>(const_cast<void*>(hinObj)),reinterpret_cast<st_data_t *>(&desc))!=0){
+    if(st_lookup(Hinamori_Objects,reinterpret_cast<st_data_t>(const_cast<void*>(hinObj)),reinterpret_cast<st_data_t *>(&desc))!=0){
       if( !alsoOwned && desc->type!=borrowed ) return;
       FXTRACE((1,"HinUnregisterRubyObj(rubyObj=%p (%s),hinObj=%p)\n",(void *)desc->obj,safe_rb_obj_classname(desc->obj),hinObj));
       DATA_PTR(desc->obj)=0;
       FXFREE(&desc);
-      st_delete(FXRuby_Objects,reinterpret_cast<st_data_t *>(const_cast<void**>(&hinObj)),reinterpret_cast<st_data_t *>(0));
-      FXASSERT(st_lookup(FXRuby_Objects,reinterpret_cast<st_data_t>(const_cast<void*>(hinObj)),reinterpret_cast<st_data_t *>(0))==0);
+      st_delete(Hinamori_Objects,reinterpret_cast<st_data_t *>(const_cast<void**>(&hinObj)),reinterpret_cast<st_data_t *>(0));
+      FXASSERT(st_lookup(Hinamori_Objects,reinterpret_cast<st_data_t>(const_cast<void*>(hinObj)),reinterpret_cast<st_data_t *>(0))==0);
     }
   }
 }
@@ -118,7 +118,7 @@ void HinObjRegistry::UnregisterRubyObj(const void* hinObj, bool alsoOwned){
 
 VALUE HinObjRegistry::GetRubyObj(const void *hinObj,bool alsoBorrowed, bool in_gc_mark){
   ObjDesc* desc;
-  if(hinObj!=0 && st_lookup(FXRuby_Objects,reinterpret_cast<st_data_t>(const_cast<void*>(hinObj)),reinterpret_cast<st_data_t *>(&desc))!=0){
+  if(hinObj!=0 && st_lookup(Hinamori_Objects,reinterpret_cast<st_data_t>(const_cast<void*>(hinObj)),reinterpret_cast<st_data_t *>(&desc))!=0){
     FXASSERT(desc!=0);
     if(alsoBorrowed || desc->type!=borrowed){
       const char *classname = in_gc_mark ? "in GC" : safe_rb_obj_classname(desc->obj);
@@ -133,7 +133,7 @@ VALUE HinObjRegistry::GetRubyObj(const void *hinObj,bool alsoBorrowed, bool in_g
 bool HinObjRegistry::IsBorrowed(void* ptr){
   FXASSERT(ptr!=0);
   ObjDesc *desc;
-  if(st_lookup(FXRuby_Objects,reinterpret_cast<st_data_t>(ptr),reinterpret_cast<st_data_t *>(&desc))!=0){
+  if(st_lookup(Hinamori_Objects,reinterpret_cast<st_data_t>(ptr),reinterpret_cast<st_data_t *>(&desc))!=0){
     return desc->type == borrowed;
   }
   else{
@@ -144,7 +144,7 @@ bool HinObjRegistry::IsBorrowed(void* ptr){
 bool HinObjRegistry::SetInGC(const void* ptr, bool enabled){
   FXASSERT(ptr!=0);
   ObjDesc *desc;
-  if(st_lookup(FXRuby_Objects,reinterpret_cast<st_data_t>(ptr),reinterpret_cast<st_data_t *>(&desc))!=0){
+  if(st_lookup(Hinamori_Objects,reinterpret_cast<st_data_t>(ptr),reinterpret_cast<st_data_t *>(&desc))!=0){
     desc->in_gc=enabled;
     return enabled;
   }
@@ -160,7 +160,7 @@ bool HinObjRegistry::IsInGC(const void* ptr){
     return true;
   }
 #endif
-  if(st_lookup(FXRuby_Objects,reinterpret_cast<st_data_t>(ptr),reinterpret_cast<st_data_t *>(&desc))!=0){
+  if(st_lookup(Hinamori_Objects,reinterpret_cast<st_data_t>(ptr),reinterpret_cast<st_data_t *>(&desc))!=0){
     return desc->in_gc;
   }
   return false;

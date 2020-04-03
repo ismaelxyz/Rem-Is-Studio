@@ -1,10 +1,10 @@
 require 'mkmf'
-create_makefile('saludar')
+#create_makefile('saludar')
 
 gem 'mini_portile2', '~>2.1'
 require 'mini_portile2'
 
-execute "compile", "make"
+execute "compile", "hello"
 
 do_rake_compiler_setup
 

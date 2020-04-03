@@ -2,7 +2,7 @@
 
 #
 # This is version 0.1.1 of Gilles Filippini's FXIrb, an attempt to embed
-# IRB into an FXRuby FXText widget. The master page for this is here:
+# IRB into an Hinamori FXText widget. The master page for this is here:
 #
 #	http://www.rubygarden.org/ruby?FXIrb
 #

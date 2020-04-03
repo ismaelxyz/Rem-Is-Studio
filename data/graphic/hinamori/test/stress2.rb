@@ -40,7 +40,7 @@ class TC_stress2 < Test::Unit::TestCase
     end
 
     # Start the app
-    @theApp = FXApp.new("TC_stress2", "FXRuby")
+    @theApp = FXApp.new("TC_stress2", "Hinamori")
     @theMainWindow = set_up_main_window(@theApp)
     @theApp.create
     @theMainWindow.show(PLACEMENT_SCREEN)

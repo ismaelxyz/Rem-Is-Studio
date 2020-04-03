@@ -113,8 +113,8 @@ void HinUnregisterRubyObj(const void* hinObj){
 /* We now have 3 types of HinObject wrappers:
  *
  * Own objects :
- * These objects are allocated by FXRuby on the heap.
- * They are free'd when the FXRuby wrapper is GC'ed and no other reference to the object exists.
+ * These objects are allocated by Hinamori on the heap.
+ * They are free'd when the Hinamori wrapper is GC'ed and no other reference to the object exists.
  * They are registered in HinObjRegistry as owned object.
  * They are built per HinRegisterRubyObj().
  *
@@ -1626,7 +1626,7 @@ FXInputHandle HinGetReadFileHandle(VALUE obj,FXuint mode) {
     WSACloseEvent( hEvent );
     rb_raise( rb_eRuntimeError, "WSAEventSelect sockett error: %d", WSAGetLastError() );
   }
-  rb_iv_set(obj, "FXRuby::HinGetReadFileHandle", ULL2NUM((intptr_t)hEvent));
+  rb_iv_set(obj, "Hinamori::HinGetReadFileHandle", ULL2NUM((intptr_t)hEvent));
   return (FXInputHandle) hEvent;
 #endif
 #else
@@ -1636,7 +1636,7 @@ FXInputHandle HinGetReadFileHandle(VALUE obj,FXuint mode) {
 
 void HinRemoveReadFileHandle(VALUE obj,FXuint mode) {
 #ifdef WIN32
-  WSAEVENT hEvent = (HANDLE)NUM2ULL(rb_iv_get(obj, "FXRuby::HinGetReadFileHandle"));
+  WSAEVENT hEvent = (HANDLE)NUM2ULL(rb_iv_get(obj, "Hinamori::HinGetReadFileHandle"));
   CloseHandle( hEvent );
 #endif
 }
@@ -1667,7 +1667,7 @@ FXInputHandle HinGetWriteFileHandle(VALUE obj,FXuint mode) {
     WSACloseEvent( hEvent );
     rb_raise( rb_eRuntimeError, "WSAEventSelect sockettt error: %d", WSAGetLastError() );
   }
-  rb_iv_set(obj, "FXRuby::HinGetWriteFileHandle", ULL2NUM((intptr_t)hEvent));
+  rb_iv_set(obj, "Hinamori::HinGetWriteFileHandle", ULL2NUM((intptr_t)hEvent));
   return (FXInputHandle) hEvent;
 #endif
 #else
@@ -1677,7 +1677,7 @@ FXInputHandle HinGetWriteFileHandle(VALUE obj,FXuint mode) {
 
 void HinRemoveWriteFileHandle(VALUE obj,FXuint mode) {
 #ifdef WIN32
-  WSAEVENT hEvent = (HANDLE)NUM2ULL(rb_iv_get(obj, "FXRuby::HinGetWriteFileHandle"));
+  WSAEVENT hEvent = (HANDLE)NUM2ULL(rb_iv_get(obj, "Hinamori::HinGetWriteFileHandle"));
   CloseHandle( hEvent );
 #endif
 }

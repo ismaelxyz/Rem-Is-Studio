@@ -11,7 +11,7 @@ module Fox
       unless args.empty?
         appName = args[0]
       	if FXApp.instance.nil?
-      	  @theApp = FXApp.new(appName, 'FXRuby')
+      	  @theApp = FXApp.new(appName, 'Hinamori')
       	  @theApp.init([])
       	else
       	  @theApp = FXApp.instance

@@ -1,5 +1,5 @@
 /***********************************************************************
- * FXRuby -- the Ruby language bindings for the FOX GUI toolkit.
+ * Hinamori -- the Ruby language bindings for the FOX GUI toolkit.
  * Copyright (c) 2001-2009 by Lyle Johnson. All Rights Reserved.
  *
  * This library is free software; you can redistribute it and/or
@@ -21,7 +21,7 @@
  ***********************************************************************/
 
 /***********************************************************************
- * $Id: FXRuby.h 2463 2006-07-11 14:02:35Z lyle $
+ * $Id: Hinamori.h 2463 2006-07-11 14:02:35Z lyle $
  ***********************************************************************/
 
 #ifndef FXRUBY_H
@@ -781,7 +781,7 @@ SORTFUNC( HinTreeList, FXTreeItem )
 
 #undef SORTFUNC
 
-// FXRuby classes
+// Hinamori classes
 #include "HinStream.h"
 #include "HinObject.h"
 #include "HinDelegator.h"
@@ -964,6 +964,6 @@ SORTFUNC( HinTreeList, FXTreeItem )
 
 // Inlined implementations of stubs
 #include "inlinestubs.h"
-
+// FXRb -> RH [Files] (RH = [R]en Is Studio of [H]inamori )
 #endif
 

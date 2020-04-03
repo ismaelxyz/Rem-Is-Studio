@@ -5,7 +5,7 @@ class TC_FXRegistry < Test::Unit::TestCase
   include Fox
 
   def setup
-    @reg = FXRegistry.new("TC_FXRegistry", "FXRuby")
+    @reg = FXRegistry.new("TC_FXRegistry", "Hinamori")
   end
 
   def test_boolEntries

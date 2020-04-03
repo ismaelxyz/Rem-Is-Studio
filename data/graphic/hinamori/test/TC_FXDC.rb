@@ -7,7 +7,7 @@ class TC_FXDC < Test::Unit::TestCase
 
   def setup
     if FXApp.instance.nil?
-      @app = FXApp.new('TC_FXDC', 'FXRuby')
+      @app = FXApp.new('TC_FXDC', 'Hinamori')
       @app.init([])
     else
       @app = FXApp.instance

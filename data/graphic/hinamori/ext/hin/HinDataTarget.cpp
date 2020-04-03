@@ -1,5 +1,5 @@
 /***********************************************************************
- * FXRuby -- the Ruby language bindings for the FOX GUI toolkit.
+ * Hinamori -- the Ruby language bindings for the FOX GUI toolkit.
  * Copyright (c) 2001-2009 by Lyle Johnson. All Rights Reserved.
  *
  * This library is free software; you can redistribute it and/or
@@ -27,7 +27,7 @@
 #include "HinCommon.h"
 
 /**
- * Data targets for FXRuby are implemented slightly different from
+ * Data targets for Hinamori are implemented slightly different from
  * those in the C++ implementation since we don't have the concept
  * of C++ references for immutable types (like integers, floats and
  * strings).

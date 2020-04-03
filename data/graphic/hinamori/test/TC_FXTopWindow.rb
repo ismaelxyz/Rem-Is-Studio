@@ -7,7 +7,7 @@ class TC_FXTopWindow < Test::Unit::TestCase
 
   def setup
     if FXApp.instance.nil?
-      @app = FXApp.new('TC_FXTopWindow', 'FXRuby')
+      @app = FXApp.new('TC_FXTopWindow', 'Hinamori')
       @app.init([])
     else
       @app = FXApp.instance

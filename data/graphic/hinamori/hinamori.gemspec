@@ -1,4 +1,6 @@
-# coding: utf-8
+#!/usr/bin/env ruby
+# -*- coding: utf-8 -*-
+
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'hin16/version'
@@ -30,7 +32,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Lyle Johnson", "Lars Kanis"]
   spec.email         = ["lyle@lylejohnson.name", "lars@greiz-reinsdorf.de"]
 
-  spec.summary       = %q{FXRuby is the Ruby binding to the FOX GUI toolkit.}
+  spec.summary       = %q{Hinamori is the Ruby binding to the FOX GUI toolkit.}
   spec.homepage      = "https://github.com/larskanis/fxruby"
   spec.license       = 'LGPL-2.1'
 

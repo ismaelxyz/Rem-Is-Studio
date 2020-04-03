@@ -1,5 +1,5 @@
 --readme          README.rdoc
---title           "FXRuby API Documentation"
+--title           "Hinamori API Documentation"
 --exclude '/aliases|kwargs|missingdep|responder/'
 --protected
 --no-private

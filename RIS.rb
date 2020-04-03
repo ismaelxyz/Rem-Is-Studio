@@ -18,10 +18,46 @@
 require_relative 'data/centersystem'
 
 class RIS
-    def initialize
-        
-    end
+
+  def initialize()
+    @log = ""
+
+  end
+  def activate()
+    start()
+  end
 end
+
+def main()
+  app = RIS.new()
+  app.activate()
+end
+op = [10]
+def sopa(l)
+  print(l, "\n")
+  l[0] -= 1
+end
+
+sopa(op) while op[0] != 5
+
+if __FILE__ == $0
+  #main()
+end
+
+__END__
+class FileNotFound < StandardError
+  def initialize(safe_to_retry = false, message = 'Something went wrong')
+    @safe_to_retry = safe_to_retry
+    super(message)
+  end
+  
+  def method_missing(method, *args, &block)
+    "Cannot call #{method} on Animal"
+  end
+end
+
+#app = RIS.new()
 # gem 'mini_portile2', '~>2.1'
 # sh / rake
 #RUBY_PLATFORM
+mastodown / mastodonte redsocial

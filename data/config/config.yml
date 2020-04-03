@@ -1,3 +1,4 @@
 MainLanguage: en
+GraphicSupport: true
 PathDataApp: 'other'
 FileRunPath: 'other'

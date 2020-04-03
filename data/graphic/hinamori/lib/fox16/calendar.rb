@@ -202,7 +202,7 @@ end
 
 if __FILE__ == $0
 
-  app = Fox::FXApp.new('Calendar', 'FXRuby')
+  app = Fox::FXApp.new('Calendar', 'Hinamori')
   app.init(ARGV)
   mainwin = Fox::FXMainWindow.new(app, "Calendar Test", nil, nil, Fox::DECOR_ALL, 0, 0, 500, 500)
   calendar = Fox::FXCalendar.new(mainwin, Time.now, nil, 0, Fox::LAYOUT_FILL_X|Fox::LAYOUT_FILL_Y)

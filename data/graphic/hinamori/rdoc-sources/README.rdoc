@@ -1,6 +1,6 @@
 = Introduction
 
-<b>This is the RDoc-generated API documentation for FXRuby version 1.6.</b>
+<b>This is the RDoc-generated API documentation for Hinamori version 1.6.</b>
 If you have some constructive comments about the content, format or
 presentation, please do send those to me (at mailto:lyle@rubyforge.org).
 
@@ -37,7 +37,7 @@ One difference you may notice from documentation generated for other
 Ruby extensions is that there's no source code attached to the instance
 methods when you click on them (i.e. they will appear to be empty
 method definitions). That's because most of these functions are in fact
-implemented in C++ code (since FXRuby is itself a C++ extension to Ruby).
+implemented in C++ code (since Hinamori is itself a C++ extension to Ruby).
 
 = TODO
 
@@ -46,7 +46,7 @@ A few notes and suggestions from Hugh Sasse:
 * It may help to add information about what happens when block_given?()
   is true or false, i.e. does this affect the return value for a method?
 * In lieu of (or in addition) to short code examples embedded in the API
-  documentation, links to examples that are shipped with FXRuby might be good.
+  documentation, links to examples that are shipped with Hinamori might be good.
 ----
 
 The HTML pages for this documentation were generated using RDoc

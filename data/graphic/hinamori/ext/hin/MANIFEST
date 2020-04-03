@@ -1,7 +1,7 @@
 HinApp.cpp
 HinDataTarget.cpp
 HinGLViewer.cpp
-FXRuby.cpp
+Hinamori.cpp
 MANIFEST
 Makefile
 README
@@ -184,7 +184,7 @@ include/HinWindow.h
 include/HinWindowVirtuals.h
 include/HinXPMIcon.h
 include/HinXPMImage.h
-include/FXRuby.h
+include/Hinamori.h
 include/impl.h
 librb.c
 markfuncs.cpp

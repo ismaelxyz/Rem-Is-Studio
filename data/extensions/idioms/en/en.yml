@@ -1,0 +1,98 @@
+# This file is part of Rem Is Studio como una extension del mismo.
+
+Author: Ismael Belisario
+Version: '1.0'
+License: Mozilla Public License, v. 2.0
+Email Author: ismaelbeli.com@gmail.com
+Idiom: 'English/en'
+
+words:
+  file: File
+  edit: Edit
+  view: View
+  go: Go
+  debug: Debug
+  terminal: Terminal
+  help: Help
+  new: New
+  window: Window
+  project: Project
+  open: Open
+  recent: Recent
+  save: Save
+  as: As
+  setting: Setting
+  tab: Tab
+  close: close
+  exit: Exit
+  menu: Menu
+
+  folder: folder
+  undo: Undo
+  redo: Redo
+  cut: Cut
+  copy: Copy
+  paste: Paste
+  find: Find
+  replace: Replace
+  toggle: Toggle
+  Line: Line
+  block: Block
+  comment: Comment
+  select: Select
+  all: All
+  up: Up
+  down: Down
+  move: Move
+  duplicate: Duplicate
+  selection: Selection
+
+  command: Command
+  palette: Palette
+  appearance: Appearance
+  extension: Extension
+  change: Change
+  theme: Theme
+  Icon: Icon
+  pack: Pack
+  hide: Hide
+  number: Number
+  statusbar: Statusbar
+  bar: bar
+  status: Status
+  top: Top
+  menu: Menu
+  lin: Lin
+  col: Col
+
+  next: Next
+  back: Back 
+  to: To
+  definition: Definition
+  declaration: Declaration
+
+  run: Run
+  start: Start
+  debugging: Debugging
+
+  of: Of
+  active: Active
+  in: In
+  this: This
+  task: Task
+  create: Create
+
+  welcome: Welcome
+  documentation: Documentation
+  release: Release
+  note: Note
+  keyboard: Keyboard
+  shortcuts: Shortcuts
+  license: License
+  check: Check
+  for: For
+  updates: Updates
+  about: About
+  path: Path
+  relative: Relative
+  browser: Browser

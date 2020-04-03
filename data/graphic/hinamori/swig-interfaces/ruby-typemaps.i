@@ -1,5 +1,5 @@
 /***********************************************************************
- * FXRuby -- the Ruby language bindings for the FOX GUI toolkit.
+ * Hinamori -- the Ruby language bindings for the FOX GUI toolkit.
  * Copyright (c) 2001-2009 by Lyle Johnson. All Rights Reserved.
  *
  * This library is free software; you can redistribute it and/or
@@ -784,10 +784,10 @@ inline void* to_FXEvent(VALUE obj){
     }
 }
 
-/* Convert a Ruby Integer to an FXID (int_to_fxid() is defined in FXRuby.h) */
+/* Convert a Ruby Integer to an FXID (int_to_fxid() is defined in Hinamori.h) */
 %typemap(in) FXID "$1 = int_to_fxid($input);";
 
-/* Convert an FXID to a Ruby Integer (fxid_to_int() is defined in FXRuby.h) */
+/* Convert an FXID to a Ruby Integer (fxid_to_int() is defined in Hinamori.h) */
 %typemap(out) FXID "$result = fxid_to_int($1);";
 
 %typemap(in) FXuchar *data "$1 = NIL_P($input) ? 0 : reinterpret_cast<FXuchar*>(StringValuePtr($input));";

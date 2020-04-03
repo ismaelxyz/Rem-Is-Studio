@@ -1,3 +1,5 @@
-hinRuby -> hinamori
-hin16_c -> hin
-Hin -> Hin
+FXRuby -> Hinamori
+fox16_c -> hin_a1
+FXRb -> Hin
+FXRb -> RH [FIles]
+FX -> H

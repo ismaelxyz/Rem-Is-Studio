@@ -53,7 +53,7 @@ private
 public
   def setup
     if FXApp.instance.nil?
-      @app = FXApp.new('TC_FXDCPrint', 'FXRuby')
+      @app = FXApp.new('TC_FXDCPrint', 'Hinamori')
       @app.init([])
     else
       @app = FXApp.instance

@@ -1,0 +1,92 @@
+$file: Archivo
+$edit: Editar
+$view: Ver
+$go: Ir a
+$debug: Depurar
+$terminal: Terminal
+$help: Ayuda
+$new: Nuevo
+$window: Ventana
+$project: Proyecto
+$open: Abrir
+$recent: Reciente
+$save: Guardar
+$as: Como
+$setting: Configuración
+$tab: Pestaña
+$close: Cerrar
+$exit: Salir
+
+$folder: Carpeta
+$undo: Deshacer
+$redo: Rehacer
+$cut: Cortar
+$copy: Copiar
+$paste: Pegar
+$find: Buscar
+$replace: Remplazar
+$toggle: Alternar
+$Line: Linea
+$block: Bloque
+$comment: Comentar
+$select: Selecconar
+$all: Todo
+$up: Arriba
+$down: Abajo
+$move: Mover
+$duplicate: Duplicar
+$selection: Seleccionar
+$menu: Menu
+$bar: Barra
+$state: Estado
+$top: Superrior
+
+$command: Comando
+$palette: Paleta
+$appearance: Apariencia
+$extension: Extensión
+$change: Cambiar
+$theme: Tema
+$Icon: Icono
+$pack: Paquete
+$hide: Mostrar
+$number: Numero
+$statusbar: Barra de Estado
+
+$next: Siguiente
+$back: Anterior 
+$to: A
+$definition: Definición
+$declaration: Declaración
+$a: una
+$an: un
+$of: 
+     - De
+     - Del
+$body: Cuerpo
+$label: Etiqueta
+$lin: Lín
+$run: Ejecutar
+$start: Iniciar
+$debugging: Depuración
+
+$active: Activo
+$in: En
+$this: Este
+$task: Tarea
+$create: Crear
+
+$welcome: Bienvenido
+$documentation: Documentación
+$release: Versión
+$note: Note
+$keyboard: Teclado
+$shortcuts: Atajos
+$license: Licencia
+$check: Buscar
+$for: Para
+$updates: Actualizaciones
+$path: Ruta
+$relative: Relativa
+$about: Sobre
+$browser: Navegador

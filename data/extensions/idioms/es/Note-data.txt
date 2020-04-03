@@ -1,0 +1,115 @@
+
+
+
+__END__
+#print load_yaml("en.yaml")
+=begin
+age =1
+result = [:heads, :tails].sample
+status = if age < 18 
+            10 
+        else 
+            12
+        end
+print "Status: ", status
+=end
+#value = false value ? "true" : "false" 
+# lambda using the arrow syntax
+#hello_world = -> { 'Hello World!' }
+#hello_world[]
+# 'Hello World!'
+fake_class_eval Example, <<-BLOCK   
+    def self.foo     
+        :foo   
+    end 
+BLOCK
+# Buscar donde se encuentra un indice de un obj /[\d]/ =~ "Hola1" = 4
+
+fake_class_eval Example, <<-ENDJSO   
+    def self.foo     
+        :foo   
+    end 
+ENDJSO
+#File.expand_path("..", __FILE__)
+
+#the_thing = ->(magic, ohai, dere) {
+    #puts "magic! #{magic}"
+    #puts "ohai #{dere}"
+    #puts "#{ohai} means hello"
+#}
+
+# lambda {3 * n}
+
+#attr_reader :age # you can read the age but you can never change it   
+#attr_writer :name # you can change name but you are not allowed to read
+#attr_accessor :# you can both change the breed and read it 
+each.with_index, each, each_index
+def print_help
+    $stderr.puts <<-EOT
+  Usage:
+      ridk use [<option>]
+  
+  Option:
+                    Start interactive version selection
+      list          Search and list installed ruby versions
+      update        Save or update the found ruby versions to rubies.yml
+      <number>      Change the active ruby version by index
+      /<regex>/     Change the active ruby version by regex
+      help          Display this help and exit
+  EOT
+  end
+
+  def run!(args)
+    case args[0]
+      when "use", "useps1"
+        ps1 = args[0] == "useps1"
+        case args[1]
+          when 'help'
+            print_help
+          when 'list'
+            list_rubies
+          when 'update'
+            update_rubies
+          when String
+            rubies = each_ruby.to_h
+            rubypath = select_ruby(rubies, args[1])
+            unless rubypath
+              $stderr.print "Invalid ruby: #{args[1].inspect}"
+              exit 1
+            end
+            puts switch_ruby_per_cmd(rubypath, rubies.values, ps1)
+          else
+            list_rubies
+            rubies = each_ruby.to_h
+  
+            loop do
+              $stderr.print "Select ruby version to enable: "
+              selector = $stdin.gets.strip
+              rubypath = select_ruby(rubies, selector)
+              next unless rubypath
+              puts switch_ruby_per_cmd(rubypath, rubies.values, ps1)
+              break
+            end
+        end
+      else
+        $stderr.puts "Invalid option #{args[0].inspect}"
+    end
+  end
+  
+  if $0 == __FILE__
+    run!(ARGV)
+  end
+
+  File.join(rubypath, "bin")
+  path.gsub("/", "\\")
+  #File.absolute_path("~oracle/bin")
+  #File.basename("/home/gumby/work/ruby.rb") 
+  # File.extname nombre extencion
+  # File.identical?("a", "c")
+  repo = %w[
+    gems
+    specifications/default
+  ]
+
+  # asd = Time.new() # whit void
+  #asd.ctime/day/moth/year
