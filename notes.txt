@@ -1,5 +1,6 @@
 FXRuby -> Hinamori
-fox16_c -> hin_a1
+fox16_c -> hin
 FXRb -> Hin
 FXRb -> RH [FIles]
 FX -> H
+Fox -> Hin [module]
