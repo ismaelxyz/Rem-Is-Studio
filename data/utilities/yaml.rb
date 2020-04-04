@@ -3,9 +3,18 @@
 
 # RIM: Yaml
 module Utilities
+  require 'yaml'
+
   def read_yaml(path_file_yaml)
     # Read a Yaml File.
-    return YAML.load(RFile.read(path_file_yaml)) || {}
+    begin
+      
+      return YAML.load(RFile.read(path_file_yaml)) || {}
+    rescue => exception
+      print "eE: ", path_file_yaml
+      exit()
+    end
+    
   end
     
   def write_yaml(path_file_yaml, data)

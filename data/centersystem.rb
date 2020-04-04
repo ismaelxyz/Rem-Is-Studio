@@ -6,7 +6,7 @@ include Utilities
 
 # Main func
 def start()
-	require_relative 'config/dataversion'
+	require_relative 'dataversion'
 	require_relative 'config/config'
 	
 	m = Config.see_config_data('u', 'Mode')[0]
@@ -19,6 +19,9 @@ def start()
 		config = Config.new()
 	end
 	config.load_all()
-	lan = Idiom.new(config.app['ExtensionsDir'])
-	print(lan.translate(["file open", "/copy"], ['edit'], 'go ', '/...'))
+	#config.app('FilesTypes')
+	print Utilities::name
+	#['ListUser']
+	#lan = Idiom.new(config.app['ExtensionsDir'])
+	#print(lan.translate(["file open", "/copy"], ['edit'], 'go ', '/...'))
 end

@@ -4,3 +4,6 @@ FXRb -> Hin
 FXRb -> RH [FIles]
 FX -> H
 Fox -> Hin [module]
+
+utf-8: UTF-8
+ascii: ASCII
