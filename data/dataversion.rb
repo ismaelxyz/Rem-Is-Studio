@@ -1,3 +1,6 @@
+#!/usr/bin/env ruby
+# -*- coding: utf-8 -*-
+
 Name  = 'Rem Is Studio'
 version = '1.0'
 Breach = 'unstable'

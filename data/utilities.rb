@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# -*- coding: utf-8 -*-
 
 require_relative 'utilities/data'
 require_relative 'utilities/file'

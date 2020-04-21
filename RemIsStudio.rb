@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# -*- coding: cp850 -*-
+# -*- coding: utf-8 -*-
 
 # ------------------------------------------------------------
 # This Source Code Form is subject to the terms of the Mozilla Public
@@ -16,8 +16,47 @@
 # Exhibit B - "Incompatible With Secondary Licenses" Notice
 require_relative 'data/argv' 
 #require_relative 'data/centersystem'
+#rb_str_new2("")
+#RSTRING_PTR("")
+#rb_str_new(0, 0)
+# rb_str_dup("")
+# Int
+# INT2NUM
+#rb_int2inum(pos)
+#Array
+#rb_ensure(*args)
+=begin
+static VALUE
+dir_s_getwd(VALUE dir)
+{
+    return rb_dir_getwd();
+}
+Yukihiro Matsumoto
 
 
+
+#if defined(__cplusplus)
+extern "C" {
+#if 0
+} /* satisfy cc-mode */
+#endif
+#endif
+
+RUBY_SYMBOL_EXPORT_END
+
+#if defined(__cplusplus)
+#if 0
+{ /* satisfy cc-mode */
+#endif
+}  /* extern "C" { */
+#endif
+
+#endif /* RUBY_THREAD_H */
+
+=end
+rescue => exception
+  
+end
 class RIS
 
   def initialize()
